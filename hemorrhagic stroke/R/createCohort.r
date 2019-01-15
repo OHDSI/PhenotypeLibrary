@@ -1,6 +1,6 @@
 ##settings
 
-setwd("~/git/ABMI/PhenotypeLibrary/ischemic stroke")
+setwd("~/git/ABMI/PhenotypeLibrary/hemorrhagic stroke")
 
 connectionDetails<-DatabaseConnector::createConnectionDetails(dbms="sql server",
                                                               server="",
