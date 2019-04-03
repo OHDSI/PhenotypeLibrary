@@ -1,0 +1,76 @@
+####################################################################################################################################
+# Title: makeIndexFile.R
+# Author: Aaron Potvien
+# Purpose: This file parses this repository and assembles the Gold Standard phenotypes and validation sets (residing in many files)
+# into a single file. This file is a list object containing two data frames -- one for the phenotypes and 1 for the validation sets.
+# This index file is what is loaded by the Shiny viewer application on boot. The pre-processing done here improves the load time for
+# the Shiny application and also provides a single object which contains all library information.
+#
+# Note: The Gold Standandard Phenotype Library librarians will need to rerun this file each time there is a change to the library
+# to keep it up to date. TODO: Try to automate this, perhaps by using a server-side post-receive hook to detect that the library has
+# changed and therefore requires an updated index file.
+####################################################################################################################################
+
+# Libraries
+library(httr)
+library(jsonlite)
+
+# Routine to make and return the index file
+makeIndexFile <- function() {
+
+  # Get all files from the gold standard library repository
+  req <- GET("https://api.github.com/repos/OHDSI/PhenotypeLibrary/git/trees/master?recursive=1")
+  stop_for_status(req)
+  filelist <- unlist(lapply(content(req)$tree, "[", "path"), use.names = FALSE)
+
+  # Retrieve Gold Standard phenotypes and validation sets
+  phenotypes <- grep("Gold Standard/Phenotypes/.*.json", filelist, value = TRUE)
+  validations <- grep("Gold Standard/Validation Sets/.*.json", filelist, value = TRUE)
+
+  phe.jsons <- lapply(phenotypes, function(x) {
+    read_json(gsub(
+      " ", "%20",
+      paste0("https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/master/", x)
+    ))
+  })
+
+  val.jsons <- lapply(validations, function(x) {
+    read_json(gsub(
+      " ", "%20",
+      paste0("https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/master/", x)
+    ))
+  })
+
+  # Stack results from all files together
+  phe.data <- data.frame(do.call("rbind", phe.jsons))
+  val.data <- data.frame(do.call("rbind", val.jsons))
+
+  # Vectorize lists with 1 element
+  unlist_phe_vars <- !(names(phe.data) %in% c("Authors_And_Affiliations", "Provenance_Hashes", "Provenance_Reasons"))
+  unlist_val_vars <- !(names(val.data) %in% c("Validators_And_Affiliations"))
+
+  for (idx in 1:length(unlist_phe_vars)) {
+    if (unlist_phe_vars[idx]) {
+      phe.data[[idx]] <- unlist(phe.data[[idx]])
+    }
+  }
+
+  for (idx in 1:length(unlist_val_vars)) {
+    if (unlist_val_vars[idx]) {
+      val.data[[idx]] <- unlist(val.data[[idx]])
+    }
+  }
+
+  # In case phenotype titles aren't unique, we will make them so here
+  phe.data$Title <- make.unique(phe.data$Title)
+
+  # Return a single list object containing these data frames
+  return(
+    list(Phenotype = phe.data, Validation = val.data)
+  )
+}
+
+# Make and export Index.rds
+saveRDS(makeIndexFile(), file = file.path(getwd(), "Index.rds"))
+print(paste("The index file was saved here:", paste0(file.path(getwd(), "index.rds"))))
+print("Please push this index file to the gold standard phenotype library repository.")
