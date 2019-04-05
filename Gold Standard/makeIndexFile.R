@@ -63,6 +63,35 @@ makeIndexFile <- function() {
 
   # In case phenotype titles aren't unique, we will make them so here
   phe.data$Title <- make.unique(phe.data$Title)
+  
+  # Calculate and incorporate weighted averages of the four metrics for each phenotype
+  calculateMetrics <- function(hash) {
+    cur.metrics <- val.data[val.data$Hash == hash,]
+    avg.sensitivity <- weighted.mean( cur.metrics$True_Positives / (cur.metrics$True_Positives + cur.metrics$False_Negatives),
+                                      cur.metrics$Sample_Size, 
+                                      na.rm = TRUE )
+    avg.specificity <- weighted.mean( cur.metrics$True_Negatives / (cur.metrics$True_Negatives + cur.metrics$False_Positives),
+                                      cur.metrics$Sample_Size, 
+                                      na.rm = TRUE )
+    avg.ppv <- weighted.mean( cur.metrics$True_Positives / (cur.metrics$True_Positives + cur.metrics$False_Positives),
+                                      cur.metrics$Sample_Size, 
+                                      na.rm = TRUE )
+    avg.npv <- weighted.mean( cur.metrics$True_Negatives / (cur.metrics$True_Negatives + cur.metrics$False_Negatives),
+                              cur.metrics$Sample_Size, 
+                              na.rm = TRUE )
+    return(
+      data.frame(
+      Hash = hash,
+      Avg_Sensitivity = avg.sensitivity,
+      Avg_Specificity = avg.specificity,
+      Avg_PPV = avg.ppv,
+      Avg_NPV = avg.npv
+    )
+    )
+  }
+  
+  metric_summary <- do.call('rbind', lapply(phe.data$Hash, calculateMetrics))
+  phe.data <- merge(phe.data, metric_summary, by = "Hash")
 
   # Return a single list object containing these data frames
   return(
