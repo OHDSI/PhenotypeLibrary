@@ -79,13 +79,22 @@ makeIndexFile <- function() {
     avg.npv <- weighted.mean( cur.metrics$True_Negatives / (cur.metrics$True_Negatives + cur.metrics$False_Negatives),
                               cur.metrics$Sample_Size, 
                               na.rm = TRUE )
+    avg.f1score <- weighted.mean( 2 * cur.metrics$True_Positives / (2 * cur.metrics$True_Positives + cur.metrics$False_Positives + cur.metrics$False_Negatives),
+                                  cur.metrics$Sample_Size,
+                                  na.rm = TRUE)
+    avg.accuracy <- weighted.mean( (cur.metrics$True_Positives + cur.metrics$True_Negatives) / (cur.metrics$True_Positives + cur.metrics$True_Negatives + cur.metrics$False_Positives + cur.metrics$False_Negatives),
+                                  cur.metrics$Sample_Size,
+                                  na.rm = TRUE)
+      
     return(
       data.frame(
       Hash = hash,
       Avg_Sensitivity = avg.sensitivity,
       Avg_Specificity = avg.specificity,
       Avg_PPV = avg.ppv,
-      Avg_NPV = avg.npv
+      Avg_NPV = avg.npv,
+      Avg_F1score = avg.f1score,
+      Avg_Accuracy = avg.accuracy
     )
     )
   }
