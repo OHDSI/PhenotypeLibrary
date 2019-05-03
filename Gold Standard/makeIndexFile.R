@@ -14,6 +14,8 @@
 # Libraries
 library(httr)
 library(jsonlite)
+library(igraph) # For provenance graph clusters
+library(tidyr) # For unnest
 
 # Routine to make and return the index file
 makeIndexFile <- function() {
@@ -107,7 +109,22 @@ makeIndexFile <- function() {
 
   metric_summary <- do.call("rbind", lapply(phe.data$Hash, calculateMetrics))
   phe.data <- merge(phe.data, metric_summary, by = "Hash")
-
+  
+  # Calculate connected components so the phenotype provenance path can be referenced in the viewer app
+  
+  # Nodes/Edges
+  graph_subset <- phe.data[,c("Hash","Title","Provenance_Reasons","Provenance_Hashes")]
+  edges <- unnest(graph_subset)
+  names(edges) <- c("to", "title",  "reason", "from")
+  edges <- edges[,c("from", "to", "title", "reason")]
+  vert <- data.frame(hash = graph_subset$Hash, title = graph_subset$Title)
+  
+  # Make graph
+  g <- graph_from_data_frame(d=edges, directed=TRUE, vertices=vert)
+  
+  # Bind connected component cluster IDs
+  phe.data <- cbind(phe.data, Graph_Cluster = as.integer(clusters(g)$membership))
+  
   # Return a single list object containing these data frames
   return(
     list(Phenotype = phe.data, Validation = val.data)
