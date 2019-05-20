@@ -65,6 +65,11 @@ makeIndexFile <- function() {
 
   # In case phenotype titles aren't unique, we will make them so here
   phe.data$Title <- make.unique(phe.data$Title)
+  
+  # Add in repository relative paths (strip common prefix and json extension)
+  relative_path1 <- gsub("Gold Standard/Phenotypes/", "", phenotypes, fixed = TRUE)
+  relative_path2 <- gsub(".json", "", relative_path1, fixed = TRUE)
+  phe.data$Relative_Path <- relative_path2
 
   # Calculate and incorporate weighted averages of the four metrics for each phenotype
   calculateMetrics <- function(hash) {
