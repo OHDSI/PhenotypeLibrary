@@ -63,13 +63,19 @@ makeIndexFile <- function() {
     }
   }
 
-  # In case phenotype titles aren't unique, we will make them so here
-  phe.data$Title <- make.unique(phe.data$Title)
+  # Replace spaces with underscores
+  phe.data$Title <- gsub(" ", "_", phe.data$Title, fixed = TRUE) 
+  
+  # In case phenotype titles aren't unique, we will make them so here (x_1, x_2, ...)
+  phe.data$Title <- make.unique(phe.data$Title, sep = "_")
   
   # Add in repository relative paths (strip common prefix and json extension)
   relative_path1 <- gsub("Gold Standard/Phenotypes/", "", phenotypes, fixed = TRUE)
   relative_path2 <- gsub(".json", "", relative_path1, fixed = TRUE)
   phe.data$Relative_Path <- relative_path2
+  
+  # The first level folder is the broad category, which can be filtered on in the viewer application
+  phe.data$Broad_Category_Name <- dirname(relative_path1)
 
   # Calculate and incorporate weighted averages of the four metrics for each phenotype
   calculateMetrics <- function(hash) {
