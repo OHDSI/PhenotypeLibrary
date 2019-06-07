@@ -66,7 +66,7 @@ makeIndexFile <- function() {
   # Replace spaces with underscores
   phe.data$Title <- gsub(" ", "_", phe.data$Title, fixed = TRUE) 
   
-  # In case phenotype titles aren't unique, we will make them so here (x_1, x_2, ...)
+  # In case chapter titles aren't unique, we will make them so here (x_1, x_2, ...)
   phe.data$Title <- make.unique(phe.data$Title, sep = "_")
   
   # Add in repository relative paths (strip common prefix and json extension)
@@ -77,9 +77,12 @@ makeIndexFile <- function() {
   # The first level folder is the broad category, which can be filtered on in the viewer application
   phe.data$Broad_Category_Name <- dirname(relative_path1)
 
-  # Calculate and incorporate weighted averages of the four metrics for each phenotype
+  # Calculate and incorporate weighted averages of the six metrics for each phenotype, plus the total number of times
+  # the cohort definition has been validated
   calculateMetrics <- function(hash) {
     cur.metrics <- val.data[val.data$Hash == hash, ]
+    times_validated <- nrow(cur.metrics)
+    
     avg.sensitivity <- weighted.mean(cur.metrics$True_Positives / (cur.metrics$True_Positives + cur.metrics$False_Negatives),
       cur.metrics$Sample_Size,
       na.rm = TRUE
@@ -104,10 +107,11 @@ makeIndexFile <- function() {
       cur.metrics$Sample_Size,
       na.rm = TRUE
     )
-
+  
     return(
       data.frame(
         Hash = hash,
+        Times_Validated = times_validated,
         Avg_Sensitivity = avg.sensitivity,
         Avg_Specificity = avg.specificity,
         Avg_PPV = avg.ppv,
