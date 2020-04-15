@@ -1,0 +1,92 @@
+Machine Learning for Rocket Propulsion Health Monitoring
+	by Mark Schwabacher
+
+*Model
+	-Unsupervised Anomaly Detection Algorithms
+*Questions
+	-What all do our sensors measure?
+	-How redundant are the sensors? For instance, are they grouped to measure the same thing?
+	-What information from the sensors and sensor anomalies may be insignificant?
+	-How are you currently interpreting the sensor data?
+	-Any past sensor data that we can use for training?
+*Problems
+	-Only used data from the sensors located on the rocket test stand.
+	-Algorithms are not specific to time data.
+
+
+A Survey of Data-Driven Prognostics
+	by Mark Schwabacher
+
+*Overview
+	- Nice list of different studies and techniques used in ISHM
+	- Differentiated by rocket area specifics and learning types
+*Questions
+	-What parts of the rocket are we most interested in?
+	-Are we interested in detection, diagnosis, prognosis, or any combo?
+
+
+Multi-view Learning Overview: Recent Progress and New Challenges
+	by Jing Zhao, Xijiong Xie, Xin Xu, Shiliang Sun
+
+*Overview
+	-Data fusion or data integration from multiple feature sets.
+		*Would be able to consider the sensor data and the image data has multiple views.
+	-Gives an overview of approaches as well as example datasets.
+*Questions
+	-How much data are we going to have to work with?
+	-How complete is the data?
+
+
+Active Learning Literature Survey
+	by Burr Settles
+
+*Overview
+	-Survey of active learning techniques and basic ideas
+*Problems
+	-Can the other researchers classify the rocket images from data?
+	-Is it time efficient?
+
+
+Health Monitoring of Rocket Engines using Image Processing
+	by P.J. Disimile, B. Shoe, N. Toy
+
+*Overview
+	- Similar to our original idea.
+	- Does not use sensor data at all.
+	- Pretty technical in terms of the rockets themselves.
+	- Would at least be useful as a baseline.
+	- Old Paper
+
+
+Rocket Engine Health Monitoring using a Model-Based Approach
+	- John P. Butas, Claudia M. Meyer, Louis M. Santi, T. Shane Sowers
+
+*Overview
+	- Model design using sensor data.
+	- Possibly could combine with the Image Processing paper.
+	- Possible test dataset as well.
+	- Also analyzes missing sensor data.
+
+
+Approach to Space Shuttle Main Engine Health Monitoring using Plume Spectra
+	by David A. Benzing, Kevin W. Whitaker
+
+*Questions
+	-What type of species can we expect from flame emissions?
+	-Is metal erosion a concern with the launch?
+
+*Overview
+	-Uses spectral templates of flames to discover anomalies
+	-Added together with sensor data
+
+*Model
+	-Uses a Neural Network to pinpoint where in the engine the rocket failed
+
+
+A Survey of Multi-View Machine Learning
+	by Shiliang Sun
+
+*Overview
+	-Another cursory glance over multiview learning.
+	-Different methods can be applied based on the specific problem we want to attack.
+	-Additional readings would follow based on our research question.
