@@ -78,26 +78,26 @@ if (length(phenotypesToAdd) > 0) {
   for (i in (1:length(phenotypesToAdd))) {
     print(i)
     dir.create(
-      path = file.path(path, "inst", phenotypesToAdd[[i]], 'literature'),
+      path = file.path(path, phenotypesToAdd[[i]], 'literature'),
       showWarnings = FALSE,
       recursive = TRUE
     )
-    file.create(file.path(path, "inst", phenotypesToAdd[[i]], 'literature', ".empty"))
+    file.create(file.path(path, phenotypesToAdd[[i]], 'literature', ".empty"))
     dir.create(
-      path = file.path(path, "inst", phenotypesToAdd[[i]], 'notes'),
+      path = file.path(path, phenotypesToAdd[[i]], 'notes'),
       showWarnings = FALSE,
       recursive = TRUE
     )
-    file.create(file.path(path, "inst", phenotypesToAdd[[i]], 'notes', ".empty"))
+    file.create(file.path(path, phenotypesToAdd[[i]], 'notes', ".empty"))
     dir.create(
-      path = file.path(path, "inst", phenotypesToAdd[[i]], 'evaluation'),
+      path = file.path(path, phenotypesToAdd[[i]], 'evaluation'),
       showWarnings = FALSE,
       recursive = TRUE
     )
-    file.create(file.path(path, "inst", phenotypesToAdd[[i]], 'evaluation', ".empty"))
+    file.create(file.path(path, phenotypesToAdd[[i]], 'evaluation', ".empty"))
     phenotypeDescription %>%
       dplyr::filter(.data$phenotypeId == phenotypesToAdd[[i]]) %>%
-      readr::write_excel_csv(file.path(path, "inst", phenotypesToAdd[[i]], 'phenotypeDescription.csv'))
+      readr::write_excel_csv(file.path(path, phenotypesToAdd[[i]], 'phenotypeDescription.csv'))
   }
 }
 if (length(phenotypesToRemove) > 0) {
@@ -154,7 +154,6 @@ if (length(cohortsToAdd) > 0) {
       sql = webApiCohortIds[i, ]$json,
       targetFile = file.path(
         path,
-        "inst",
         webApiCohortIds[i, ]$phenotypeId,
         paste0(webApiCohortIds[i, ]$cohortId, ".json")
       )
@@ -169,7 +168,6 @@ if (length(cohortsToAdd) > 0) {
       sql = webApiCohortIds[i, ]$sql,
       targetFile = file.path(
         path,
-        "inst",
         webApiCohortIds[i, ]$phenotypeId,
         paste0(webApiCohortIds[i, ]$cohortId, ".sql")
       )
@@ -180,7 +178,6 @@ if (length(cohortsToAdd) > 0) {
       x = f,
       file = file.path(
         path,
-        "inst",
         webApiCohortIds[i, ]$phenotypeId,
         "cohortDescription.csv"
       )
