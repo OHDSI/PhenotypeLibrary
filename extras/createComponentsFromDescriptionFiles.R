@@ -201,6 +201,7 @@ if (length(cohortsToAdd) > 0) {
       sql = webApiCohortIds[i, ]$sql,
       targetFile = file.path(
         path,
+        "inst",
         webApiCohortIds[i, ]$phenotypeId,
         paste0(webApiCohortIds[i, ]$cohortId, ".sql")
       )
@@ -211,6 +212,7 @@ if (length(cohortsToAdd) > 0) {
       x = f,
       file = file.path(
         path,
+        "inst",
         webApiCohortIds[i, ]$phenotypeId,
         "cohortDescription.csv"
       ),

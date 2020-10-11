@@ -4,10 +4,10 @@ path <- rstudioapi::getActiveProject()
 # Cohort descriptions
 cohortDescription <- dplyr::bind_rows(readr::read_csv(file = file.path(path, "extras", "CohortDescription.csv"),
                                                       guess_max = min(1e7),
-                                                      col_types = readr::cols()),
+                                                      col_types = readr::cols(), trim_ws = TRUE),
                                       readr::read_csv(file = file.path(path, "extras", "NewCohorts.csv"),
                                                       guess_max = min(1e7),
-                                                      col_types = readr::cols())) %>%
+                                                      col_types = readr::cols(), trim_ws = TRUE)) %>%
   dplyr::arrange(.data$phenotypeId, .data$cohortId) %>%
   dplyr::distinct()
 readr::write_excel_csv(cohortDescription, file.path(path, "extras", "CohortDescription.csv"),
