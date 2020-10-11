@@ -97,7 +97,7 @@ if (length(phenotypesToAdd) > 0) {
     file.create(file.path(path, phenotypesToAdd[[i]], 'evaluation', ".empty"))
     phenotypeDescription %>%
       dplyr::filter(.data$phenotypeId == phenotypesToAdd[[i]]) %>%
-      readr::write_excel_csv(file.path(path, phenotypesToAdd[[i]], 'phenotypeDescription.csv'))
+      readr::write_excel_csv(file.path(path, phenotypesToAdd[[i]], 'phenotypeDescription.csv'), na = '')
   }
 }
 if (length(phenotypesToRemove) > 0) {
@@ -120,6 +120,38 @@ cohortsToAdd <-
 cohortsToRemove <-
   setdiff(cohortFiles$cohortId %>% unique(),
           cohortDescription$cohortId %>% unique())
+
+
+
+if (length(cohortsToRemove) > 0) {
+  warning(
+    paste0(
+      "The following cohorts will need to be REMOVED to the library:",
+      paste0(cohortsToRemove, collapse = ",")
+    )
+  )
+  unlink(
+    cohortFiles %>% dplyr::filter(cohortId %in% cohortsToRemove) %>% dplyr::pull(.data$file)
+  )
+  cohortDescription <- cohortDescription %>%
+    dplyr::filter(!.data$cohortId %in% cohortsToRemove) %>%
+    dplyr::arrange(.data$phenotypeId, .data$cohortId)
+  readr::write_excel_csv(
+    x = cohortDescription,
+    file = file.path(
+      path,'extras',
+      "cohortDescription.csv"
+    ),
+    na = ''
+  )
+}
+
+cohortDescription <- readr::read_csv(file = file.path(
+  path,'extras',
+  "cohortDescription.csv"
+), col_types = readr::cols())
+
+
 if (length(cohortsToAdd) > 0) {
   warning(paste(
     "The following cohorts will need to be ADDED to the library:",
@@ -154,6 +186,7 @@ if (length(cohortsToAdd) > 0) {
       sql = webApiCohortIds[i, ]$json,
       targetFile = file.path(
         path,
+        "inst",
         webApiCohortIds[i, ]$phenotypeId,
         paste0(webApiCohortIds[i, ]$cohortId, ".json")
       )
@@ -180,18 +213,9 @@ if (length(cohortsToAdd) > 0) {
         path,
         webApiCohortIds[i, ]$phenotypeId,
         "cohortDescription.csv"
-      )
+      ),
+      na = ''
     )
   }
 }
-if (length(cohortsToRemove) > 0) {
-  warning(
-    paste0(
-      "The following cohorts will need to be REMOVED to the library:",
-      cohortsToRemove
-    )
-  )
-  unlink(
-    cohortFiles %>% dplyr::filter(cohortId %in% cohortsToRemove) %>% dplyr::pull(.data$cohortId)
-  )
-}
+
