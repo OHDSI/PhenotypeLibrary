@@ -78,26 +78,26 @@ if (length(phenotypesToAdd) > 0) {
   for (i in (1:length(phenotypesToAdd))) {
     print(i)
     dir.create(
-      path = file.path(path, phenotypesToAdd[[i]], 'literature'),
+      path = file.path(path, "inst", phenotypesToAdd[[i]], 'literature'),
       showWarnings = FALSE,
       recursive = TRUE
     )
-    file.create(file.path(path, phenotypesToAdd[[i]], 'literature', ".empty"))
+    file.create(file.path(path, "inst", phenotypesToAdd[[i]], 'literature', ".empty"))
     dir.create(
-      path = file.path(path, phenotypesToAdd[[i]], 'notes'),
+      path = file.path(path, "inst", phenotypesToAdd[[i]], 'notes'),
       showWarnings = FALSE,
       recursive = TRUE
     )
-    file.create(file.path(path, phenotypesToAdd[[i]], 'notes', ".empty"))
+    file.create(file.path(path, "inst", phenotypesToAdd[[i]], 'notes', ".empty"))
     dir.create(
-      path = file.path(path, phenotypesToAdd[[i]], 'evaluation'),
+      path = file.path(path, "inst", phenotypesToAdd[[i]], 'evaluation'),
       showWarnings = FALSE,
       recursive = TRUE
     )
-    file.create(file.path(path, phenotypesToAdd[[i]], 'evaluation', ".empty"))
+    file.create(file.path(path, "inst", phenotypesToAdd[[i]], 'evaluation', ".empty"))
     phenotypeDescription %>%
       dplyr::filter(.data$phenotypeId == phenotypesToAdd[[i]]) %>%
-      readr::write_excel_csv(file.path(path, phenotypesToAdd[[i]], 'phenotypeDescription.csv'), na = '')
+      readr::write_excel_csv(file.path(path, "inst", phenotypesToAdd[[i]], 'phenotypeDescription.csv'), na = '')
   }
 }
 if (length(phenotypesToRemove) > 0) {
@@ -216,7 +216,7 @@ if (length(cohortsToAdd) > 0) {
         webApiCohortIds[i, ]$phenotypeId,
         "cohortDescription.csv"
       ),
-      na = ''
+      na = ""
     )
   }
 }
