@@ -120,18 +120,37 @@ cohortsToAdd <-
 cohortsToRemove <-
   setdiff(cohortFiles$cohortId %>% unique(),
           cohortDescription$cohortId %>% unique())
+
+
+if (length(cohortsToRemove) > 0) {
+  warning(
+    paste0(
+      "The following cohorts will need to be REMOVED to the library:",
+      paste0(cohortsToRemove, collapse = ", ")
+    )
+  )
+  unlink(
+    cohortFiles %>% dplyr::filter(.data$cohortId %in% cohortsToRemove) %>% dplyr::pull(.data$file)
+  )
+  cohortDescription <- cohortDescription %>%
+    dplyr::filter(!cohortId %in% cohortsToRemove)
+
+  readr::write_excel_csv(x = cohortDescription,
+                         file = file.path(path,
+                                            "extras",
+                                            "CohortDescription.csv"),
+                         na = "")
+}
+
+
 if (length(cohortsToAdd) > 0) {
   warning(paste(
     "The following cohorts will need to be ADDED to the library:",
     paste0(cohortsToAdd, collapse = "\n")
   ))
-  webApiCohortIds <- cohortDescription %>%
-    dplyr::filter(.data$cohortId %in% cohortsToAdd) %>%
-    dplyr::distinct()
-  webApiCohortIds$json <- ''
-  webApiCohortIds$sql <- ''
+  newCohorts <- list()
 
-  for (i in (1:nrow(webApiCohortIds))) {
+  for (i in (1:length(cohortsToAdd))) {
     print(i)
     cohortDefinition <-
       ROhdsiWebApi::getCohortDefinition(cohortId = webApiCohortIds[i, ]$webApiCohortId,
@@ -154,6 +173,7 @@ if (length(cohortsToAdd) > 0) {
       sql = webApiCohortIds[i, ]$json,
       targetFile = file.path(
         path,
+        'inst',
         webApiCohortIds[i, ]$phenotypeId,
         paste0(webApiCohortIds[i, ]$cohortId, ".json")
       )
@@ -168,6 +188,7 @@ if (length(cohortsToAdd) > 0) {
       sql = webApiCohortIds[i, ]$sql,
       targetFile = file.path(
         path,
+        'inst',
         webApiCohortIds[i, ]$phenotypeId,
         paste0(webApiCohortIds[i, ]$cohortId, ".sql")
       )
@@ -178,20 +199,10 @@ if (length(cohortsToAdd) > 0) {
       x = f,
       file = file.path(
         path,
+        'inst',
         webApiCohortIds[i, ]$phenotypeId,
         "cohortDescription.csv"
       )
     )
   }
-}
-if (length(cohortsToRemove) > 0) {
-  warning(
-    paste0(
-      "The following cohorts will need to be REMOVED to the library:",
-      cohortsToRemove
-    )
-  )
-  unlink(
-    cohortFiles %>% dplyr::filter(cohortId %in% cohortsToRemove) %>% dplyr::pull(.data$cohortId)
-  )
 }
