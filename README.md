@@ -1,0 +1,60 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# OHDSI Phenotype Library <img src="man/figures/OHDSIlogo.png" align="right" width="120" />
+
+<!-- badges: start -->
+
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+<!-- badges: end -->
+
+OHDSI Phenotype Library is an open community resource maintained by the
+OHDSI community to support phenotype development, evaluation, sharing
+and re-use. The Phenotype Library is maintained by community librarians.
+They are volunteer collaborators who are curating the content
+contributed by the rest of the community to ensure it is appropriately
+organized and conforms to community library standards.
+
+The OHDSI Phenotype work group is responsible to facilitate the
+generation and maintenance of the content in the library. To be
+included, every cohort definition is expected to belong to one
+Phenotype, and it should have at least one full result set from Cohort
+Diagnostics executed on at least one data source. The output should have
+been contributed to the Phenotype library.
+
+All cohort definitions in the phenotype library are expressed in JSON
+and SQL (OHDSI SQL) instructions that are compatible with OHDSI analytic
+tools and OHDSI OMOP CDM v5.0+. Supporting content are in folders
+literature, notes and evaluation. Literature review is organized using a
+standardized template.
+
+Studies may be executed by importing the definitions into OHDSI tools
+and compiling study executable (see <https://github.com/OHDSI-studies>).
+
+## How to Contribute
+
+  - [Contribute
+    Phenotypes](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJURVA3NThUWU42RjRUWDVZWlpUNjM2OVlIWSQlQCN0PWcu)
+  - [Contribute Cohort
+    Definitions](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJUNllaNVk5NUIwOTRIUzVMTVRDSkdHWFVHRCQlQCN0PWcu)
+  - [Contribute
+    Diagnostics](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJURFJORE1LUERHV1lNNlRGNEU5TDgwTlZXVCQlQCN0PWcu)
+  - [Contribute
+    Insights](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJUMTdMUkhUOFE1SFpPRVlKSzlEMkxCN1JRUiQlQCN0PWcu)
+
+## Installation
+
+You can download and install the released version of PhenotypeLibrary
+from [GitHub](https://github.com/OHDSI/PhenotypeLibrary) with:
+
+``` r
+remotes::install_github("OHDSI/PhenotypeLibrary")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("OHDSI/PhenotypeLibrary", ref = "develop")
+```
