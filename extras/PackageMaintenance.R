@@ -31,3 +31,26 @@ shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
 #                                           number_sections = TRUE))
 
 pkgdown::build_site()
+
+## Create package data
+library(dplyr)
+
+# get phenotype ids
+dirs <- list.files("inst") %>%
+  stringr::str_subset("\\d+")
+
+# pull phenotype info into a dataframe
+tidyPhenotype <- function(id){
+  dfPhe <- readr::read_csv(glue::glue("inst/{id}/phenotypeDescription.csv"), col_types = "dcdccc")
+  dfCohort <- readr::read_csv(glue::glue("inst/{id}/cohortDescription.csv"), col_types = "ddccd")
+
+  dfPhe %>%
+    left_join(dfCohort, by = "phenotypeId") %>%
+    mutate(cohortJson = purrr::map(cohortId, ~jsonlite::read_json(glue::glue("inst/{id}/{.}.json")))) %>%
+    mutate(cohortSql = purrr::map(cohortId, ~readr::read_file(glue::glue("inst/{id}/{.}.sql"))))
+}
+
+# Put all phenotypes into a single dataframe
+phelib <- purrr::map_dfr(dirs, tidyPhenotype)
+
+usethis::use_data(phelib)
