@@ -1,21 +1,18 @@
----
-name: Add a phenotype
-about: use this template to contribute a new phenotype to the OHDSI phenotype library.
-title: "[DATE]: [YOUR PHENOTYPE NAME]"
-labels: Contribute Phenotype
-assignees: ''
+- [ ] Phenotype Name: [YOUR PHENOTYPE NAME]
+> Our definition of phenotype is "_clinical idea that is an observable, potentially changing state of a person._"
 
----
+- [ ] Clinical Description:
+> Please provide one or two lines per section below.
 
-1) Phenotype Name: [YOUR PHENOTYPE NAME]
-
-2) Clinical Description: [PROVIDE ONE TO TWO LINES PER SECTION BELOW]
 - Overview: 
 - Presentation: 
 - Assessment:
 - Plan:
 - Prognosis:
 
-3) Attach at least .json file with the JSON specification from Atlas for a cohort definition 
+- [ ] Cohort definitions: [NUMBER OF COHORT DEFINITIONS BEING SUBMITTED]
+> Attach the .json file for each cohort being contributed. One JSON file per cohort.
 
-4) Attach (or provide a link to download) a zip file with output containing at least one Cohort Diagnostics result set for each of the above cohort definitions from one or more data source.
+
+4) Cohort diagnostics output: 
+> Attach (or provide a link to download) a zip file with output containing at least one Cohort Diagnostics result set for each of the above cohort definitions from one or more data source.
