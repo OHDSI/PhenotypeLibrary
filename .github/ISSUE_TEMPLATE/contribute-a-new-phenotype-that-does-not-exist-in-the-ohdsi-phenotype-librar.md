@@ -1,17 +1,17 @@
 ---
-name: Contribute a NEW phenotype that does not exist in the OHDSI Phenotype librar
-about: Provide details for your phenotype using template below
-title: Add phenotype [Phenotype Name]
+name: Add a phenotype
+about: use this template to contribute a new phenotype to the OHDSI phenotype library.
+title: "[DATE]: [YOUR PHENOTYPE NAME]"
 labels: Contribute Phenotype
 assignees: ''
 
 ---
 
-1) Phenotype Name: 
+1) Phenotype Name: [YOUR PHENOTYPE NAME]
 
-2) Clinical Description:
-- Overview:
-- Presentation:
+2) Clinical Description: [PROVIDE ONE TO TWO LINES PER SECTION BELOW]
+- Overview: 
+- Presentation: 
 - Assessment:
 - Plan:
 - Prognosis:
