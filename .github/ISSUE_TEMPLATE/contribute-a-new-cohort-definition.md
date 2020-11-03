@@ -2,10 +2,11 @@
 name: contribute a new cohort definition to existing phenotype.
 about: Use this template to contribute a new cohort definition to the library.
 title: "[YOUR COHORT NAME]"
-labels: Contribute Cohort Definition
+labels: ''
 assignees: ''
 
 ---
+
 - [ ] Check if your cohort definition belongs to an existing phenotype.
 
     Please check the [OHDSI Phenotype library](https://data.ohdsi.org/PhenotypeLibrary/) and confirm that your cohort deifnition belongs to an existing phenotype in the library.
