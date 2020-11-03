@@ -1,6 +1,6 @@
 ---
 name: contribute a new phenotype
-about: Describe this issue template's purpose here.
+about: Use this template to contribute a new phenotype to the library.
 title: "[YOUR PHENOTYPE NAME]"
 labels: Contribute Phenotype
 assignees: ''
@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 - [ ] Phenotype Name: [YOUR PHENOTYPE NAME]
-> Our definition of phenotype is "_clinical idea that is an observable, potentially changing state of a person._"
+> Phenotype is a "_clinical construct that is defined as an observable, potentially changing state of a person._"
 
 - [ ] Clinical Description:
 > Please provide one or two lines per section below.
@@ -20,8 +20,14 @@ assignees: ''
 - Prognosis:
 
 - [ ] Cohort definitions: [NUMBER OF COHORT DEFINITIONS BEING SUBMITTED]
-> Attach the .json file for each cohort being contributed. One JSON file per cohort.
+> Attach the .json file for each cohort being contributed. Please attached one seperate JSON file per cohort.
 
 
-4) Cohort diagnostics output: 
+- [ ] Cohort diagnostics output: 
 > Attach (or provide a link to download) a zip file with output containing one Cohort Diagnostics result set for all the cohort definitions run on one or more data source.
+
+
+- [ ] Contributor information: 
+
+    - Your name:
+    - Your email address:
