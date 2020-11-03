@@ -1,8 +1,10 @@
 ---
 name: contribute diagnostics to existing cohort definition.
-about: 'contribute diagnostics' should be completed if you are interested in submitting new diagnostics results to an existing Phenotype/Cohort Definition in the OHDSI Phenotype Library. 
-title: "[Contribute diagnostics results]"
-labels: "contribute"
+about: "'contribute diagnostics' should be completed if you are interested in submitting
+  new diagnostics results to an existing Phenotype/Cohort Definition in the OHDSI
+  Phenotype Library. "
+title: '"[Contribute diagnostics results]"'
+labels: Contribute Diagnostics
 assignees: ''
 
 ---
