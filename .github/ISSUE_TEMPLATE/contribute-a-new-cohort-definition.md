@@ -2,7 +2,7 @@
 name: contribute a new cohort definition to existing phenotype.
 about: Use this template to contribute a new cohort definition to the library.
 title: "[YOUR COHORT NAME]"
-labels: ''
+labels: "contribute"
 assignees: ''
 
 ---

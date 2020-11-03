@@ -2,7 +2,7 @@
 name: contribute a new phenotype
 about: Use this template to contribute a new phenotype to the library.
 title: "[YOUR PHENOTYPE NAME]"
-labels: Contribute Phenotype
+labels: "Contribute Phenotype" 
 assignees: ''
 
 ---
