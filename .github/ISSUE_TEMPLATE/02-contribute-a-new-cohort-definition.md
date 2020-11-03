@@ -23,8 +23,7 @@ assignees: ''
 
 - [ ] Cohort diagnostics output: 
 
-    Attach (or provide a link to download) a zip file with output containing one Cohort Diagnostics result set for all the cohort definitions run on one or more data source.
-
+    Attach (or provide a link to download) a zip file containing the .csv files that are output from your study package (built on Cohort Diagnostics). This zip file should contain the output for one or more cohort definitions on one or more data sources. The identifiers for the cohort and phenotypes in these files, are expected to match the identifiers and corresponding specifications as in the phenotype library.
 
 - [ ] Contributor information: 
 
