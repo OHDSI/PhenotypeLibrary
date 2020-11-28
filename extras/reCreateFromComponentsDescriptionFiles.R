@@ -12,12 +12,14 @@ phenotypeDescription <-
     readr::read_csv,
     col_types = readr::cols()
   ) %>%
-  dplyr::bind_rows(phenotypeDescription) %>%
+  dplyr::bind_rows() %>%
   dplyr::arrange(.data$phenotypeId) %>%
   dplyr::distinct()
+
+
 readr::write_excel_csv(
   x = phenotypeDescription,
-  file = file.path(path, "extras", "PhenotypeDescription.csv"),
+  path = file.path(path, "extras", "PhenotypeDescription.csv"),
   na = ""
 )
 
@@ -28,9 +30,9 @@ cohortDescription <-
     readr::read_csv,
     col_types = readr::cols()
   ) %>%
-  dplyr::bind_rows(cohortDescription) %>%
+  dplyr::bind_rows() %>%
   dplyr::arrange(.data$phenotypeId, .data$cohortId) %>%
   dplyr::distinct()
-readr::write_excel_csv(cohortDescription,
-                       file.path(path, "extras", "CohortDescription.csv"),
+readr::write_excel_csv(x = cohortDescription,
+                       path = file.path(path, "extras", "CohortDescription.csv"),
                        na = "")
