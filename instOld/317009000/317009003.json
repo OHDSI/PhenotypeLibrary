@@ -1,0 +1,334 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"VisitOccurrence" : {
+					"CodesetId" : 5,
+					"VisitTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 3,
+			"name" : "Asthma",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 317009,
+							"CONCEPT_NAME" : "Asthma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "195967001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4235703,
+							"CONCEPT_NAME" : "Asthma management",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "406162001",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4279553,
+							"CONCEPT_NAME" : "Eosinophilic asthma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "367542003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2101899,
+							"CONCEPT_NAME" : "Intermittent asthma (Asthma)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1039F",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2101898,
+							"CONCEPT_NAME" : "Persistent asthma (mild, moderate or severe) (Asthma)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1038F",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 5,
+			"name" : "Inpatient Visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Asthma",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 3,
+								"ConditionType" : [
+									{
+										"CONCEPT_ID" : 38000184,
+										"CONCEPT_NAME" : "Inpatient detail - 1st position",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822060",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 38000200,
+										"CONCEPT_NAME" : "Inpatient header - 1st position",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822076",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 38000215,
+										"CONCEPT_NAME" : "Outpatient detail - 1st position",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822091",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 38000230,
+										"CONCEPT_NAME" : "Outpatient header - 1st position",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822106",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 45756835,
+										"CONCEPT_NAME" : "Carrier claim header - 1st position",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822136",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 45756843,
+										"CONCEPT_NAME" : "Carrier claim detail - 1st position",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822144",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 38000183,
+										"CONCEPT_NAME" : "Inpatient detail - primary",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822059",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 38000199,
+										"CONCEPT_NAME" : "Inpatient header - primary",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822075",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 44786627,
+										"CONCEPT_NAME" : "Primary Condition",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "OMOP4822127",
+										"DOMAIN_ID" : "Type Concept",
+										"VOCABULARY_ID" : "Condition Type",
+										"CONCEPT_CLASS_ID" : null
+									}
+								],
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"EndWindow" : {
+							"Start" : {
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : true,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 0
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

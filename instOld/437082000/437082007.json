@@ -1,0 +1,248 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CodesetId" : 0,
+					"First" : true,
+					"ConditionTypeExclude" : false,
+					"Age" : {
+						"Value" : 18,
+						"Op" : "gte"
+					},
+					"ProviderSpecialty" : [
+						{
+							"CONCEPT_ID" : 38003882,
+							"CONCEPT_NAME" : "Allopathic & Osteopathic Physicians, Internal Medicine, Rheumatology",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "207RR0500X",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "NUCC",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 38003957,
+							"CONCEPT_NAME" : "Allopathic & Osteopathic Physicians, Pediatrics, Pediatric Rheumatology",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "2080P0216X",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "NUCC",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 4147272,
+							"CONCEPT_NAME" : "Rheumatology nurse specialist",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "310179005",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 44777791,
+							"CONCEPT_NAME" : "Rheumatology",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "410",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "HES Specialty",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 4163857,
+							"CONCEPT_NAME" : "Rheumatologist",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "45440000",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 3191718,
+							"CONCEPT_NAME" : "Rheumatologist",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "45440000",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "Nebraska Lexicon",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 38004491,
+							"CONCEPT_NAME" : "Rheumatology",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "66",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "Medicare Specialty",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 3196458,
+							"CONCEPT_NAME" : "Rheumatology nurse specialist",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "310179005",
+							"DOMAIN_ID" : "Provider",
+							"VOCABULARY_ID" : "Nebraska Lexicon",
+							"CONCEPT_CLASS_ID" : null
+						}
+					]
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"AdditionalCriteria" : {
+		"Type" : "ALL",
+		"CriteriaList" : [
+			{
+				"Criteria" : {
+					"ObservationPeriod" : {
+						"PeriodLength" : {
+							"Value" : 365,
+							"Op" : "gte"
+						}
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Coeff" : -1
+					},
+					"End" : {
+						"Coeff" : 1
+					},
+					"UseIndexEnd" : false,
+					"UseEventEnd" : false
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			}
+		],
+		"DemographicCriteriaList" : [],
+		"Groups" : []
+	},
+	"ConceptSets" : [
+		{
+			"id" : 0,
+			"name" : "Ankylosing spondylitis",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 437082,
+							"CONCEPT_NAME" : "Ankylosing spondylitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9631008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 75347,
+							"CONCEPT_NAME" : "Spinal enthesopathy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10317009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4153359,
+							"CONCEPT_NAME" : "Arthritis of spine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "371082009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 73562,
+							"CONCEPT_NAME" : "Solitary sacroiliitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "239815007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}
