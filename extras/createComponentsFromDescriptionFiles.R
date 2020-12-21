@@ -30,6 +30,7 @@ cohortDescription <-
     guess_max = min(1e+07)
   )) %>%
   dplyr::arrange(.data$phenotypeId, .data$cohortId)
+
 cohortFiles <-
   dplyr::bind_rows(
     dplyr::tibble(
