@@ -13,7 +13,8 @@ phenotypeDescription <-
     col_types = readr::cols(),
     guess_max = min(1e+07)
   ) %>%
-  dplyr::arrange(.data$phenotypeId)
+  dplyr::arrange(.data$phenotypeId) %>%
+  dplyr::filter(is.na(deprecate))
 
 phenotypeFoldersDf <- dplyr::tibble(path = phenotypeFolders) %>%
   dplyr::mutate(phenotypeId = basename(.data$path)) %>%

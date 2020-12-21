@@ -85,4 +85,8 @@ for (i in (1:length(files))) {
   }
 }
 
-(stringr::str_detect(string = files[[i]], pattern = "132702"))
+
+
+for (i in (1:length(deprecatedPhenotypes))) {
+  unlink(x = file.path(path, "inst", deprecatedPhenotypes$oldPhenotypeId), recursive = TRUE, force = TRUE)
+}
