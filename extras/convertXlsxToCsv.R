@@ -5,7 +5,7 @@ phenotypeDescription <-
   readxl::read_excel(path = file.path(path, "extras", "PhenotypeDescription.xlsx"))
 
 readr::write_excel_csv(
-  x = phenotypeDescription,
+  x = phenotypeDescription ,
   file =  file.path(path, "extras", "PhenotypeDescription.csv"),
   na = ""
 )
