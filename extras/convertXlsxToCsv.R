@@ -20,3 +20,13 @@ readr::write_excel_csv(
   file =  file.path(path, "extras", "CohortDescription.csv"),
   na = ""
 )
+#
+#
+# deprecatedList <- phenotypeDescription %>%
+#   dplyr::filter(!is.na(deprecate)) %>%
+#   dplyr::select(newPhenotypeId, oldPhenotypeId)
+#
+#
+# cohortDescription %>%
+#   dplyr::filter(phenotypeId %in% deprecatedList$oldPhenotypeId) %>%
+#   View()
