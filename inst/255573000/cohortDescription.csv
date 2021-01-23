@@ -1,5 +1,2981 @@
-﻿phenotypeId,webApiCohortId,cohortName,logicDescription,cohortId,referentConceptId,cohortType,PMID
-255573000,17445,Chronic obstructive lung disease referent incident cohort,"Persons with condition occurrence of referent concept (255573) or descendants, for the first time in the person's history. Persons exit cohort at the end of the observation period.",255573001,255573,referent,
-255573000,17444,Chronic obstructive lung disease referent prevalent cohort,"Persons with condition occurrence of referent concept (255573) or descendants, for the first time in the person's history, with at least 365 days of prior continuous observation. Persons exit cohort at the end of the observation period.",255573002,255573,referent,
-255573000,17742,"Hospitalization for Chronic obstructive pulmonary disease, defined by inpatient visit with a primary condition occurrence of COPD conceptset",,255573003,255573,,
-255573000,17766,"Chronic obstructive pulmonary disease (COPD) prevalent cohort, defined by condition occurrence of COPD or drug exposure for COPD mono- or combo-therapy at age>55 and no condition of asthma",,255573004,255573,,
+﻿phenotypeId,webApiCohortId,cohortName,logicDescription,cohortId,referentConceptId,cohortType,PMID,metaDataJson,cohortDefinitionSql,cohortDefinitionJson
+255573000,17445,Chronic obstructive lung disease referent incident cohort,"Persons with condition occurrence of referent concept (255573) or descendants, for the first time in the person's history. Persons exit cohort at the end of the observation period.",255573001,255573,referent,,"{
+	""phenotypeId"" : [
+		""255573000""
+	],
+	""webApiCohortId"" : [
+		""17445""
+	],
+	""cohortName"" : [
+		""Chronic obstructive lung disease referent incident cohort""
+	],
+	""oldCohortName"" : [
+		""[PL 255573001] Chronic obstructive lung disease referent concept incident cohort: First occurrence of referent concept + descendants with >=365d prior observation""
+	],
+	""logicDescription"" : [
+		""Persons with condition occurrence of referent concept (255573) or descendants, for the first time in the person's history. Persons exit cohort at the end of the observation period.""
+	],
+	""cohortId"" : [
+		""255573001""
+	],
+	""referentConceptId"" : [
+		""255573""
+	],
+	""cohortType"" : [
+		""referent""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""255573000""
+	],
+	""referentConceptName"" : [
+		""Chronic obstructive lung disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (255573)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (255573)
+  and c.invalid_reason is null
+
+) I
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,365,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+WHERE P.ordinal = 1
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+create table #inclusion_events (inclusion_rule_id bigint,
+	person_id bigint,
+	event_id bigint
+);
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+WHERE Results.ordinal = 1
+;
+
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""ConditionOccurrence"" : {
+					""CodesetId"" : 0,
+					""First"" : true,
+					""ConditionTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 365,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""First""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 0,
+			""name"" : ""Chronic obstructive lung disease"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 255573,
+							""CONCEPT_NAME"" : ""Chronic obstructive lung disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""13645005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""First""
+	},
+	""InclusionRules"" : [],
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"
+255573000,17444,Chronic obstructive lung disease referent prevalent cohort,"Persons with condition occurrence of referent concept (255573) or descendants, for the first time in the person's history, with at least 365 days of prior continuous observation. Persons exit cohort at the end of the observation period.",255573002,255573,referent,,"{
+	""phenotypeId"" : [
+		""255573000""
+	],
+	""webApiCohortId"" : [
+		""17444""
+	],
+	""cohortName"" : [
+		""Chronic obstructive lung disease referent prevalent cohort""
+	],
+	""oldCohortName"" : [
+		""[PL 255573002] Chronic obstructive lung disease referent concept prevalent cohort: First occurrence of referent concept + descendants""
+	],
+	""logicDescription"" : [
+		""Persons with condition occurrence of referent concept (255573) or descendants, for the first time in the person's history, with at least 365 days of prior continuous observation. Persons exit cohort at the end of the observation period.""
+	],
+	""cohortId"" : [
+		""255573002""
+	],
+	""referentConceptId"" : [
+		""255573""
+	],
+	""cohortType"" : [
+		""referent""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""255573000""
+	],
+	""referentConceptName"" : [
+		""Chronic obstructive lung disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (255573)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (255573)
+  and c.invalid_reason is null
+
+) I
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+WHERE P.ordinal = 1
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+create table #inclusion_events (inclusion_rule_id bigint,
+	person_id bigint,
+	event_id bigint
+);
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+WHERE Results.ordinal = 1
+;
+
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""ConditionOccurrence"" : {
+					""CodesetId"" : 0,
+					""First"" : true,
+					""ConditionTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 0,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""First""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 0,
+			""name"" : ""Chronic obstructive lung disease"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 255573,
+							""CONCEPT_NAME"" : ""Chronic obstructive lung disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""13645005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""First""
+	},
+	""InclusionRules"" : [],
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"
+255573000,17742,"Hospitalization for Chronic obstructive pulmonary disease, defined by inpatient visit with a primary condition occurrence of COPD conceptset",,255573003,255573,,,"{
+	""phenotypeId"" : [
+		""255573000""
+	],
+	""webApiCohortId"" : [
+		""17742""
+	],
+	""cohortName"" : [
+		""Hospitalization for Chronic obstructive pulmonary disease, defined by inpatient visit with a primary condition occurrence of COPD conceptset""
+	],
+	""oldCohortName"" : [
+		""[PL 255573003] Hospitalization for Chronic obstructive pulmonary disease, defined by inpatient visit with a primary condition occurrence of 'COPD' conceptset""
+	],
+	""logicDescription"" : [
+		""""
+	],
+	""cohortId"" : [
+		""255573003""
+	],
+	""referentConceptId"" : [
+		""255573""
+	],
+	""cohortType"" : [
+		""""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""255573000""
+	],
+	""referentConceptName"" : [
+		""Chronic obstructive lung disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (262,9201)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (262,9201)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (255573,258780)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (255573,258780)
+  and c.invalid_reason is null
+
+) I
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  -- Begin Visit Occurrence Criteria
+select C.person_id, C.visit_occurrence_id as event_id, C.visit_start_date as start_date, C.visit_end_date as end_date,
+       C.visit_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.visit_start_date as sort_date
+from 
+(
+  select vo.* 
+  FROM @cdm_database_schema.VISIT_OCCURRENCE vo
+JOIN #Codesets codesets on ((vo.visit_concept_id = codesets.concept_id and codesets.codeset_id = 1))
+) C
+
+
+-- End Visit Occurrence Criteria
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+select 0 as inclusion_rule_id, person_id, event_id
+INTO #Inclusion_0
+FROM 
+(
+  select pe.person_id, pe.event_id
+  FROM #qualified_events pe
+  
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM #qualified_events E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM #qualified_events P
+INNER JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 2))
+) C
+
+WHERE C.condition_type_concept_id  in (38000183,38000199,44786627,38000184,38000200,38000215,38000230,45756835,45756843)
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= DATEADD(day,0,P.END_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) = 1
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
+) Results
+;
+
+SELECT inclusion_rule_id, person_id, event_id
+INTO #inclusion_events
+FROM (select inclusion_rule_id, person_id, event_id from #Inclusion_0) I;
+TRUNCATE TABLE #Inclusion_0;
+DROP TABLE #Inclusion_0;
+
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+  -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
+  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),1)-1)
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+
+;
+
+-- date offset strategy
+
+select event_id, person_id, 
+  case when DATEADD(day,0,end_date) > start_date then DATEADD(day,0,end_date) else start_date end as end_date
+INTO #strategy_ends
+from #included_events;
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- End Date Strategy
+SELECT event_id, person_id, end_date from #strategy_ends
+
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+TRUNCATE TABLE #strategy_ends;
+DROP TABLE #strategy_ends;
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""VisitOccurrence"" : {
+					""CodesetId"" : 1,
+					""VisitTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 0,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""All""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 1,
+			""name"" : ""Inpatient Visit"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 262,
+							""CONCEPT_NAME"" : ""Emergency Room and Inpatient Visit"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""ERIP"",
+							""DOMAIN_ID"" : ""Visit"",
+							""VOCABULARY_ID"" : ""Visit"",
+							""CONCEPT_CLASS_ID"" : ""Visit""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 9201,
+							""CONCEPT_NAME"" : ""Inpatient Visit"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""IP"",
+							""DOMAIN_ID"" : ""Visit"",
+							""VOCABULARY_ID"" : ""Visit"",
+							""CONCEPT_CLASS_ID"" : ""Visit""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 2,
+			""name"" : ""COPD"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 255573,
+							""CONCEPT_NAME"" : ""Chronic obstructive lung disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""13645005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 258780,
+							""CONCEPT_NAME"" : ""Emphysematous bronchitis"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""185086009"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""All""
+	},
+	""InclusionRules"" : [
+		{
+			""name"" : ""COPD"",
+			""expression"" : {
+				""Type"" : ""ALL"",
+				""CriteriaList"" : [
+					{
+						""Criteria"" : {
+							""ConditionOccurrence"" : {
+								""CodesetId"" : 2,
+								""ConditionType"" : [
+									{
+										""CONCEPT_ID"" : 3.800018e+07,
+										""CONCEPT_NAME"" : ""Inpatient detail - primary"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822059"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 3.80002e+07,
+										""CONCEPT_NAME"" : ""Inpatient header - primary"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822075"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 4.478663e+07,
+										""CONCEPT_NAME"" : ""Primary Condition"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822127"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 3.800018e+07,
+										""CONCEPT_NAME"" : ""Inpatient detail - 1st position"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822060"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 3.80002e+07,
+										""CONCEPT_NAME"" : ""Inpatient header - 1st position"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822076"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 3.800022e+07,
+										""CONCEPT_NAME"" : ""Outpatient detail - 1st position"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822091"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 3.800023e+07,
+										""CONCEPT_NAME"" : ""Outpatient header - 1st position"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822106"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 4.575684e+07,
+										""CONCEPT_NAME"" : ""Carrier claim header - 1st position"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822136"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									},
+									{
+										""CONCEPT_ID"" : 4.575684e+07,
+										""CONCEPT_NAME"" : ""Carrier claim detail - 1st position"",
+										""STANDARD_CONCEPT"" : null,
+										""STANDARD_CONCEPT_CAPTION"" : ""Unknown"",
+										""INVALID_REASON"" : null,
+										""INVALID_REASON_CAPTION"" : ""Unknown"",
+										""CONCEPT_CODE"" : ""OMOP4822144"",
+										""DOMAIN_ID"" : ""Type Concept"",
+										""VOCABULARY_ID"" : ""Condition Type"",
+										""CONCEPT_CLASS_ID"" : null
+									}
+								],
+								""ConditionTypeExclude"" : false
+							}
+						},
+						""StartWindow"" : {
+							""Start"" : {
+								""Days"" : 0,
+								""Coeff"" : -1
+							},
+							""End"" : {
+								""Coeff"" : 1
+							},
+							""UseIndexEnd"" : false,
+							""UseEventEnd"" : false
+						},
+						""EndWindow"" : {
+							""Start"" : {
+								""Coeff"" : -1
+							},
+							""End"" : {
+								""Days"" : 0,
+								""Coeff"" : 1
+							},
+							""UseIndexEnd"" : true,
+							""UseEventEnd"" : false
+						},
+						""RestrictVisit"" : false,
+						""IgnoreObservationPeriod"" : false,
+						""Occurrence"" : {
+							""Type"" : 2,
+							""Count"" : 1,
+							""IsDistinct"" : false
+						}
+					}
+				],
+				""DemographicCriteriaList"" : [],
+				""Groups"" : []
+			}
+		}
+	],
+	""EndStrategy"" : {
+		""DateOffset"" : {
+			""DateField"" : ""EndDate"",
+			""Offset"" : 0
+		}
+	},
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"
+255573000,17766,"Chronic obstructive pulmonary disease (COPD) prevalent cohort, defined by condition occurrence of COPD or drug exposure for COPD mono- or combo-therapy at age>55 and no condition of asthma",,255573004,255573,,,"{
+	""phenotypeId"" : [
+		""255573000""
+	],
+	""webApiCohortId"" : [
+		""17766""
+	],
+	""cohortName"" : [
+		""Chronic obstructive pulmonary disease (COPD) prevalent cohort, defined by condition occurrence of COPD or drug exposure for COPD mono- or combo-therapy at age>55 and no condition of asthma""
+	],
+	""oldCohortName"" : [
+		""[PL 255573004] Chronic obstructive pulmonary disease (COPD) prevalent cohort, defined by condition occurrence of COPD or drug exposure for COPD mono- or combo-therapy at age>55 and no condition of asthma""
+	],
+	""logicDescription"" : [
+		""""
+	],
+	""cohortId"" : [
+		""255573004""
+	],
+	""referentConceptId"" : [
+		""255573""
+	],
+	""cohortType"" : [
+		""""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""255573000""
+	],
+	""referentConceptName"" : [
+		""Chronic obstructive lung disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (255573,258780)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (255573,258780)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (43134418,40727834,36811735,40727741,1356123,44186991,41048760,40754973,21089505,42483138,36812530,36421291,40745353,36787954,21158944,36894458,21090035,42479684,35133500,783228,40142910,36787269,792484,40755794,37592046,43532281,43291091,41267401,42935522,36421515,37592341,44785908,43263899,41267166,42481318,44094568,43145868,43259954,1356196,35145836)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (43134418,40727834,36811735,40727741,1356123,44186991,41048760,40754973,21089505,42483138,36812530,36421291,40745353,36787954,21158944,36894458,21090035,42479684,35133500,783228,40142910,36787269,792484,40755794,37592046,43532281,43291091,41267401,42935522,36421515,37592341,44785908,43263899,41267166,42481318,44094568,43145868,43259954,1356196,35145836)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (1112921,1106776)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (1112921,1106776)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (317009,4235703,4279553)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (317009,4235703,4279553)
+  and c.invalid_reason is null
+
+) I
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  -- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 1))
+) C
+JOIN @cdm_database_schema.PERSON P on C.person_id = P.person_id
+WHERE YEAR(C.drug_exposure_start_date) - P.year_of_birth >= 55
+-- End Drug Exposure Criteria
+
+UNION ALL
+-- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 2))
+) C
+JOIN @cdm_database_schema.PERSON P on C.person_id = P.person_id
+WHERE YEAR(C.drug_exposure_start_date) - P.year_of_birth >= 55
+-- End Drug Exposure Criteria
+
+UNION ALL
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+WHERE P.ordinal = 1
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+select 0 as inclusion_rule_id, person_id, event_id
+INTO #Inclusion_0
+FROM 
+(
+  select pe.person_id, pe.event_id
+  FROM #qualified_events pe
+  
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM #qualified_events E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM #qualified_events P
+LEFT JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= DATEADD(day,0,P.START_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) = 0
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+SELECT 1 as index_id, p.person_id, p.event_id
+FROM #qualified_events P
+LEFT JOIN
+(
+  -- Begin Observation Criteria
+select C.person_id, C.observation_id as event_id, C.observation_date as start_date, DATEADD(d,1,C.observation_date) as END_DATE,
+       C.observation_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.observation_date as sort_date
+from 
+(
+  select o.* 
+  FROM @cdm_database_schema.OBSERVATION o
+JOIN #Codesets codesets on ((o.observation_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Observation Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= DATEADD(day,0,P.START_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) = 0
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) = 2
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
+) Results
+;
+
+SELECT inclusion_rule_id, person_id, event_id
+INTO #inclusion_events
+FROM (select inclusion_rule_id, person_id, event_id from #Inclusion_0) I;
+TRUNCATE TABLE #Inclusion_0;
+DROP TABLE #Inclusion_0;
+
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+  -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
+  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),1)-1)
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+WHERE Results.ordinal = 1
+;
+
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""DrugExposure"" : {
+					""CodesetId"" : 1,
+					""DrugTypeExclude"" : false,
+					""Age"" : {
+						""Value"" : 55,
+						""Op"" : ""gte""
+					}
+				}
+			},
+			{
+				""DrugExposure"" : {
+					""CodesetId"" : 2,
+					""DrugTypeExclude"" : false,
+					""Age"" : {
+						""Value"" : 55,
+						""Op"" : ""gte""
+					}
+				}
+			},
+			{
+				""ConditionOccurrence"" : {
+					""CodesetId"" : 0,
+					""ConditionTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 0,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""First""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 0,
+			""name"" : "" Chronic obstructive lung disease"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 255573,
+							""CONCEPT_NAME"" : ""Chronic obstructive lung disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""13645005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 258780,
+							""CONCEPT_NAME"" : ""Emphysematous bronchitis"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""185086009"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 1,
+			""name"" : ""COPD combo-therapy\n"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.313442e+07,
+							""CONCEPT_NAME"" : ""Fenoterol / Ipratropium Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP443574"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.072783e+07,
+							""CONCEPT_NAME"" : ""Fenoterol / Ipratropium Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4729268"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.681174e+07,
+							""CONCEPT_NAME"" : ""Fenoterol / Ipratropium Inhalation Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4825769"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.072774e+07,
+							""CONCEPT_NAME"" : ""Albuterol / Ipratropium Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4729368"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 1356123,
+							""CONCEPT_NAME"" : ""albuterol / ipratropium Inhalation Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""2108259"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.418699e+07,
+							""CONCEPT_NAME"" : ""Albuterol / Ipratropium Injectable Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP3063714"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.104876e+07,
+							""CONCEPT_NAME"" : ""fluticasone / formoterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP2246722"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.075497e+07,
+							""CONCEPT_NAME"" : ""fluticasone / formoterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4702057"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 2.108951e+07,
+							""CONCEPT_NAME"" : ""fluticasone / formoterol Inhalant Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP357047"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.248314e+07,
+							""CONCEPT_NAME"" : ""Albuterol / Beclomethasone Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP418868"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.681253e+07,
+							""CONCEPT_NAME"" : ""Albuterol / Beclomethasone Inhalation Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4826562"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.642129e+07,
+							""CONCEPT_NAME"" : ""Beclomethasone / formoterol / glycopyrronium Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4763575"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.074535e+07,
+							""CONCEPT_NAME"" : ""Beclomethasone / formoterol / glycopyrronium Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4711820"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.678795e+07,
+							""CONCEPT_NAME"" : ""Beclomethasone / formoterol / glycopyrronium Inhalant Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4776216"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 2.115894e+07,
+							""CONCEPT_NAME"" : ""Beclomethasone / formoterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP286058"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.689446e+07,
+							""CONCEPT_NAME"" : ""Beclomethasone / formoterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP1002030"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 2.109004e+07,
+							""CONCEPT_NAME"" : ""Beclomethasone / formoterol Inhalant Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP286036"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.247968e+07,
+							""CONCEPT_NAME"" : ""Budesonide / formoterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP419122"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.51335e+07,
+							""CONCEPT_NAME"" : ""Budesonide / formoterol Inhalation Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4790710"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 783228,
+							""CONCEPT_NAME"" : ""Budesonide / formoterol Inhalation Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4831059"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.014291e+07,
+							""CONCEPT_NAME"" : ""budesonide / formoterol Metered Dose Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""745797"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.678727e+07,
+							""CONCEPT_NAME"" : ""Budesonide / salmeterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4775534"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 792484,
+							""CONCEPT_NAME"" : ""fluticasone / umeclidinium / vilanterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""1945037"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.075579e+07,
+							""CONCEPT_NAME"" : ""fluticasone / umeclidinium / vilanterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4701920"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.759205e+07,
+							""CONCEPT_NAME"" : ""fluticasone / vilanterol / vilanterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4781501"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.353228e+07,
+							""CONCEPT_NAME"" : ""fluticasone / vilanterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""1424887"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.329109e+07,
+							""CONCEPT_NAME"" : ""fluticasone / vilanterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP557209"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.12674e+07,
+							""CONCEPT_NAME"" : ""fluticasone / vilanterol Inhalant Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP2465363"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.293552e+07,
+							""CONCEPT_NAME"" : ""fluticasone / vilanterol Nasal Spray"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4662232"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.642152e+07,
+							""CONCEPT_NAME"" : ""umeclidinium / umeclidinium / vilanterol / vilanterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4763797"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.759234e+07,
+							""CONCEPT_NAME"" : ""umeclidinium / umeclidinium / vilanterol / vilanterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4781790"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.478591e+07,
+							""CONCEPT_NAME"" : ""umeclidinium / vilanterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""1487517"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.32639e+07,
+							""CONCEPT_NAME"" : ""umeclidinium / vilanterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP557201"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.126717e+07,
+							""CONCEPT_NAME"" : ""umeclidinium / vilanterol Inhalant Solution"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP2465128"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.248132e+07,
+							""CONCEPT_NAME"" : ""Glycopyrrolate / indacaterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP418727"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.409457e+07,
+							""CONCEPT_NAME"" : ""Glycopyrrolate / indacaterol Metered Dose Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP1089199"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.314587e+07,
+							""CONCEPT_NAME"" : ""glycopyrronium / indacaterol Dry Powder Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP448437"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.325995e+07,
+							""CONCEPT_NAME"" : ""glycopyrronium / indacaterol Inhalant Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP573715"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 1356196,
+							""CONCEPT_NAME"" : ""glycopyrronium / indacaterol Inhalation Powder"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""2108413"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.514584e+07,
+							""CONCEPT_NAME"" : ""glycopyrronium / indacaterol Metered Dose Inhaler"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""OMOP4802923"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm Extension"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Drug Form""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 2,
+			""name"" : ""COPD mono-therapy\n"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 1112921,
+							""CONCEPT_NAME"" : ""ipratropium"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""7213"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 1106776,
+							""CONCEPT_NAME"" : ""tiotropium"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""69120"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 3,
+			""name"" : ""Asthma"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 317009,
+							""CONCEPT_NAME"" : ""Asthma"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""195967001"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4235703,
+							""CONCEPT_NAME"" : ""Asthma management"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""406162001"",
+							""DOMAIN_ID"" : ""Observation"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Procedure""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4279553,
+							""CONCEPT_NAME"" : ""Eosinophilic asthma"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""367542003"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""First""
+	},
+	""InclusionRules"" : [
+		{
+			""name"" : ""no prior asthma"",
+			""expression"" : {
+				""Type"" : ""ALL"",
+				""CriteriaList"" : [
+					{
+						""Criteria"" : {
+							""ConditionOccurrence"" : {
+								""CodesetId"" : 3,
+								""ConditionTypeExclude"" : false
+							}
+						},
+						""StartWindow"" : {
+							""Start"" : {
+								""Coeff"" : -1
+							},
+							""End"" : {
+								""Days"" : 0,
+								""Coeff"" : -1
+							},
+							""UseIndexEnd"" : false,
+							""UseEventEnd"" : false
+						},
+						""RestrictVisit"" : false,
+						""IgnoreObservationPeriod"" : false,
+						""Occurrence"" : {
+							""Type"" : 0,
+							""Count"" : 0,
+							""IsDistinct"" : false
+						}
+					},
+					{
+						""Criteria"" : {
+							""Observation"" : {
+								""CodesetId"" : 3,
+								""ObservationTypeExclude"" : false
+							}
+						},
+						""StartWindow"" : {
+							""Start"" : {
+								""Coeff"" : -1
+							},
+							""End"" : {
+								""Days"" : 0,
+								""Coeff"" : 1
+							},
+							""UseIndexEnd"" : false,
+							""UseEventEnd"" : false
+						},
+						""RestrictVisit"" : false,
+						""IgnoreObservationPeriod"" : false,
+						""Occurrence"" : {
+							""Type"" : 0,
+							""Count"" : 0,
+							""IsDistinct"" : false
+						}
+					}
+				],
+				""DemographicCriteriaList"" : [],
+				""Groups"" : []
+			}
+		}
+	],
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"

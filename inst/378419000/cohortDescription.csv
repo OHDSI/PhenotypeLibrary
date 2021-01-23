@@ -1,4 +1,3149 @@
-﻿phenotypeId,webApiCohortId,cohortName,logicDescription,cohortId,referentConceptId,cohortType,PMID
-378419000,17395,Alzheimers disease referent incident cohort,"Persons with condition occurrence of referent concept (378419) or descendants, for the first time in the person's history. Persons exit cohort at the end of the observation period.",378419001,378419,referent,
-378419000,17394,Alzheimers disease referent prevalent cohort,"Persons with condition occurrence of referent concept (378419) or descendants, for the first time in the person's history, with at least 365 days of prior continuous observation. Persons exit cohort at the end of the observation period.",378419002,378419,referent,
-378419000,18982,"Alzheimers disease by Imfeld Epilepsia, 2013","Composite definition of Alzheimers disease, dementia or prescription for an alzheimer disease",378419003,378419,literature,
+﻿phenotypeId,webApiCohortId,cohortName,logicDescription,cohortId,referentConceptId,cohortType,PMID,metaDataJson,cohortDefinitionSql,cohortDefinitionJson
+378419000,17395,Alzheimers disease referent incident cohort,"Persons with condition occurrence of referent concept (378419) or descendants, for the first time in the person's history. Persons exit cohort at the end of the observation period.",378419001,378419,referent,,"{
+	""phenotypeId"" : [
+		""378419000""
+	],
+	""webApiCohortId"" : [
+		""17395""
+	],
+	""cohortName"" : [
+		""Alzheimers disease referent incident cohort""
+	],
+	""oldCohortName"" : [
+		""[PL 378419001] Alzheimer's disease referent concept incident cohort: First occurrence of referent concept + descendants with >=365d prior observation""
+	],
+	""logicDescription"" : [
+		""Persons with condition occurrence of referent concept (378419) or descendants, for the first time in the person's history. Persons exit cohort at the end of the observation period.""
+	],
+	""cohortId"" : [
+		""378419001""
+	],
+	""referentConceptId"" : [
+		""378419""
+	],
+	""cohortType"" : [
+		""referent""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""378419000""
+	],
+	""referentConceptName"" : [
+		""Alzheimer's disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (378419)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (378419)
+  and c.invalid_reason is null
+
+) I
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,365,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+WHERE P.ordinal = 1
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+create table #inclusion_events (inclusion_rule_id bigint,
+	person_id bigint,
+	event_id bigint
+);
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+WHERE Results.ordinal = 1
+;
+
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""ConditionOccurrence"" : {
+					""CodesetId"" : 0,
+					""First"" : true,
+					""ConditionTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 365,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""First""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 0,
+			""name"" : ""Alzheimer's disease"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 378419,
+							""CONCEPT_NAME"" : ""Alzheimer's disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""26929004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""First""
+	},
+	""InclusionRules"" : [],
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"
+378419000,17394,Alzheimers disease referent prevalent cohort,"Persons with condition occurrence of referent concept (378419) or descendants, for the first time in the person's history, with at least 365 days of prior continuous observation. Persons exit cohort at the end of the observation period.",378419002,378419,referent,,"{
+	""phenotypeId"" : [
+		""378419000""
+	],
+	""webApiCohortId"" : [
+		""17394""
+	],
+	""cohortName"" : [
+		""Alzheimers disease referent prevalent cohort""
+	],
+	""oldCohortName"" : [
+		""[PL 378419002] Alzheimer's disease referent concept prevalent cohort: First occurrence of referent concept + descendants""
+	],
+	""logicDescription"" : [
+		""Persons with condition occurrence of referent concept (378419) or descendants, for the first time in the person's history, with at least 365 days of prior continuous observation. Persons exit cohort at the end of the observation period.""
+	],
+	""cohortId"" : [
+		""378419002""
+	],
+	""referentConceptId"" : [
+		""378419""
+	],
+	""cohortType"" : [
+		""referent""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""378419000""
+	],
+	""referentConceptName"" : [
+		""Alzheimer's disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (378419)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (378419)
+  and c.invalid_reason is null
+
+) I
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+WHERE P.ordinal = 1
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+create table #inclusion_events (inclusion_rule_id bigint,
+	person_id bigint,
+	event_id bigint
+);
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+WHERE Results.ordinal = 1
+;
+
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""ConditionOccurrence"" : {
+					""CodesetId"" : 0,
+					""First"" : true,
+					""ConditionTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 0,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""First""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 0,
+			""name"" : ""Alzheimer's disease"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 378419,
+							""CONCEPT_NAME"" : ""Alzheimer's disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""26929004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""First""
+	},
+	""InclusionRules"" : [],
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"
+378419000,18982,"Alzheimers disease by Imfeld Epilepsia, 2013","Composite definition of Alzheimers disease, dementia or prescription for an alzheimer disease",378419003,378419,literature,,"{
+	""phenotypeId"" : [
+		""378419000""
+	],
+	""webApiCohortId"" : [
+		""18982""
+	],
+	""cohortName"" : [
+		""Alzheimers disease by Imfeld Epilepsia, 2013""
+	],
+	""oldCohortName"" : [
+		""[PL 378419003] Alzheimer's disease by Imfeld Epilepsia, 2013""
+	],
+	""logicDescription"" : [
+		""Composite definition of Alzheimers disease, dementia or prescription for an alzheimer disease""
+	],
+	""cohortId"" : [
+		""378419003""
+	],
+	""referentConceptId"" : [
+		""378419""
+	],
+	""cohortType"" : [
+		""literature""
+	],
+	""PMID"" : [
+		""""
+	],
+	""oldPhenotypeId"" : [
+		""378419000""
+	],
+	""referentConceptName"" : [
+		""Alzheimer's disease""
+	]
+}","CREATE TABLE #Codesets (
+  codeset_id int NOT NULL,
+  concept_id bigint NOT NULL
+)
+;
+
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (378419)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (378419)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37312036,37312035,4041685,37312031,37312030,35608576,4092747,4182210,37311665,4043378,45765480,45765477,4059191,37311890,37312577)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (37312036,37312035,4041685,37312031,37312030,35608576,4092747,4182210,37311665,4043378,45765480,45765477,4059191,37311890,37312577)
+  and c.invalid_reason is null
+
+) I
+LEFT JOIN
+(
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37116464,37017549,4244346,377788,372610,37017247)
+
+) E ON I.concept_id = E.concept_id
+WHERE E.concept_id is null
+) C UNION ALL 
+SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (715997,757627,701322,733523,836654)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (715997,757627,701322,733523,836654)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4169175,40491929,40490379,4167593,4013636,4125350,4019823)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (4169175,40491929,40490379,4167593,4013636,4125350,4019823)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 5 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4304008,440424,132342,4173136,4024716)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (4304008,440424,132342,4173136,4024716)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 6 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (443605,44782710,380701)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (443605,44782710,380701)
+  and c.invalid_reason is null
+
+) I
+) C UNION ALL 
+SELECT 8 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (372924,375557,376713,443454,441874,439847,43530727,42538062,4148906,432923)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (376713,443454,439847)
+  and c.invalid_reason is null
+
+) I
+LEFT JOIN
+(
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (379778)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (379778)
+  and c.invalid_reason is null
+
+) E ON I.concept_id = E.concept_id
+WHERE E.concept_id is null
+) C
+;
+
+with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+(
+-- Begin Primary Events
+select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
+FROM
+(
+  select E.person_id, E.start_date, E.end_date,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM 
+  (
+  select PE.person_id, PE.event_id, PE.start_date, PE.end_date, PE.target_concept_id, PE.visit_occurrence_id, PE.sort_date FROM (
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) PE
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Drug Exposure Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= P.OP_END_DATE
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+SELECT 1 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,1,P.START_DATE) AND A.START_DATE <= P.OP_END_DATE
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+SELECT 2 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Procedure Occurrence Criteria
+select C.person_id, C.procedure_occurrence_id as event_id, C.procedure_date as start_date, DATEADD(d,1,C.procedure_date) as END_DATE,
+       C.procedure_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.procedure_date as sort_date
+from 
+(
+  select po.* 
+  FROM @cdm_database_schema.PROCEDURE_OCCURRENCE po
+JOIN #Codesets codesets on ((po.procedure_concept_id = codesets.concept_id and codesets.codeset_id = 4))
+) C
+
+
+-- End Procedure Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= DATEADD(day,0,P.START_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+SELECT 3 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Measurement Criteria
+select C.person_id, C.measurement_id as event_id, C.measurement_date as start_date, DATEADD(d,1,C.measurement_date) as END_DATE,
+       C.measurement_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.measurement_date as sort_date
+from 
+(
+  select m.* 
+  FROM @cdm_database_schema.MEASUREMENT m
+JOIN #Codesets codesets on ((m.measurement_concept_id = codesets.concept_id and codesets.codeset_id = 4))
+) C
+
+
+-- End Measurement Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= DATEADD(day,0,P.START_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+SELECT 4 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Observation Criteria
+select C.person_id, C.observation_id as event_id, C.observation_date as start_date, DATEADD(d,1,C.observation_date) as END_DATE,
+       C.observation_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.observation_date as sort_date
+from 
+(
+  select o.* 
+  FROM @cdm_database_schema.OBSERVATION o
+JOIN #Codesets codesets on ((o.observation_concept_id = codesets.concept_id and codesets.codeset_id = 4))
+) C
+
+
+-- End Observation Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= DATEADD(day,0,P.START_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+SELECT 5 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 5))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) > 0
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id and AC.event_id = pe.event_id
+
+UNION ALL
+select PE.person_id, PE.event_id, PE.start_date, PE.end_date, PE.target_concept_id, PE.visit_occurrence_id, PE.sort_date FROM (
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 2))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) PE
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 2))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 2))
+) C
+
+
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Drug Exposure Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= P.OP_END_DATE
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 2
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) = 1
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id and AC.event_id = pe.event_id
+
+UNION ALL
+select PE.person_id, PE.event_id, PE.start_date, PE.end_date, PE.target_concept_id, PE.visit_occurrence_id, PE.sort_date FROM (
+-- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Drug Exposure Criteria
+
+) PE
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Drug Exposure Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Drug Exposure Criteria
+select C.person_id, C.drug_exposure_id as event_id, C.drug_exposure_start_date as start_date,
+       COALESCE(C.DRUG_EXPOSURE_END_DATE, DATEADD(day,C.DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,C.DRUG_EXPOSURE_START_DATE)) as end_date,
+       C.drug_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.drug_exposure_start_date as sort_date
+from 
+(
+  select de.* 
+  FROM @cdm_database_schema.DRUG_EXPOSURE de
+JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+
+-- End Drug Exposure Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+INNER JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= P.OP_END_DATE
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) >= 1
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) = 1
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id and AC.event_id = pe.event_id
+
+  ) E
+	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
+  WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+WHERE P.ordinal = 1
+-- End Primary Events
+
+)
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
+(
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM primary_events pe
+  
+) QE
+
+;
+
+--- Inclusion Rule Inserts
+
+select 0 as inclusion_rule_id, person_id, event_id
+INTO #Inclusion_0
+FROM 
+(
+  select pe.person_id, pe.event_id
+  FROM #qualified_events pe
+  
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM #qualified_events E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM #qualified_events P
+LEFT JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 6))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,1,P.START_DATE) AND A.START_DATE <= P.OP_END_DATE
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) <= 0
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) = 1
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
+) Results
+;
+
+select 1 as inclusion_rule_id, person_id, event_id
+INTO #Inclusion_1
+FROM 
+(
+  select pe.person_id, pe.event_id
+  FROM #qualified_events pe
+  
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM #qualified_events E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+SELECT 0 as index_id, p.person_id, p.event_id
+FROM #qualified_events P
+LEFT JOIN
+(
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 8))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-730,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE)
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(A.TARGET_CONCEPT_ID) <= 0
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) = 1
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
+) Results
+;
+
+SELECT inclusion_rule_id, person_id, event_id
+INTO #inclusion_events
+FROM (select inclusion_rule_id, person_id, event_id from #Inclusion_0
+UNION ALL
+select inclusion_rule_id, person_id, event_id from #Inclusion_1) I;
+TRUNCATE TABLE #Inclusion_0;
+DROP TABLE #Inclusion_0;
+
+TRUNCATE TABLE #Inclusion_1;
+DROP TABLE #Inclusion_1;
+
+
+with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
+(
+  SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
+  from
+  (
+    select Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date, SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) as inclusion_rule_mask
+    from #qualified_events Q
+    LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
+    GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
+  ) MG -- matching groups
+
+  -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
+  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),2)-1)
+
+)
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM cteIncludedEvents Results
+WHERE Results.ordinal = 1
+;
+
+
+
+-- generate cohort periods into #final_cohort
+with cohort_ends (event_id, person_id, end_date) as
+(
+	-- cohort exit dates
+  -- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
+),
+first_ends (person_id, start_date, end_date) as
+(
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
+	  from #included_events I
+	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+	) F
+	WHERE F.ordinal = 1
+)
+select person_id, start_date, end_date
+INTO #cohort_rows
+from first_ends;
+
+with cteEndDates (person_id, end_date) AS -- the magic
+(	
+	SELECT
+		person_id
+		, DATEADD(day,-1 * 0, event_date)  as end_date
+	FROM
+	(
+		SELECT
+			person_id
+			, event_date
+			, event_type
+			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
+		FROM
+		(
+			SELECT
+				person_id
+				, start_date AS event_date
+				, -1 AS event_type
+				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+			FROM #cohort_rows
+		
+			UNION ALL
+		
+
+			SELECT
+				person_id
+				, DATEADD(day,0,end_date) as end_date
+				, 1 AS event_type
+				, NULL
+			FROM #cohort_rows
+		) RAWDATA
+	) e
+	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+),
+cteEnds (person_id, start_date, end_date) AS
+(
+	SELECT
+		 c.person_id
+		, c.start_date
+		, MIN(e.end_date) AS end_date
+	FROM #cohort_rows c
+	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	GROUP BY c.person_id, c.start_date
+)
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from cteEnds
+group by person_id, end_date
+;
+
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
+INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
+select @target_cohort_id as cohort_definition_id, person_id, start_date, end_date 
+FROM #final_cohort CO
+;
+
+
+-- Find the event that is the 'best match' per person.  
+-- the 'best match' is defined as the event that satisfies the most inclusion rules.
+-- ties are solved by choosing the event that matches the earliest inclusion rule, and then earliest.
+
+select q.person_id, q.event_id
+into #best_events
+from #qualified_events Q
+join (
+	SELECT R.person_id, R.event_id, ROW_NUMBER() OVER (PARTITION BY R.person_id ORDER BY R.rule_count DESC,R.min_rule_id ASC, R.start_date ASC) AS rank_value
+	FROM (
+		SELECT Q.person_id, Q.event_id, COALESCE(COUNT(DISTINCT I.inclusion_rule_id), 0) AS rule_count, COALESCE(MIN(I.inclusion_rule_id), 0) AS min_rule_id, Q.start_date
+		FROM #qualified_events Q
+		LEFT JOIN #inclusion_events I ON q.person_id = i.person_id AND q.event_id = i.event_id
+		GROUP BY Q.person_id, Q.event_id, Q.start_date
+	) R
+) ranked on Q.person_id = ranked.person_id and Q.event_id = ranked.event_id
+WHERE ranked.rank_value = 1
+;
+
+-- modes of generation: (the same tables store the results for the different modes, identified by the mode_id column)
+-- 0: all events
+-- 1: best event
+
+
+-- BEGIN: Inclusion Impact Analysis - event
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 0 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #qualified_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 0 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #qualified_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #qualified_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 0 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 0;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 0 as mode_id
+FROM
+(select count_big(event_id) as total from #qualified_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 0 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - event
+
+-- BEGIN: Inclusion Impact Analysis - person
+-- calculte matching group counts
+delete from @results_database_schema.cohort_inclusion_result where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_result (cohort_definition_id, inclusion_rule_mask, person_count, mode_id)
+select @target_cohort_id as cohort_definition_id, inclusion_rule_mask, count_big(*) as person_count, 1 as mode_id
+from
+(
+  select Q.person_id, Q.event_id, CAST(SUM(coalesce(POWER(cast(2 as bigint), I.inclusion_rule_id), 0)) AS bigint) as inclusion_rule_mask
+  from #best_events Q
+  LEFT JOIN #inclusion_events I on q.person_id = i.person_id and q.event_id = i.event_id
+  GROUP BY Q.person_id, Q.event_id
+) MG -- matching groups
+group by inclusion_rule_mask
+;
+
+-- calculate gain counts 
+delete from @results_database_schema.cohort_inclusion_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_inclusion_stats (cohort_definition_id, rule_sequence, person_count, gain_count, person_total, mode_id)
+select ir.cohort_definition_id, ir.rule_sequence, coalesce(T.person_count, 0) as person_count, coalesce(SR.person_count, 0) gain_count, EventTotal.total, 1 as mode_id
+from @results_database_schema.cohort_inclusion ir
+left join
+(
+  select i.inclusion_rule_id, count_big(i.event_id) as person_count
+  from #best_events Q
+  JOIN #inclusion_events i on Q.person_id = I.person_id and Q.event_id = i.event_id
+  group by i.inclusion_rule_id
+) T on ir.rule_sequence = T.inclusion_rule_id
+CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+CROSS JOIN (select count_big(event_id) as total from #best_events) EventTotal
+LEFT JOIN @results_database_schema.cohort_inclusion_result SR on SR.mode_id = 1 AND SR.cohort_definition_id = @target_cohort_id AND (POWER(cast(2 as bigint),RuleTotal.total_rules) - POWER(cast(2 as bigint),ir.rule_sequence) - 1) = SR.inclusion_rule_mask -- POWER(2,rule count) - POWER(2,rule sequence) - 1 is the mask for 'all except this rule'
+WHERE ir.cohort_definition_id = @target_cohort_id
+;
+
+-- calculate totals
+delete from @results_database_schema.cohort_summary_stats where cohort_definition_id = @target_cohort_id and mode_id = 1;
+insert into @results_database_schema.cohort_summary_stats (cohort_definition_id, base_count, final_count, mode_id)
+select @target_cohort_id as cohort_definition_id, PC.total as person_count, coalesce(FC.total, 0) as final_count, 1 as mode_id
+FROM
+(select count_big(event_id) as total from #best_events) PC,
+(select sum(sr.person_count) as total
+  from @results_database_schema.cohort_inclusion_result sr
+  CROSS JOIN (select count(*) as total_rules from @results_database_schema.cohort_inclusion where cohort_definition_id = @target_cohort_id) RuleTotal
+  where sr.mode_id = 1 and sr.cohort_definition_id = @target_cohort_id and sr.inclusion_rule_mask = POWER(cast(2 as bigint),RuleTotal.total_rules)-1
+) FC
+;
+
+-- END: Inclusion Impact Analysis - person
+
+-- BEGIN: Censored Stats
+
+-- END: Censored Stats
+
+TRUNCATE TABLE #best_events;
+DROP TABLE #best_events;
+
+
+
+
+
+TRUNCATE TABLE #cohort_rows;
+DROP TABLE #cohort_rows;
+
+TRUNCATE TABLE #final_cohort;
+DROP TABLE #final_cohort;
+
+TRUNCATE TABLE #inclusion_events;
+DROP TABLE #inclusion_events;
+
+TRUNCATE TABLE #qualified_events;
+DROP TABLE #qualified_events;
+
+TRUNCATE TABLE #included_events;
+DROP TABLE #included_events;
+
+TRUNCATE TABLE #Codesets;
+DROP TABLE #Codesets;
+","{
+	""cdmVersionRange"" : "">=5.0.0"",
+	""PrimaryCriteria"" : {
+		""CriteriaList"" : [
+			{
+				""ConditionOccurrence"" : {
+					""CorrelatedCriteria"" : {
+						""Type"" : ""ANY"",
+						""CriteriaList"" : [
+							{
+								""Criteria"" : {
+									""DrugExposure"" : {
+										""CodesetId"" : 3,
+										""DrugTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Days"" : 0,
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							},
+							{
+								""Criteria"" : {
+									""ConditionOccurrence"" : {
+										""CodesetId"" : 0,
+										""ConditionTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Days"" : 1,
+										""Coeff"" : 1
+									},
+									""End"" : {
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							},
+							{
+								""Criteria"" : {
+									""ProcedureOccurrence"" : {
+										""CodesetId"" : 4,
+										""ProcedureTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Days"" : 0,
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							},
+							{
+								""Criteria"" : {
+									""Measurement"" : {
+										""CodesetId"" : 4,
+										""MeasurementTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Days"" : 0,
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							},
+							{
+								""Criteria"" : {
+									""Observation"" : {
+										""CodesetId"" : 4,
+										""ObservationTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Days"" : 0,
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							},
+							{
+								""Criteria"" : {
+									""ConditionOccurrence"" : {
+										""CodesetId"" : 5,
+										""ConditionTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							}
+						],
+						""DemographicCriteriaList"" : [],
+						""Groups"" : []
+					},
+					""CodesetId"" : 0,
+					""ConditionTypeExclude"" : false
+				}
+			},
+			{
+				""ConditionOccurrence"" : {
+					""CorrelatedCriteria"" : {
+						""Type"" : ""ALL"",
+						""CriteriaList"" : [
+							{
+								""Criteria"" : {
+									""DrugExposure"" : {
+										""CodesetId"" : 3,
+										""DrugTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Days"" : 0,
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 2,
+									""IsDistinct"" : false
+								}
+							}
+						],
+						""DemographicCriteriaList"" : [],
+						""Groups"" : []
+					},
+					""CodesetId"" : 2,
+					""ConditionTypeExclude"" : false
+				}
+			},
+			{
+				""DrugExposure"" : {
+					""CorrelatedCriteria"" : {
+						""Type"" : ""ALL"",
+						""CriteriaList"" : [
+							{
+								""Criteria"" : {
+									""ConditionOccurrence"" : {
+										""CodesetId"" : 0,
+										""ConditionTypeExclude"" : false
+									}
+								},
+								""StartWindow"" : {
+									""Start"" : {
+										""Days"" : 0,
+										""Coeff"" : -1
+									},
+									""End"" : {
+										""Coeff"" : 1
+									},
+									""UseIndexEnd"" : false,
+									""UseEventEnd"" : false
+								},
+								""RestrictVisit"" : false,
+								""IgnoreObservationPeriod"" : false,
+								""Occurrence"" : {
+									""Type"" : 2,
+									""Count"" : 1,
+									""IsDistinct"" : false
+								}
+							}
+						],
+						""DemographicCriteriaList"" : [],
+						""Groups"" : []
+					},
+					""CodesetId"" : 3,
+					""DrugTypeExclude"" : false
+				}
+			}
+		],
+		""ObservationWindow"" : {
+			""PriorDays"" : 0,
+			""PostDays"" : 0
+		},
+		""PrimaryCriteriaLimit"" : {
+			""Type"" : ""First""
+		}
+	},
+	""ConceptSets"" : [
+		{
+			""id"" : 0,
+			""name"" : ""Alzheimer Disease "",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 378419,
+							""CONCEPT_NAME"" : ""Alzheimer's disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""26929004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 2,
+			""name"" : ""Dementia"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731204e+07,
+							""CONCEPT_NAME"" : ""Aggression due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""788861009"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731204e+07,
+							""CONCEPT_NAME"" : ""Agitation due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""788862002"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4041685,
+							""CONCEPT_NAME"" : ""Amyotrophic lateral sclerosis with dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""230258005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731203e+07,
+							""CONCEPT_NAME"" : ""Anxiety due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""788866004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731203e+07,
+							""CONCEPT_NAME"" : ""Apathetic behavior due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""788867008"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.560858e+07,
+							""CONCEPT_NAME"" : ""Behavioral and psychological symptoms of dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""10171000132106"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4092747,
+							""CONCEPT_NAME"" : ""Cerebral degeneration presenting primarily with dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""279982005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4182210,
+							""CONCEPT_NAME"" : ""Dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""52448006"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.711646e+07,
+							""CONCEPT_NAME"" : ""Dementia caused by heavy metal exposure"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""733184002"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.701755e+07,
+							""CONCEPT_NAME"" : ""Dementia co-occurrent with human immunodeficiency virus infection"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""713844000"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4244346,
+							""CONCEPT_NAME"" : ""Dialysis dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""9345005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731167e+07,
+							""CONCEPT_NAME"" : ""Disinhibited behavior due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""789170003"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4043378,
+							""CONCEPT_NAME"" : ""Frontotemporal dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""230270009"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.576548e+07,
+							""CONCEPT_NAME"" : ""Frontotemporal dementia with parkinsonism-17"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""702429008"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 377788,
+							""CONCEPT_NAME"" : ""General paresis - neurosyphilis"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""51928006"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.576548e+07,
+							""CONCEPT_NAME"" : ""GRN-related frontotemporal dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""702426001"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4059191,
+							""CONCEPT_NAME"" : ""H/O: dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""161465002"",
+							""DOMAIN_ID"" : ""Observation"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Context-dependent""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 372610,
+							""CONCEPT_NAME"" : ""Postconcussion syndrome"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""40425004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.701725e+07,
+							""CONCEPT_NAME"" : ""Presenile dementia co-occurrent with human immunodeficiency virus infection"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""713488003"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731189e+07,
+							""CONCEPT_NAME"" : ""Psychological symptom due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""789011007"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 3.731258e+07,
+							""CONCEPT_NAME"" : ""Wandering due to dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""789062005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 3,
+			""name"" : ""Prescription for an Alzheimers disease drug"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 715997,
+							""CONCEPT_NAME"" : ""donepezil"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""135447"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 757627,
+							""CONCEPT_NAME"" : ""galantamine"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""4637"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 701322,
+							""CONCEPT_NAME"" : ""memantine"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""6719"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 733523,
+							""CONCEPT_NAME"" : ""rivastigmine"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""183379"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 836654,
+							""CONCEPT_NAME"" : ""tacrine"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""10318"",
+							""DOMAIN_ID"" : ""Drug"",
+							""VOCABULARY_ID"" : ""RxNorm"",
+							""CONCEPT_CLASS_ID"" : ""Ingredient""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 4,
+			""name"" : ""Specific dementia test "",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4169175,
+							""CONCEPT_NAME"" : ""Mini-mental state examination"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""273617000"",
+							""DOMAIN_ID"" : ""Measurement"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Staging / Scales""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.049193e+07,
+							""CONCEPT_NAME"" : ""Mini-mental state examination score"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""447316007"",
+							""DOMAIN_ID"" : ""Observation"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Observable Entity""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.049038e+07,
+							""CONCEPT_NAME"" : ""Assessment using mini-mental state examination"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""446971008"",
+							""DOMAIN_ID"" : ""Procedure"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Procedure""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4167593,
+							""CONCEPT_NAME"" : ""Abbreviated Mental Test"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""273255001"",
+							""DOMAIN_ID"" : ""Measurement"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Staging / Scales""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4013636,
+							""CONCEPT_NAME"" : ""Magnetic resonance imaging"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""113091000"",
+							""DOMAIN_ID"" : ""Procedure"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Procedure""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4125350,
+							""CONCEPT_NAME"" : ""CT of head"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""303653007"",
+							""DOMAIN_ID"" : ""Procedure"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Procedure""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4019823,
+							""CONCEPT_NAME"" : ""Single photon emission computerized tomography"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""105371005"",
+							""DOMAIN_ID"" : ""Procedure"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Procedure""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 5,
+			""name"" : ""Dementia symptoms "",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4304008,
+							""CONCEPT_NAME"" : ""Memory impairment"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""386807006"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 440424,
+							""CONCEPT_NAME"" : ""Aphasia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""87486003"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 132342,
+							""CONCEPT_NAME"" : ""Apraxia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""68345001"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4173136,
+							""CONCEPT_NAME"" : ""Agnosia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""42341009"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4024716,
+							""CONCEPT_NAME"" : ""Aphasia, agnosia, dyslexia AND/OR apraxia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""106169008"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 6,
+			""name"" : ""Other specific dementia diagnosis (e.g., VD, Pick’s disease, or Lewy body dementia [LBD])"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 443605,
+							""CONCEPT_NAME"" : ""Vascular dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""429998004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.478271e+07,
+							""CONCEPT_NAME"" : ""Dementia due to Pick's disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""21921000119103"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 380701,
+							""CONCEPT_NAME"" : ""Diffuse Lewy body disease"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""80098002"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					}
+				]
+			}
+		},
+		{
+			""id"" : 8,
+			""name"" : ""Stroke (ischemic or hemorrhagic)"",
+			""expression"" : {
+				""items"" : [
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 372924,
+							""CONCEPT_NAME"" : ""Cerebral artery occlusion"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""20059004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 375557,
+							""CONCEPT_NAME"" : ""Cerebral embolism"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""75543006"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 376713,
+							""CONCEPT_NAME"" : ""Cerebral hemorrhage"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""274100004"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 443454,
+							""CONCEPT_NAME"" : ""Cerebral infarction"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""432504007"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 441874,
+							""CONCEPT_NAME"" : ""Cerebral thrombosis"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""71444005"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 439847,
+							""CONCEPT_NAME"" : ""Intracranial hemorrhage"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""1386000"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 379778,
+							""CONCEPT_NAME"" : ""Multi-infarct dementia"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""56267009"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : true,
+						""includeDescendants"" : true,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.353073e+07,
+							""CONCEPT_NAME"" : ""Spontaneous cerebral hemorrhage"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""291571000119106"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4.253806e+07,
+							""CONCEPT_NAME"" : ""Spontaneous intracranial hemorrhage"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""738779002"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 4148906,
+							""CONCEPT_NAME"" : ""Spontaneous subarachnoid hemorrhage"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""270907008"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					},
+					{
+						""concept"" : {
+							""CONCEPT_ID"" : 432923,
+							""CONCEPT_NAME"" : ""Subarachnoid hemorrhage"",
+							""STANDARD_CONCEPT"" : ""S"",
+							""STANDARD_CONCEPT_CAPTION"" : ""Standard"",
+							""INVALID_REASON"" : ""V"",
+							""INVALID_REASON_CAPTION"" : ""Valid"",
+							""CONCEPT_CODE"" : ""21454007"",
+							""DOMAIN_ID"" : ""Condition"",
+							""VOCABULARY_ID"" : ""SNOMED"",
+							""CONCEPT_CLASS_ID"" : ""Clinical Finding""
+						},
+						""isExcluded"" : false,
+						""includeDescendants"" : false,
+						""includeMapped"" : false
+					}
+				]
+			}
+		}
+	],
+	""QualifiedLimit"" : {
+		""Type"" : ""First""
+	},
+	""ExpressionLimit"" : {
+		""Type"" : ""First""
+	},
+	""InclusionRules"" : [
+		{
+			""name"" : ""No occurrence of any other specific dementia diagnosis (e.g., VD, Pick’s disease, or Lewy body dementia [LBD]) after the Alzheimer's disease diagnosis date"",
+			""expression"" : {
+				""Type"" : ""ALL"",
+				""CriteriaList"" : [
+					{
+						""Criteria"" : {
+							""ConditionOccurrence"" : {
+								""CodesetId"" : 6,
+								""ConditionTypeExclude"" : false
+							}
+						},
+						""StartWindow"" : {
+							""Start"" : {
+								""Days"" : 1,
+								""Coeff"" : 1
+							},
+							""End"" : {
+								""Coeff"" : 1
+							},
+							""UseIndexEnd"" : false,
+							""UseEventEnd"" : false
+						},
+						""RestrictVisit"" : false,
+						""IgnoreObservationPeriod"" : false,
+						""Occurrence"" : {
+							""Type"" : 1,
+							""Count"" : 0,
+							""IsDistinct"" : false
+						}
+					}
+				],
+				""DemographicCriteriaList"" : [],
+				""Groups"" : []
+			}
+		},
+		{
+			""name"" : ""No occurrence of Stroke diagnosis within 2 years prior to the Alzheimer's disease diagnosis date"",
+			""expression"" : {
+				""Type"" : ""ALL"",
+				""CriteriaList"" : [
+					{
+						""Criteria"" : {
+							""ConditionOccurrence"" : {
+								""CodesetId"" : 8,
+								""ConditionTypeExclude"" : false
+							}
+						},
+						""StartWindow"" : {
+							""Start"" : {
+								""Days"" : 730,
+								""Coeff"" : -1
+							},
+							""End"" : {
+								""Days"" : 0,
+								""Coeff"" : -1
+							},
+							""UseIndexEnd"" : false,
+							""UseEventEnd"" : false
+						},
+						""RestrictVisit"" : false,
+						""IgnoreObservationPeriod"" : false,
+						""Occurrence"" : {
+							""Type"" : 1,
+							""Count"" : 0,
+							""IsDistinct"" : false
+						}
+					}
+				],
+				""DemographicCriteriaList"" : [],
+				""Groups"" : []
+			}
+		}
+	],
+	""CensoringCriteria"" : [],
+	""CollapseSettings"" : {
+		""CollapseType"" : ""ERA"",
+		""EraPad"" : 0
+	},
+	""CensorWindow"" : {}
+}"
