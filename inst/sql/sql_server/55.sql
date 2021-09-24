@@ -282,7 +282,21 @@ FROM
          OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
   FROM 
   (
-  -- Begin Measurement Criteria
+  -- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+  C.visit_occurrence_id, C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 4)
+) C
+
+WHERE C.condition_start_date > DATEFROMPARTS(2019, 12, 1)
+-- End Condition Occurrence Criteria
+
+UNION ALL
+-- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.measurement_date as start_date, DATEADD(d,1,C.measurement_date) as END_DATE,
        C.visit_occurrence_id, C.measurement_date as sort_date
 from 
@@ -293,7 +307,7 @@ JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id
 ) C
 
 WHERE C.measurement_date > DATEFROMPARTS(2019, 12, 1)
-AND C.value_as_concept_id in (9189,9190,3661867,4125557,4132135,45878583,45880296,45884086)
+AND C.value_as_concept_id in (4126681,45877985,9191,45884084,4181412,45879438)
 -- End Measurement Criteria
 
   ) E
@@ -346,7 +360,7 @@ FROM cteIncludedEvents Results
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,0,start_date) > op_end_date then op_end_date else DATEADD(day,0,start_date) end as end_date
+  case when DATEADD(day,3,end_date) > op_end_date then op_end_date else DATEADD(day,3,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -377,7 +391,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 (	
 	SELECT
 		person_id
-		, DATEADD(day,-1 * 0, event_date)  as end_date
+		, DATEADD(day,-1 * 7, event_date)  as end_date
 	FROM
 	(
 		SELECT
@@ -400,7 +414,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 
 			SELECT
 				person_id
-				, DATEADD(day,0,end_date) as end_date
+				, DATEADD(day,7,end_date) as end_date
 				, 1 AS event_type
 				, NULL
 			FROM #cohort_rows
