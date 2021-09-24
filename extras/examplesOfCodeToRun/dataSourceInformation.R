@@ -228,7 +228,10 @@ executeOnMultipleDataSources <- function(x) {
   if (all(!is.null(dataSourceDetails),
           nrow(dataSourceDetails) == 1,
           nchar(dataSourceDetails$versionId) > 0)) {
-    databaseId <- paste0(x$databaseId, " (v",dataSourceDetails$versionId, " ", as.character(dataSourceDetails$versionDate), ")")
+    databaseId <- paste0(x$databaseId, "_v",dataSourceDetails$versionId, "_", stringr::str_replace(string = as.character(dataSourceDetails$versionDate),
+                                                                                                   pattern = stringr::fixed("-"),
+                                                                                                   replacement = ""
+                                                                                                   ))
   } else {
     databaseId <- x$databaseId
   }

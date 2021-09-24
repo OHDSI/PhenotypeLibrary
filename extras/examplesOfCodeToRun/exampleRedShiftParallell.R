@@ -23,6 +23,8 @@ if (!dir.exists(outputFolder)) {
 # lets get meta information for each of these databaseId. This includes connection information.
 source("extras/examplesOfCodeToRun/dataSourceInformation.R")
 
+cdmSources <- cdmSources2
+rm("cdmSources2")
 ############## databaseIds to run cohort diagnostics on that source  #################
 databaseIds <-
   c('truven_ccae',
@@ -30,16 +32,11 @@ databaseIds <-
     'cprd',
     'jmdc',
     'optum_extended_dod',
-    'optum_ehr')
-cdmSources <- cdmSources2
-rm("cdmSources2")
-
-
-# databaseIds <-
-#   c('truven_mdcr',
-#     'ims_australia_lpd',
-#     'ims_germany',
-#     'ims_france')
+    'optum_ehr',
+    'truven_mdcr',
+    'ims_australia_lpd',
+    'ims_germany',
+    'ims_france')
 
 ## service name for keyring for db with cdm
 keyringUserService <- 'OHDSI_USER'
