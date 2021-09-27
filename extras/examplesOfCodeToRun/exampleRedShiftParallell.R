@@ -18,7 +18,7 @@ if (!dir.exists(outputFolder)) {
              recursive = TRUE)
 }
 # Optional: specify a location on your disk drive that has sufficient space.
-# options(andromedaTempFolder = "s:/andromedaTemp")
+options(andromedaTempFolder = file.path(outputFolder, "andromedaTemp"))
 
 # lets get meta information for each of these databaseId. This includes connection information.
 source("extras/examplesOfCodeToRun/dataSourceInformation.R")
@@ -27,7 +27,8 @@ cdmSources <- cdmSources2
 rm("cdmSources2")
 ############## databaseIds to run cohort diagnostics on that source  #################
 databaseIds <-
-  c('truven_ccae',
+  c(
+    'truven_ccae',
     'truven_mdcd',
     'cprd',
     'jmdc',

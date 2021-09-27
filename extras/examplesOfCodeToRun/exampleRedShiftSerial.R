@@ -18,22 +18,24 @@ if (!dir.exists(outputFolder)) {
              recursive = TRUE)
 }
 # Optional: specify a location on your disk drive that has sufficient space.
-# options(andromedaTempFolder = "s:/andromedaTemp")
+options(andromedaTempFolder = file.path(outputFolder, "andromedaTemp"))
+
+# lets get meta information for each of these databaseId. This includes connection information.
+source("extras/examplesOfCodeToRun/dataSourceInformation.R")
 
 ############## databaseIds to run cohort diagnostics on that source  #################
 databaseIds <-
   c(
     'truven_ccae',
     'truven_mdcd',
-    'truven_mdcr',
     'cprd',
     'jmdc',
     'optum_extended_dod',
     'optum_ehr',
+    'truven_mdcr',
     'ims_australia_lpd',
     'ims_germany',
-    'ims_france'
-  )
+    'ims_france')
 
 ## service name for keyring for db with cdm
 keyringUserService <- 'OHDSI_USER'
@@ -67,34 +69,5 @@ for (i in (1:length(databaseIds))) {
 ############ executeOnMultipleDataSources #################
 # x <- x[1:2]
 for (i in (1:length(x))) {
-  i = 1
-  debug(executeOnMultipleDataSources)
   executeOnMultipleDataSources(x[[i]])
 }
-#
-# # launch cohort explorer
-# for (i in (1:length(x))) {
-#   cohortTableName <- paste0(
-#     stringr::str_squish(x$databaseId),
-#     stringr::str_squish("phenotypeLibrary")
-#   )
-#   # Details for connecting to the server:
-#   connectionDetails <-
-#     DatabaseConnector::createConnectionDetails(
-#       dbms = x$cdmSource$dbms,
-#       server = x$cdmSource$server,
-#       user = keyring::key_get(service = x$userService),
-#       password =  keyring::key_get(service = x$passwordService),
-#       port = x$cdmSource$port
-#     )
-#   cdmDatabaseSchema <- x$cdmSource$cdmDatabaseSchema
-#   cohortDatabaseSchema <- x$cdmSource$cohortDatabaseSchema
-#   CohortDiagnostics::launchCohortExplorer(connectionDetails = connectionDetails,
-#                                           cdmDatabaseSchema = cdmDatabaseSchema,
-#                                           cohortDatabaseSchema = cohortDatabaseSchema,
-#                                           cohortTable = cohortTable,
-#                                           cohortId = -1
-#   )
-# }
-#
-#
