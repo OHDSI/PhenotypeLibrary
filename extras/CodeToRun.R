@@ -1,12 +1,5 @@
-library(phenotypeLibrary)
-library(magrittr)
 
-# Optional: specify where the temporary files (used by the Andromeda package) will be created:
-# This is optional, as andromeda is able to assign temporary location using your Operating Systems (OS) settings, 
-# but sometimes the temporary location specified by your OS may not have sufficient storage space.
-# To avoid such scenarios, it maybe useful to change and uncomment the line below to point to 
-# a location on your disk drive that has sufficient space.
-# options(andromedaTempFolder = "s:/andromedaTemp")
+library(magrittr)
 
 # Maximum number of cores to be used:
 maxCores <- parallel::detectCores()
@@ -15,7 +8,14 @@ maxCores <- parallel::detectCores()
 # VARIABLES - please change below this line
 ################################################################################
 # The folder where the study intermediate and result files will be written:
-outputFolder <- "s:/phenotypeLibrary"
+outputFolder <- "D:\\studyResults\\phenotypeLibraryP"
+
+# Optional: specify where the temporary files (used by the Andromeda package) will be created:
+# This is optional, as andromeda is able to assign temporary location using your Operating Systems (OS) settings, 
+# but sometimes the temporary location specified by your OS may not have sufficient storage space.
+# To avoid such scenarios, it maybe useful to change and uncomment the line below to point to 
+# a location on your disk drive that has sufficient space.
+options(andromedaTempFolder = file.path(outputFolder, "andromedaTemp"))
 
 # create output directory if it doesnt exist
 if (!dir.exists(outputFolder)) {

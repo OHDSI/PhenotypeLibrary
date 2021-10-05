@@ -1,0 +1,80 @@
+{
+  "ExpressionLimit": {"Type": "All"},
+  "CollapseSettings": {
+    "CollapseType": "ERA",
+    "EraPad": 0
+  },
+  "CensorWindow": {},
+  "ConceptSets": [{
+    "expression": {"items": [{
+      "isExcluded": false,
+      "concept": {
+        "INVALID_REASON_CAPTION": "Valid",
+        "CONCEPT_ID": 4196708,
+        "STANDARD_CONCEPT": "S",
+        "CONCEPT_CODE": "313287004",
+        "VOCABULARY_ID": "SNOMED",
+        "CONCEPT_NAME": "Seizure related finding",
+        "DOMAIN_ID": "Condition",
+        "STANDARD_CONCEPT_CAPTION": "Standard",
+        "CONCEPT_CLASS_ID": "Clinical Finding",
+        "INVALID_REASON": "V"
+      },
+      "includeMapped": false,
+      "includeDescendants": true
+    }]},
+    "name": "Seizure",
+    "id": 0
+  }],
+  "EndStrategy": {"DateOffset": {
+    "DateField": "StartDate",
+    "Offset": 1
+  }},
+  "cdmVersionRange": ">=5.0.0",
+  "CensoringCriteria": [],
+  "QualifiedLimit": {"Type": "All"},
+  "InclusionRules": [{
+    "expression": {
+      "CriteriaList": [{
+        "RestrictVisit": false,
+        "StartWindow": {
+          "UseEventEnd": false,
+          "Start": {
+            "Days": 42,
+            "Coeff": -1
+          },
+          "End": {
+            "Days": 1,
+            "Coeff": -1
+          },
+          "UseIndexEnd": false
+        },
+        "IgnoreObservationPeriod": true,
+        "Criteria": {"ConditionOccurrence": {
+          "ConditionTypeExclude": false,
+          "CodesetId": 0
+        }},
+        "Occurrence": {
+          "Type": 0,
+          "IsDistinct": false,
+          "Count": 0
+        }
+      }],
+      "Type": "ALL",
+      "DemographicCriteriaList": [],
+      "Groups": []
+    },
+    "name": "has no events in prior 'clean window' - 42 days"
+  }],
+  "PrimaryCriteria": {
+    "CriteriaList": [{"ConditionOccurrence": {
+      "ConditionTypeExclude": false,
+      "CodesetId": 0
+    }}],
+    "PrimaryCriteriaLimit": {"Type": "All"},
+    "ObservationWindow": {
+      "PostDays": 0,
+      "PriorDays": 0
+    }
+  }
+}

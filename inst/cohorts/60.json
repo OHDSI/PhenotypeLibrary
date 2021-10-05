@@ -128,100 +128,119 @@
   "cdmVersionRange": ">=5.0.0",
   "CensoringCriteria": [],
   "QualifiedLimit": {"Type": "First"},
-  "InclusionRules": [],
+  "InclusionRules": [{
+    "expression": {
+      "CriteriaList": [{
+        "RestrictVisit": false,
+        "StartWindow": {
+          "UseEventEnd": false,
+          "Start": {"Coeff": -1},
+          "End": {
+            "Days": 1,
+            "Coeff": -1
+          },
+          "UseIndexEnd": false
+        },
+        "IgnoreObservationPeriod": false,
+        "Criteria": {"ConditionOccurrence": {
+          "ConditionTypeExclude": false,
+          "CodesetId": 4
+        }},
+        "Occurrence": {
+          "Type": 0,
+          "IsDistinct": false,
+          "Count": 0
+        }
+      }],
+      "Type": "ALL",
+      "DemographicCriteriaList": [],
+      "Groups": []
+    },
+    "name": "No diagnosis of Covid-19 prior"
+  }],
   "PrimaryCriteria": {
-    "CriteriaList": [
-      {"ConditionOccurrence": {
-        "ConditionTypeExclude": false,
-        "CodesetId": 4,
-        "OccurrenceStartDate": {
-          "Op": "gt",
-          "Value": "2019-12-01"
+    "CriteriaList": [{"Measurement": {
+      "MeasurementTypeExclude": false,
+      "ValueAsConcept": [
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 4126681,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "260373001",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Detected",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 45877985,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "LA11882-0",
+          "VOCABULARY_ID": "LOINC",
+          "CONCEPT_NAME": "Detected",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 9191,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "10828004",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Positive",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 45884084,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "LA6576-8",
+          "VOCABULARY_ID": "LOINC",
+          "CONCEPT_NAME": "Positive",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 4181412,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "52101004",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Present",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 45879438,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "LA9633-4",
+          "VOCABULARY_ID": "LOINC",
+          "CONCEPT_NAME": "Present",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
         }
-      }},
-      {"Measurement": {
-        "MeasurementTypeExclude": false,
-        "ValueAsConcept": [
-          {
-            "INVALID_REASON_CAPTION": "Unknown",
-            "CONCEPT_ID": 4126681,
-            "STANDARD_CONCEPT": null,
-            "CONCEPT_CODE": "260373001",
-            "VOCABULARY_ID": "SNOMED",
-            "CONCEPT_NAME": "Detected",
-            "DOMAIN_ID": "Meas Value",
-            "STANDARD_CONCEPT_CAPTION": "Unknown",
-            "CONCEPT_CLASS_ID": null,
-            "INVALID_REASON": null
-          },
-          {
-            "INVALID_REASON_CAPTION": "Unknown",
-            "CONCEPT_ID": 45877985,
-            "STANDARD_CONCEPT": null,
-            "CONCEPT_CODE": "LA11882-0",
-            "VOCABULARY_ID": "LOINC",
-            "CONCEPT_NAME": "Detected",
-            "DOMAIN_ID": "Meas Value",
-            "STANDARD_CONCEPT_CAPTION": "Unknown",
-            "CONCEPT_CLASS_ID": null,
-            "INVALID_REASON": null
-          },
-          {
-            "INVALID_REASON_CAPTION": "Unknown",
-            "CONCEPT_ID": 9191,
-            "STANDARD_CONCEPT": null,
-            "CONCEPT_CODE": "10828004",
-            "VOCABULARY_ID": "SNOMED",
-            "CONCEPT_NAME": "Positive",
-            "DOMAIN_ID": "Meas Value",
-            "STANDARD_CONCEPT_CAPTION": "Unknown",
-            "CONCEPT_CLASS_ID": null,
-            "INVALID_REASON": null
-          },
-          {
-            "INVALID_REASON_CAPTION": "Unknown",
-            "CONCEPT_ID": 45884084,
-            "STANDARD_CONCEPT": null,
-            "CONCEPT_CODE": "LA6576-8",
-            "VOCABULARY_ID": "LOINC",
-            "CONCEPT_NAME": "Positive",
-            "DOMAIN_ID": "Meas Value",
-            "STANDARD_CONCEPT_CAPTION": "Unknown",
-            "CONCEPT_CLASS_ID": null,
-            "INVALID_REASON": null
-          },
-          {
-            "INVALID_REASON_CAPTION": "Unknown",
-            "CONCEPT_ID": 4181412,
-            "STANDARD_CONCEPT": null,
-            "CONCEPT_CODE": "52101004",
-            "VOCABULARY_ID": "SNOMED",
-            "CONCEPT_NAME": "Present",
-            "DOMAIN_ID": "Meas Value",
-            "STANDARD_CONCEPT_CAPTION": "Unknown",
-            "CONCEPT_CLASS_ID": null,
-            "INVALID_REASON": null
-          },
-          {
-            "INVALID_REASON_CAPTION": "Unknown",
-            "CONCEPT_ID": 45879438,
-            "STANDARD_CONCEPT": null,
-            "CONCEPT_CODE": "LA9633-4",
-            "VOCABULARY_ID": "LOINC",
-            "CONCEPT_NAME": "Present",
-            "DOMAIN_ID": "Meas Value",
-            "STANDARD_CONCEPT_CAPTION": "Unknown",
-            "CONCEPT_CLASS_ID": null,
-            "INVALID_REASON": null
-          }
-        ],
-        "CodesetId": 5,
-        "OccurrenceStartDate": {
-          "Op": "gt",
-          "Value": "2019-12-01"
-        }
-      }}
-    ],
+      ],
+      "CodesetId": 5,
+      "OccurrenceStartDate": {
+        "Op": "gt",
+        "Value": "2019-12-01"
+      }
+    }}],
     "PrimaryCriteriaLimit": {"Type": "First"},
     "ObservationWindow": {
       "PostDays": 0,
