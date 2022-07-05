@@ -1,0 +1,191 @@
+{
+  "ExpressionLimit": {"Type": "All"},
+  "CollapseSettings": {
+    "CollapseType": "ERA",
+    "EraPad": 0
+  },
+  "CensorWindow": {},
+  "ConceptSets": [{
+    "expression": {"items": [
+      {
+        "isExcluded": false,
+        "concept": {
+          "INVALID_REASON_CAPTION": "Valid",
+          "CONCEPT_ID": 756055,
+          "STANDARD_CONCEPT": "S",
+          "CONCEPT_CODE": "OMOP4873969",
+          "VOCABULARY_ID": "OMOP Extension",
+          "CONCEPT_NAME": "Measurement of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)",
+          "DOMAIN_ID": "Measurement",
+          "STANDARD_CONCEPT_CAPTION": "Standard",
+          "CONCEPT_CLASS_ID": "Lab Test",
+          "INVALID_REASON": "V"
+        },
+        "includeMapped": false,
+        "includeDescendants": true
+      },
+      {
+        "isExcluded": true,
+        "concept": {
+          "INVALID_REASON_CAPTION": "Valid",
+          "CONCEPT_ID": 37310258,
+          "STANDARD_CONCEPT": "S",
+          "CONCEPT_CODE": "1240461000000109",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Measurement of Severe acute respiratory syndrome coronavirus 2 antibody",
+          "DOMAIN_ID": "Measurement",
+          "STANDARD_CONCEPT_CAPTION": "Standard",
+          "CONCEPT_CLASS_ID": "Procedure",
+          "INVALID_REASON": "V"
+        },
+        "includeMapped": false,
+        "includeDescendants": true
+      },
+      {
+        "isExcluded": false,
+        "concept": {
+          "INVALID_REASON_CAPTION": "Valid",
+          "CONCEPT_ID": 704059,
+          "STANDARD_CONCEPT": "S",
+          "CONCEPT_CODE": "U0003",
+          "VOCABULARY_ID": "HCPCS",
+          "CONCEPT_NAME": "Infectious agent detection by nucleic acid (DNA or RNA); severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) (Coronavirus disease [COVID-19]), amplified probe technique, making use of high throughput technologies as described by CMS-2020-01-R",
+          "DOMAIN_ID": "Measurement",
+          "STANDARD_CONCEPT_CAPTION": "Standard",
+          "CONCEPT_CLASS_ID": "HCPCS",
+          "INVALID_REASON": "V"
+        },
+        "includeMapped": false,
+        "includeDescendants": true
+      },
+      {
+        "isExcluded": false,
+        "concept": {
+          "INVALID_REASON_CAPTION": "Valid",
+          "CONCEPT_ID": 704058,
+          "STANDARD_CONCEPT": "S",
+          "CONCEPT_CODE": "U0004",
+          "VOCABULARY_ID": "HCPCS",
+          "CONCEPT_NAME": "2019-nCoV Coronavirus, SARS-CoV-2/2019-nCoV (COVID-19), any technique, multiple types or subtypes (includes all targets), non-CDC, making use of high throughput technologies as described by CMS-2020-01-R",
+          "DOMAIN_ID": "Measurement",
+          "STANDARD_CONCEPT_CAPTION": "Standard",
+          "CONCEPT_CLASS_ID": "HCPCS",
+          "INVALID_REASON": "V"
+        },
+        "includeMapped": false,
+        "includeDescendants": true
+      }
+    ]},
+    "name": "SARS-CoV-2 test",
+    "id": 5
+  }],
+  "EndStrategy": {"DateOffset": {
+    "DateField": "StartDate",
+    "Offset": 0
+  }},
+  "cdmVersionRange": ">=5.0.0",
+  "CensoringCriteria": [],
+  "QualifiedLimit": {"Type": "First"},
+  "InclusionRules": [],
+  "PrimaryCriteria": {
+    "CriteriaList": [{"Measurement": {
+      "MeasurementTypeExclude": false,
+      "ValueAsConcept": [
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 9189,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "260385009",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Negative",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 9190,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "260415000",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Not detected",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 3661867,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "895231008",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Not detected in pooled specimen",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 4132135,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "2667000",
+          "VOCABULARY_ID": "SNOMED",
+          "CONCEPT_NAME": "Absent",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 45878583,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "LA6577-6",
+          "VOCABULARY_ID": "LOINC",
+          "CONCEPT_NAME": "Negative",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 45880296,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "LA11883-8",
+          "VOCABULARY_ID": "LOINC",
+          "CONCEPT_NAME": "Not detected",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        },
+        {
+          "INVALID_REASON_CAPTION": "Unknown",
+          "CONCEPT_ID": 45884086,
+          "STANDARD_CONCEPT": null,
+          "CONCEPT_CODE": "LA9634-2",
+          "VOCABULARY_ID": "LOINC",
+          "CONCEPT_NAME": "Absent",
+          "DOMAIN_ID": "Meas Value",
+          "STANDARD_CONCEPT_CAPTION": "Unknown",
+          "CONCEPT_CLASS_ID": null,
+          "INVALID_REASON": null
+        }
+      ],
+      "CodesetId": 5,
+      "OccurrenceStartDate": {
+        "Op": "gt",
+        "Value": "2019-12-01"
+      }
+    }}],
+    "PrimaryCriteriaLimit": {"Type": "All"},
+    "ObservationWindow": {
+      "PostDays": 0,
+      "PriorDays": 0
+    }
+  }
+}

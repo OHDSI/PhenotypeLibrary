@@ -1,0 +1,22 @@
+Package: phenotypeLibrary
+Type: Package
+Title: A Study Package for Generating Cohort Diagnostics
+Version: 20220705.0.0
+Author: Gowtham Rao [aut, cre]
+Maintainer: Gowtham Rao <rao@ohdsi.org>
+Description: A package that generates cohort diagnostics for cohort definitions included in the package.
+Imports:
+	CohortDiagnostics (>= 3.0.1),
+  CohortGenerator (>= 0.4.0),
+	ParallelLogger (>= 3.0.0),
+	DatabaseConnector (>= 5.0.0),
+  OhdsiSharing,
+  keyring,
+  jsonlite
+Suggests:
+    ROhdsiWebApi
+License: Apache License (>= 2)
+LazyData: TRUE
+RoxygenNote: 7.2.0
+Encoding: UTF-8
+Language: en-US
