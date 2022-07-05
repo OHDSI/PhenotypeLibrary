@@ -14,7 +14,7 @@ version <- paste0(stringr::str_replace_all(
   string = as.character(Sys.Date()),
   pattern = stringr::fixed("-"),
   replacement = ""
-), ".0.0")
+), ".0.1")
 
 
 name <- "OHDSI Phenotype Library"
