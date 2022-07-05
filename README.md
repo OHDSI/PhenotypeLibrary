@@ -1,12 +1,18 @@
+# OHDSI Phenotype Library <img src="man/figures/OHDSIlogo.png" align="right" width="120" />
+
+The Cohort Definitions that are part of the OHDSI Phenotype Library are maintained in a security enabled Atlas instance by the OHDSI Phenotype Development and Evaluation Workgroup. Please sign up for access to https://atlas-phenotype.ohdsi.org the official Atlas for OHDSI Phenotype Library using the Google form here https://docs.google.com/forms/d/e/1FAIpQLSc9GlhvFiPVVuIQ-9Oc8esbFDX6Lrg2y4m_bYvI_0MxsPQlUQ/viewform>
+
+This github repository is currently under maintenance. Do not use. Please use the Atlas link referenced above.
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# OHDSI Phenotype Library <img src="man/figures/OHDSIlogo.png" align="right" width="120" />
+
 
 <!-- badges: start -->
 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+deprecated](https://lifecycle.r-lib.org/articles/figures/lifecycle-deprecated.svg)](https://www.tidyverse.org/lifecycle/#deprecated)
 <!-- badges: end -->
 
 OHDSI Phenotype Library is an open community resource maintained by the
@@ -31,17 +37,6 @@ standardized template.
 
 Studies may be executed by importing the definitions into OHDSI tools
 and compiling study executable (see <https://github.com/OHDSI-studies>).
-
-## How to Contribute
-
-  - [Contribute
-    Phenotypes](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJURVA3NThUWU42RjRUWDVZWlpUNjM2OVlIWSQlQCN0PWcu)
-  - [Contribute Cohort
-    Definitions](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJUNllaNVk5NUIwOTRIUzVMTVRDSkdHWFVHRCQlQCN0PWcu)
-  - [Contribute
-    Diagnostics](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJURFJORE1LUERHV1lNNlRGNEU5TDgwTlZXVCQlQCN0PWcu)
-  - [Contribute
-    Insights](https://forms.office.com/Pages/ResponsePage.aspx?id=lAAPoyCRq0q6TOVQkCOy1aDcZLTRBnxHtm0Rgn5NBBJUMTdMUkhUOFE1SFpPRVlKSzlEMkxCN1JRUiQlQCN0PWcu)
 
 ## Installation
 
