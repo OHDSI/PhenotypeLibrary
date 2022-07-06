@@ -1,21 +1,16 @@
 # Import phenotypes from ATLAS -------------------------------------------------
 
-# Gowtham: I have not touched this code. It should:
-# 2. Fetch approved cohorts from ATLAS, and store them in inst/cohorts, inst/sql, and Cohorts.csv
-# please make sure Cohorts.csv used camelCase.
-#
-# We probably want to auto-generate entries for the NEWS.md file as well. Maybe with
-# statistics on changed phenotypes?
-
 library(magrittr)
-# Set up
+oldCohortDefinitions <- PhenotypeLibrary::listPhenotypes()
+oldCohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
 
-# Delete existing cohorts
+# Delete existing cohorts--------------------------------------------
 unlink(x = "inst/Cohorts.csv", recursive = TRUE, force = TRUE)
 unlink(x = "inst/cohorts", recursive = TRUE, force = TRUE)
 unlink(x = "inst/sql", recursive = TRUE, force = TRUE)
 
-# Fetch approved cohort definition from atlas-phenotype.ohdsi.org (note: approved phenotypes do not have '[')
+# Fetch approved cohort definition----------------------------------
+# from atlas-phenotype.ohdsi.org (note: approved phenotypes do not have '[')
 baseUrl <- "https://atlas-phenotype.ohdsi.org/WebAPI"
 ROhdsiWebApi::authorizeWebApi(baseUrl = baseUrl, 
                               authMethod = "db", 
@@ -24,15 +19,25 @@ ROhdsiWebApi::authorizeWebApi(baseUrl = baseUrl,
 
 webApiCohorts <- ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)
 
-webApiCohorts %>% 
-  dplyr::filter(stringr::str_detect(string = .data$name, 
-                                    pattern = stringr::fixed('['), 
-                                    negate = TRUE)) %>% 
+exportableCohorts <- webApiCohorts %>%
+  dplyr::filter(stringr::str_detect(
+    string = .data$name,
+    pattern = stringr::fixed('['),
+    negate = TRUE
+  )) %>%
   dplyr::select(.data$id,
-                .data$name) %>% 
-  dplyr::rename(cohortId = .data$id,
-                atlasId = .data$id,
-                cohortName = .data$name) %>% 
+                .data$name) %>%
+  dplyr::mutate(
+    cohortId = .data$id,
+    atlasId = .data$id,
+    cohortName = .data$name
+  ) %>% 
+  dplyr::arrange(.data$cohortId) %>% 
+  dplyr::select(.data$cohortId,
+                .data$atlasId,
+                .data$cohortName)
+
+exportableCohorts %>% 
   readr::write_excel_csv(file = "inst/Cohorts.csv", 
                          append = FALSE, 
                          quote = "all")
@@ -44,14 +49,9 @@ ROhdsiWebApi::insertCohortDefinitionSetInPackage(fileName = "inst/Cohorts.csv",
                                                  generateStats = TRUE)
 
 # doing this again, because atlasId is not required for CohortDefinitionSet
-webApiCohorts %>% 
-  dplyr::filter(stringr::str_detect(string = .data$name, 
-                                    pattern = stringr::fixed('['), 
-                                    negate = TRUE)) %>% 
-  dplyr::select(.data$id,
-                .data$name) %>% 
-  dplyr::rename(cohortId = .data$id,
-                cohortName = .data$name) %>% 
+exportableCohorts  %>% 
+  dplyr::select(.data$cohortId,
+                .data$cohortName) %>% 
   readr::write_excel_csv(file = "inst/Cohorts.csv", 
                          append = FALSE, 
                          quote = "all")
@@ -72,3 +72,29 @@ dateLineNr <- grep("Date: .*$", description)
 description[dateLineNr]  <- sprintf("Date: %s", format(Sys.Date(),"%Y-%m-%d"))
 
 writeLines(description, con = "DESCRIPTION")
+
+
+# Update news -----------------------------------------------------------
+news <- readLines("NEWS.md")
+newCohorts <- setdiff(x = sort(exportableCohorts$cohortId), 
+                      y = sort(oldCohortDefinitionSet$cohortId))
+
+messages <- c("")
+if (length(newCohorts) == 0) {
+  messages <- c(messages, "New Cohorts: No new cohorts were added in this release.")
+} else {
+  messages <- c(messages, paste0("New Cohorts: ", length(newCohorts), " were added."))
+  for (i in (1:length(newCohorts))) {
+    messages <- c(messages, paste0("    ", exportableCohorts[i,]$cohortId, ": ", exportableCohorts[i,]$cohortName))
+  }
+}
+
+news <- c(paste0("PhenotypeLibrary ", newVersion),
+          "======================",
+          messages,
+          "",
+          news)
+writeLines(news, con = "NEWS.md")
+
+
+#TO DO : check if json changed. and if changed add to NEWS.md
