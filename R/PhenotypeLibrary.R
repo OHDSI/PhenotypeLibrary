@@ -14,20 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Format and check code ---------------------------------------------------
-styler::style_pkg()
-OhdsiRTools::checkUsagePackage("phenotypeLibrary")
-OhdsiRTools::updateCopyrightYearFolder()
+#' @keywords internal
+"_PACKAGE"
 
-# Create manual -----------------------------------------------------------
-unlink("extras/PhenotypeLibrary.pdf")
-shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
-
-pkgdown::build_site()
-OhdsiRTools::fixHadesLogo()
-
-
-
-
-
-
+#' @import dplyr
+#' @importFrom rlang .data
+NULL
