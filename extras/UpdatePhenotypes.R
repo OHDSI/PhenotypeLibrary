@@ -1,7 +1,6 @@
 # Import phenotypes from ATLAS -------------------------------------------------
 
 # Gowtham: I have not touched this code. It should:
-# 1. Delete all from inst/cohorts, inst/sql, and Cohorts.csv
 # 2. Fetch approved cohorts from ATLAS, and store them in inst/cohorts, inst/sql, and Cohorts.csv
 # please make sure Cohorts.csv used camelCase.
 #
@@ -10,6 +9,13 @@
 
 library(magrittr)
 # Set up
+
+# Delete existing cohorts
+unlink(x = "inst/Cohorts.csv", recursive = TRUE, force = TRUE)
+unlink(x = "inst/cohorts", recursive = TRUE, force = TRUE)
+unlink(x = "inst/sql", recursive = TRUE, force = TRUE)
+
+# Fetch approved cohort definition from atlas-phenotype.ohdsi.org (note: approved phenotypes do not have '[')
 baseUrl <- "https://atlas-phenotype.ohdsi.org/WebAPI"
 ROhdsiWebApi::authorizeWebApi(baseUrl = baseUrl, 
                               authMethod = "db", 
@@ -17,48 +23,38 @@ ROhdsiWebApi::authorizeWebApi(baseUrl = baseUrl,
                               webApiPassword = keyring::key_get("ohdsiAtlasPhenotypePassword"))
 
 webApiCohorts <- ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)
-studyCohorts <- webApiCohorts %>% 
+
+webApiCohorts %>% 
   dplyr::filter(stringr::str_detect(string = .data$name, 
                                     pattern = stringr::fixed('['), 
-                                    negate = TRUE))
+                                    negate = TRUE)) %>% 
+  dplyr::select(.data$id,
+                .data$name) %>% 
+  dplyr::rename(cohortId = .data$id,
+                atlasId = .data$id,
+                cohortName = .data$name) %>% 
+  readr::write_excel_csv(file = "inst/Cohorts.csv", 
+                         append = FALSE, 
+                         quote = "all")
 
-# compile them into a data table
-cohortDefinitionsArray <- list()
-for (i in (1:nrow(studyCohorts))) {
-        cohortDefinition <-
-                ROhdsiWebApi::getCohortDefinition(cohortId = studyCohorts$id[[i]],
-                                                  baseUrl = baseUrl)
-        cohortDefinitionsArray[[i]] <- list(
-                id = studyCohorts$id[[i]],
-                createdDate = studyCohorts$createdDate[[i]],
-                modifiedDate = studyCohorts$createdDate[[i]],
-                logicDescription = studyCohorts$description[[i]],
-                name = stringr::str_trim(stringr::str_squish(cohortDefinition$name)),
-                expression = cohortDefinition$expression
-        )
-}
+ROhdsiWebApi::insertCohortDefinitionSetInPackage(fileName = "inst/Cohorts.csv", 
+                                                 baseUrl = baseUrl, 
+                                                 jsonFolder = "inst/cohorts", 
+                                                 sqlFolder = "inst/sql/sql_server", 
+                                                 generateStats = TRUE)
 
-tempFolder <- tempdir()
-unlink(x = tempFolder, recursive = TRUE, force = TRUE)
-dir.create(path = tempFolder, showWarnings = FALSE, recursive = TRUE)
-
-specifications <- list(id = 1,
-                       version = version,
-                       name = name,
-                       packageName = packageName,
-                       skeletonVersion = skeletonVersion,
-                       createdBy = createdBy,
-                       createdDate = createdDate,
-                       modifiedBy = modifiedBy,
-                       modifiedDate = modifiedDate,
-                       skeletonType = skeletonType,
-                       organizationName = organizationName,
-                       description = description,
-                       cohortDefinitions = cohortDefinitionsArray)
-
-jsonFileName <- paste0(file.path(tempFolder, "CohortDiagnosticsSpecs.json"))
-write(x = specifications %>% RJSONIO::toJSON(pretty = TRUE, digits = 23), file = jsonFileName)
-
+# doing this again, because atlasId is not required for CohortDefinitionSet
+webApiCohorts %>% 
+  dplyr::filter(stringr::str_detect(string = .data$name, 
+                                    pattern = stringr::fixed('['), 
+                                    negate = TRUE)) %>% 
+  dplyr::select(.data$id,
+                .data$name) %>% 
+  dplyr::rename(cohortId = .data$id,
+                cohortName = .data$name) %>% 
+  readr::write_excel_csv(file = "inst/Cohorts.csv", 
+                         append = FALSE, 
+                         quote = "all")
 
 # Update description -----------------------------------------------------------
 description <- readLines("DESCRIPTION")
