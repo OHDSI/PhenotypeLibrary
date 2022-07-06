@@ -1,206 +1,232 @@
 {
-  "ExpressionLimit": {"Type": "All"},
-  "CollapseSettings": {
-    "CollapseType": "ERA",
-    "EraPad": 7
-  },
-  "CensorWindow": {},
-  "ConceptSets": [
-    {
-      "expression": {"items": [
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 262,
-            "STANDARD_CONCEPT": "S",
-            "CONCEPT_CODE": "ERIP",
-            "VOCABULARY_ID": "Visit",
-            "CONCEPT_NAME": "Emergency Room and Inpatient Visit",
-            "DOMAIN_ID": "Visit",
-            "STANDARD_CONCEPT_CAPTION": "Standard",
-            "CONCEPT_CLASS_ID": "Visit",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        },
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 9201,
-            "STANDARD_CONCEPT": "S",
-            "CONCEPT_CODE": "IP",
-            "VOCABULARY_ID": "Visit",
-            "CONCEPT_NAME": "Inpatient Visit",
-            "DOMAIN_ID": "Visit",
-            "STANDARD_CONCEPT_CAPTION": "Standard",
-            "CONCEPT_CLASS_ID": "Visit",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        }
-      ]},
-      "name": "Inpatient Visit",
-      "id": 4
-    },
-    {
-      "expression": {"items": [
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 4027133,
-            "STANDARD_CONCEPT": "S",
-            "CONCEPT_CODE": "19765000",
-            "VOCABULARY_ID": "SNOMED",
-            "CONCEPT_NAME": "Complication of dialysis",
-            "DOMAIN_ID": "Condition",
-            "STANDARD_CONCEPT_CAPTION": "Standard",
-            "CONCEPT_CLASS_ID": "Clinical Finding",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        },
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 45889365,
-            "STANDARD_CONCEPT": "C",
-            "CONCEPT_CODE": "1012740",
-            "VOCABULARY_ID": "CPT4",
-            "CONCEPT_NAME": "Dialysis Services and Procedures",
-            "DOMAIN_ID": "Procedure",
-            "STANDARD_CONCEPT_CAPTION": "Classification",
-            "CONCEPT_CLASS_ID": "CPT4 Hierarchy",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        },
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 4090651,
-            "STANDARD_CONCEPT": "S",
-            "CONCEPT_CODE": "251859005",
-            "VOCABULARY_ID": "SNOMED",
-            "CONCEPT_NAME": "Dialysis finding",
-            "DOMAIN_ID": "Observation",
-            "STANDARD_CONCEPT_CAPTION": "Standard",
-            "CONCEPT_CLASS_ID": "Clinical Finding",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        },
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 4032243,
-            "STANDARD_CONCEPT": "S",
-            "CONCEPT_CODE": "108241001",
-            "VOCABULARY_ID": "SNOMED",
-            "CONCEPT_NAME": "Dialysis procedure",
-            "DOMAIN_ID": "Procedure",
-            "STANDARD_CONCEPT_CAPTION": "Standard",
-            "CONCEPT_CLASS_ID": "Procedure",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        },
-        {
-          "isExcluded": false,
-          "concept": {
-            "INVALID_REASON_CAPTION": "Valid",
-            "CONCEPT_ID": 38003431,
-            "STANDARD_CONCEPT": "S",
-            "CONCEPT_CODE": "0821",
-            "VOCABULARY_ID": "Revenue Code",
-            "CONCEPT_NAME": "Hemodialysis - Outpatient or Home - Hemodialysis/Composite or other rate",
-            "DOMAIN_ID": "Revenue Code",
-            "STANDARD_CONCEPT_CAPTION": "Standard",
-            "CONCEPT_CLASS_ID": "Revenue Code",
-            "INVALID_REASON": "V"
-          },
-          "includeMapped": false,
-          "includeDescendants": true
-        }
-      ]},
-      "name": "Dialysis",
-      "id": 5
-    }
-  ],
-  "EndStrategy": {"DateOffset": {
-    "DateField": "StartDate",
-    "Offset": 1
-  }},
-  "cdmVersionRange": ">=5.0.0",
-  "CensoringCriteria": [],
-  "AdditionalCriteria": {
-    "CriteriaList": [{
-      "RestrictVisit": false,
-      "StartWindow": {
-        "UseEventEnd": false,
-        "Start": {"Coeff": -1},
-        "End": {
-          "Days": 0,
-          "Coeff": 1
-        },
-        "UseIndexEnd": false
-      },
-      "IgnoreObservationPeriod": false,
-      "EndWindow": {
-        "UseEventEnd": true,
-        "Start": {
-          "Days": 0,
-          "Coeff": -1
-        },
-        "End": {"Coeff": 1},
-        "UseIndexEnd": false
-      },
-      "Criteria": {"VisitOccurrence": {
-        "CodesetId": 4,
-        "VisitTypeExclude": false
-      }},
-      "Occurrence": {
-        "Type": 2,
-        "IsDistinct": false,
-        "Count": 1
-      }
-    }],
-    "Type": "ALL",
-    "DemographicCriteriaList": [],
-    "Groups": []
-  },
-  "QualifiedLimit": {"Type": "All"},
-  "InclusionRules": [],
-  "PrimaryCriteria": {
-    "CriteriaList": [
-      {"ProcedureOccurrence": {
-        "CodesetId": 5,
-        "ProcedureTypeExclude": false
-      }},
-      {"Observation": {
-        "ObservationTypeExclude": false,
-        "CodesetId": 5
-      }},
-      {"ConditionOccurrence": {
-        "ConditionTypeExclude": false,
-        "CodesetId": 5
-      }}
-    ],
-    "PrimaryCriteriaLimit": {"Type": "All"},
-    "ObservationWindow": {
-      "PostDays": 0,
-      "PriorDays": 0
-    }
-  }
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ProcedureOccurrence" : {
+					"CodesetId" : 5,
+					"ProcedureTypeExclude" : false
+				}
+			},
+			{
+				"Observation" : {
+					"CodesetId" : 5,
+					"ObservationTypeExclude" : false
+				}
+			},
+			{
+				"ConditionOccurrence" : {
+					"CodesetId" : 5,
+					"ConditionTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"AdditionalCriteria" : {
+		"Type" : "ALL",
+		"CriteriaList" : [
+			{
+				"Criteria" : {
+					"VisitOccurrence" : {
+						"CodesetId" : 4,
+						"VisitTypeExclude" : false
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Coeff" : -1
+					},
+					"End" : {
+						"Days" : 0,
+						"Coeff" : 1
+					},
+					"UseIndexEnd" : false,
+					"UseEventEnd" : false
+				},
+				"EndWindow" : {
+					"Start" : {
+						"Days" : 0,
+						"Coeff" : -1
+					},
+					"End" : {
+						"Coeff" : 1
+					},
+					"UseIndexEnd" : false,
+					"UseEventEnd" : true
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			}
+		],
+		"DemographicCriteriaList" : [],
+		"Groups" : []
+	},
+	"ConceptSets" : [
+		{
+			"id" : 4,
+			"name" : "Inpatient Visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 5,
+			"name" : "Dialysis",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4027133,
+							"CONCEPT_NAME" : "Complication of dialysis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "19765000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45889365,
+							"CONCEPT_NAME" : "Dialysis Services and Procedures",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1012740",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4090651,
+							"CONCEPT_NAME" : "Dialysis finding",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "251859005",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4032243,
+							"CONCEPT_NAME" : "Dialysis procedure",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "108241001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 38003431,
+							"CONCEPT_NAME" : "Hemodialysis - Outpatient or Home - Hemodialysis/Composite or other rate",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0821",
+							"DOMAIN_ID" : "Revenue Code",
+							"VOCABULARY_ID" : "Revenue Code",
+							"CONCEPT_CLASS_ID" : "Revenue Code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "All"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "StartDate",
+			"Offset" : 1
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 7
+	},
+	"CensorWindow" : {}
 }
