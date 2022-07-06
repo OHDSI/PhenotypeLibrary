@@ -43,6 +43,10 @@ listPhenotypes <- function() {
 #' 
 #' @export
 getPlCohortDefinitionSet <- function(cohortIds) {
+  errorMessages <- checkmate::makeAssertCollection()
+  checkmate::assertIntegerish(cohortIds, min.len = 1, add = errorMessages)
+  checkmate::reportAssertions(collection = errorMessages)
+  
   cohorts  <- listPhenotypes() %>%
     filter(.data$cohortId %in% cohortIds)
   jsonFolder <- system.file("cohorts", package = "PhenotypeLibrary")
