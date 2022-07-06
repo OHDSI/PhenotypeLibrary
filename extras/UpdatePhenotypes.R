@@ -65,7 +65,7 @@ description <- readLines("DESCRIPTION")
 
 # Increment minor version:
 versionLineNr <- grep("Version: .*$", description)
-version <- sub("Version: ", "", descriptionFile[versionLineNr])
+version <- sub("Version: ", "", description[versionLineNr])
 versionParts <- strsplit(version, "\\.")[[1]]
 versionParts[2] <- as.integer(versionParts[2]) + 1
 newVersion <- paste(versionParts, collapse = ".")
@@ -73,6 +73,6 @@ description[versionLineNr] <- sprintf("Version: %s", newVersion)
 
 # Set date:
 dateLineNr <- grep("Date: .*$", description)
-descriptionFile[dateLineNr]  <- sprintf("Date: %s", format(Sys.Date(),"%Y-%m-%d"))
+description[dateLineNr]  <- sprintf("Date: %s", format(Sys.Date(),"%Y-%m-%d"))
 
 writeLines(description, con = "DESCRIPTION")
