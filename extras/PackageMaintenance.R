@@ -1,6 +1,6 @@
 # Copyright 2022 Observational Health Data Sciences and Informatics
 #
-# This file is part of phenotypeLibrary
+# This file is part of PhenotypeLibrary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,14 +20,13 @@ OhdsiRTools::checkUsagePackage("phenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
 # Create manual -----------------------------------------------------------
-unlink("extras/UsingSkeletonPackage.pdf")
-shell("R CMD Rd2pdf ./ --output=extras/UsingSkeletonPackage.pdf")
+unlink("extras/PhenotypeLibrary.pdf")
+shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
 
-# Store environment in which the study was executed -----------------------
-OhdsiRTools::createRenvLockFile(rootPackage = "phenotypeLibrary",
-                                mode = "description",
-                                ohdsiGitHubPackages = unique(c(OhdsiRTools::getOhdsiGitHubPackages())),
-                                includeRootPackage = FALSE)
+pkgdown::build_site()
+OhdsiRTools::fixHadesLogo()
+
+
 
 
 

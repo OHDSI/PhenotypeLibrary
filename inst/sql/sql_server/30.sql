@@ -139,10 +139,10 @@ with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date,
     LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
     GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
   ) MG -- matching groups
-{1 != 0}?{
+
   -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
   WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),1)-1)
-}
+
 )
 select event_id, person_id, start_date, end_date, op_start_date, op_end_date
 into #included_events
@@ -230,14 +230,14 @@ select @target_cohort_id as cohort_definition_id, person_id, start_date, end_dat
 FROM #final_cohort CO
 ;
 
-{1 != 0}?{
+
 -- BEGIN: Censored Stats
 
 delete from @results_database_schema.cohort_censor_stats where cohort_definition_id = @target_cohort_id;
 
 -- END: Censored Stats
-}
-{1 != 0 & 1 != 0}?{
+
+
 
 -- Create a temp table of inclusion rule rows for joining in the inclusion rule impact analysis
 
@@ -371,7 +371,7 @@ DROP TABLE #best_events;
 
 TRUNCATE TABLE #inclusion_rules;
 DROP TABLE #inclusion_rules;
-}
+
 
 
 
