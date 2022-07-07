@@ -25,9 +25,3 @@ shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
 
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
-
-
-
-
-
-

@@ -21,11 +21,11 @@
 #'
 #' @examples
 #' listPhenotypes()
-#' 
+#'
 #' @export
 listPhenotypes <- function() {
   cohorts <- readr::read_csv(system.file("Cohorts.csv", package = "PhenotypeLibrary"), col_types = readr::cols())
-  return(cohorts) 
+  return(cohorts)
 }
 
 #' Get a cohort definition set
@@ -33,25 +33,25 @@ listPhenotypes <- function() {
 #' @param cohortIds  IDs of cohorts to extraction from the library.
 #'
 #' @return
-#' A tibble with the cohort ID, name, sql, and JSON for the provided cohort IDs. Can be used by the 
+#' A tibble with the cohort ID, name, sql, and JSON for the provided cohort IDs. Can be used by the
 #' `CohortGenerator` package.
-#' 
+#'
 #' @examples
 #' cohorts <- listPhenotypes()
 #' subsetIds <- cohorts$cohortId[1:3]
 #' getPlCohortDefinitionSet(subsetIds)
-#' 
+#'
 #' @export
 getPlCohortDefinitionSet <- function(cohortIds) {
   errorMessages <- checkmate::makeAssertCollection()
   checkmate::assertIntegerish(cohortIds, min.len = 1, add = errorMessages)
   checkmate::reportAssertions(collection = errorMessages)
-  
-  cohorts  <- listPhenotypes() %>%
+
+  cohorts <- listPhenotypes() %>%
     filter(.data$cohortId %in% cohortIds)
   jsonFolder <- system.file("cohorts", package = "PhenotypeLibrary")
   sqlFolder <- system.file("sql", "sql_server", package = "PhenotypeLibrary")
-  
+
   readFile <- function(fileName) {
     if (file.exists(fileName)) {
       return(paste(readr::read_lines(fileName), collapse = "\n"))
@@ -59,18 +59,20 @@ getPlCohortDefinitionSet <- function(cohortIds) {
       stop(paste0("File not found: ", fileName))
     }
   }
-  
+
   getJsonAndSql <- function(i) {
     json <- readFile(file.path(jsonFolder, paste0(cohorts$cohortId[i], ".json")))
     sql <- readFile(file.path(sqlFolder, paste0(cohorts$cohortId[i], ".sql")))
     cohorts[i, ] %>%
-      mutate(json = !!json,
-             sql = !!sql) %>%
-    return()
+      mutate(
+        json = !!json,
+        sql = !!sql
+      ) %>%
+      return()
   }
-  
+
   result <- lapply(seq_len(nrow(cohorts)), getJsonAndSql) %>%
     bind_rows()
-  
+
   return(result)
 }

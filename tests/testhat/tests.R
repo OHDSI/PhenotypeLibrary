@@ -7,10 +7,12 @@ testthat::test_that(desc = "Function listPhenotypes", code = {
 testthat::test_that(desc = "Function getPlCohortDefinitionSet", code = {
   phenotypes <- PhenotypeLibrary::listPhenotypes()
   cohortDefinitionSet <-
-    PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = phenotypes[1,]$cohortId)
+    PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = phenotypes[1, ]$cohortId)
   testthat::expect_true(is.data.frame(cohortDefinitionSet))
-  testthat::expect_equal(object = nrow(cohortDefinitionSet),
-                         expected = 1)
+  testthat::expect_equal(
+    object = nrow(cohortDefinitionSet),
+    expected = 1
+  )
   testthat::expect_equal(
     object = colnames(cohortDefinitionSet) %>% sort(),
     expected = c("cohortId", "cohortName", "json", "sql")
