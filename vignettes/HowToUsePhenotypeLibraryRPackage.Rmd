@@ -24,12 +24,13 @@ knitr::opts_chunk$set(
 ```
 
 
-# Introduction
+# Installation
 - This  is an installable R-package that may be installed as follows: 
 ```{r tidy=FALSE,eval=FALSE}
   remotes::install_github("OHDSI/PhenotypeLibrary")
 ```
 
+# Retrieval
 - The list of cohort definitions available may be retrieved as follows: 
 ```{r tidy=FALSE,eval=TRUE}
   PhenotypeLibrary::listPhenotypes()
@@ -44,7 +45,7 @@ knitr::opts_chunk$set(
 
 - cohortDefinitionSet is now a data.frame with specifications for the cohort ids 1, 2 and 3. For cohorts that conform to OHDSI Circe specifications, the field json is the cohort json specification that may be posted into your Atlas instance. The SQL is the SQL rendered from the JSON. For cohorts that do not conform to OHDSI Circe specification, only the SQL is provided and the json is left empty.
 
-
+# Use
 - You can instantiate the cohorts in your environment as follows using (OHDSI/CohortGenerator)[https://github.com/OHDSI/CohortGenerator].
 
 ```{r tidy=FALSE,eval=FALSE}

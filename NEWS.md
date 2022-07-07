@@ -1,3 +1,10 @@
+PhenotypeLibrary 3.1.1
+======================
+
+Added Vignette: How to use Phenotype Library R Package
+Added tests to conform to HADES
+This package is now part of OHDSI HADES.
+
 PhenotypeLibrary 3.1.0
 ======================
 
