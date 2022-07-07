@@ -1,0 +1,95 @@
+---
+title: "How to Use PhenotypeLibrary R Package"
+author: "Gowtham A. Rao"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: 
+    toc: yes     
+  html_document:
+    number_sections: yes
+    toc: yes  
+vignette: >
+  %\VignetteIndexEntry{Creating a study package}
+  %\VignetteEncoding{UTF-8}    
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE)
+```
+
+
+# Installation
+- This  is an installable R-package that may be installed as follows: 
+```{r tidy=FALSE,eval=FALSE}
+  remotes::install_github("OHDSI/PhenotypeLibrary")
+```
+
+# Retrieval
+- The list of cohort definitions available may be retrieved as follows: 
+```{r tidy=FALSE,eval=TRUE}
+  PhenotypeLibrary::listPhenotypes()
+```
+
+- You can extract one or more cohort definitions into a cohortDefinitionSet object as
+```{r tidy=FALSE,eval=TRUE}
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = c(1, 2, 3))
+  
+  cohortDefinitionSet
+```
+
+- cohortDefinitionSet is now a data.frame with specifications for the cohort ids 1, 2 and 3. For cohorts that conform to OHDSI Circe specifications, the field json is the cohort json specification that may be posted into your Atlas instance. The SQL is the SQL rendered from the JSON. For cohorts that do not conform to OHDSI Circe specification, only the SQL is provided and the json is left empty.
+
+# Use
+- You can instantiate the cohorts in your environment as follows using (OHDSI/CohortGenerator)[https://github.com/OHDSI/CohortGenerator].
+
+```{r tidy=FALSE,eval=FALSE}
+connectionDetails <-
+  DatabaseConnector::createConnectionDetails(
+    dbms = "postgresql",
+    server = "some.server.com/ohdsi",
+    user = "joe",
+    password = "secret"
+  )
+ cdmDatabaseSchema <- "cdm_synpuf"
+ cohortDatabaseSchema <- "scratch.dbo"
+ cohortTables <- CohortGenerator::getCohortTableNames()
+ CohortGenerator::generateCohortSet(
+                                      connectionDetails = connectionDetails,
+                                      cdmDatabaseSchema = cdmDatabaseSchema,
+                                      cohortDatabaseSchema = cohortDatabaseSchema,
+                                      cohortTableNames = cohortTables,
+                                      cohortDefinitionSet = cohortDefinitionSet
+                                    )
+```
+
+
+
+- You can also run cohort diagnostics on this cohortDefinitionSet object as follows:
+```{r tidy=FALSE,eval=FALSE}
+
+databaseId <- "synpuf"
+
+databaseName <-
+  "Medicare Claims Synthetic Public Use Files (SynPUFs)"
+
+databaseDescription <-
+  "Medicare Claims Synthetic Public Use Files (SynPUFs) were created to allow interested parties to gain familiarity using Medicare claims data while protecting beneficiary privacy. These files are intended to promote development of software and applications that utilize files in this format, train researchers on the use and complexities of Centers for Medicare and Medicaid Services (CMS) claims, and support safe data mining innovations. The SynPUFs were created by combining randomized information from multiple unique beneficiaries and changing variable values. This randomization and combining of beneficiary information ensures privacy of health information."
+
+CohortDiagnostics::executeDiagnostics(
+  cohortDefinitionSet = cohortDefinitionSet,
+  exportFolder = outputFolder,
+  databaseId = databaseId,
+  databaseName = databaseName,
+  databaseDescription = databaseDescription,
+  cohortDatabaseSchema = cohortDatabaseSchema,
+  cdmDatabaseSchema = cdmDatabaseSchema,
+  connectionDetails = connectionDetails,
+  cohortTableNames = cohortTableNames
+)
+
+```

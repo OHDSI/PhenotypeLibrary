@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.1</span>
       </span>
     </div>
 
@@ -25,6 +25,16 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HowToUsePhenotypeLibraryRPackage.html">How to Use PhenotypeLibrary R Package</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -79,11 +89,11 @@
 <span class="r-in"><span><span class="va">subsetIds</span> <span class="op">&lt;-</span> <span class="va">cohorts</span><span class="op">$</span><span class="va">cohortId</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="fu">getPlCohortDefinitionSet</span><span class="op">(</span><span class="va">subsetIds</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName                      json                            sql  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       29 Autoimmune condition (FP)       <span style="color: #949494;">"</span>{\n  \"ExpressionLimit\": {\"~ <span style="color: #949494;">"</span>CRE~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>       30 Tuberculosis (FP)               <span style="color: #949494;">"</span>{\n  \"ExpressionLimit\": {\"~ <span style="color: #949494;">"</span>CRE~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>       10 Nausea or Vomiting (3Pe, 30Era) <span style="color: #949494;">"</span>{\n  \"ExpressionLimit\": {\"~ <span style="color: #949494;">"</span>CRE~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName                                               json   sql  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era) <span style="color: #949494;">"</span>{\n\~ <span style="color: #949494;">"</span>CRE~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        3 Cough (3Ps, 30Era)                                       <span style="color: #949494;">"</span>{\n\~ <span style="color: #949494;">"</span>CRE~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        4 Diarrhea (7Ps, 30Era)                                    <span style="color: #949494;">"</span>{\n\~ <span style="color: #949494;">"</span>CRE~</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

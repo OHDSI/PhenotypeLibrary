@@ -6,13 +6,15 @@ PhenotypeLibrary
 
 Introduction
 ============
-PhenotypeLibrary is a repository to store the content of the OHDSI Phenotype library.
+PhenotypeLibrary is a repository to store the content of the OHDSI Phenotype library. These phenotype/cohort definitions have under gone an OHDSI best practice Phenotype Development and Evaluation Process by the OHDSI Phenotype Development and Evaluation work group. This [workgroup](https://forums.ohdsi.org/t/ohdsi-phenotype-library-announcements/16910), through a OHDSI community wide collaboration effort, evaluates and maintains cohort definitions in an [Atlas instance](https://atlas-phenotype.ohdsi.org/#/home). Definitions that have graduated through this process are published in this repository, and are thus considered high quality cohort definitions.
+
+cohortId's in this repository are persistent (similar to OMOP Concept Id) i.e. once published it maybe expected to stay the same between releases of the Phenotype library (i.e. backward compatible). Version numbers in this repository follows [HADES](https://ohdsi.github.io/Hades/index.html) convention, and changes (addition or deletions) are reported as [News](https://ohdsi.github.io/PhenotypeLibrary/news/index.html). Phenotype Development and Evaluation Workgroup will be responsible to maintain a cadence for the cohort life cycle - including deprecation and additions.
 
 Features
 ========
-- Contains all approved phenotypes (ie. cohort definitions) of the OHDSI Phenotype Library.
+- Contains all phenotypes (ie. cohort definitions) that have been approved by the OHDSI Phenotype Development and Evaluation workgroup.
 - Phenotypes are available as SQL statements and JSON.
-- Can directly be used with the OHDSI [CohortGenerator](https://ohdsi.github.io/CohortGenerator/) package to instantiate cohorts.
+- Can provide cohortDefinitionSet object that maybe directly used as input by other OHDSI R packages like OHDSI [CohortGenerator](https://ohdsi.github.io/CohortGenerator/) and [CohortGenerator] (https://ohdsi.github.io/CohortDiagnostics/). See accompanying vignettes.
 
 Technology
 ============
