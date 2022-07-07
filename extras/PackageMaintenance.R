@@ -23,5 +23,12 @@ OhdsiRTools::updateCopyrightYearFolder()
 unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
 
+# Create Vignettes---------------------------------------------------------
+rmarkdown::render("vignettes/HowToUsePhenotypeLibraryRPackage.Rmd",
+                  output_file = "../inst/doc/HowToUsePhenotypeLibraryRPackage.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+# Build site---------------------------------------------------------
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
