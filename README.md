@@ -4,6 +4,8 @@ PhenotypeLibrary
 [![Build Status](https://github.com/OHDSI/PhenotypeLibrary/workflows/R-CMD-check/badge.svg)](https://github.com/OHDSI/PhenotypeLibrary/actions?query=workflow%3AR-CMD-check)
 [![codecov.io](https://codecov.io/github/OHDSI/PhenotypeLibrary/coverage.svg?branch=main)](https://codecov.io/github/OHDSI/PhenotypeLibrary?branch=main)
 
+PhenotypeLibrary is part of [HADES](https://ohdsi.github.io/Hades).
+
 Introduction
 ============
 PhenotypeLibrary is a repository to store the content of the OHDSI Phenotype library. These phenotype/cohort definitions have under gone an OHDSI best practice Phenotype Development and Evaluation Process by the OHDSI Phenotype Development and Evaluation work group. This [workgroup](https://forums.ohdsi.org/t/ohdsi-phenotype-library-announcements/16910), through a OHDSI community wide collaboration effort, evaluates and maintains cohort definitions in an [Atlas instance](https://atlas-phenotype.ohdsi.org/#/home). Definitions that have graduated through this process are published in this repository, and are thus considered high quality cohort definitions.
