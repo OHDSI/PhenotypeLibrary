@@ -72,6 +72,12 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getPhenotypeLog</span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="listPhenotypes.html">listPhenotypes</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">cohortId</span><span class="op">)</span></span></code></pre></div>
     </div>
 
+    <div id="arguments">
+    <h2>Arguments</h2>
+    <dl><dt>cohortIds</dt>
+<dd><p>IDs of cohorts to extraction from the library.</p></dd>
+
+</dl></div>
     <div id="value">
     <h2>Value</h2>
     
@@ -79,6 +85,9 @@
 <p>Returns a table with one row per cohort definitions with log information such as its release cycle.
 Example, this function gives us insight on when a cohort definition was added/updated/deprecated
 by the OHDSI PhenotypeLibrary.</p>
+
+
+<p>A tibble.</p>
     </div>
 
     <div id="ref-examples">

@@ -87,7 +87,7 @@ getPlCohortDefinitionSet <- function(cohortIds) {
 #'
 #' @return
 #' A tibble.
-#' 
+#'
 #' @examples
 #' getPhenotypeReport(cohortIds = c(1, 2))
 #'
