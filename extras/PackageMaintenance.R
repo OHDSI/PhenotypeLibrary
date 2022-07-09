@@ -16,7 +16,7 @@
 
 # Format and check code ---------------------------------------------------
 styler::style_pkg()
-OhdsiRTools::checkUsagePackage("phenotypeLibrary")
+OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
 # Create manual -----------------------------------------------------------
@@ -24,8 +24,15 @@ unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
 
 # Create Vignettes---------------------------------------------------------
+dir.create(file.path("inst", "doc"), showWarnings = FALSE, recursive = TRUE)
 rmarkdown::render("vignettes/HowToUsePhenotypeLibraryRPackage.Rmd",
                   output_file = "../inst/doc/HowToUsePhenotypeLibraryRPackage.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/CohortDefinitionsInOhdsiPhenotypeLibrary.Rmd",
+                  output_file = "../inst/doc/CohortDefinitionsInOhdsiPhenotypeLibrary.pdf",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))

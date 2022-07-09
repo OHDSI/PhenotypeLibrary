@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.2</span>
       </span>
     </div>
 
@@ -50,6 +50,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/CohortDefinitionsInOhdsiPhenotypeLibrary.html">Cohort Definitions in OHDSI Phenotype Library</a>
+    </li>
+    <li>
       <a href="articles/HowToUsePhenotypeLibraryRPackage.html">How to Use PhenotypeLibrary R Package</a>
     </li>
   </ul>
@@ -89,22 +92,22 @@
 <div class="section level1">
 <h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h1>
-<p>PhenotypeLibrary is a repository to store the content of the OHDSI Phenotype library. These phenotype/cohort definitions have under gone an OHDSI best practice Phenotype Development and Evaluation Process by the OHDSI Phenotype Development and Evaluation work group. This <a href="https://forums.ohdsi.org/t/ohdsi-phenotype-library-announcements/16910" class="external-link">workgroup</a>, through a OHDSI community wide collaboration effort, evaluates and maintains cohort definitions in an <a href="https://atlas-phenotype.ohdsi.org/#/home" class="external-link">Atlas instance</a>. Definitions that have graduated through this process are published in this repository, and are thus considered high quality cohort definitions.</p>
-<p>cohortId’s in this repository are persistent (similar to OMOP Concept Id) i.e. once published it maybe expected to stay the same between releases of the Phenotype library (i.e. backward compatible). Version numbers in this repository follows <a href="https://ohdsi.github.io/Hades/index.html" class="external-link">HADES</a> convention, and changes (addition or deletions) are reported as <a href="https://ohdsi.github.io/PhenotypeLibrary/news/index.html" class="external-link">News</a>. Phenotype Development and Evaluation Workgroup will be responsible to maintain a cadence for the cohort life cycle - including deprecation and additions.</p>
+<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is a repository to store the content of the <a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">OHDSI Phenotype Library</a> (Library). These phenotype/cohort definitions have under gone an OHDSI best practice Phenotype Development and Evaluation Process by the <a href="https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5" class="external-link">OHDSI Phenotype Development and Evaluation Work group</a> (work group). This <a href="https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5" class="external-link">Work group</a>, through a OHDSI community wide collaboration effort, evaluates and maintains cohort definitions in an <a href="https://atlas-phenotype.ohdsi.org/#/home" class="external-link">Atlas instance</a>. Definitions that have graduated through this process are published in this repository, and are thus considered high quality cohort definitions.</p>
+<p>cohortId’s in this repository are persistent (similar to OMOP Concept Id) i.e. once published it maybe expected to stay the same between releases of the Phenotype library (i.e. backward compatible). Version numbers in this repository follows <a href="https://ohdsi.github.io/Hades/index.html" class="external-link">HADES</a> convention, and changes (addition or deletions) are reported as <a href="https://ohdsi.github.io/PhenotypeLibrary/news/index.html" class="external-link">News</a>. <a href="https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5" class="external-link">Work group</a> will be responsible to maintain a cadence for the cohort life cycle - including deprecation and additions.</p>
 </div>
 <div class="section level1">
 <h1 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h1>
 <ul>
-<li>Contains all phenotypes (ie. cohort definitions) that have been approved by the OHDSI Phenotype Development and Evaluation workgroup.</li>
+<li>Contains all phenotypes (i.e. cohort definitions) that have been approved by the OHDSI Phenotype Development and Evaluation workgroup.</li>
 <li>Phenotypes are available as SQL statements and JSON.</li>
-<li>Can provide cohortDefinitionSet object that maybe directly used as input by other OHDSI R packages like OHDSI <a href="https://ohdsi.github.io/CohortGenerator/" class="external-link">CohortGenerator</a> and [CohortGenerator] (<a href="https://ohdsi.github.io/CohortDiagnostics/" class="external-link uri">https://ohdsi.github.io/CohortDiagnostics/</a>). See accompanying vignettes.</li>
+<li>Can provide cohortDefinitionSet object that maybe directly used as input by other OHDSI R packages like OHDSI <a href="https://ohdsi.github.io/CohortGenerator/" class="external-link">CohortGenerator</a> and <a href="https://ohdsi.github.io/CohortDiagnostics/" class="external-link">CohortDiagnostics</a>. See accompanying vignettes.</li>
 </ul>
 </div>
 <div class="section level1">
 <h1 id="technology">Technology<a class="anchor" aria-label="anchor" href="#technology"></a>
 </h1>
-<p>PhenotypeLibrary is an R package.</p>
+<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is an R package.</p>
 </div>
 <div class="section level1">
 <h1 id="system-requirements">System Requirements<a class="anchor" aria-label="anchor" href="#system-requirements"></a>
@@ -115,8 +118,8 @@
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h1>
 <ol style="list-style-type: decimal">
-<li><p>See the instructions <a href="https://ohdsi.github.io/Hades/rSetup.html" class="external-link">here</a> for configuring your R environment, including RTools and Java.</p></li>
-<li><p>In R, use the following commands to download and install PhenotypeLibrary:</p></li>
+<li><p>See <a href="https://ohdsi.github.io/Hades/rSetup.html" class="external-link">HADES instructions</a> for configuring your R environment, including RTools and Java.</p></li>
+<li><p>In R, use the following commands to download and install <a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a>:</p></li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
@@ -140,21 +143,21 @@
 <div class="section level1">
 <h1 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h1>
-<p>Read <a href="https://ohdsi.github.io/Hades/contribute.html" class="external-link">here</a> how you can contribute to this package.</p>
+<p>Read <a href="https://ohdsi.github.io/Hades/contribute.html" class="external-link">HADES contribution</a> how you can contribute to thee software in this package. To contribute to the Cohort Definitions, Phenotype Development and Evaluation - please visit the Microsoft Teams website of the <a href="https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5" class="external-link">OHDSI Phenotype Development and Evaluation Work group</a>.</p>
 </div>
 <div class="section level1">
 <h1 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h1>
-<p>PhenotypeLibrary is licensed under Apache License 2.0</p>
+<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is licensed under Apache License 2.0</p>
 </div>
 <div class="section level1">
 <h1 id="development">Development<a class="anchor" aria-label="anchor" href="#development"></a>
 </h1>
-<p>PhenotypeLibrary is being developed in R Studio.</p>
+<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is being developed in R Studio.</p>
 <div class="section level3">
 <h3 id="development-status">Development status<a class="anchor" aria-label="anchor" href="#development-status"></a>
 </h3>
-<p>PhenotypeLibrary is under development.</p>
+<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is under development.</p>
 </div>
 </div>
 
