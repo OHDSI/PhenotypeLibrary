@@ -55,8 +55,6 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   readFile <- function(fileName) {
     if (file.exists(fileName)) {
       return(paste(readr::read_lines(fileName), collapse = "\n"))
-    } else {
-      stop(paste0("File not found: ", fileName))
     }
   }
 
