@@ -20,6 +20,6 @@ A tibble.
 Get phenotype log
 }
 \examples{
-getPhenotypeReport(cohortIds = c(1, 2))
+getPhenotypeLog(cohortIds = c(1, 2))
 
 }
