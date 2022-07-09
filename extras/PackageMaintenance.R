@@ -19,6 +19,12 @@ styler::style_pkg()
 OhdsiRTools::checkUsagePackage("phenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
+# Store environment in which the study was executed -----------------------
+OhdsiRTools::createRenvLockFile(rootPackage = "SkeletonCohortDiagnosticsStudy",
+                                mode = "description",
+                                ohdsiGitHubPackages = unique(c(OhdsiRTools::getOhdsiGitHubPackages(), 'PhenotypeLibrary')),
+                                includeRootPackage = FALSE)
+
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
@@ -32,3 +38,5 @@ rmarkdown::render("vignettes/HowToUsePhenotypeLibraryRPackage.Rmd",
 # Build site---------------------------------------------------------
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
+
+
