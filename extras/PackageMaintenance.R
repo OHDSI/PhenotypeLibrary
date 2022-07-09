@@ -24,6 +24,7 @@ unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
 
 # Create Vignettes---------------------------------------------------------
+dir.create(file.path("inst", "doc"), showWarnings = FALSE, recursive = TRUE)
 rmarkdown::render("vignettes/HowToUsePhenotypeLibraryRPackage.Rmd",
                   output_file = "../inst/doc/HowToUsePhenotypeLibraryRPackage.pdf",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
@@ -38,5 +39,3 @@ rmarkdown::render("vignettes/CohortDefinitionsInOhdsiPhenotypeLibrary.Rmd",
 # Build site---------------------------------------------------------
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
-
-
