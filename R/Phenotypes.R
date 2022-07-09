@@ -83,6 +83,11 @@ getPlCohortDefinitionSet <- function(cohortIds) {
 #' Example, this function gives us insight on when a cohort definition was added/updated/deprecated
 #' by the OHDSI PhenotypeLibrary.
 #'
+#' @param cohortIds  IDs of cohorts to extraction from the library.
+#'
+#' @return
+#' A tibble.
+#' 
 #' @examples
 #' getPhenotypeReport(cohortIds = c(1, 2))
 #'

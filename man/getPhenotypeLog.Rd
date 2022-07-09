@@ -6,10 +6,15 @@
 \usage{
 getPhenotypeLog(cohortIds = listPhenotypes()$cohortId)
 }
+\arguments{
+\item{cohortIds}{IDs of cohorts to extraction from the library.}
+}
 \value{
 Returns a table with one row per cohort definitions with log information such as its release cycle.
 Example, this function gives us insight on when a cohort definition was added/updated/deprecated
 by the OHDSI PhenotypeLibrary.
+
+A tibble.
 }
 \description{
 Get phenotype log
