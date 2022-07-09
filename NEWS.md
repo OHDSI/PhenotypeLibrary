@@ -1,3 +1,9 @@
+PhenotypeLibrary 3.1.2
+======================
+
+Added Vignette: Cohort Definitions in OHDSI Phenotype Library
+Added new function: to get log of phenotype changes
+
 PhenotypeLibrary 3.1.1
 ======================
 

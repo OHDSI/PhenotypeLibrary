@@ -1,0 +1,43 @@
+---
+title: "Cohort Definitions in OHDSI Phenotype Library"
+author: "Gowtham A. Rao"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: 
+    toc: yes     
+  html_document:
+    number_sections: yes
+    toc: yes  
+vignette: >
+  %\VignetteIndexEntry{Creating a study package}
+  %\VignetteEncoding{UTF-8}    
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE)
+```
+
+
+```{r tidy=FALSE,eval=TRUE}
+
+  camelCaseToTitleCase <- function(string) {
+    errorMessages <- checkmate::makeAssertCollection()
+    checkmate::assertCharacter(string, add = errorMessages)
+    checkmate::reportAssertions(collection = errorMessages)
+  
+    string <- gsub("([A-Z])", " \\1", string)
+    string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
+    substr(string, 1, 1) <- toupper(substr(string, 1, 1))
+    return(string)
+  }
+
+  report <- PhenotypeLibrary::getPhenotypeLog()
+  colnames(report) <- camelCaseToTitleCase(colnames(report))
+  opts <- options(knitr.kable.NA = "", format = "latex", escape = TRUE)
+  knitr::kable(x = report)
+```

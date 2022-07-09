@@ -92,17 +92,19 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
     readr::read_csv(
       system.file("PhenotypeLog.csv", package = "PhenotypeLibrary"),
       col_types = readr::cols()
-    ) %>% 
-    dplyr::filter(.data$cohortId %in% c(cohortIds)) %>% 
-    dplyr::mutate(addedVersion = as.character(.data$addedVersion),
-                  addedDate = as.Date(.data$addedDate),
-                  addedNotes = as.character(.data$addedNotes),
-                  deprecatedVersion = as.character(.data$deprecatedVersion),
-                  deprecatedDate = as.Date(.data$deprecatedDate),
-                  deprecatedNotes = as.character(.data$deprecatedNotes),
-                  updatedVersion = as.character(.data$updatedVersion),
-                  updatedDate = as.Date(.data$updatedDate),
-                  updatedNotes = as.character(.data$updatedNotes)) %>% 
+    ) %>%
+    dplyr::filter(.data$cohortId %in% c(cohortIds)) %>%
+    dplyr::mutate(
+      addedVersion = as.character(.data$addedVersion),
+      addedDate = as.Date(.data$addedDate),
+      addedNotes = as.character(.data$addedNotes),
+      deprecatedVersion = as.character(.data$deprecatedVersion),
+      deprecatedDate = as.Date(.data$deprecatedDate),
+      deprecatedNotes = as.character(.data$deprecatedNotes),
+      updatedVersion = as.character(.data$updatedVersion),
+      updatedDate = as.Date(.data$updatedDate),
+      updatedNotes = as.character(.data$updatedNotes)
+    ) %>%
     dplyr::arrange(.data$cohortId)
   return(log)
 }
