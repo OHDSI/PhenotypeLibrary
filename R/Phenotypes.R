@@ -76,3 +76,26 @@ getPlCohortDefinitionSet <- function(cohortIds) {
 
   return(result)
 }
+
+
+#' Get phenotype log
+#'
+#' @return
+#' Returns a table with one row per cohort definitions with log information such as its release cycle.
+#' Example, this function gives us insight on when a cohort definition was added/updated/deprecated
+#' by the OHDSI PhenotypeLibrary.
+#'
+#' @examples
+#' getPhenotypeReport(cohortIds = c(1, 2))
+#'
+#' @export
+getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
+  log <-
+    readr::read_csv(
+      system.file("PhenotypeLog.csv", package = "PhenotypeLibrary"),
+      col_types = readr::cols()
+    ) %>% 
+    dplyr::filter(.data$cohortId %in% c(cohortIds)) %>% 
+    dplyr::arrange(.data$cohortId)
+  return(log)
+}

@@ -18,3 +18,9 @@ testthat::test_that(desc = "Function getPlCohortDefinitionSet", code = {
     expected = c("cohortId", "cohortName", "json", "sql")
   )
 })
+
+testthat::test_that(desc = "Function getPhenotypeLog", code = {
+  data <- PhenotypeLibrary::getPhenotypeLog()
+  testthat::expect_true(is.data.frame(data))
+  testthat::expect_gte(object = nrow(data), expected = 1)
+})
