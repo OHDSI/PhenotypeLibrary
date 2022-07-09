@@ -16,14 +16,8 @@
 
 # Format and check code ---------------------------------------------------
 styler::style_pkg()
-OhdsiRTools::checkUsagePackage("phenotypeLibrary")
+OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
-
-# Store environment in which the study was executed -----------------------
-OhdsiRTools::createRenvLockFile(rootPackage = "SkeletonCohortDiagnosticsStudy",
-                                mode = "description",
-                                ohdsiGitHubPackages = unique(c(OhdsiRTools::getOhdsiGitHubPackages(), 'PhenotypeLibrary')),
-                                includeRootPackage = FALSE)
 
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")

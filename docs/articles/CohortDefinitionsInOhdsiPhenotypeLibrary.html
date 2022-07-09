@@ -98,7 +98,46 @@ Rao</h4>
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="introduction">Introduction:<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>This document shows a summary of changes to the Cohort Definitions in
+(OHDSI Phenotype Library)[<a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link uri">https://github.com/OHDSI/PhenotypeLibrary</a>] (Library)
+over various versions.</p>
+<ul>
+<li><p>Cohort Id: Id used by the (Library)[<a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link uri">https://github.com/OHDSI/PhenotypeLibrary</a>] to identify
+the cohort. This is guaranteed to be backward compatible and so may be
+referenced in OHDSI HADES packages and studies using a combination of
+version number and cohort id.</p></li>
+<li><p>Cohort Name: The name of the Cohort Definition</p></li>
+<li><p>Get Results: Is this part of the
+(ohdsi-studies/PhenotypeLibraryDiagnostics)[<a href="https://github.com/ohdsi-studies/PhenotypeLibraryDiagnostics" class="external-link uri">https://github.com/ohdsi-studies/PhenotypeLibraryDiagnostics</a>]
+study package. If yes, then the results maybe found on
+(data.ohdsi.org/PhenotypeLibrary)[<a href="https://data.ohdsi.org/PhenotypeLibrary/" class="external-link uri">https://data.ohdsi.org/PhenotypeLibrary/</a>]</p></li>
+<li><p>Added Version: The version of the PhenotypeLibrary R package when
+the cohort definition was added.</p></li>
+<li><p>Added Date: The date the cohort was added. This is usually from
+(atlas-phenotype.ohdsi.org)[<a href="https://atlas-phenotype.ohdsi.org/#/home" class="external-link uri">https://atlas-phenotype.ohdsi.org/#/home</a>] when the
+source is (atlas-phenotype.ohdsi.org)[<a href="https://atlas-phenotype.ohdsi.org/#/home" class="external-link uri">https://atlas-phenotype.ohdsi.org/#/home</a>]</p></li>
+<li><p>Added Notes: Any notes entered by the (OHDSI Phenotype
+Development and Evaluation Work group)[<a href="https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5" class="external-link uri">https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5</a>]
+(work group) for this Cohort Definition. Deprecated Version: If there is
+an entry in this field it means the Cohort Definition is deprecated. It
+will have the version of PhenotypeLibrary when the Cohort Definition was
+deprecated.</p></li>
+<li><p>Deprecated Date: The date the Cohort was deprecated. This is
+usually from (atlas-phenotype.ohdsi.org)[<a href="https://atlas-phenotype.ohdsi.org/#/home" class="external-link uri">https://atlas-phenotype.ohdsi.org/#/home</a>] when the
+source is (atlas-phenotype.ohdsi.org)[<a href="https://atlas-phenotype.ohdsi.org/#/home" class="external-link uri">https://atlas-phenotype.ohdsi.org/#/home</a>]</p></li>
+<li><p>Deprecated Notes: Any notes from the (Work group)[<a href="https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5" class="external-link uri">https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5</a>]
+regarding deprecation. Updated Version: This field indicates the cohort
+definition has been modified. As a principle a Cohort Definition, once
+published to the OHDSI Phenotype Library is never updated or modified.
+This should be a rare occurrence, for situations like human accidental
+errors.</p></li>
+<li><p>Updated Date: The date the Cohort was updated.</p></li>
+<li><pre><code>a   Updated Notes: Any notes from the (Work group)[https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&amp;tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5] regarding update.</code></pre></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">camelCaseToTitleCase</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">string</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">errorMessages</span> <span class="op">&lt;-</span> <span class="fu">checkmate</span><span class="fu">::</span><span class="fu"><a href="https://mllg.github.io/checkmate/reference/AssertCollection.html" class="external-link">makeAssertCollection</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>    <span class="fu">checkmate</span><span class="fu">::</span><span class="fu"><a href="https://mllg.github.io/checkmate/reference/checkCharacter.html" class="external-link">assertCharacter</a></span><span class="op">(</span><span class="va">string</span>, add <span class="op">=</span> <span class="va">errorMessages</span><span class="op">)</span></span>
@@ -114,16 +153,17 @@ Rao</h4>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">camelCaseToTitleCase</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="va">opts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>knitr.kable.NA <span class="op">=</span> <span class="st">""</span>, format <span class="op">=</span> <span class="st">"latex"</span>, escape <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">report</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
 <col width="4%">
-<col width="39%">
-<col width="5%">
+<col width="37%">
 <col width="4%">
 <col width="5%">
-<col width="8%">
-<col width="6%">
+<col width="4%">
+<col width="4%">
 <col width="7%">
+<col width="6%">
+<col width="6%">
 <col width="6%">
 <col width="5%">
 <col width="5%">
@@ -131,6 +171,7 @@ Rao</h4>
 <thead><tr class="header">
 <th align="right">Cohort Id</th>
 <th align="left">Cohort Name</th>
+<th align="left">Get Results</th>
 <th align="left">Added Version</th>
 <th align="left">Added Date</th>
 <th align="left">Added Notes</th>
@@ -146,6 +187,7 @@ Rao</h4>
 <td align="right">2</td>
 <td align="left">COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps,
 7Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -159,6 +201,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">3</td>
 <td align="left">Cough (3Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -172,6 +215,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">4</td>
 <td align="left">Diarrhea (7Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -185,6 +229,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">5</td>
 <td align="left">Dyspnea (14Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -198,6 +243,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">6</td>
 <td align="left">Fever (3Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -211,6 +257,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">7</td>
 <td align="left">Headache, Migraine, Neurologic pain (7Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -224,6 +271,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">8</td>
 <td align="left">Anosmia OR Hyposmia OR Dysgeusia (7Ps, 180Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -237,6 +285,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">9</td>
 <td align="left">Sore throat (7Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -250,6 +299,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">10</td>
 <td align="left">Nausea or Vomiting (3Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -263,6 +313,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">11</td>
 <td align="left">Malaise or fatigue (3P, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -276,6 +327,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">12</td>
 <td align="left">Rhinitis or common cold (7P, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -290,6 +342,7 @@ Rao</h4>
 <td align="right">13</td>
 <td align="left">Myalgia (not including secondary causes) (3Pe,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -303,6 +356,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">14</td>
 <td align="left">Myalgia (3Pe, 30Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -316,6 +370,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">15</td>
 <td align="left">Exposure to Viral Disease (7Pe, 30Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -330,6 +385,7 @@ Rao</h4>
 <td align="right">16</td>
 <td align="left">Exposure to SARS-Cov 2 and coronavirus (7Pe,
 30Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -343,6 +399,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">17</td>
 <td align="left">Exposure to SARS-Cov 2 (7Pe, 30Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -356,6 +413,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">18</td>
 <td align="left">Multiple Inflammatory Syndrome (30Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -369,6 +427,7 @@ Rao</h4>
 <tr class="even">
 <td align="right">19</td>
 <td align="left">Pneumonia (14Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -382,6 +441,7 @@ Rao</h4>
 <tr class="odd">
 <td align="right">20</td>
 <td align="left">Bronchitis (14Pe, 90Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -396,6 +456,7 @@ Rao</h4>
 <td align="right">21</td>
 <td align="left">Acute respiratory distress syndrome (ARDS) or Acute
 Respiratory Failure (3Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -409,6 +470,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <tr class="odd">
 <td align="right">22</td>
 <td align="left">SARS-CoV-2 testing (1Ps, 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -422,6 +484,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <tr class="even">
 <td align="right">23</td>
 <td align="left">Hospitalization (1Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -435,6 +498,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <tr class="odd">
 <td align="right">24</td>
 <td align="left">Emergency room visits (0Pe, 0Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -448,6 +512,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <tr class="even">
 <td align="right">25</td>
 <td align="left">All cause mortality</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -462,6 +527,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <td align="right">26</td>
 <td align="left">Asthma or Chronic obstructive pulmonary disease (COPD)
 (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -475,6 +541,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <tr class="even">
 <td align="right">27</td>
 <td align="left">Asthma without COPD (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -489,6 +556,7 @@ Respiratory Failure (3Pe, 30Era)</td>
 <td align="right">28</td>
 <td align="left">Chronic obstructive pulmonary disease (COPD) without
 asthma (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -502,6 +570,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">29</td>
 <td align="left">Autoimmune condition (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -515,6 +584,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">30</td>
 <td align="left">Tuberculosis (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -529,6 +599,7 @@ asthma (FP)</td>
 <td align="right">31</td>
 <td align="left">Malignant neoplasm excluding non-melanoma skin cancer
 (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -542,6 +613,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">32</td>
 <td align="left">Obesity (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -555,6 +627,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">33</td>
 <td align="left">Dementia (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -568,6 +641,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">34</td>
 <td align="left">Hypertension (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -581,6 +655,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">35</td>
 <td align="left">Chronic kidney disease (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -594,6 +669,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">36</td>
 <td align="left">Human immunodeficiency virus infection (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -607,6 +683,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">37</td>
 <td align="left">Hepatitis C (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -620,6 +697,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">38</td>
 <td align="left">Heart disease (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -633,6 +711,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">39</td>
 <td align="left">End stage renal disease (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -646,6 +725,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">40</td>
 <td align="left">Diabetes Mellitus Type 2 (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -659,6 +739,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">41</td>
 <td align="left">Chronic kidney disease broad (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -672,6 +753,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">42</td>
 <td align="left">End stage renal disease broad (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -685,6 +767,7 @@ asthma (FP)</td>
 <tr class="even">
 <td align="right">43</td>
 <td align="left">Tuberculosis broad (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -698,6 +781,7 @@ asthma (FP)</td>
 <tr class="odd">
 <td align="right">44</td>
 <td align="left">COVID-19 diagnosis (3Pe, 7Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -712,6 +796,7 @@ asthma (FP)</td>
 <td align="right">45</td>
 <td align="left">COVID-19 diagnosis with SARS-Cov-2 test (-3d to 3d)
 (3Pe, 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -726,6 +811,7 @@ asthma (FP)</td>
 <td align="right">46</td>
 <td align="left">COVID-19 diagnosis and SARS-CoV-2 test (1pos) within 3d
 (3Pe, 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -740,6 +826,7 @@ asthma (FP)</td>
 <td align="right">47</td>
 <td align="left">COVID-19 diagnosis and SARS-CoV-2 test (1pos) (0neg)
 within 3d (3Pe, 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -754,6 +841,7 @@ within 3d (3Pe, 21Era)</td>
 <td align="right">48</td>
 <td align="left">COVID-19 diagnosis and SARS-CoV-2 test (0pos upto 3d,
 1neg within 3d) (3Pe, 7Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -767,6 +855,7 @@ within 3d (3Pe, 21Era)</td>
 <tr class="even">
 <td align="right">51</td>
 <td align="left">SARS-CoV-2 test positive result (0Ps, 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -780,6 +869,7 @@ within 3d (3Pe, 21Era)</td>
 <tr class="odd">
 <td align="right">52</td>
 <td align="left">SARS-CoV-2 test negative result (0Ps, 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -794,6 +884,7 @@ within 3d (3Pe, 21Era)</td>
 <td align="right">53</td>
 <td align="left">SARS-CoV-2 test positive or negative result - keep
 persons with positive (0Ps, 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -807,6 +898,7 @@ persons with positive (0Ps, 0Era)</td>
 <tr class="odd">
 <td align="right">54</td>
 <td align="left">Febrile seizure (1Ps, 0Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -821,6 +913,7 @@ persons with positive (0Ps, 0Era)</td>
 <td align="right">55</td>
 <td align="left">COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps,
 21Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -835,6 +928,7 @@ persons with positive (0Ps, 0Era)</td>
 <td align="right">56</td>
 <td align="left">SARS-CoV-2 test (1pos) or COVID-19 diagnosis with (0
 neg -3d to 3d) (3Ps, 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -848,6 +942,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <tr class="even">
 <td align="right">57</td>
 <td align="left">Bleeding (1Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -861,6 +956,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <tr class="odd">
 <td align="right">58</td>
 <td align="left">SARS-CoV-2 test positive result (3Ps, 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -875,6 +971,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <td align="right">59</td>
 <td align="left">COVID-19 diagnosis with no SARS-CoV-2 test (3Ps,
 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -889,6 +986,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <td align="right">60</td>
 <td align="left">SARS-CoV-2 test positive and negative result (0Ps,
 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -903,6 +1001,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <td align="right">61</td>
 <td align="left">Bradycardia or heart block with inpatient admission
 (1Pe, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -916,6 +1015,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <tr class="odd">
 <td align="right">62</td>
 <td align="left">Generalized Seizure (1Ps, 0Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -930,6 +1030,7 @@ neg -3d to 3d) (3Ps, 21Era)</td>
 <td align="right">63</td>
 <td align="left">Transverse myelitis (or symptoms with transverse
 myelitis) 365dWO (1Ps, 0Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -943,6 +1044,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <tr class="odd">
 <td align="right">64</td>
 <td align="left">Flu-like symptoms (3P, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -957,6 +1059,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <td align="right">65</td>
 <td align="left">Acute pancreatitis with inpatient admission (3Pe,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -971,6 +1074,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <td align="right">66</td>
 <td align="left">Acute renal failure with inpatient admission (3Pe,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -985,6 +1089,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <td align="right">67</td>
 <td align="left">Hepatic failure with inpatient admission (3Pe,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -999,6 +1104,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <td align="right">68</td>
 <td align="left">Heart failure with inpatient admission (3Pe,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1012,6 +1118,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <tr class="even">
 <td align="right">69</td>
 <td align="left">Angioedema with inpatient admission (7Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1026,6 +1133,7 @@ myelitis) 365dWO (1Ps, 0Era)</td>
 <td align="right">70</td>
 <td align="left">Stroke (ischemic or hemorrhagic) with inpatient
 admission (7Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1040,6 +1148,7 @@ admission (7Ps, 30Era)</td>
 <td align="right">71</td>
 <td align="left">Acute myocardial infarction with inpatient admission
 (7Ps, 180Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1053,6 +1162,7 @@ admission (7Ps, 30Era)</td>
 <tr class="odd">
 <td align="right">72</td>
 <td align="left">Influenza (narrow) (7Pe, 90Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1066,6 +1176,7 @@ admission (7Ps, 30Era)</td>
 <tr class="even">
 <td align="right">73</td>
 <td align="left">Pregnancy (270P, 0Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1080,6 +1191,7 @@ admission (7Ps, 30Era)</td>
 <td align="right">74</td>
 <td align="left">Hemorrhagic stroke (intracerebral bleeding) with
 inpatient admission (7Ps, 180Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1094,6 +1206,7 @@ inpatient admission (7Ps, 180Era)</td>
 <td align="right">75</td>
 <td align="left">Ischemic stroke with inpatient admission (7Ps,
 180Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1108,6 +1221,7 @@ inpatient admission (7Ps, 180Era)</td>
 <td align="right">76</td>
 <td align="left">Transient ischemic attack with inpatient admission
 (7Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1122,6 +1236,7 @@ inpatient admission (7Ps, 180Era)</td>
 <td align="right">77</td>
 <td align="left">Gastrointestinal bleeding with inpatient admission
 (7Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1136,6 +1251,7 @@ inpatient admission (7Ps, 180Era)</td>
 <td align="right">78</td>
 <td align="left">Cardiac arrhythmia with inpatient admission (1Pe,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1149,6 +1265,7 @@ inpatient admission (7Ps, 180Era)</td>
 <tr class="even">
 <td align="right">79</td>
 <td align="left">Dialysis with inpatient admission (1Ps, 7Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1163,6 +1280,7 @@ inpatient admission (7Ps, 180Era)</td>
 <td align="right">80</td>
 <td align="left">Extracorporeal Membrane Oxygenation with inpatient
 admission (1Ps, 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1176,6 +1294,7 @@ admission (1Ps, 30Era)</td>
 <tr class="even">
 <td align="right">81</td>
 <td align="left">Cesarean section (7Pe, 180Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1190,6 +1309,7 @@ admission (1Ps, 30Era)</td>
 <td align="right">82</td>
 <td align="left">Intensive services during hospitalization (1Ps,
 30Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1204,6 +1324,7 @@ admission (1Ps, 30Era)</td>
 <td align="right">84</td>
 <td align="left">SARS-CoV-2 test (1pos) or COVID-19 diagnosis with (1pos
 or 0 neg 0d to 3d) (3Ps, 180Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1218,6 +1339,7 @@ or 0 neg 0d to 3d) (3Ps, 180Era)</td>
 <td align="right">85</td>
 <td align="left">SARS-CoV-2 test (1pos) or COVID-19 diagnosis with (1pos
 or 0 neg 0d to 3d) (3Ps, 21Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1232,6 +1354,7 @@ or 0 neg 0d to 3d) (3Ps, 21Era)</td>
 <td align="right">86</td>
 <td align="left">SARS-CoV-2 test positive or negative result (0Ps,
 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1245,6 +1368,7 @@ or 0 neg 0d to 3d) (3Ps, 21Era)</td>
 <tr class="odd">
 <td align="right">87</td>
 <td align="left">SARS-CoV-2 test (1Ps, 0Era)</td>
+<td align="left">No</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1258,6 +1382,7 @@ or 0 neg 0d to 3d) (3Ps, 21Era)</td>
 <tr class="even">
 <td align="right">95</td>
 <td align="left">Delirium (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1272,6 +1397,7 @@ or 0 neg 0d to 3d) (3Ps, 21Era)</td>
 <td align="right">123</td>
 <td align="left">First event of Suicide attempt, including injuries and
 poisonings with undetermined, 365 days</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1285,6 +1411,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="even">
 <td align="right">189</td>
 <td align="left">Right Upper Quadrant Pain (Pe1, 3Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1298,6 +1425,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="odd">
 <td align="right">190</td>
 <td align="left">Abdominal Distension (Pe1, 7Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1311,6 +1439,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="even">
 <td align="right">191</td>
 <td align="left">Fatigue, Malaise, Lethargy, Anorexia (Pe1, 1Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1324,6 +1453,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="odd">
 <td align="right">192</td>
 <td align="left">Nausea or Vomiting (Pe1, 7Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1337,6 +1467,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="even">
 <td align="right">193</td>
 <td align="left">Jaundice or Itching (Pe1, 7Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1350,6 +1481,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="odd">
 <td align="right">194</td>
 <td align="left">Encephalopathy or its presentations (Pe1, 7Era)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1363,6 +1495,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="even">
 <td align="right">195</td>
 <td align="left">Urothelial bladder cancer (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1376,6 +1509,7 @@ poisonings with undetermined, 365 days</td>
 <tr class="odd">
 <td align="right">196</td>
 <td align="left">Rheumatoid arthritis (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1390,6 +1524,7 @@ poisonings with undetermined, 365 days</td>
 <td align="right">197</td>
 <td align="left">Coronary Artery Disease from vessel disease to ischemic
 injury (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1403,6 +1538,7 @@ injury (FP)</td>
 <tr class="odd">
 <td align="right">198</td>
 <td align="left">Crohns disease (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1416,6 +1552,7 @@ injury (FP)</td>
 <tr class="even">
 <td align="right">199</td>
 <td align="left">Major Depressive Disorder (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1429,6 +1566,7 @@ injury (FP)</td>
 <tr class="odd">
 <td align="right">200</td>
 <td align="left">Plaque psoriasis (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1442,6 +1580,7 @@ injury (FP)</td>
 <tr class="even">
 <td align="right">201</td>
 <td align="left">Ulcerative colitis (FP)</td>
+<td align="left">Yes</td>
 <td align="left">3.1.0</td>
 <td align="left">2022-07-06</td>
 <td align="left"></td>
@@ -1455,10 +1594,13 @@ injury (FP)</td>
 </tbody>
 </table>
 </div>
+  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
