@@ -20,35 +20,99 @@ knitr::opts_chunk$set(
   comment = "#>",
   error = FALSE,
   tidy = FALSE)
+
+library(reactable)
 ```
 
-[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
-
-# Introduction:
-
-This document shows a summary of changes to the Cohort Definitions in [OHDSI Phenotype Library](https://github.com/OHDSI/PhenotypeLibrary) (Library) over various versions.
+[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/). This document is a summary of changes to the Cohort Definitions in [OHDSI Phenotype Library](https://github.com/OHDSI/PhenotypeLibrary) (Library).
 
 
 
-```{r tidy=FALSE,eval=TRUE}
+```{r tidy=FALSE,eval=TRUE, echo = FALSE}
 
-  camelCaseToTitleCase <- function(string) {
-    errorMessages <- checkmate::makeAssertCollection()
-    checkmate::assertCharacter(string, add = errorMessages)
-    checkmate::reportAssertions(collection = errorMessages)
+camelCaseToTitleCase <- function(string) {
+  errorMessages <- checkmate::makeAssertCollection()
+  checkmate::assertCharacter(string, add = errorMessages)
+  checkmate::reportAssertions(collection = errorMessages)
   
-    string <- gsub("([A-Z])", " \\1", string)
-    string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
-    substr(string, 1, 1) <- toupper(substr(string, 1, 1))
-    return(string)
-  }
+  string <- gsub("([A-Z])", " \\1", string)
+  string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
+  substr(string, 1, 1) <- toupper(substr(string, 1, 1))
+  return(string)
+}
 
-  report <- PhenotypeLibrary::getPhenotypeLog()
-  colnames(report) <- camelCaseToTitleCase(colnames(report))
-  opts <- options(knitr.kable.NA = "", format = "latex", escape = TRUE)
-  knitr::kable(x = report)
+report <- PhenotypeLibrary::getPhenotypeLog()
+colnames(report) <- camelCaseToTitleCase(colnames(report))
+
+columnDefinitions <- list()
+
+colnamesInReport <- colnames(report)
+
+for (i in (1:length(colnamesInReport))) {
+  columnDefinitions[[colnamesInReport[[i]]]] <-
+    reactable::colDef(
+      name = colnamesInReport[[i]],
+      minWidth = nchar(colnamesInReport[[i]]) * 10,
+      sortable = TRUE,
+      resizable = TRUE,
+      show = TRUE,
+      html = TRUE,
+      na = "",
+      align = "left"
+    )
+}
+
+columnDefinitions[['Cohort Name']] <-
+  reactable::colDef(
+    name = 'Cohort Name',
+    minWidth = 500,
+    sortable = TRUE,
+    resizable = TRUE,
+    show = TRUE,
+    html = TRUE,
+    na = "",
+    align = "left"
+  )
+
+columnDefinitions[['Cohort Id']] <-
+  reactable::colDef(
+    name = 'Cohort Id',
+    minWidth = 100,
+    sticky = "left",
+    sortable = TRUE,
+    resizable = TRUE,
+    show = TRUE,
+    html = TRUE,
+    na = "",
+    align = "left"
+  )
+
+  
 ```
 
+```{r tidy=FALSE,eval=TRUE, echo = FALSE}
+
+reactable::reactable(
+    data = report,
+    columns = columnDefinitions, 
+    sortable = TRUE,
+    resizable = TRUE,
+    searchable = TRUE,
+    pagination = TRUE,
+    showPagination = TRUE,
+    showPageInfo = TRUE,
+    striped = TRUE,
+    compact = FALSE,
+    wrap = FALSE,
+    showSortIcon = TRUE,
+    showSortable = TRUE,
+    fullWidth = TRUE,
+    showPageSizeOptions = TRUE,
+    pageSizeOptions = c(10, 20, 50, 100, 1000),
+    defaultPageSize = 100
+  )
+  
+```
 
 * **Cohort Id:** Id used by the [Library](https://github.com/OHDSI/PhenotypeLibrary) to identify the cohort. This is guaranteed to be backward compatible and so may be referenced in OHDSI HADES packages and studies using a combination of version number and cohort id.
 
@@ -58,7 +122,7 @@ This document shows a summary of changes to the Cohort Definitions in [OHDSI Phe
 
 * **Added Version:** The version of the PhenotypeLibrary R package when the cohort definition was added.
 
-* Added Date: The date the cohort was added. This is usually from [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home) when the source is [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home)
+* **Added Date:** The date the cohort was added. This is usually from [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home) when the source is [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home)
 
 * **Added Notes:** Any notes entered by the [OHDSI Phenotype Development and Evaluation Work group](https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5) (work group) for this Cohort Definition.
 Deprecated Version: If there is an entry in this field it means the Cohort Definition is deprecated. It will have the version of PhenotypeLibrary when the Cohort Definition was deprecated.
