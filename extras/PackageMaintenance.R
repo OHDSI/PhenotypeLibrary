@@ -36,6 +36,12 @@ rmarkdown::render("vignettes/CohortDefinitionsInOhdsiPhenotypeLibrary.Rmd",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))
+
+rmarkdown::render("vignettes/CohortDefinitionSubmissionRequirements.Rmd",
+                  output_file = "../inst/doc/CohortDefinitionSubmissionRequirements.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
 # Build site---------------------------------------------------------
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
