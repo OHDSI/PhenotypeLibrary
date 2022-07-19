@@ -1,3 +1,8 @@
+PhenotypeLibrary 3.1.4
+======================
+
+Vignette: Table format for Cohort Definitions in OHDSI Phenotype Library using reactable.
+
 PhenotypeLibrary 3.1.3
 ======================
 
