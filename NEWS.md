@@ -1,3 +1,8 @@
+PhenotypeLibrary 3.1.3
+======================
+
+Added Vignette: Cohort Definition Submission Requirements.
+
 PhenotypeLibrary 3.1.2
 ======================
 

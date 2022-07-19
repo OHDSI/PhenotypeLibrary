@@ -29,6 +29,27 @@ knitr::opts_chunk$set(
 This document shows a summary of changes to the Cohort Definitions in [OHDSI Phenotype Library](https://github.com/OHDSI/PhenotypeLibrary) (Library) over various versions.
 
 
+
+```{r tidy=FALSE,eval=TRUE}
+
+  camelCaseToTitleCase <- function(string) {
+    errorMessages <- checkmate::makeAssertCollection()
+    checkmate::assertCharacter(string, add = errorMessages)
+    checkmate::reportAssertions(collection = errorMessages)
+  
+    string <- gsub("([A-Z])", " \\1", string)
+    string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
+    substr(string, 1, 1) <- toupper(substr(string, 1, 1))
+    return(string)
+  }
+
+  report <- PhenotypeLibrary::getPhenotypeLog()
+  colnames(report) <- camelCaseToTitleCase(colnames(report))
+  opts <- options(knitr.kable.NA = "", format = "latex", escape = TRUE)
+  knitr::kable(x = report)
+```
+
+
 * **Cohort Id:** Id used by the [Library](https://github.com/OHDSI/PhenotypeLibrary) to identify the cohort. This is guaranteed to be backward compatible and so may be referenced in OHDSI HADES packages and studies using a combination of version number and cohort id.
 
 * **Cohort Name:** The name of the Cohort Definition
@@ -51,23 +72,3 @@ Updated Version: This field indicates the cohort definition has been modified. A
 
 * **Updated Notes:** Any notes from the [Work group](https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5) regarding update.
 
-
-
-```{r tidy=FALSE,eval=TRUE}
-
-  camelCaseToTitleCase <- function(string) {
-    errorMessages <- checkmate::makeAssertCollection()
-    checkmate::assertCharacter(string, add = errorMessages)
-    checkmate::reportAssertions(collection = errorMessages)
-  
-    string <- gsub("([A-Z])", " \\1", string)
-    string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
-    substr(string, 1, 1) <- toupper(substr(string, 1, 1))
-    return(string)
-  }
-
-  report <- PhenotypeLibrary::getPhenotypeLog()
-  colnames(report) <- camelCaseToTitleCase(colnames(report))
-  opts <- options(knitr.kable.NA = "", format = "latex", escape = TRUE)
-  knitr::kable(x = report)
-```

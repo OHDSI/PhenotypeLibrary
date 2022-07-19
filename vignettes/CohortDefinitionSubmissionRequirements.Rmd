@@ -1,0 +1,73 @@
+---
+title: "Cohort Definition Submission Requirements"
+author: "Gowtham A. Rao"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    number_sections: yes
+    toc: no  
+  pdf_document: 
+    toc: no     
+vignette: >
+  %\VignetteIndexEntry{Cohort Definition Submission Requirements}
+  %\VignetteEncoding{UTF-8}    
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE)
+```
+
+[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
+
+
+A submission to the OHDSI Phenotype Library is considered complete if:
+
+## Phenotype name
+ * The submission should be identified by a name for the clinical idea being phenotyped and a clinical description. e.g. Acute Hepatic Failure among persons with no pre-existing liver disease. 
+ * The submitter should start a NEW forum post on forums.ohdsi.org as 'Phenotype submission - Acute Hepatic Failure among persons with no pre-existing liver disease'. The submitter should be the initiator of the conversation thread. 
+
+## Clinical Description
+The clinical description is expected to short, succinct (we are not re-writing a medical text book) and should have the following components:
+
+ * **Overview:** Key summary of the clinical concept.
+ * **Presentation:** observations from a clinician who sees persons with the clinical concept.
+ * **Assessment:** work up done to confirm or refute the presence of the clinical concept in a person.
+ * **Plan:** treatment performed to manage the risks to a person from the clinical concept.
+ * **Prognosis:** statements that indicate the duration the clinical concept is expected to persist in a person. Three questions to be addressed:
+    - Can the person fully recover marking the end of an episode i.e., is full recovery possible, or is it considered life long?
+    - If it’s not lifelong and full recovery is possible – on average how long is a person generally expected to have the condition?
+    - Can it re occur in the same person after full recovery? If yes, is there an expected gap between two independent occurrences?
+ * **Disqualifies:** 
+    - conditions/events, when present, would disqualify a person from having this clinical idea. Disqualifiers when present should make the occurrence of the phenotype of interest unlikely. A mere presence of a event that can pre-dispose/put a person at higher/lower risk for the phenotype is not a Dis qualifier. 
+    - Disqualifiers are usually observed in some temporal relationship (i.e., an event about a person that should or should not occur during a specified temporal period with respect to cohort start date), e.g. should not have a diagnosis of liver cirrhosis at any time prior to acute hepatic failure. 
+ * **Strengtheners:**
+    - conditions, when present, increase the likelihood that the person has the clinical idea. The observation of established risk factors in the baseline period, or treatments for the condition after index date are considered strengtheners. A positive rechallenge, where the phenotype is observed to start again after exposure to the risk factor.
+
+
+## Literature Review
+* In OHDSI we like to learn from and improve the work of others. Performing a literature review to understand what others have done for this phenotype is considered best practice.
+* As part of the forum post, it is request to give references to (do not attach original articles) in the same thread and summarize the key salient information from the publication that may inform OHDSI phenotyping.
+ 
+## Logic Description
+* that may be translated to Atlas cohort definitions (if rule-based phenotype). A cohort definition that is implemetned in Atlas should address
+    - Entry event criteria - what allows the person to enter the cohort. This becomes the cohort start date.
+    - Inclusion rule - what additional rules determine if a person may continue to stay in the cohort. This usually corresponds to the disqualifiers in clinical description.
+    - Exit criteria - What constitues the end for a person. This ususally corresponds to the prognosis section of the clinical description.
+
+## Your recommended cohort definitions (>= 1)
+  Having followed OHDSI Best practices and gone thru development/evaluation iteration
+
+## Published Cohort Diagnostics output on one or more data sources 
+  PheValuator and other evaluation/validation metrics as applicable.
+
+## Discuss your evaluation/validation findings on forums.ohdsi.org
+  Insights on sensitivity, specificity and index date misclassification errors
+
+## Attach ‘CohortDefinitionSet’ R object.
+  For importing into atlas-phenotype.ohdsi.org
+
