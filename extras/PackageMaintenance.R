@@ -67,8 +67,14 @@ rmarkdown::render("vignettes/GuidelinesOnCohortDefinitionSetRObject.Rmd",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
-rmarkdown::render("vignettes/AutomatedValidityChecksForCohortDefinition.Rmd",
-                  output_file = "../inst/doc/AutomatedValidityChecksForCohortDefinition.pdf",
+rmarkdown::render("vignettes/ValidityChecksForCohortDefinitions.Rmd",
+                  output_file = "../inst/doc/ValidityChecksForCohortDefinitions.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/SubmittedCohortDefinitions.Rmd",
+                  output_file = "../inst/doc/SubmittedCohortDefinitions.pdf",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))

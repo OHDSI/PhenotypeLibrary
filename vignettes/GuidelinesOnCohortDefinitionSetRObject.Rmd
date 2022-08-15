@@ -26,3 +26,28 @@ knitr::opts_chunk$set(
 
 *This document is a DRAFT guidance.*
 
+
+# How to create a cohort definition set object
+## Structure
+
+
+### Downloading cohorts from ATLAS
+We can create cohorts using [ATLAS](https://github.com/OHDSI/Atlas) and extract them using [ROhdsiWebApi](https://github.com/OHDSI/ROhdsiWebApi) package:
+
+
+```{r eval = FALSE, echo=TRUE}
+cohortIds <- c(1778211,1778212,1778213)
+ROhdsiWebApi::authorizeWebApi(baseUrl = baseUrl, authMethod = "windows")
+cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(baseUrl = baseUrl,
+                                                               cohortIds = cohortIds)
+```
+The code above connects to ATLAS' WebAPI, retrieves the `cohortDefinitions` as returns a data.frame object with required fields. The following columns are considered required for OHDSI submission.
+
+- **cohortId**: The cohortId will be the same as the atlasId upon export from ATLAS. We provide this column in case you'd like to alter the numbering scheme for your cohort definition set.
+- **cohortName**: The name of the cohort in ATLAS.
+- **json**: The [Circe](https://github.com/OHDSI/circe-be) compliant JSON representation of the cohort definition
+
+
+When cohort json is submitted, the PhentoypeLibrary will create the SQL using Circe. The only instance when the submitted SQL will be used are when the cohort definitions does not conform to circe/atlas cohort definition standard.
+
+

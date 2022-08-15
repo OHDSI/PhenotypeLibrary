@@ -4,7 +4,7 @@ author: "Gowtham A. Rao"
 date: "`r Sys.Date()`"
 output:
   html_document:
-    number_sections: yes
+    number_sections: no
     toc: no  
   pdf_document: 
     toc: no     
@@ -31,6 +31,7 @@ A submission to the OHDSI Phenotype Library is considered complete if it is acco
 - OHDSI forum post with the title that starts with 'Phenotype submission -' example: 'Phenotype submission - Acute Hepatic Failure'
 - You have a clinical description conforming to the submission requirements.
 
+# Submission process
 ## Post a new OHDSI Forum thread 
 - A new thread on [OHDSI forum](forums.ohdsi.org). By default the original poster (op) will be considered the phenotype submitter. 
 - General guidance for your forum post title. 
@@ -68,15 +69,36 @@ Please see article [Guidelines on Literature Review](https://ohdsi.github.io/Phe
 Please see article [Guidelines on writing Cohort Definition Logic Description](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html)
 
 ## Your recommended cohort definitions (>= 1)
-  Having followed OHDSI Best practices and gone through development/evaluation iteration
+Having followed OHDSI Best practices and gone through development/evaluation iteration
 
 ## Published Cohort Diagnostics output on one or more data sources 
-  PheValuator and other evaluation/validation metrics as applicable.
+heValuator and other evaluation/validation metrics as applicable.
 
 ## Discuss your evaluation/validation findings on forums.ohdsi.org
-  Insights on sensitivity, specificity and index date mis-classification errors
+Insights on sensitivity, specificity and index date mis-classification errors
 
 ## Attach ‘CohortDefinitionSet’ R object.
-  For importing into atlas-phenotype.ohdsi.org
+For importing into atlas-phenotype.ohdsi.org
 
 Please see article [Guidelines on Cohort Definition Set R Object](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnCohortDefinitionSetRObject.html)  
+
+------------------------------------------------
+# Post submission
+
+## Validity Checks prior to consideration
+- Your submissions will be subjected to the following routine [Validity Checks For CohortDefinitions](https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html)
+- Your submission is expected to pass these tests prior to being posted into atlas-phenotype.ohdsi.org
+  
+## Addition to [Atlas-phenotype] (https://atlas-phenotype.ohdsi.org/)
+- If your cohort definitions pass the validity checks, it will be posted to [Atlas-phenotype] (https://atlas-phenotype.ohdsi.org/)
+- Cohort definitions will make it to [OHDSI Phenotype Library] (https://github.com/OHDSI/PhenotypeLibrary)
+- The [Cohort Definitions in OHDSI Phenotype Library are here] (https://ohdsi.github.io/PhenotypeLibrary/articles/CohortDefinitionsInOhdsiPhenotypeLibrary.html) but will be flagged as 'Under review' with submission date. The added version field will be empty, as your cohort definition is not considered to be accepted.
+- *NOTE: the cohort definitions in this state, are not guaranteed to be immutable. The definitions may change.*
+
+## Assignment for Peer Review
+- OHDSI will perform on open peer review through the OHDSI Phenotype Development and Evaluation workgroup.
+- Workgroup members ill be assigned as peer reviewers. The peer review will be oral feedback followed by a recommendation.
+- The peer review will be video recorded and the recordings will be available in the workgroup archives.
+- It is up-to the submitter to then consider the peer review recommendations, make changes, or not.
+- Based on the decision of the peer reviewer(s) the cohort definition would be considered accepted.
+- Once accepted, the cohort definitions will be made immutable and a version number will be assigned to it. Key peer review notes will usually be referenced (commonly to the forum post).
