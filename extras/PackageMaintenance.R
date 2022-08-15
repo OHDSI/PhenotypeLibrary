@@ -19,6 +19,8 @@ styler::style_pkg()
 OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
+source("extras/UpdatePhenotypes.R")
+
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
@@ -42,6 +44,45 @@ rmarkdown::render("vignettes/CohortDefinitionSubmissionRequirements.Rmd",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))
+
+rmarkdown::render("vignettes/GuidelinesOnClinicalDescriptionForConditionPhenotypes.Rmd",
+                  output_file = "../inst/doc/GuidelinesOnClinicalDescriptionForConditionPhenotypes.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/ReservedWordsWithSpecialMeaningToPhenotypers.Rmd",
+                  output_file = "../inst/doc/ReservedWordsWithSpecialMeaningToPhenotypers.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/GuidelinesOnLiteratureReview.Rmd",
+                  output_file = "../inst/doc/GuidelinesOnLiteratureReview.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/GuidelinesOnCohortDefinitionSetRObject.Rmd",
+                  output_file = "../inst/doc/GuidelinesOnCohortDefinitionSetRObject.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/ValidityChecksForCohortDefinitions.Rmd",
+                  output_file = "../inst/doc/ValidityChecksForCohortDefinitions.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/SubmittedCohortDefinitions.Rmd",
+                  output_file = "../inst/doc/SubmittedCohortDefinitions.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+
+
 # Build site---------------------------------------------------------
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()

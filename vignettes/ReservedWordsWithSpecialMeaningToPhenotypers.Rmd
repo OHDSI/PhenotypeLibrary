@@ -1,0 +1,46 @@
+---
+title: "Reserved Words With Special Meaning To Phenotypers"
+author: "Gowtham A. Rao"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    number_sections: no
+    toc: no  
+  pdf_document: 
+    toc: no     
+vignette: >
+  %\VignetteIndexEntry{Reserved Words With Special Meaning To Phenotypers}
+  %\VignetteEncoding{UTF-8}    
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE)
+```
+
+[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
+
+*This document is a DRAFT guidance.*
+
+## Key words
+  
+| **Key words**	| **Interpretation** |
+| ----- | ---------------------------------------- |
+| Entry Event	| A person may enter the cohort because of |
+| Exit Event	| A person may exit the cohort because of |
+| Event	Cohort |  |
+| Indexed on	| The entry event criteria may appear semantically different from the clinical idea being proposed. E.g. cases of pneumonia may be indexed on antibiotic dispensation |
+| Clean window	| refers to the context of every entry event  |
+| First Time	| Always refers to first time in Persons History |
+| Era logic	|  |
+| Persistent window	|  |
+
+
+
+## Key words to avoid
+ * Words used in the context of phenotype evaluation should not be in name: e.g. sensitive, specific, narrow, broad
+

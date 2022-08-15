@@ -4,7 +4,7 @@ author: "Gowtham A. Rao"
 date: "`r Sys.Date()`"
 output:
   html_document:
-    number_sections: yes
+    number_sections: no
     toc: no  
   pdf_document: 
     toc: no     
@@ -24,82 +24,81 @@ knitr::opts_chunk$set(
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
 
+*This document is a DRAFT guidance.*
 
 A submission to the OHDSI Phenotype Library is considered complete if it is accompanied by:
 
 - OHDSI forum post with the title that starts with 'Phenotype submission -' example: 'Phenotype submission - Acute Hepatic Failure'
 - You have a clinical description conforming to the submission requirements.
 
+# Submission process
 ## Post a new OHDSI Forum thread 
- * A new thread on [OHDSI forum](forums.ohdsi.org). By default the original poster (op) will be considered the phenotype submitter. 
- * General guidance for your forum post title. 
+- A new thread on [OHDSI forum](forums.ohdsi.org). By default the original poster (op) will be considered the phenotype submitter. 
+- General guidance for your forum post title. 
     - Title of the thread: should start with ‘Phenotype Submission - ‘. 
     - Examples of titles for the thread ‘Phenotype submission - Acute Hepatic Failure’
     - This name has two parts - 
-        - Prefix: ‘Phenotype submission -’ This prefix in your title makes it easier for reviewers to review your work, provide their feedback and for your contribution to make its way to the OHDSI Phenotype Library.
-        - Phenotype Name: The phenotype name is expected to be a meaningful but succinct name. It should try to capture some of the key dimensions of the clinical idea e.g. in the name ‘Acute Hepatic Failure among persons with no pre-existing liver disease’. This name conveys that the clinical idea is ‘Acute’. It also tells us that there are exclusions for persons with pre-existing liver disease. Another example is ‘events of pneumonia’. Here the word ‘events’ tells us that a person may have more than one event of pneumonia. 
-        - Note: among OHDSI Phenotype typers, some words have key meaning - please review them here. We also ask that you avoid certain terms as listed here [TO LINK].
+        - *Prefix*: ‘Phenotype submission -’ This prefix in your title makes it easier for reviewers to review your work, provide their feedback and for your contribution to make its way to the OHDSI Phenotype Library.
+        - *Phenotype Name*: The phenotype name is expected to be a meaningful but succinct name. It should try to capture some of the key dimensions of the clinical idea e.g. in the name ‘Acute Hepatic Failure among persons with no pre-existing liver disease’. This name conveys that the clinical idea is ‘Acute’. It also tells us that there are exclusions for persons with pre-existing liver disease. Another example is ‘events of pneumonia’. Here the word ‘events’ tells us that a person may have more than one event of pneumonia. 
+        - Note: among OHDSI Phenotype typers, some words have key meaning - please review [Reserved words with special meaning to Phentoypers](https://ohdsi.github.io/PhenotypeLibrary/articles/ReservedWordsWithSpecialMeaningToPhenotypers.html). If you use those words, please ensure your intention aligns with this document.
         - Your submission is identified by your forum title. So a good name will help the community volunteer reviewers find your submission and promptly respond to it.
- * Phenotype names are necessarily short. As a result, it may not convey the full clinical meaning and can be ambiguous. That's one reason we ask that your submission be accompanied by a clinical description, that provides the additional information needed to fully describe the clinical idea.
+- Phenotype names are necessarily short. As a result, it may not convey the full clinical meaning and can be ambiguous. That's one reason we ask that your submission be accompanied by a clinical description, that provides the additional information needed to fully describe the clinical idea.
 
 
 ## Start your post with a clinical description
-The motivation behind starting out with a clinical description is so that everyone has a shared understanding of the clinical phenotype i.e. what are the expected characteristics of the persons we are identifying from the data source. This step not only clarifies the clinical idea, but also helps justify why certain decisions were made during the cohort definition development (build) process, and also provides context to the persons who might be interpreting the results of a study that used the phenotype.
+- Clinical Description is required for peer review.
+- The motivation behind starting out with a clinical description is so that everyone has a shared understanding of the clinical phenotype i.e. what are the expected characteristics of the persons we are identifying from the data source. This step not only clarifies the clinical idea, but also helps justify why certain decisions were made during the cohort definition development (build) process, and also provides context to the persons who might be interpreting the results of a study that used the phenotype.
 
-**Note (caution):** We are not re-writing a medical textbook or chapter. The content is designed to help the phenotyper, i.e. the person who develops and evaluates the cohort definition. If the phenotyper is building cohorts using Atlas - the clinical description is expected to guide the entry event criteria, inclusion rules and exit criteria.
-
-### Authoritative source:
- * We ask that you start by referencing (e.g., by providing an internet hyperlink to) an authoritative source that guided your understanding of the phenotype's clinical description. This is expected to be rewritten by clinical subject matter experts in the field of your phenotype. It almost uses medical Jargon like ‘Etiology’, ‘Pathogenesis’, ‘Evaluation’, ‘Treatment’, ‘Prognosis’ . 
- * We then expect a short/succinct abstraction of the referenced authoritative source, but written in the context of helping a phenotyper. It is a reasonable expectation for the phenotyper to review the authoritative source referenced - however, by abstracting out the key ideas, we have observed, it helps make phenotype development more efficient and less likely to miss key ideas.
- * Summary of Authoritative source: We ask that you summarize using the following headings/components:
-    - **Overview:** Key summary of the clinical concept.
-    - **Presentation:** observations from a clinician who sees persons with the clinical concept, including signs and symptoms.
-    - **Diagnostics Evaluation:** clinical workup done to confirm or refute the presence of the clinical concept in a person, including diagnostic procedures and measurements. (Formerly we used to call this Assessment.), These are the things a clinician would like to do to determine etiology, disease state / extent, and disease complications.
-    - **Therapy Plan:** treatment performed to manage the risks to a person from the clinical concept, including therapeutic procedures, surgeries, and drug exposures (where applicable). Pharmacologic, non-pharmacologic clinical actions.
-    - **Prognosis:** statements that indicate the duration the clinical concept is expected to persist in a person. Three questions to be addressed:
-        - Can it re occur? Yes/No
-        - How long is the condition expected to last once diagnosed? Life long or an estimate of number of days it is expected to last. Example: An estimate may be 365days after last treatment, or 7 days after completion of antibiotic regimen.
-        - If it can re-occur how long do you think is the gap between the end of prior episode and start of next episode - e.g. 365days
-    - **Disqualifies:** 
-        - A disqualifier is a mutually exclusive idea i.e. if this construct is present in the person then they cannot, at the same time, have the phenotype of interest. A mere presence of a clinical construct that can predispose/put a person at higher/lower risk for the phenotype is not a Disqualifier.
-        - Occasionally, we may call something that is known to cause the outcome a disqualifier e.g., genetic conditions or malignancies. For this, we need a strong a priori knowledge with high certainty, e.g. 70 to 80% of ppl with this cystic fibrosis will develop the chronic lung disease - then cystic fibrosis may be a disqualifier for chronic lung disease. To be a disqualifier, it has to be stated explicitly as a disqualifier in the clinical description (consider adding a reference). A good justification/rationale must be given to allow this construct as a disqualifier.
-        - All other ideas that don’t meet the two guidelines above, but are of interest to the phenotyper to be a disqualifier - have to be empirically evaluated and numerically shown to have an impact along with clinical description describing why it should be a disqualifier + what would happen to the phenotype of interest if it is not a disqualifier. 
-        - In general we expect not more than a few disqualifiers. If we have more than 4 disqualifiers, we need to think hard as to why we have many disqualifiers.
-Disqualifiers are usually observed in some temporal relationship (i.e., an event about a person that should or should not occur during a specified temporal period with respect to cohort start date), e.g. should not have a diagnosis of liver cirrhosis at any time prior to acute hepatic failure.
-    - **Strengtheners:**
-        - conditions, when present, increase the likelihood that the person has the clinical idea. The observation of established risk factors in the baseline period, or treatments for the condition after index date are considered strengtheners. A positive rechallenge, where the phenotype is observed to start again after exposure to the risk factor.
-
+Please see article [Guidelines on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnClinicalDescriptionForConditionPhenotypes.html)
 
 ## Literature Review
-* In OHDSI we like to learn from and improve the work of others. Performing a literature review to understand what others have done for this phenotype is considered best practice.
-* As part of the forum post, it is request to give references to (do not attach original articles) in the same thread and summarize the key salient information from the publication that may inform OHDSI phenotyping.
+- Literature review is required for peer review.
+- See 
+- In OHDSI we like to learn from and improve the work of others. Performing a literature review to understand what others have done for this phenotype is considered best practice.
+- There is no fixed format for submission of literature review, but we expect that if your submission is based on literature review, you give references to (do not attach original articles) in the same thread and summarize the key salient information from the publication that may inform OHDSI phenotyping.
+
+Please see article [Guidelines on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnLiteratureReview.html)
  
 ## Logic Description
-* that may be translated to Atlas cohort definitions (if rule-based phenotype). A cohort definition that is implemetned in Atlas should address
-    - Entry event criteria - what allows the person to enter the cohort. This becomes the cohort start date.
-    - Inclusion rule - what additional rules determine if a person may continue to stay in the cohort. This usually corresponds to the disqualifiers in clinical description.
-    - Exit criteria - What constitues the end for a person. This ususally corresponds to the prognosis section of the clinical description.
+- Logic description is required for peer review.
+- We recommend you write a logic description prior to beginning phenotyping. It is written after clinical description is complete.
+- The logic description would follow the structure of building cohort definitions in Atlas, but without the full details. It is expected to succint.
+- We have experienced that taking this approach improves the quality of your cohort definitions, reduces bugs in your cohort definition and allows to build cohort definitions collaboratively.
+- It is also a required element for peer-review, as a logic description indicates to the peer reviewers that the rules implemented in Atlas are deliberate design choices and not an unintentional accident (i.e. bug).
+
+Please see article [Guidelines on writing Cohort Definition Logic Description](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html)
 
 ## Your recommended cohort definitions (>= 1)
-  Having followed OHDSI Best practices and gone thru development/evaluation iteration
+Having followed OHDSI Best practices and gone through development/evaluation iteration
 
 ## Published Cohort Diagnostics output on one or more data sources 
-  PheValuator and other evaluation/validation metrics as applicable.
+heValuator and other evaluation/validation metrics as applicable.
 
 ## Discuss your evaluation/validation findings on forums.ohdsi.org
-  Insights on sensitivity, specificity and index date misclassification errors
+Insights on sensitivity, specificity and index date mis-classification errors
 
 ## Attach ‘CohortDefinitionSet’ R object.
-  For importing into atlas-phenotype.ohdsi.org
-  
-  
-## Recommended key words
-  
-| **Recommended Key words**	| **Interpretation** |
-| ----- | ---------------------------------------- |
-| Event	| A person may enter the cohort more than once |
-| Indexed on	| The entry event criteria may appear semantically different from the clinical idea being proposed. E.g. cases of pneumonia may be indexed on antibiotic dispensation |
+For importing into atlas-phenotype.ohdsi.org
 
+Please see article [Guidelines on Cohort Definition Set R Object](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnCohortDefinitionSetRObject.html)  
 
-## Key words to avoid
- * Words used in the context of phenotype evaluation should not be in name: e.g. sensitive, specific, narrow, broad
+------------------------------------------------
+# Post submission
+
+## Validity Checks prior to consideration
+- Your submissions will be subjected to the following routine [Validity Checks For CohortDefinitions](https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html)
+- Your submission is expected to pass these tests prior to being posted into atlas-phenotype.ohdsi.org
+  
+## Addition to [Atlas-phenotype] (https://atlas-phenotype.ohdsi.org/)
+- If your cohort definitions pass the validity checks, it will be posted to [Atlas-phenotype] (https://atlas-phenotype.ohdsi.org/)
+- Cohort definitions will make it to [OHDSI Phenotype Library] (https://github.com/OHDSI/PhenotypeLibrary)
+- The [Cohort Definitions in OHDSI Phenotype Library are here] (https://ohdsi.github.io/PhenotypeLibrary/articles/CohortDefinitionsInOhdsiPhenotypeLibrary.html) but will be flagged as 'Under review' with submission date. The added version field will be empty, as your cohort definition is not considered to be accepted.
+- *NOTE: the cohort definitions in this state, are not guaranteed to be immutable. The definitions may change.*
+
+## Assignment for Peer Review
+- OHDSI will perform on open peer review through the OHDSI Phenotype Development and Evaluation workgroup.
+- Workgroup members ill be assigned as peer reviewers. The peer review will be oral feedback followed by a recommendation.
+- The peer review will be video recorded and the recordings will be available in the workgroup archives.
+- It is up-to the submitter to then consider the peer review recommendations, make changes, or not.
+- Based on the decision of the peer reviewer(s) the cohort definition would be considered accepted.
+- Once accepted, the cohort definitions will be made immutable and a version number will be assigned to it. Key peer review notes will usually be referenced (commonly to the forum post).

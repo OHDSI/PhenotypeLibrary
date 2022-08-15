@@ -1,0 +1,46 @@
+---
+title: "Validity checks for Cohort Definitions"
+author: "Gowtham A. Rao"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    number_sections: no
+    toc: no  
+  pdf_document: 
+    toc: no     
+vignette: >
+  %\VignetteIndexEntry{Validity checks for Cohort Definitions}
+  %\VignetteEncoding{UTF-8}    
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE)
+```
+
+[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
+
+*This document is a DRAFT guidance.*
+
+
+## Name 
+- *Length* - cohort definition name should not be longer than 90 characters
+- *Name clash* - please check if there is another valid cohort with the exact same name. If yes, then we ask that you come up with another name. You can use the name of a deprecated cohort.
+
+## Cohort definition checks:
+- *Concept set mismatch*
+    - We do not allow cohort definitions with unused concept sets
+    - At least one of the concept id(s) in the concept set should belong the domain of the rule. E.g. if the rule says ‘at least 1 occurrence of ‘condition_occurrence’’ - but the conceptId does not even have one conceptId belonging to the condition domain.
+
+- *Measurement units*
+    - If using measurement - make sure units are specified. Cohort Definitions using measurement domains that do not have units will be automatically flagged for rejection. Reason: values may be on various scales and so value as number may not be meaningful.
+    - Measurement_unit_concept_id should be standard omop vocabulary that belongs to the domain Unit and should be valid. See [Athena](https://athena.ohdsi.org/search-terms/terms?domain=Unit&standardConcept=Standard&invalidReason=Valid&page=1&pageSize=500&query=)
+    - If measurement_unit_concept_id are used then we expect that each rule only combines units that are on the same scale i.e. the unit_concept_id should have a conversion factor = 1. 
+    - Exceptions
+        - unit less measurements and if there is only one unit.
+
+
