@@ -116,6 +116,10 @@ reactable::reactable(
 * **Cohort Id:** Id used by the [Library](https://github.com/OHDSI/PhenotypeLibrary) to identify the cohort. This is guaranteed to be backward compatible and so may be referenced in OHDSI HADES packages and studies using a combination of version number and cohort id.
 
 * **Cohort Name:** The name of the Cohort Definition
+- [D] Cohort has been deprecated, and is replaced by another cohort. This was a peer reviewed cohort.
+- [W] Cohort was withdrawn by the submitter during peer review. This is not a peer reviewed cohort.
+- [E] Cohort is known to have an error. This is usually not a peer reviewed cohort. Occasionally, a peer reviewed cohort may subsequently be found to have an error and be flagged to [E]
+- [P] Cohort is assigned for peer review.
 
 * **Get Results:** Is this part of the [ohdsi-studies/PhenotypeLibraryDiagnostics] (https://github.com/ohdsi-studies/PhenotypeLibraryDiagnostics) study package. If yes, then the results maybe found on [data.ohdsi.org/PhenotypeLibrary](https://data.ohdsi.org/PhenotypeLibrary/)
 
