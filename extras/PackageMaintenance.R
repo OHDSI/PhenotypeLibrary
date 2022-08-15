@@ -19,6 +19,8 @@ styler::style_pkg()
 OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
+source("extras/UpdatePhenotypes.R")
+
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")

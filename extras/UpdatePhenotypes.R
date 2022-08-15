@@ -95,13 +95,14 @@ exportableCohorts %>%
                          append = FALSE,
                          quote = "all")
 
-ROhdsiWebApi::insertCohortDefinitionSetInPackage(
+try(ROhdsiWebApi::insertCohortDefinitionSetInPackage(
   fileName = "inst/Cohorts.csv",
   baseUrl = baseUrl,
   jsonFolder = "inst/cohorts",
   sqlFolder = "inst/sql/sql_server",
   generateStats = TRUE
-)
+),
+silent = TRUE)
 
 # doing this again, because atlasId is not required for CohortDefinitionSet
 exportableCohorts  %>%
@@ -155,10 +156,30 @@ if (needToUpdate) {
   
   # Update news -----------------------------------------------------------
   news <- readLines("NEWS.md")
-  newCohorts <- setdiff(
-    x = sort(exportableCohorts$cohortId),
-    y = sort(oldCohortDefinitionSet$cohortId)
+  
+  changes <- newLogFile %>%
+    dplyr::anti_join(oldLogFile)
+  
+  newCohorts <- setdiff(x = sort(newLogFile$cohortId),
+                        y = sort(oldLogFile$cohortId))
+  
+  deprecatedCohorts <- setdiff(
+    x = sort(
+      newLogFile %>%
+        dplyr::filter(!is.na(.data$deprecatedDate)) %>%
+        dplyr::pull(.data$cohortId)
+    ),
+    y = sort(
+      oldLogFile$cohortId %>%
+        dplyr::filter(!is.na(.data$deprecatedDate)) %>%
+        dplyr::pull(.data$cohortId)
+    )
   )
+  
+  modifiedCohorts <- changes %>%
+    dplyr::filter(!.data$cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
+    dplyr::pull(.data$cohortId)
+  
   
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -169,16 +190,62 @@ if (needToUpdate) {
     messages <-
       c(messages, paste0("New Cohorts: ", length(newCohorts), " were added."))
     for (i in (1:length(newCohorts))) {
+      dataCohorts <- newCohorts %>%
+        dplyr::filter(.data$cohortId %in% newCohorts[[i]])
       messages <-
-        c(
-          messages,
-          paste0(
-            "    ",
-            exportableCohorts[i, ]$cohortId,
-            ": ",
-            exportableCohorts[i, ]$cohortName
-          )
-        )
+        c(messages,
+          paste0("    ",
+                 dataCohorts$cohortId,
+                 ": ",
+                 dataCohorts$cohortName))
+    }
+  }
+  
+  if (length(deprecatedCohorts) == 0) {
+    messages <-
+      c(messages,
+        "Deprecated Cohorts: No new cohorts were added in this release.")
+  } else {
+    messages <-
+      c(messages,
+        paste0(
+          "Deprecated Cohorts: ",
+          length(deprecatedCohorts),
+          " were deprecated."
+        ))
+    for (i in (1:length(deprecatedCohorts))) {
+      dataCohorts <- deprecatedCohorts %>%
+        dplyr::filter(.data$cohortId %in% deprecatedCohorts[[i]])
+      messages <-
+        c(messages,
+          paste0("    ",
+                 dataCohorts$cohortId,
+                 ": ",
+                 dataCohorts$cohortName))
+    }
+  }
+  
+  if (length(modifiedCohorts) == 0) {
+    messages <-
+      c(messages,
+        "Modified Cohorts: No cohorts were modified in this release.")
+  } else {
+    messages <-
+      c(messages,
+        paste0(
+          "Modified Cohorts: ",
+          length(modifiedCohorts),
+          " were modified."
+        ))
+    for (i in (1:length(modifiedCohorts))) {
+      dataCohorts <- modifiedCohorts %>%
+        dplyr::filter(.data$cohortId %in% modifiedCohorts[[i]])
+      messages <-
+        c(messages,
+          paste0("    ",
+                 dataCohorts$cohortId,
+                 ": ",
+                 dataCohorts$cohortName))
     }
   }
   
