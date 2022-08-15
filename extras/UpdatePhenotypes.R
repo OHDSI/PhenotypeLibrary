@@ -174,9 +174,9 @@ if (needToUpdate) {
           messages,
           paste0(
             "    ",
-            exportableCohorts[i,]$cohortId,
+            exportableCohorts[i, ]$cohortId,
             ": ",
-            exportableCohorts[i,]$cohortName
+            exportableCohorts[i, ]$cohortName
           )
         )
     }

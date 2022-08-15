@@ -135,6 +135,10 @@ updatePhenotypeLog <- function(updates) {
     writeLines("Nothing to update")
     return(NULL)
   }
+  updates <- updates %>% 
+    dplyr::mutate(description = as.character(.data$description)) %>% 
+    tidyr::replace_na(replace = list(description = ""))
+  
   oldLog <- getPhenotypeLog()
   
   # Peer Review-----------------------
