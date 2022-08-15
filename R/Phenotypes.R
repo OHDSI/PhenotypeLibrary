@@ -131,12 +131,14 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
 #' @export
 updatePhenotypeLog <- function(updates) {
   errorMessages <- checkmate::makeAssertCollection()
-  checkmate::assertDataFrame(x = updates, 
-                             min.rows = 1, 
-                             min.cols = 5,
-                             add = errorMessages)
+  checkmate::assertDataFrame(
+    x = updates,
+    min.rows = 1,
+    min.cols = 5,
+    add = errorMessages
+  )
   checkmate::reportAssertions(collection = errorMessages)
-  
+
   updates <- updates %>%
     dplyr::mutate(description = as.character(.data$description)) %>%
     tidyr::replace_na(replace = list(description = ""))
