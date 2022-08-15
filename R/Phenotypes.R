@@ -120,23 +120,23 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
 #' @return
 #' Updates Phenotype Log related to added/updated/deprecated of the OHDSI PhenotypeLibrary.
 #'
-#' @param updates  Data to update to the log
+#' @param updates  Data to update to the log. This is usually the output of ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)
 #'
 #' @return
 #' A tibble.
 #'
 #' @examples
-#' updatePhenotypeLog(cohortIds = c(1, 2))
+#' updatePhenotypeLog(updates)
 #'
 #' @export
 updatePhenotypeLog <- function(updates) {
-  if (any(
-    is.null(updates), !is.data.frame(updates),
-    nrow(updates) == 0
-  )) {
-    writeLines("Nothing to update")
-    return(NULL)
-  }
+  errorMessages <- checkmate::makeAssertCollection()
+  checkmate::assertDataFrame(x = updates, 
+                             min.rows = 1, 
+                             min.cols = 5,
+                             add = errorMessages)
+  checkmate::reportAssertions(collection = errorMessages)
+  
   updates <- updates %>%
     dplyr::mutate(description = as.character(.data$description)) %>%
     tidyr::replace_na(replace = list(description = ""))

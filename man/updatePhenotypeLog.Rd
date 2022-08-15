@@ -7,7 +7,7 @@
 updatePhenotypeLog(updates)
 }
 \arguments{
-\item{updates}{Data to update to the log}
+\item{updates}{Data to update to the log. This is usually the output of ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)}
 }
 \value{
 Updates Phenotype Log related to added/updated/deprecated of the OHDSI PhenotypeLibrary.
@@ -18,6 +18,6 @@ A tibble.
 Update phenotype log
 }
 \examples{
-updatePhenotypeLog(cohortIds = c(1, 2))
+updatePhenotypeLog(updates)
 
 }
