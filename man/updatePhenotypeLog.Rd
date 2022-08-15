@@ -17,7 +17,3 @@ A tibble.
 \description{
 Update phenotype log
 }
-\examples{
-updatePhenotypeLog(updates)
-
-}

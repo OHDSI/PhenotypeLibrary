@@ -125,9 +125,6 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
 #' @return
 #' A tibble.
 #'
-#' @examples
-#' updatePhenotypeLog(updates)
-#'
 #' @export
 updatePhenotypeLog <- function(updates) {
   errorMessages <- checkmate::makeAssertCollection()
