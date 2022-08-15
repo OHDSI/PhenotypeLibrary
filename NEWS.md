@@ -1,3 +1,8 @@
+PhenotypeLibrary 3.1.5
+======================
+
+Vignette: Created new vignette 'Guidelines on writing clinical description for Condition Phenotypes' by taking content out of 'Cohort Definition Submission Requirements'. Added several vignette stubs.
+
 PhenotypeLibrary 3.1.4
 ======================
 

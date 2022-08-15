@@ -42,6 +42,39 @@ rmarkdown::render("vignettes/CohortDefinitionSubmissionRequirements.Rmd",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))
+
+rmarkdown::render("vignettes/GuidelinesOnClinicalDescriptionForConditionPhenotypes.Rmd",
+                  output_file = "../inst/doc/GuidelinesOnClinicalDescriptionForConditionPhenotypes.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/ReservedWordsWithSpecialMeaningToPhenotypers.Rmd",
+                  output_file = "../inst/doc/ReservedWordsWithSpecialMeaningToPhenotypers.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/GuidelinesOnLiteratureReview.Rmd",
+                  output_file = "../inst/doc/GuidelinesOnLiteratureReview.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/GuidelinesOnCohortDefinitionSetRObject.Rmd",
+                  output_file = "../inst/doc/GuidelinesOnCohortDefinitionSetRObject.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+rmarkdown::render("vignettes/AutomatedValidityChecksForCohortDefinition.Rmd",
+                  output_file = "../inst/doc/AutomatedValidityChecksForCohortDefinition.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
+
+
 # Build site---------------------------------------------------------
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.6</span>
       </span>
     </div>
 
@@ -32,13 +32,31 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/AutomatedValidityChecksForCohortDefinition.html">Automated validity checks for Cohort Definition</a>
+    </li>
+    <li>
       <a href="../articles/CohortDefinitionsInOhdsiPhenotypeLibrary.html">Cohort Definitions in OHDSI Phenotype Library</a>
     </li>
     <li>
       <a href="../articles/CohortDefinitionSubmissionRequirements.html">Cohort Definition Submission Requirements</a>
     </li>
     <li>
+      <a href="../articles/GuidelinesOnClinicalDescriptionForConditionPhenotypes.html">Guidelines on writing clinical description for Condition Phenotypes</a>
+    </li>
+    <li>
+      <a href="../articles/GuidelinesOnCohortDefinitionSetRObject.html">Guidelines on Cohort Definition Set R Object</a>
+    </li>
+    <li>
+      <a href="../articles/GuidelinesOnLiteratureReview.html">Guidelines on literature review</a>
+    </li>
+    <li>
+      <a href="../articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html">Guidelines on writing Cohort Definition Logic Description</a>
+    </li>
+    <li>
       <a href="../articles/HowToUsePhenotypeLibraryRPackage.html">How to Use PhenotypeLibrary R Package</a>
+    </li>
+    <li>
+      <a href="../articles/ReservedWordsWithSpecialMeaningToPhenotypers.html">Reserved Words With Special Meaning To Phenotypers</a>
     </li>
   </ul></li>
 <li>
@@ -97,12 +115,14 @@ by the OHDSI PhenotypeLibrary.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getPhenotypeLog</span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName              getResults addedVersion addedDate  addedNotes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 COVID-19 diagnosis or ~ No         3.1.0        2022-07-06 <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 6 more variables: deprecatedVersion &lt;chr&gt;, deprecatedDate &lt;date&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   deprecatedNotes &lt;chr&gt;, updatedVersion &lt;chr&gt;, updatedDate &lt;date&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   updatedNotes &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohor~1 getRe~2 added~3 addedDate  added~4 depre~5 deprecat~6 depre~7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 COVID-~ No      3.1.0   2022-07-06 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 3 more variables: updatedVersion &lt;chr&gt;, updatedDate &lt;date&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   updatedNotes &lt;chr&gt;, and abbreviated variable names 1: cohortName,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   2: getResults, 3: addedVersion, 4: addedNotes, 5: deprecatedVersion,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   6: deprecatedDate, 7: deprecatedNotes</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
