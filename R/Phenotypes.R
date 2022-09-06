@@ -320,7 +320,15 @@ updatePhenotypeLog <- function(updates) {
     )))
 
   log <- dplyr::bind_rows(
-    oldLogUpdated,
+    oldLogUpdated %>%
+      dplyr::anti_join(
+        dplyr::bind_rows(
+          updatedFinal %>% dplyr::select(.data$cohortId),
+          newCohorts %>% dplyr::select(.data$cohortId)
+        ) %>%
+          dplyr::distinct(),
+        by = "cohortId"
+      ),
     updatedFinal,
     newCohorts
   ) %>%
