@@ -191,7 +191,7 @@ if (needToUpdate) {
     messages <-
       c(messages, paste0("New Cohorts: ", length(newCohorts), " were added."))
     for (i in (1:length(newCohorts))) {
-      dataCohorts <- newCohorts %>%
+      dataCohorts <- newLogFile %>%
         dplyr::filter(.data$cohortId %in% newCohorts[[i]])
       messages <-
         c(messages,
