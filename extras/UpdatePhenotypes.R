@@ -209,6 +209,7 @@ if (needToUpdate) {
   } else {
     messages <-
       c(messages,
+        "",
         paste0(
           "Deprecated Cohorts: ",
           length(deprecatedCohorts),
@@ -233,6 +234,7 @@ if (needToUpdate) {
   } else {
     messages <-
       c(messages,
+        "",
         paste0(
           "Modified Cohorts: ",
           length(modifiedCohorts),
