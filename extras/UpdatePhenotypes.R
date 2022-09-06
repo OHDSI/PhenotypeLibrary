@@ -241,7 +241,7 @@ if (needToUpdate) {
           " were modified."
         ))
     for (i in (1:length(modifiedCohorts))) {
-      dataCohorts <- modifiedCohorts %>%
+      dataCohorts <- changes %>%
         dplyr::filter(.data$cohortId %in% modifiedCohorts[[i]])
       messages <-
         c(messages,
