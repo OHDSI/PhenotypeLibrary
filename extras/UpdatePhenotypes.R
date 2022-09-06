@@ -118,7 +118,7 @@ newLogSource <- webApiCohorts %>%
                                   dplyr::pull(.data$cohortId)))
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
-newLogFile <- updatePhenotypeLog(updates = newLogSource)
+newLogFile <- PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
 
 needToUpdate <- TRUE
 if (identical(x = oldLogFile, y = newLogFile)) {
@@ -158,7 +158,9 @@ if (needToUpdate) {
   news <- readLines("NEWS.md")
   
   changes <- newLogFile %>%
-    dplyr::anti_join(oldLogFile)
+    dplyr::anti_join(oldLogFile,
+                     by = c("cohortId", "cohortName", "getResults", "addedVersion", "addedDate", "addedNotes", "deprecatedVersion", "deprecatedDate",
+                            "deprecatedNotes", "updatedVersion", "updatedDate", "updatedNotes"))
   
   newCohorts <- setdiff(x = sort(newLogFile$cohortId),
                         y = sort(oldLogFile$cohortId))
@@ -170,7 +172,7 @@ if (needToUpdate) {
         dplyr::pull(.data$cohortId)
     ),
     y = sort(
-      oldLogFile$cohortId %>%
+      oldLogFile %>%
         dplyr::filter(!is.na(.data$deprecatedDate)) %>%
         dplyr::pull(.data$cohortId)
     )
@@ -179,7 +181,6 @@ if (needToUpdate) {
   modifiedCohorts <- changes %>%
     dplyr::filter(!.data$cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
     dplyr::pull(.data$cohortId)
-  
   
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -214,7 +215,7 @@ if (needToUpdate) {
           " were deprecated."
         ))
     for (i in (1:length(deprecatedCohorts))) {
-      dataCohorts <- deprecatedCohorts %>%
+      dataCohorts <- changes %>%
         dplyr::filter(.data$cohortId %in% deprecatedCohorts[[i]])
       messages <-
         c(messages,
