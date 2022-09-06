@@ -116,12 +116,12 @@ reactable::reactable(
 * **Cohort Id:** Id used by the [Library](https://github.com/OHDSI/PhenotypeLibrary) to identify the cohort. This is guaranteed to be backward compatible and so may be referenced in OHDSI HADES packages and studies using a combination of version number and cohort id.
 
 * **Cohort Name:** The name of the Cohort Definition
-- [D] Cohort has been deprecated, and is replaced by another cohort. This was a peer reviewed cohort.
-- [W] Cohort was withdrawn by the submitter during peer review. This is not a peer reviewed cohort.
-- [E] Cohort is known to have an error. This is usually not a peer reviewed cohort. Occasionally, a peer reviewed cohort may subsequently be found to have an error and be flagged to [E]
-- [P] Cohort is assigned for peer review.
+  - [D] Cohort has been deprecated, and is replaced by another cohort. This was a peer reviewed cohort.
+  - [W] Cohort was withdrawn by the submitter during peer review. This is not a peer reviewed cohort.
+  - [E] Cohort is known to have an error. This is usually not a peer reviewed cohort. Occasionally, a peer reviewed cohort may subsequently be found to have an error and be flagged to [E]
+  - [P] Cohort is undergoing peer review.
 
-* **Get Results:** Is this part of the [ohdsi-studies/PhenotypeLibraryDiagnostics] (https://github.com/ohdsi-studies/PhenotypeLibraryDiagnostics) study package. If yes, then the results maybe found on [data.ohdsi.org/PhenotypeLibrary](https://data.ohdsi.org/PhenotypeLibrary/)
+* **Get Results:** Is this part of the [ohdsi-studies/PhenotypeLibraryDiagnostics](https://github.com/ohdsi-studies/PhenotypeLibraryDiagnostics) study package. If yes, then the results maybe found on [data.ohdsi.org/PhenotypeLibrary](https://data.ohdsi.org/PhenotypeLibrary/)
 
 * **Added Version:** The version of the PhenotypeLibrary R package when the cohort definition was added.
 
@@ -138,4 +138,10 @@ Updated Version: This field indicates the cohort definition has been modified. A
 * **Updated Date:** The date the Cohort was updated.
 
 * **Updated Notes:** Any notes from the [Work group](https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5) regarding update.
+
+
+
+--------------------
+* **Grandfathered status:** Certain cohorts were present in the OHDSI Phenotype library prior to version 3. These cohorts are labeled as being grandfathered in. If the cohorts are identified by the prefix [P] that means, they have not undergone peer review. After peer review and acceptance, the prefix [P] will be removed. Reason for grandfathered status: These cohort definitions did not have the submission requirements specified by the OHDSI Phenotype Development and Evaluation work group.
+
 
