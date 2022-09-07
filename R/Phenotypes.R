@@ -160,7 +160,7 @@ updatePhenotypeLog <- function(updates) {
               pattern = "[P]"
             )) %>%
             dplyr::pull(.data$cohortId)
-        ) ~ NA
+        ) ~ as.Date(NA)
       )
     ) %>%
     dplyr::mutate( # withdrawn
@@ -172,7 +172,7 @@ updatePhenotypeLog <- function(updates) {
               pattern = "[W]"
             )) %>%
             dplyr::pull(.data$cohortId)
-        ) ~ NA
+        ) ~ as.Date(NA)
       )
     ) %>%
     dplyr::mutate( # deprecated
@@ -184,7 +184,7 @@ updatePhenotypeLog <- function(updates) {
               pattern = "[D]"
             )) %>%
             dplyr::pull(.data$cohortId)
-        ) ~ NA
+        ) ~ as.Date(NA)
       )
     ) %>%
     dplyr::mutate( # error
@@ -196,7 +196,7 @@ updatePhenotypeLog <- function(updates) {
               pattern = "[E]"
             )) %>%
             dplyr::pull(.data$cohortId)
-        ) ~ NA
+        ) ~ as.Date(NA)
       )
     ) %>%
     tidyr::replace_na(replace = list(notes = "")) %>%
@@ -301,18 +301,20 @@ updatePhenotypeLog <- function(updates) {
     )
 
   log <-
-    dplyr::bind_rows(noChanges, changes) %>% 
-    dplyr::arrange(.data$cohortId) %>% 
-    dplyr::select(.data$cohortId,
-                  .data$cohortName,
-                  .data$getResults,
-                  .data$addedDate,
-                  .data$addedVersion,
-                  .data$deprecatedDate,
-                  .data$deprecatedVersion,
-                  .data$updatedDate,
-                  .data$updatedVersion,
-                  .data$notes)
+    dplyr::bind_rows(noChanges, changes) %>%
+    dplyr::arrange(.data$cohortId) %>%
+    dplyr::select(
+      .data$cohortId,
+      .data$cohortName,
+      .data$getResults,
+      .data$addedDate,
+      .data$addedVersion,
+      .data$deprecatedDate,
+      .data$deprecatedVersion,
+      .data$updatedDate,
+      .data$updatedVersion,
+      .data$notes
+    )
 
   return(log)
 }
