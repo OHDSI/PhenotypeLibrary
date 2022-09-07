@@ -93,6 +93,7 @@ exportableCohorts <-
 exportableCohorts %>%
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
+                         na = "",
                          quote = "all")
 
 try(ROhdsiWebApi::insertCohortDefinitionSetInPackage(
@@ -111,6 +112,7 @@ exportableCohorts  %>%
   dplyr::arrange(.data$cohortId) %>%
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
+                         na = "",
                          quote = "all")
 
 newLogSource <- webApiCohorts %>%
