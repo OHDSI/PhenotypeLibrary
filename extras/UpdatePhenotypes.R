@@ -132,6 +132,7 @@ if (needToUpdate) {
     x = newLogFile,
     file = "inst/PhenotypeLog.csv",
     append = FALSE,
+    na = "",
     quote = "all"
   )
   
