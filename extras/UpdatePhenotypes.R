@@ -93,6 +93,7 @@ exportableCohorts <-
 exportableCohorts %>%
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
+                         na = "",
                          quote = "all")
 
 try(ROhdsiWebApi::insertCohortDefinitionSetInPackage(
@@ -111,6 +112,7 @@ exportableCohorts  %>%
   dplyr::arrange(.data$cohortId) %>%
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
+                         na = "",
                          quote = "all")
 
 newLogSource <- webApiCohorts %>%
@@ -118,7 +120,8 @@ newLogSource <- webApiCohorts %>%
                                   dplyr::pull(.data$cohortId)))
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
-newLogFile <- updatePhenotypeLog(updates = newLogSource)
+newLogFile <-
+  PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
 
 needToUpdate <- TRUE
 if (identical(x = oldLogFile, y = newLogFile)) {
@@ -131,9 +134,9 @@ if (needToUpdate) {
     x = newLogFile,
     file = "inst/PhenotypeLog.csv",
     append = FALSE,
+    na = "",
     quote = "all"
   )
-  
   
   # Update description -----------------------------------------------------------
   description <- readLines("DESCRIPTION")
@@ -158,7 +161,23 @@ if (needToUpdate) {
   news <- readLines("NEWS.md")
   
   changes <- newLogFile %>%
-    dplyr::anti_join(oldLogFile)
+    dplyr::anti_join(
+      oldLogFile,
+      by = c(
+        "cohortId",
+        "cohortName",
+        "getResults",
+        "addedVersion",
+        "addedDate",
+        "addedNotes",
+        "deprecatedVersion",
+        "deprecatedDate",
+        "deprecatedNotes",
+        "updatedVersion",
+        "updatedDate",
+        "updatedNotes"
+      )
+    )
   
   newCohorts <- setdiff(x = sort(newLogFile$cohortId),
                         y = sort(oldLogFile$cohortId))
@@ -170,7 +189,7 @@ if (needToUpdate) {
         dplyr::pull(.data$cohortId)
     ),
     y = sort(
-      oldLogFile$cohortId %>%
+      oldLogFile %>%
         dplyr::filter(!is.na(.data$deprecatedDate)) %>%
         dplyr::pull(.data$cohortId)
     )
@@ -179,7 +198,6 @@ if (needToUpdate) {
   modifiedCohorts <- changes %>%
     dplyr::filter(!.data$cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
     dplyr::pull(.data$cohortId)
-  
   
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -190,7 +208,7 @@ if (needToUpdate) {
     messages <-
       c(messages, paste0("New Cohorts: ", length(newCohorts), " were added."))
     for (i in (1:length(newCohorts))) {
-      dataCohorts <- newCohorts %>%
+      dataCohorts <- newLogFile %>%
         dplyr::filter(.data$cohortId %in% newCohorts[[i]])
       messages <-
         c(messages,
@@ -208,13 +226,14 @@ if (needToUpdate) {
   } else {
     messages <-
       c(messages,
+        "",
         paste0(
           "Deprecated Cohorts: ",
           length(deprecatedCohorts),
           " were deprecated."
         ))
     for (i in (1:length(deprecatedCohorts))) {
-      dataCohorts <- deprecatedCohorts %>%
+      dataCohorts <- changes %>%
         dplyr::filter(.data$cohortId %in% deprecatedCohorts[[i]])
       messages <-
         c(messages,
@@ -232,13 +251,14 @@ if (needToUpdate) {
   } else {
     messages <-
       c(messages,
+        "",
         paste0(
           "Modified Cohorts: ",
           length(modifiedCohorts),
           " were modified."
         ))
     for (i in (1:length(modifiedCohorts))) {
-      dataCohorts <- modifiedCohorts %>%
+      dataCohorts <- changes %>%
         dplyr::filter(.data$cohortId %in% modifiedCohorts[[i]])
       messages <-
         c(messages,

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.0</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-08-15</h4>
+            <h4 data-toc-skip class="date">2022-09-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/ValidityChecksForCohortDefinitions.Rmd" class="external-link"><code>vignettes/ValidityChecksForCohortDefinitions.Rmd</code></a></small>
       <div class="hidden name"><code>ValidityChecksForCohortDefinitions.Rmd</code></div>
@@ -135,6 +135,9 @@ part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a>
 <em>Name clash</em> - please check if there is another valid cohort
 with the exact same name. If yes, then we ask that you come up with
 another name. You can use the name of a deprecated cohort.</li>
+<li>
+<em>Reserved characters</em> - should not have ‘[’ or ’]’ in cohort
+name, as it is reserved for use in Phenotype library.</li>
 </ul>
 </div>
 <div class="section level2">
