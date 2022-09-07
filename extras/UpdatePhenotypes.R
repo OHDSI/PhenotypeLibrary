@@ -118,7 +118,8 @@ newLogSource <- webApiCohorts %>%
                                   dplyr::pull(.data$cohortId)))
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
-newLogFile <- PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
+newLogFile <-
+  PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
 
 needToUpdate <- TRUE
 if (identical(x = oldLogFile, y = newLogFile)) {
@@ -157,9 +158,23 @@ if (needToUpdate) {
   news <- readLines("NEWS.md")
   
   changes <- newLogFile %>%
-    dplyr::anti_join(oldLogFile,
-                     by = c("cohortId", "cohortName", "getResults", "addedVersion", "addedDate", "addedNotes", "deprecatedVersion", "deprecatedDate",
-                            "deprecatedNotes", "updatedVersion", "updatedDate", "updatedNotes"))
+    dplyr::anti_join(
+      oldLogFile,
+      by = c(
+        "cohortId",
+        "cohortName",
+        "getResults",
+        "addedVersion",
+        "addedDate",
+        "addedNotes",
+        "deprecatedVersion",
+        "deprecatedDate",
+        "deprecatedNotes",
+        "updatedVersion",
+        "updatedDate",
+        "updatedNotes"
+      )
+    )
   
   newCohorts <- setdiff(x = sort(newLogFile$cohortId),
                         y = sort(oldLogFile$cohortId))
