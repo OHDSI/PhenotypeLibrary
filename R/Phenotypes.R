@@ -209,8 +209,8 @@ updatePhenotypeLog <- function(updates) {
     ) %>%
     dplyr::arrange(.data$cohortId)
 
-  noChanges <- oldLog %>%
-    dplyr::inner_join(phenotypeLog,
+  noChanges <- phenotypeLog %>%
+    dplyr::inner_join(oldLog,
       by = c(
         "cohortId",
         "cohortName",
@@ -220,8 +220,8 @@ updatePhenotypeLog <- function(updates) {
       )
     )
 
-  withChanges <- oldLog %>%
-    dplyr::anti_join(phenotypeLog,
+  withChanges <- phenotypeLog %>%
+    dplyr::anti_join(oldLog,
       by = c(
         "cohortId",
         "cohortName",
@@ -301,7 +301,18 @@ updatePhenotypeLog <- function(updates) {
     )
 
   log <-
-    dplyr::bind_rows(noChanges, changes) %>% dplyr::arrange(.data$cohortId)
+    dplyr::bind_rows(noChanges, changes) %>% 
+    dplyr::arrange(.data$cohortId) %>% 
+    dplyr::select(.data$cohortId,
+                  .data$cohortName,
+                  .data$getResults,
+                  .data$addedDate,
+                  .data$addedVersion,
+                  .data$deprecatedDate,
+                  .data$deprecatedVersion,
+                  .data$updatedDate,
+                  .data$updatedVersion,
+                  .data$notes)
 
   return(log)
 }

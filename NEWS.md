@@ -19,7 +19,8 @@ Deprecated Cohorts: 13 were deprecated.
     201: Ulcerative colitis (FP)
 
 Modified Cohorts: 85 were modified. These cohorts have not undergone Peer review process. They are not considered accepted. However, because of grandfathered status (i.e. these cohorts exists in Phenotype Library prior to version 3.0, results for these cohorts is computed as part of 
-PhenotypeLibraryDiagnostics study package). The Cohort JSON specifications were not changed.
+PhenotypeLibraryDiagnostics study package). *The Cohort JSON specifications were not changed.* 
+
     2: [P] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)
     3: [P] Cough (3Ps, 30Era)
     4: [P] Diarrhea (7Ps, 30Era)

@@ -134,7 +134,6 @@ if (needToUpdate) {
     quote = "all"
   )
   
-  
   # Update description -----------------------------------------------------------
   description <- readLines("DESCRIPTION")
   
