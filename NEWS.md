@@ -3,23 +3,8 @@ PhenotypeLibrary 3.2.0
 
 New Cohorts: No new cohorts were added in this release.
 
-Deprecated Cohorts: 13 were deprecated.
-    29: Autoimmune condition (FP)
-    35: Chronic kidney disease (FP)
-    39: End stage renal disease (FP)
-    41: Chronic kidney disease broad (FP)
-    42: End stage renal disease broad (FP)
-    44: COVID-19 diagnosis (3Pe, 7Era)
-    73: Pregnancy (270P, 0Era)
-    123: First event of Suicide attempt, including injuries and poisonings with undetermined, 365 days
-    196: Rheumatoid arthritis (FP)
-    198: Crohns disease (FP)
-    199: Major Depressive Disorder (FP)
-    200: Plaque psoriasis (FP)
-    201: Ulcerative colitis (FP)
-
-Modified Cohorts: 85 were modified. These cohorts have not undergone Peer review process. They are not considered accepted. However, because of grandfathered status (i.e. these cohorts exists in Phenotype Library prior to version 3.0, results for these cohorts is computed as part of 
-PhenotypeLibraryDiagnostics study package). *The Cohort JSON specifications were not changed.* 
+Modified Cohorts: 85 were modified. These are only name modifications. These cohorts have not undergone Peer review process. They are not considered accepted. However, because of grandfathered status (i.e. these cohorts existed in Phenotype Library prior to version 3.0, results for these cohorts are computed as part of 
+PhenotypeLibraryDiagnostics study package - unless withdrawn). *The Cohort JSON specifications were not changed.* 
 
     2: [P] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)
     3: [P] Cough (3Ps, 30Era)
@@ -107,6 +92,21 @@ PhenotypeLibraryDiagnostics study package). *The Cohort JSON specifications were
     195: [P] Urothelial bladder cancer (FP)
     197: [P] Coronary Artery Disease from vessel disease to ischemic injury (FP)
 
+
+Withdrawn Cohorts: 13 were withdrawn prior to peer review. These cohorts have not undergone Peer review process. They are not considered accepted. It has been withdrawn prior to peer review. *The Cohort JSON specifications were not changed.* 
+    29: [W] Autoimmune condition (FP)
+    35: [W] Chronic kidney disease (FP)
+    39: [W] End stage renal disease (FP)
+    41: [W] Chronic kidney disease broad (FP)
+    42: [W] End stage renal disease broad (FP)
+    44: [W] COVID-19 diagnosis (3Pe, 7Era)
+    73: [W] Pregnancy (270P, 0Era)
+    123: [W] First event of Suicide attempt, including injuries and poisonings with undetermined, 365 days
+    196: [W] Rheumatoid arthritis (FP)
+    198: [W] Crohns disease (FP)
+    199: [W] Major Depressive Disorder (FP)
+    200: [W] Plaque psoriasis (FP)
+    201: [W] Ulcerative colitis (FP)
 
 PhenotypeLibrary 3.1.6
 ======================
