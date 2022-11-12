@@ -162,21 +162,7 @@ if (needToUpdate) {
   
   changes <- newLogFile %>%
     dplyr::anti_join(
-      oldLogFile,
-      by = c(
-        "cohortId",
-        "cohortName",
-        "getResults",
-        "addedVersion",
-        "addedDate",
-        "addedNotes",
-        "deprecatedVersion",
-        "deprecatedDate",
-        "deprecatedNotes",
-        "updatedVersion",
-        "updatedDate",
-        "updatedNotes"
-      )
+      oldLogFile
     )
   
   newCohorts <- setdiff(x = sort(newLogFile$cohortId),
