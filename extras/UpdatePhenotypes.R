@@ -34,7 +34,7 @@ exportableCohorts <-
     webApiCohorts %>%
       dplyr::filter(
         stringr::str_detect(
-          string = .data$name,
+          string = name,
           pattern = stringr::fixed('['),
           # Cohorts without prefix
           negate = TRUE
@@ -43,7 +43,7 @@ exportableCohorts <-
     webApiCohorts %>%
       dplyr::filter(
         stringr::str_detect(
-          string = .data$name,
+          string = name,
           pattern = stringr::fixed('[D]'),
           # Deprecated cohorts, as another cohort definition subsumes the cohort definitions intent
           negate = FALSE
@@ -52,7 +52,7 @@ exportableCohorts <-
     webApiCohorts %>%
       dplyr::filter(
         stringr::str_detect(
-          string = .data$name,
+          string = name,
           pattern = stringr::fixed('[P]'),
           # Cohorts under consideration for peer review
           negate = FALSE
@@ -61,7 +61,7 @@ exportableCohorts <-
     webApiCohorts %>%
       dplyr::filter(
         stringr::str_detect(
-          string = .data$name,
+          string = name,
           pattern = stringr::fixed('[E]'),
           # Cohorts that have errors and should not be used
           negate = FALSE
@@ -70,7 +70,7 @@ exportableCohorts <-
     webApiCohorts %>%
       dplyr::filter(
         stringr::str_detect(
-          string = .data$name,
+          string = name,
           pattern = stringr::fixed('[W]'),
           # Cohorts that have been withdrawn
           negate = FALSE
@@ -78,17 +78,17 @@ exportableCohorts <-
       )
   ) %>%
   dplyr::distinct() %>%
-  dplyr::select(.data$id,
-                .data$name) %>%
+  dplyr::select(id,
+                name) %>%
   dplyr::mutate(
-    cohortId = .data$id,
-    atlasId = .data$id,
-    cohortName = .data$name
+    cohortId = id,
+    atlasId = id,
+    cohortName = name
   ) %>%
-  dplyr::arrange(.data$cohortId) %>%
-  dplyr::select(.data$cohortId,
-                .data$atlasId,
-                .data$cohortName)
+  dplyr::arrange(cohortId) %>%
+  dplyr::select(cohortId,
+                atlasId,
+                cohortName)
 
 exportableCohorts %>%
   readr::write_excel_csv(file = "inst/Cohorts.csv",
@@ -107,17 +107,17 @@ silent = TRUE)
 
 # doing this again, because atlasId is not required for CohortDefinitionSet
 exportableCohorts  %>%
-  dplyr::select(.data$cohortId,
-                .data$cohortName) %>%
-  dplyr::arrange(.data$cohortId) %>%
+  dplyr::select(cohortId,
+                cohortName) %>%
+  dplyr::arrange(cohortId) %>%
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
                          na = "",
                          quote = "all")
 
 newLogSource <- webApiCohorts %>%
-  dplyr::filter(.data$id %in% c(exportableCohorts  %>%
-                                  dplyr::pull(.data$cohortId)))
+  dplyr::filter(id %in% c(exportableCohorts  %>%
+                                  dplyr::pull(cohortId)))
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
 newLogFile <-
@@ -185,19 +185,19 @@ if (needToUpdate) {
   deprecatedCohorts <- setdiff(
     x = sort(
       newLogFile %>%
-        dplyr::filter(!is.na(.data$deprecatedDate)) %>%
-        dplyr::pull(.data$cohortId)
+        dplyr::filter(!is.na(deprecatedDate)) %>%
+        dplyr::pull(cohortId)
     ),
     y = sort(
       oldLogFile %>%
-        dplyr::filter(!is.na(.data$deprecatedDate)) %>%
-        dplyr::pull(.data$cohortId)
+        dplyr::filter(!is.na(deprecatedDate)) %>%
+        dplyr::pull(cohortId)
     )
   )
   
   modifiedCohorts <- changes %>%
-    dplyr::filter(!.data$cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
-    dplyr::pull(.data$cohortId)
+    dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
+    dplyr::pull(cohortId)
   
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -209,7 +209,7 @@ if (needToUpdate) {
       c(messages, paste0("New Cohorts: ", length(newCohorts), " were added."))
     for (i in (1:length(newCohorts))) {
       dataCohorts <- newLogFile %>%
-        dplyr::filter(.data$cohortId %in% newCohorts[[i]])
+        dplyr::filter(cohortId %in% newCohorts[[i]])
       messages <-
         c(messages,
           paste0("    ",
@@ -234,7 +234,7 @@ if (needToUpdate) {
         ))
     for (i in (1:length(deprecatedCohorts))) {
       dataCohorts <- changes %>%
-        dplyr::filter(.data$cohortId %in% deprecatedCohorts[[i]])
+        dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
       messages <-
         c(messages,
           paste0("    ",
@@ -259,7 +259,7 @@ if (needToUpdate) {
         ))
     for (i in (1:length(modifiedCohorts))) {
       dataCohorts <- changes %>%
-        dplyr::filter(.data$cohortId %in% modifiedCohorts[[i]])
+        dplyr::filter(cohortId %in% modifiedCohorts[[i]])
       messages <-
         c(messages,
           paste0("    ",
