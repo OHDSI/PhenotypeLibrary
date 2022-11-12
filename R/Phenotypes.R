@@ -48,7 +48,7 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   checkmate::reportAssertions(collection = errorMessages)
 
   cohorts <- listPhenotypes() %>%
-    filter(.data$cohortId %in% cohortIds)
+    filter(cohortId %in% cohortIds)
   jsonFolder <- system.file("cohorts", package = "PhenotypeLibrary")
   sqlFolder <- system.file("sql", "sql_server", package = "PhenotypeLibrary")
 
@@ -98,15 +98,15 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
       system.file("PhenotypeLog.csv", package = "PhenotypeLibrary"),
       col_types = readr::cols()
     ) %>%
-    dplyr::filter(.data$cohortId %in% c(cohortIds)) %>%
+    dplyr::filter(cohortId %in% c(cohortIds)) %>%
     dplyr::mutate(
-      addedVersion = as.character(.data$addedVersion),
-      addedDate = as.Date(.data$addedDate),
-      deprecatedVersion = as.character(.data$deprecatedVersion),
-      deprecatedDate = as.Date(.data$deprecatedDate),
-      updatedVersion = as.character(.data$updatedVersion),
-      updatedDate = as.Date(.data$updatedDate),
-      notes = as.character(.data$notes),
+      addedVersion = as.character(addedVersion),
+      addedDate = as.Date(addedDate),
+      deprecatedVersion = as.character(deprecatedVersion),
+      deprecatedDate = as.Date(deprecatedDate),
+      updatedVersion = as.character(updatedVersion),
+      updatedDate = as.Date(updatedDate),
+      notes = as.character(notes),
     ) %>%
     tidyr::replace_na(replace = list(
       getResults = "No",
@@ -115,7 +115,7 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
       updatedVersion = "",
       notes = ""
     )) %>%
-    dplyr::arrange(.data$cohortId)
+    dplyr::arrange(cohortId)
   return(log)
 }
 
@@ -145,69 +145,69 @@ updatePhenotypeLog <- function(updates) {
 
   phenotypeLog <- updates %>%
     dplyr::mutate(
-      addedDate = as.Date(.data$createdDate),
-      updatedDate = as.Date(.data$modifiedDate),
-      cohortId = .data$id,
-      cohortName = .data$name,
-      notes = as.character(.data$description)
+      addedDate = as.Date(createdDate),
+      updatedDate = as.Date(modifiedDate),
+      cohortId = id,
+      cohortName = name,
+      notes = as.character(description)
     ) %>%
     dplyr::mutate( # peer evaluation
       updatedDate = dplyr::case_when(
-        .data$cohortId %in% c(
+        cohortId %in% c(
           oldLog %>%
             dplyr::filter(stringr::str_detect(
-              string = .data$cohortName,
+              string = cohortName,
               pattern = "[P]"
             )) %>%
-            dplyr::pull(.data$cohortId)
+            dplyr::pull(cohortId)
         ) ~ as.Date(NA)
       )
     ) %>%
     dplyr::mutate( # withdrawn
       updatedDate = dplyr::case_when(
-        .data$cohortId %in% c(
+        cohortId %in% c(
           oldLog %>%
             dplyr::filter(stringr::str_detect(
-              string = .data$cohortName,
+              string = cohortName,
               pattern = "[W]"
             )) %>%
-            dplyr::pull(.data$cohortId)
+            dplyr::pull(cohortId)
         ) ~ as.Date(NA)
       )
     ) %>%
     dplyr::mutate( # deprecated
       updatedDate = dplyr::case_when(
-        .data$cohortId %in% c(
+        cohortId %in% c(
           oldLog %>%
             dplyr::filter(stringr::str_detect(
-              string = .data$cohortName,
+              string = cohortName,
               pattern = "[D]"
             )) %>%
-            dplyr::pull(.data$cohortId)
+            dplyr::pull(cohortId)
         ) ~ as.Date(NA)
       )
     ) %>%
     dplyr::mutate( # error
       updatedDate = dplyr::case_when(
-        .data$cohortId %in% c(
+        cohortId %in% c(
           oldLog %>%
             dplyr::filter(stringr::str_detect(
-              string = .data$cohortName,
+              string = cohortName,
               pattern = "[E]"
             )) %>%
-            dplyr::pull(.data$cohortId)
+            dplyr::pull(cohortId)
         ) ~ as.Date(NA)
       )
     ) %>%
     tidyr::replace_na(replace = list(notes = "")) %>%
     dplyr::select(
-      .data$cohortId,
-      .data$cohortName,
-      .data$addedDate,
-      .data$updatedDate,
-      .data$notes
+      cohortId,
+      cohortName,
+      addedDate,
+      updatedDate,
+      notes
     ) %>%
-    dplyr::arrange(.data$cohortId)
+    dplyr::arrange(cohortId)
 
   noChanges <- phenotypeLog %>%
     dplyr::inner_join(oldLog,
@@ -236,7 +236,7 @@ updatePhenotypeLog <- function(updates) {
   # Peer Review-----------------------
   peerReview <- withChanges %>%
     dplyr::filter(stringr::str_detect(
-      string = .data$cohortName,
+      string = cohortName,
       pattern = stringr::fixed("[P]")
     )) %>%
     dplyr::mutate(
@@ -247,19 +247,19 @@ updatePhenotypeLog <- function(updates) {
   # Deprecated
   deprecated <- withChanges %>%
     dplyr::filter(stringr::str_detect(
-      string = .data$cohortName,
+      string = cohortName,
       pattern = stringr::fixed("[D]")
     )) %>%
     dplyr::mutate(
       deprecatedVersion = "XX",
-      deprecatedDate = .data$updatedDate,
+      deprecatedDate = updatedDate,
       getResults = "No"
     )
 
   # Withdrawn
   withDrawn <- withChanges %>%
     dplyr::filter(stringr::str_detect(
-      string = .data$cohortName,
+      string = cohortName,
       pattern = stringr::fixed("[W]")
     )) %>%
     dplyr::mutate(getResults = "No")
@@ -267,19 +267,19 @@ updatePhenotypeLog <- function(updates) {
   # Error
   error <- withChanges %>%
     dplyr::filter(stringr::str_detect(
-      string = .data$cohortName,
+      string = cohortName,
       pattern = stringr::fixed("[E]")
     )) %>%
     dplyr::mutate(
       deprecatedVersion = "XX",
-      deprecatedDate = .data$updatedDate,
+      deprecatedDate = updatedDate,
       getResults = "No"
     )
 
   # New Cohorts -----------------------
   newCohorts <- withChanges %>%
     dplyr::filter(
-      !.data$cohortId %in% c(
+      !cohortId %in% c(
         peerReview$cohortId,
         deprecated$cohortId,
         withDrawn$cohortId,
@@ -302,18 +302,18 @@ updatePhenotypeLog <- function(updates) {
 
   log <-
     dplyr::bind_rows(noChanges, changes) %>%
-    dplyr::arrange(.data$cohortId) %>%
+    dplyr::arrange(cohortId) %>%
     dplyr::select(
-      .data$cohortId,
-      .data$cohortName,
-      .data$getResults,
-      .data$addedDate,
-      .data$addedVersion,
-      .data$deprecatedDate,
-      .data$deprecatedVersion,
-      .data$updatedDate,
-      .data$updatedVersion,
-      .data$notes
+      cohortId,
+      cohortName,
+      getResults,
+      addedDate,
+      addedVersion,
+      deprecatedDate,
+      deprecatedVersion,
+      updatedDate,
+      updatedVersion,
+      notes
     )
 
   return(log)

@@ -1,3 +1,53 @@
+PhenotypeLibrary 3.3.0
+======================
+
+New Cohorts: 43 were added.
+    205: [P] Acute pancreatitis (7Pe, 0Era, 365W)
+    206: [P] Drug Induced Acute pancreatitis (7Pe, 365W)
+    207: [P] Acquired Pure Red Cell Aplasia
+    208: [P] Neutropenic Fever (3Pe, 30Era)
+    209: [P] Hemolytic Anemia, Extra corpuscular Acquired - G6PD deficiency excluded (7Pe, 0Era, 365W)
+    210: [P] Hemolytic Anemia, Extra corpuscular Acquired (7Pe, 0Era, 365W)
+    211: [P] Pancytopenia, Acquired
+    213: [P] Acquired Neutropenia or unspecified leukopenia (21Pe, 365Era)
+    214: [P] Acquired Isolated Neutropenia or unspecified leukopenia (21Pe, 365Era)
+    215: [P] Isolated Immune Thrombocytopenia (180Pe, 365Era)
+    216: [P] Isolated Immune Thrombocytopenia in absence of common thrombocytopenia causes (180Pe, 365Era)
+    217: [P] Thrombotic microangiopathy or Microangiopathic hemolytic anemia
+    218: [P] Rhabdomyolysis (3Pe, 0Era, 180W)
+    219: [P] Sudden Cardiac arrest or cardiac death
+    220: [P] Angioedema (3Pe, 0Era, 180W)
+    221: [P] Anaphylaxis Non Environmental exposure related (1Pe, 0Era, 180W)
+    222: [P] Stevens-Johnson syndrome, toxic epidermal necrolysis spectrum
+    223: [P] Posterior reversible encephalopathy syndrome (PRES)
+    224: [P] Long QT Syndrome or QT prolonged (Acquired)
+    225: [P] Drug-induced Lupus (7Pe, 0Era, 365W)
+    226: [P] Drug Rash with Eosinophilia and Systemic Symptoms DRESS (1Pe, 0Era, 365W)
+    227: [P] Severe Cutaneous Adverse Reaction SCAR (SJS+TEN+DRESS+EM) (3Pe, 0Era, 365W)
+    228: [P] Severe Cutaneous Adverse Reaction SCAR (SJS+TEN+DRESS) (3Pe, 0Era, 365W)
+    229: [P] Progressive multifocal leukoencephalopathy
+    230: [P] Autoimmune hepatitis (1Pe, 0Era, 365W)
+    231: [P] Erythema multiforme (3Pe, 0Era, 365W)
+    232: [P] Paresthesia (3Pe, 0Era, 365W)
+    233: [P] Hemorrhagic stroke (1Pe, 0Era, 180W)
+    234: [P] Appendicitis (1Pe, 0Era, 365W)
+    235: [P] Guillain Barre syndrome (1Pe, 0Era, 365W)
+    236: [P] Idiopathic Peripheral Neuropathy (1Pe, 0Era, 365W)
+    237: [P] Kawasaki disease (1Pe, 0Era, 365W)
+    238: [P] Optic Neuritis (7Pe, 0Era, 365W)
+    239: [P] Narcolepsy events (1Pe, 0Era, 365W)
+    240: [P] Muscle weakness or monoplegia (1Pe, 0Era, 365W)
+    241: [P] Urticaria (1Pe, 0Era, 365W)
+    243: [P] Tinnitus (1Pe, 0Era, 365W)
+    244: [P] Dizziness (1Pe, 0Era, 365W)
+    245: [P] Hepatic Thrombosis (1Pe, 0Era, 365W)
+    246: [P] Portal vein thrombosis (1Pe, 0Era, 365W)
+    247: [P] Deep Vein Thrombosis DVT (1Pe, 0Era, 365W)
+    248: [P] Disseminated intravascular coagulation DIC (1Pe, 0Era, 365W)
+    249: [P] Ischemic (Non-hemorrhagic) Stroke (1Pe, 0Era, 365W)
+Deprecated Cohorts: No new cohorts were added in this release.
+Modified Cohorts: No cohorts were modified in this release.
+
 PhenotypeLibrary 3.2.0
 ======================
 
