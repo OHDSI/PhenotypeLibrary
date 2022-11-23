@@ -278,13 +278,17 @@ updatePhenotypeLog <- function(updates) {
 
   # New Cohorts -----------------------
   newCohorts <- withChanges %>%
-    dplyr::filter(
-      !cohortId %in% c(
-        peerReview$cohortId,
-        deprecated$cohortId,
-        withDrawn$cohortId,
-        error$cohortId
-      ) %>% unique()
+    dplyr::anti_join(
+      dplyr::tibble(
+        cohortId = c(
+          peerReview$cohortId,
+          deprecated$cohortId,
+          withDrawn$cohortId,
+          error$cohortId
+        ) %>% unique() %>%
+          sort()
+      ),
+      by = "cohortId"
     ) %>%
     dplyr::mutate(
       addedVersion = "XX",

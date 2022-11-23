@@ -18,11 +18,11 @@ UNION  select c.concept_id
 ) C UNION ALL 
 SELECT 7 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4338595,2787821,46257586,1531632,1531631,1531630,2787820,44515635,4052536,2002247,44811012)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (44811012,46257586,2787821,4052536,4338595,2787820)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (46257586,44515635,4052536,2002247)
+  and ca.ancestor_concept_id in (46257586,4052536)
   and c.invalid_reason is null
 
 ) I
@@ -139,7 +139,7 @@ FROM cteIncludedEvents Results
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,1,start_date) > op_end_date then op_end_date else DATEADD(day,1,start_date) end as end_date
+  case when DATEADD(day,1,end_date) > op_end_date then op_end_date else DATEADD(day,1,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 

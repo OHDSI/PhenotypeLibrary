@@ -19,7 +19,8 @@ knitr::opts_chunk$set(
   cache = FALSE,
   comment = "#>",
   error = FALSE,
-  tidy = FALSE)
+  tidy = FALSE
+)
 ```
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
@@ -29,9 +30,9 @@ knitr::opts_chunk$set(
 **Note (caution):** Logic Description are succinct ideas used by phenotyper to convey the structure of their implementation. It *only applies* for rule-based phenotyping using OHDSI tools like Atlas or CapR.
 
 ## Background
-- Logic description is required for peer review.
+- Logic description is required for peer review. Logic description will be captured in the notes section of the Phenotype library.
 - We recommend you write a logic description prior to beginning phenotyping. It is written after clinical description is complete.
-- The logic description would follow the structure of building cohort definitions in Atlas, but without the full details. It is expected to succint.
+- The logic description would follow the structure of building cohort definitions in Atlas, but without the full details. It is expected to succinct.
 - We have experienced that taking this approach improves the quality of your cohort definitions, reduces bugs in your cohort definition and allows to build cohort definitions collaboratively.
 - It is also a required element for peer-review, as a logic description indicates to the peer reviewers that the rules implemented in Atlas are deliberate design choices and not an unintentional accident (i.e. bug).
 - This is a semi-formal representation. So usage of key words is expected.
@@ -40,7 +41,7 @@ knitr::opts_chunk$set(
 - Please note the usage of reserved words- [Reserved words with special meaning to Phentoypers](https://ohdsi.github.io/PhenotypeLibrary/articles/ReservedWordsWithSpecialMeaningToPhenotypers.html)
 
 
-## Required elements
+## Recommended elements
 - *Entry event criteria* - what allows the person to enter the cohort. The Presentation, Assessment and Plan components of the Clinical Description often provide helpful guidance for what observed events may allow for cohort entry.
 - *Inclusion rule* - what additional rules determine which entry events qualify for the cohort. The dis-qualifier component of the Clinical Description may provide guidance creating inclusion rules to eliminate ‘false positive’ events, and elements from Presentation, Assessment, Plan and Strengtheners may be used to further increase specificity.  
 - *Exit criteria* - What constitutes the end of an episode for a person. The Prognosis section of the Clinical Description can provide guidance on how long a disease episode lasts.

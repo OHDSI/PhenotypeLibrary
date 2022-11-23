@@ -20,52 +20,18 @@
 	"ConceptSets" : [
 		{
 			"id" : 2,
-			"name" : "Pneumonia",
+			"name" : "Acute Pneumonia",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 45770911,
-							"CONCEPT_NAME" : "Acute pneumonia due to coccidioidomycosis",
+							"CONCEPT_ID" : 255848,
+							"CONCEPT_NAME" : "Pneumonia",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "184431000119108",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4001167,
-							"CONCEPT_NAME" : "Acute ulcerative gastroenteritis complicating pneumonia",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "109814008",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4050869,
-							"CONCEPT_NAME" : "Atypical pneumonia",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233606009",
+							"CONCEPT_CODE" : "233604007",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -76,13 +42,30 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4049965,
-							"CONCEPT_NAME" : "Fungal pneumonia",
+							"CONCEPT_ID" : 46269693,
+							"CONCEPT_NAME" : "Chronic pneumonia",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233613009",
+							"CONCEPT_CODE" : "102361000119104",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4193174,
+							"CONCEPT_NAME" : "Fungal respiratory infection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "312149008",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -110,13 +93,13 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 252552,
-							"CONCEPT_NAME" : "Ornithosis with pneumonia",
+							"CONCEPT_ID" : 4273378,
+							"CONCEPT_NAME" : "Interstitial pneumonia",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "81164001",
+							"CONCEPT_CODE" : "64667001",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -127,13 +110,106 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 255848,
-							"CONCEPT_NAME" : "Pneumonia",
+							"CONCEPT_ID" : 256622,
+							"CONCEPT_NAME" : "Pulmonary disease due to Mycobacteria",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233604007",
+							"CONCEPT_CODE" : "84353005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 3,
+			"name" : "Non Acute Pneumonia",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36712839,
+							"CONCEPT_NAME" : "Idiopathic pneumonia syndrome",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "12381000132107",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4193174,
+							"CONCEPT_NAME" : "Fungal respiratory infection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "312149008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 256622,
+							"CONCEPT_NAME" : "Pulmonary disease due to Mycobacteria",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "84353005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 46269693,
+							"CONCEPT_NAME" : "Chronic pneumonia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "102361000119104",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4273378,
+							"CONCEPT_NAME" : "Interstitial pneumonia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "64667001",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -152,17 +228,93 @@
 	"ExpressionLimit" : {
 		"Type" : "All"
 	},
-	"InclusionRules" : [],
+	"InclusionRules" : [
+		{
+			"name" : "Washout period of 90 days",
+			"description" : "This rule will prevent a person to renter for after entering a cohort during the washout period. This is based on the assumption that any event within the washout period is part of an ongoing episode of care and thus not an independent event or case.",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 2,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 90,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "Exclude if concomitant ",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 3,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 14
+			"Offset" : 90
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 30
+		"EraPad" : 0
 	},
 	"CensorWindow" : {}
 }

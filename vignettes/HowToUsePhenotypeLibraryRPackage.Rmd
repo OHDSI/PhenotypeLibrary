@@ -19,7 +19,8 @@ knitr::opts_chunk$set(
   cache = FALSE,
   comment = "#>",
   error = FALSE,
-  tidy = FALSE)
+  tidy = FALSE
+)
 ```
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
@@ -28,20 +29,20 @@ knitr::opts_chunk$set(
 # Installation
 - This  is an installable R-package that may be installed as follows: 
 ```{r tidy=FALSE,eval=FALSE}
-  remotes::install_github("OHDSI/PhenotypeLibrary")
+remotes::install_github("OHDSI/PhenotypeLibrary")
 ```
 
 # Retrieval
 - The list of cohort definitions available may be retrieved as follows: 
 ```{r tidy=FALSE,eval=TRUE}
-  PhenotypeLibrary::listPhenotypes()
+PhenotypeLibrary::listPhenotypes()
 ```
 
 - You can extract one or more cohort definitions into a cohortDefinitionSet object as
 ```{r tidy=FALSE,eval=TRUE}
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = c(1, 2, 3))
-  
-  cohortDefinitionSet
+cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = c(1, 2, 3))
+
+cohortDefinitionSet
 ```
 
 - cohortDefinitionSet is now a data.frame with specifications for the cohort ids 1, 2 and 3. For cohorts that conform to OHDSI Circe specifications, the field json is the cohort json specification that may be posted into your Atlas instance. The SQL is the SQL rendered from the JSON. For cohorts that do not conform to OHDSI Circe specification, only the SQL is provided and the json is left empty.
@@ -57,16 +58,16 @@ connectionDetails <-
     user = "joe",
     password = "secret"
   )
- cdmDatabaseSchema <- "cdm_synpuf"
- cohortDatabaseSchema <- "scratch.dbo"
- cohortTables <- CohortGenerator::getCohortTableNames()
- CohortGenerator::generateCohortSet(
-                                      connectionDetails = connectionDetails,
-                                      cdmDatabaseSchema = cdmDatabaseSchema,
-                                      cohortDatabaseSchema = cohortDatabaseSchema,
-                                      cohortTableNames = cohortTables,
-                                      cohortDefinitionSet = cohortDefinitionSet
-                                    )
+cdmDatabaseSchema <- "cdm_synpuf"
+cohortDatabaseSchema <- "scratch.dbo"
+cohortTables <- CohortGenerator::getCohortTableNames()
+CohortGenerator::generateCohortSet(
+  connectionDetails = connectionDetails,
+  cdmDatabaseSchema = cdmDatabaseSchema,
+  cohortDatabaseSchema = cohortDatabaseSchema,
+  cohortTableNames = cohortTables,
+  cohortDefinitionSet = cohortDefinitionSet
+)
 ```
 
 
@@ -93,5 +94,4 @@ CohortDiagnostics::executeDiagnostics(
   connectionDetails = connectionDetails,
   cohortTableNames = cohortTableNames
 )
-
 ```

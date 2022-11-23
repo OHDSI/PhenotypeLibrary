@@ -70,12 +70,12 @@ select C.person_id, C.device_exposure_id as event_id, C.device_exposure_start_da
         C.visit_occurrence_id, C.device_exposure_start_date as sort_date
 from 
 (
-  select de.* 
+  select de.* , row_number() over (PARTITION BY de.person_id ORDER BY de.device_exposure_start_date, de.device_exposure_id) as ordinal
   FROM @cdm_database_schema.DEVICE_EXPOSURE de
 JOIN #Codesets cs on (de.device_concept_id = cs.concept_id and cs.codeset_id = 0)
 ) C
 
-
+WHERE C.ordinal = 1
 -- End Device Exposure Criteria
 
 UNION ALL
@@ -84,12 +84,12 @@ select C.person_id, C.procedure_occurrence_id as event_id, C.procedure_date as s
        C.visit_occurrence_id, C.procedure_date as sort_date
 from 
 (
-  select po.* 
+  select po.* , row_number() over (PARTITION BY po.person_id ORDER BY po.procedure_date, po.procedure_occurrence_id) as ordinal
   FROM @cdm_database_schema.PROCEDURE_OCCURRENCE po
 JOIN #Codesets cs on (po.procedure_concept_id = cs.concept_id and cs.codeset_id = 0)
 ) C
 
-
+WHERE C.ordinal = 1
 -- End Procedure Occurrence Criteria
 
   ) E

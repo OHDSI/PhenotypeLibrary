@@ -1,0 +1,1404 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ANY",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"DrugExposure" : {
+										"CodesetId" : 3,
+										"DrugTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 0,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 1,
+										"Coeff" : 1
+									},
+									"End" : {
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"ProcedureOccurrence" : {
+										"CodesetId" : 4,
+										"ProcedureTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"Measurement" : {
+										"CodesetId" : 4,
+										"MeasurementTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"Observation" : {
+										"CodesetId" : 4,
+										"ObservationTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 5,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Coeff" : -1
+									},
+									"End" : {
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"VisitOccurrence" : {
+										"CodesetId" : 9,
+										"VisitTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"EndWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : true
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
+					"CodesetId" : 0,
+					"First" : true,
+					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"DrugExposure" : {
+										"CodesetId" : 3,
+										"DrugTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 2,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
+					"CodesetId" : 2,
+					"First" : true,
+					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"DrugExposure" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 0,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
+					"CodesetId" : 3,
+					"First" : true,
+					"DrugTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 365,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 0,
+			"name" : "Alzheimer Disease ",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 378419,
+							"CONCEPT_NAME" : "Alzheimer's disease",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "26929004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 2,
+			"name" : "Dementia",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37312036,
+							"CONCEPT_NAME" : "Aggression due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "788861009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37312035,
+							"CONCEPT_NAME" : "Agitation due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "788862002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4041685,
+							"CONCEPT_NAME" : "Amyotrophic lateral sclerosis with dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "230258005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37312031,
+							"CONCEPT_NAME" : "Anxiety due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "788866004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37312030,
+							"CONCEPT_NAME" : "Apathetic behavior due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "788867008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 35608576,
+							"CONCEPT_NAME" : "Behavioral and psychological symptoms of dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10171000132106",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4092747,
+							"CONCEPT_NAME" : "Cerebral degeneration presenting primarily with dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "279982005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4182210,
+							"CONCEPT_NAME" : "Dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "52448006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37116464,
+							"CONCEPT_NAME" : "Dementia caused by heavy metal exposure",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "733184002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37017549,
+							"CONCEPT_NAME" : "Dementia co-occurrent with human immunodeficiency virus infection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "713844000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4244346,
+							"CONCEPT_NAME" : "Dialysis dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9345005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37311665,
+							"CONCEPT_NAME" : "Disinhibited behavior due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "789170003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4043378,
+							"CONCEPT_NAME" : "Frontotemporal dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "230270009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45765480,
+							"CONCEPT_NAME" : "Frontotemporal dementia with parkinsonism-17",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "702429008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 377788,
+							"CONCEPT_NAME" : "General paresis - neurosyphilis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "51928006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45765477,
+							"CONCEPT_NAME" : "GRN-related frontotemporal dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "702426001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4059191,
+							"CONCEPT_NAME" : "H/O: dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "161465002",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Context-dependent"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 372610,
+							"CONCEPT_NAME" : "Postconcussion syndrome",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "40425004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37017247,
+							"CONCEPT_NAME" : "Presenile dementia co-occurrent with human immunodeficiency virus infection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "713488003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37311890,
+							"CONCEPT_NAME" : "Psychological symptom due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "789011007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37312577,
+							"CONCEPT_NAME" : "Wandering due to dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "789062005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 3,
+			"name" : "Prescription for an Alzheimers disease drug",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 715997,
+							"CONCEPT_NAME" : "donepezil",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "135447",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 757627,
+							"CONCEPT_NAME" : "galantamine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "4637",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 701322,
+							"CONCEPT_NAME" : "memantine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "6719",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 733523,
+							"CONCEPT_NAME" : "rivastigmine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "183379",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 836654,
+							"CONCEPT_NAME" : "tacrine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10318",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 4,
+			"name" : "Specific dementia test ",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4169175,
+							"CONCEPT_NAME" : "Mini-mental state examination",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "273617000",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Staging / Scales"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40491929,
+							"CONCEPT_NAME" : "Mini-mental state examination score",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "447316007",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Observable Entity"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40490379,
+							"CONCEPT_NAME" : "Assessment using mini-mental state examination",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "446971008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4167593,
+							"CONCEPT_NAME" : "Abbreviated Mental Test",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "273255001",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Staging / Scales"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4013636,
+							"CONCEPT_NAME" : "Magnetic resonance imaging",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "113091000",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4125350,
+							"CONCEPT_NAME" : "CT of head",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "303653007",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4019823,
+							"CONCEPT_NAME" : "Single photon emission computerized tomography",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "105371005",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 5,
+			"name" : "Dementia symptoms ",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4304008,
+							"CONCEPT_NAME" : "Memory impairment",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "386807006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 440424,
+							"CONCEPT_NAME" : "Aphasia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "87486003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 132342,
+							"CONCEPT_NAME" : "Apraxia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "68345001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4173136,
+							"CONCEPT_NAME" : "Agnosia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "42341009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4024716,
+							"CONCEPT_NAME" : "Aphasia, agnosia, dyslexia AND/OR apraxia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "106169008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 6,
+			"name" : "Other specific dementia diagnosis (e.g., VD, Pick’s disease, or Lewy body dementia [LBD])",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 443605,
+							"CONCEPT_NAME" : "Vascular dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "429998004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44782710,
+							"CONCEPT_NAME" : "Dementia due to Pick's disease",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "21921000119103",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 380701,
+							"CONCEPT_NAME" : "Diffuse Lewy body disease",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "80098002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 8,
+			"name" : "Stroke (ischemic or hemorrhagic)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 372924,
+							"CONCEPT_NAME" : "Cerebral artery occlusion",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "20059004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 375557,
+							"CONCEPT_NAME" : "Cerebral embolism",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "75543006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 376713,
+							"CONCEPT_NAME" : "Cerebral hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "274100004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 443454,
+							"CONCEPT_NAME" : "Cerebral infarction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "432504007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 441874,
+							"CONCEPT_NAME" : "Cerebral thrombosis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "71444005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 439847,
+							"CONCEPT_NAME" : "Intracranial hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1386000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 379778,
+							"CONCEPT_NAME" : "Multi-infarct dementia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "56267009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43530727,
+							"CONCEPT_NAME" : "Spontaneous cerebral hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "291571000119106",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42538062,
+							"CONCEPT_NAME" : "Spontaneous intracranial hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "738779002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4148906,
+							"CONCEPT_NAME" : "Spontaneous subarachnoid hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "270907008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 432923,
+							"CONCEPT_NAME" : "Subarachnoid hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "21454007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 9,
+			"name" : "Inpatient or ER visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "No occurrence of any other specific dementia diagnosis (e.g., VD, Pick’s disease, or Lewy body dementia [LBD]) after the Alzheimer's disease diagnosis date",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 6,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 1,
+								"Coeff" : 1
+							},
+							"End" : {
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 1,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No occurrence of Stroke diagnosis within 2 years prior to the Alzheimer's disease diagnosis date",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 8,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 730,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 1,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : ">= 18 years old",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [],
+				"DemographicCriteriaList" : [
+					{
+						"Age" : {
+							"Value" : 18,
+							"Op" : "gte"
+						}
+					}
+				],
+				"Groups" : []
+			}
+		}
+	],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

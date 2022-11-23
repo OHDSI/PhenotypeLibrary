@@ -19,7 +19,8 @@ knitr::opts_chunk$set(
   cache = FALSE,
   comment = "#>",
   error = FALSE,
-  tidy = FALSE)
+  tidy = FALSE
+)
 ```
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
@@ -43,5 +44,14 @@ knitr::opts_chunk$set(
     - If measurement_unit_concept_id are used then we expect that each rule only combines units that are on the same scale i.e. the unit_concept_id should have a conversion factor = 1. 
     - Exceptions
         - unit less measurements and if there is only one unit.
+        
+- *Concept Sets used in Cohort Definitions*
+- Concept set names: We expect the names of the concept sets to be meaningful to a broad audience i.e. please remove any internal identifiers that are specific to an organization or project e.g. '[raos] Hypertension' is not acceptable.
+- Use of Non-standard concept codes: The OHDSI Phenotype library will flags cohort definitions that have non-standard concepts in the concept set expression for additional review. Additional justification will be required to accept a cohort definition for peer review if it has non-standard concepts. The justification will have to address, why a standard equivalent is not used and if the use of the non standard concepts changes the operating characteristics of the cohort definition compared to the use of standard concepts. 
+- Concept optimization: we expect the concept set to be an expression that is as parsimonious in its representation as possible. At a minimum, the concept set should be optimized, should not have duplicate concepts with same selection of included and exclude. 
+- Use of mapped concepts: concept set expression allows for selecting mapped concepts. When mapped concepts is selected in the concept set expression, it will be flagged for additional review. Mapped concepts are rarely needed and so will need additional justification.
+
+- * Event cohorts*
+- If in your phenotype a person may reasonably be expected to not be in the phenotype after starting in the phenotype: we expect an attempt to model the cohort definition as an event cohort i.e. cohort end date should be modled using exit criteria.
 
 

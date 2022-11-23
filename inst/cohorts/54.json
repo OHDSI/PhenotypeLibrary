@@ -94,43 +94,6 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "Has febrile seizure diagnosis ",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 6,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 0,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 42,
-								"Coeff" : 1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
 			"name" : "has no events in prior 'clean window' - 42 days",
 			"expression" : {
 				"Type" : "ALL",
@@ -200,11 +163,48 @@
 				"DemographicCriteriaList" : [],
 				"Groups" : []
 			}
+		},
+		{
+			"name" : "Has febrile seizure diagnosis ",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 6,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 42,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
 		}
 	],
 	"EndStrategy" : {
 		"DateOffset" : {
-			"DateField" : "StartDate",
+			"DateField" : "EndDate",
 			"Offset" : 1
 		}
 	},

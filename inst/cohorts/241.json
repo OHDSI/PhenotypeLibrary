@@ -52,7 +52,7 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "has no events in prior 'clean window' - 365 days",
+			"name" : "has no events in prior 'clean window' - 30 days",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
@@ -65,7 +65,7 @@
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 365,
+								"Days" : 30,
 								"Coeff" : -1
 							},
 							"End" : {

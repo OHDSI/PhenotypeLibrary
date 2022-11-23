@@ -1,5 +1,16 @@
 cohortName,ruleSequence,ruleName,cohortId
 123,0,>=365 prior enrollment,123
+13,0,Washout period of 30 days,13
+13,1,"Exclude persons with muscle pain that may beexplained by injury, ischemia or systemic inflammation",13
+189,0,has no events in prior 'clean window' - 14 days,189
+19,0,Washout period of 90 days,19
+19,1,Exclude if concomitant ,19
+190,0,has no events in prior 'clean window' - 14 days,190
+191,0,has no events in prior 'clean window' - 14 days,191
+191,1,"Not senile, cancer or stroke related",191
+192,0,has no events in prior 'clean window' - 365 days,192
+193,0,has no events in prior 'clean window' - 14 days,193
+194,0,has no events in prior 'clean window' - 30 days,194
 205,0,Washout period of 365 days,205
 205,1,Should have Acute Pancreatitis within 1 day,205
 205,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,205
@@ -19,11 +30,11 @@ cohortName,ruleSequence,ruleName,cohortId
 206,12,Should NOT have evidence of Intestinal Obstruction,206
 207,0,Diagnosis of Pure Red Cell Aplasia within 30 days (including index),207
 207,1,No congenital or genetic anemia,207
-207,2,No normal Hemoglobin measurement in blood on index date,207
-207,3,No normal Hematocrit measurement in blood on index date,207
-207,4,No Polycythemia on index date,207
-207,5,No Bone marrow transplant,207
-207,6,Not Constitutional Pure Red Cell Aplasia,207
+207,2,Not Constitutional Pure Red Cell Aplasia,207
+207,3,No normal Hemoglobin measurement in blood on index date,207
+207,4,No normal Hematocrit measurement in blood on index date,207
+207,5,No Polycythemia on index date,207
+207,6,No Bone marrow transplant,207
 208,0,Febrile neutropenia Or (if fever) neutropenia or significant infections,208
 208,1,No Normal Neutrophil count (ANC ),208
 208,2,Require an inpatient or ER visit ,208
@@ -130,43 +141,61 @@ cohortName,ruleSequence,ruleName,cohortId
 224,0,Washout period - 180 days,224
 224,1,Has No Congenital QT Syndrome,224
 225,0,has no events in prior 'clean window' in relation to event start - 365 days - washout period,225
-225,1,No Systemic Lupus Erythematous ,225
-226,0,has no events in prior 'clean window' in relation to event start - 365 days - washout period,226
-226,1,No Systemic Lupus Erythematous ,226
+225,1,No Systemic Lupus Erythematosus,225
+226,0,has no events in prior 'clean window' - 365 days,226
 227,0,has no events in prior 'clean window' - 365 days,227
 228,0,has no events in prior 'clean window' - 365 days,228
 229,0,Subsequent Progressive Multifocal Leukoencephalopathy,229
 230,0,has no autoimmune hepatitis events in prior 'clean window' - 365 days,230
 230,1,has no certain chronic liver disease events in prior 0 - 365 days,230
 230,2,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,230
-231,0,has no autoimmune hepatitis events in prior 'clean window' - 365 days,231
-231,1,has no certain chronic liver disease events in prior 0 - 365 days,231
-231,2,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,231
+231,0,has no events in prior 'clean window' - 365 days,231
 232,0,has no events in prior 'clean window' - 365 days,232
 233,0,has no events in prior 'clean window' - 180 days,233
 234,0,has no events in prior 'clean window' - 365 days,234
-235,0,has no events in prior 'clean window',235
-236,0,has no events in prior 'clean window' - 365 days,236
 237,0,has no events in prior 'clean window' - 365 days,237
 238,0,has no events in prior 'clean window' - 365 days,238
 239,0,has no events in prior 'clean window' - 365 days,239
 239,1,No hypersomnia in 365 days prior to index and including index,239
 240,0,has no events in prior 'clean window' - 365 days,240
-241,0,has no events in prior 'clean window' - 365 days,241
+241,0,has no events in prior 'clean window' - 30 days,241
 243,0,has no events in prior 'clean window' - 365 days,243
-244,0,has no events in prior 'clean window' - 365 days,244
-245,0,has no events in prior 'clean window' - 365 days,245
-246,0,has no events in prior 'clean window' - 365 days,246
-247,0,has no events in prior 'clean window' - 365 days,247
+244,0,has no events in prior 'clean window' - 180 days,244
 248,0,has no events in prior 'clean window' - 365 days,248
 249,0,has no events in prior 'clean window' - 365 days,249
+251,0,Washout period of 365 days,251
+251,1,Should have Acute Pancreatitis within 1 day,251
+251,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,251
+251,3,Should NOT have Hereditary Pancreatitis any time,251
+253,0,Washout period of 365 days,253
+253,1,Should have Acute Pancreatitis within 1 day,253
+253,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,253
+253,3,Should NOT have Hereditary Pancreatitis any time,253
+253,4,Should NOT have Alcoholic Pancreatitis on or before Acute Pancreatitis,253
+253,5,Should NOT have evidence Alcoholism or Severe Alcohol related disorders in past 1 year,253
+253,6,Should NOT have evidence Alcohol intoxication in past 30 days,253
+253,7,Should NOT have evidence Cholangitis or Cholecystitis in past 1 year,253
+253,8,Should NOT have evidence Biliary Tract Disease in past in past 1 year,253
+253,9,Should NOT have evidence of recent Endoscopic retrograde cholangiopancreatography,253
+253,10,Should NOT have evidence of Intestinal ischemia including acute mesenteric ischemia,253
+253,11,Should NOT have evidence of Gastrointestinal perforation,253
+253,12,Should NOT have evidence of Intestinal Obstruction,253
+254,0,Adult Age,254
+254,1,Additional Criteria,254
+255,0,"No occurrence of any other specific dementia diagnosis (e.g., VD, Pick’s disease, or Lewy body dementia [LBD]) after the Alzheimer's disease diagnosis date",255
+255,1,No occurrence of Stroke diagnosis within 2 years prior to the Alzheimer's disease diagnosis date,255
+255,2,>= 18 years old,255
+256,0,has no events in prior 'clean window' 183 days,256
+256,1,Remove congenital Facial Palsy,256
+256,2,Not Upper Motor Neuron,256
 27,0,No COPD prior,27
 28,0,No prior asthma,28
 30,0,At least 3 distinct drug eras of TB drugs,30
 45,0,Has a lab test for SARS-Cov-2 test within 3 days,45
 53,0,Have atleast 1 positive,53
-54,0,Has febrile seizure diagnosis ,54
-54,1,has no events in prior 'clean window' - 42 days,54
+54,0,has no events in prior 'clean window' - 42 days,54
+54,1,Has febrile seizure diagnosis ,54
+57,0,has no events in prior 'clean window' - 30 days,57
 59,0,No SARS-Cov-2 test,59
 60,0,Positive test result,60
 60,1,Negative test result,60

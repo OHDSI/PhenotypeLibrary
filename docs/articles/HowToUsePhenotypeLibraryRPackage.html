@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.0</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-09-06</h4>
+            <h4 data-toc-skip class="date">2022-11-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/HowToUsePhenotypeLibraryRPackage.Rmd" class="external-link"><code>vignettes/HowToUsePhenotypeLibraryRPackage.Rmd</code></a></small>
       <div class="hidden name"><code>HowToUsePhenotypeLibraryRPackage.Rmd</code></div>
@@ -131,7 +131,7 @@ part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a>
 follows:</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>  <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"OHDSI/PhenotypeLibrary"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"OHDSI/PhenotypeLibrary"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="retrieval">Retrieval<a class="anchor" aria-label="anchor" href="#retrieval"></a>
@@ -141,33 +141,33 @@ follows:</li>
 follows:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>  <span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/listPhenotypes.html">listPhenotypes</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 98 x 2</span></span></span>
-<span><span class="co">#&gt;    cohortId cohortName                                                  </span></span>
-<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>        2 [P] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>        3 [P] Cough (3Ps, 30Era)                                      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>        4 [P] Diarrhea (7Ps, 30Era)                                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>        5 [P] Dyspnea (14Pe, 30Era)                                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>        6 [P] Fever (3Pe, 30Era)                                      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>        7 [P] Headache, Migraine, Neurologic pain (7Pe, 30Era)        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>        8 [P] Anosmia OR Hyposmia OR Dysgeusia (7Ps, 180Era)          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore throat (7Pe, 30Era)                                </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea or Vomiting (3Pe, 30Era)                         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       11 [P] Malaise or fatigue (3P, 30Era)                          </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ... with 88 more rows</span></span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/listPhenotypes.html">listPhenotypes</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 149 x 2</span></span></span>
+<span><span class="co">#&gt;    cohortId cohortName                                                    </span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>        2 [W] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>        3 [P] Cough (3Ps, 30Era)                                        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>        4 [P] Diarrhea (7Ps, 30Era)                                     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>        5 [P] Dyspnea (14Pe, 30Era)                                     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>        6 [P] Fever (3Pe, 30Era)                                        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>        7 [P] Headache, Migraine or related Neurologic pain (7Pe, 30Era)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>        8 [P] Anosmia OR Hyposmia OR Dysgeusia (7Ps, 180Era)            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore throat (7Pe, 30Era)                                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea or Vomiting (3Pe, 30Era)                           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       11 [P] Malaise or fatigue (3P, 30Era)                            </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ... with 139 more rows</span></span></span></code></pre>
 <ul>
 <li>You can extract one or more cohort definitions into a
 cohortDefinitionSet object as</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>  <span class="va">cohortDefinitionSet</span> <span class="op">&lt;-</span> <span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/getPlCohortDefinitionSet.html">getPlCohortDefinitionSet</a></span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="va">cohortDefinitionSet</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cohortDefinitionSet</span> <span class="op">&lt;-</span> <span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/getPlCohortDefinitionSet.html">getPlCohortDefinitionSet</a></span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cohortDefinitionSet</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 x 4</span></span></span>
 <span><span class="co">#&gt;   cohortId cohortName                                                json  sql  </span></span>
 <span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        2 [P] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7~ <span style="color: #949494;">"</span>{\n~ <span style="color: #949494;">"</span>CRE~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        2 [W] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7~ <span style="color: #949494;">"</span>{\n~ <span style="color: #949494;">"</span>CRE~</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>        3 [P] Cough (3Ps, 30Era)                                    <span style="color: #949494;">"</span>{\n~ <span style="color: #949494;">"</span>CRE~</span></span></code></pre>
 <ul>
 <li>cohortDefinitionSet is now a data.frame with specifications for the
@@ -193,16 +193,16 @@ the SQL is provided and the json is left empty.</li>
 <span>    user <span class="op">=</span> <span class="st">"joe"</span>,</span>
 <span>    password <span class="op">=</span> <span class="st">"secret"</span></span>
 <span>  <span class="op">)</span></span>
-<span> <span class="va">cdmDatabaseSchema</span> <span class="op">&lt;-</span> <span class="st">"cdm_synpuf"</span></span>
-<span> <span class="va">cohortDatabaseSchema</span> <span class="op">&lt;-</span> <span class="st">"scratch.dbo"</span></span>
-<span> <span class="va">cohortTables</span> <span class="op">&lt;-</span> <span class="fu">CohortGenerator</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/CohortGenerator/reference/getCohortTableNames.html" class="external-link">getCohortTableNames</a></span><span class="op">(</span><span class="op">)</span></span>
-<span> <span class="fu">CohortGenerator</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/CohortGenerator/reference/generateCohortSet.html" class="external-link">generateCohortSet</a></span><span class="op">(</span></span>
-<span>                                      connectionDetails <span class="op">=</span> <span class="va">connectionDetails</span>,</span>
-<span>                                      cdmDatabaseSchema <span class="op">=</span> <span class="va">cdmDatabaseSchema</span>,</span>
-<span>                                      cohortDatabaseSchema <span class="op">=</span> <span class="va">cohortDatabaseSchema</span>,</span>
-<span>                                      cohortTableNames <span class="op">=</span> <span class="va">cohortTables</span>,</span>
-<span>                                      cohortDefinitionSet <span class="op">=</span> <span class="va">cohortDefinitionSet</span></span>
-<span>                                    <span class="op">)</span></span></code></pre></div>
+<span><span class="va">cdmDatabaseSchema</span> <span class="op">&lt;-</span> <span class="st">"cdm_synpuf"</span></span>
+<span><span class="va">cohortDatabaseSchema</span> <span class="op">&lt;-</span> <span class="st">"scratch.dbo"</span></span>
+<span><span class="va">cohortTables</span> <span class="op">&lt;-</span> <span class="fu">CohortGenerator</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/CohortGenerator/reference/getCohortTableNames.html" class="external-link">getCohortTableNames</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">CohortGenerator</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/CohortGenerator/reference/generateCohortSet.html" class="external-link">generateCohortSet</a></span><span class="op">(</span></span>
+<span>  connectionDetails <span class="op">=</span> <span class="va">connectionDetails</span>,</span>
+<span>  cdmDatabaseSchema <span class="op">=</span> <span class="va">cdmDatabaseSchema</span>,</span>
+<span>  cohortDatabaseSchema <span class="op">=</span> <span class="va">cohortDatabaseSchema</span>,</span>
+<span>  cohortTableNames <span class="op">=</span> <span class="va">cohortTables</span>,</span>
+<span>  cohortDefinitionSet <span class="op">=</span> <span class="va">cohortDefinitionSet</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>You can also run cohort diagnostics on this cohortDefinitionSet
 object as follows:</li>

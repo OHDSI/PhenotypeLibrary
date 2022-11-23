@@ -5,6 +5,7 @@
 			{
 				"ConditionOccurrence" : {
 					"CodesetId" : 1,
+					"First" : true,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -14,13 +15,13 @@
 			"PostDays" : 0
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "All"
+			"Type" : "First"
 		}
 	},
 	"ConceptSets" : [
 		{
 			"id" : 1,
-			"name" : "Intraabdominal thrombosis - hepatic",
+			"name" : "Hepatic Intraabdominal thrombosis",
 			"expression" : {
 				"items" : [
 					{
@@ -118,49 +119,11 @@
 	"ExpressionLimit" : {
 		"Type" : "All"
 	},
-	"InclusionRules" : [
-		{
-			"name" : "has no events in prior 'clean window' - 365 days",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 1,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 365,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 1,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : true,
-						"Occurrence" : {
-							"Type" : 0,
-							"Count" : 0,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		}
-	],
+	"InclusionRules" : [],
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 1
+			"Offset" : 90
 		}
 	},
 	"CensoringCriteria" : [],

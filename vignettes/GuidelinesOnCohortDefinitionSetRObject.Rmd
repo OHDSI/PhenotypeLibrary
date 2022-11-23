@@ -19,7 +19,8 @@ knitr::opts_chunk$set(
   cache = FALSE,
   comment = "#>",
   error = FALSE,
-  tidy = FALSE)
+  tidy = FALSE
+)
 ```
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
@@ -36,10 +37,12 @@ We can create cohorts using [ATLAS](https://github.com/OHDSI/Atlas) and extract 
 
 
 ```{r eval = FALSE, echo=TRUE}
-cohortIds <- c(1778211,1778212,1778213)
+cohortIds <- c(1778211, 1778212, 1778213)
 ROhdsiWebApi::authorizeWebApi(baseUrl = baseUrl, authMethod = "windows")
-cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(baseUrl = baseUrl,
-                                                               cohortIds = cohortIds)
+cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
+  baseUrl = baseUrl,
+  cohortIds = cohortIds
+)
 ```
 The code above connects to ATLAS' WebAPI, retrieves the `cohortDefinitions` as returns a data.frame object with required fields. The following columns are considered required for OHDSI submission.
 
