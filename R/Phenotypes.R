@@ -278,18 +278,22 @@ updatePhenotypeLog <- function(updates) {
 
   # New Cohorts -----------------------
   newCohorts <- withChanges %>%
-    dplyr::anti_join(dplyr::tibble(
-      cohortId = c(
-        peerReview$cohortId,
-        deprecated$cohortId,
-        withDrawn$cohortId,
-        error$cohortId
-      ) %>% unique() %>%
-        sort()
-    ),
-    by = "cohortId") %>%
-    dplyr::mutate(addedVersion = "XX",
-                  getResults = "Yes")
+    dplyr::anti_join(
+      dplyr::tibble(
+        cohortId = c(
+          peerReview$cohortId,
+          deprecated$cohortId,
+          withDrawn$cohortId,
+          error$cohortId
+        ) %>% unique() %>%
+          sort()
+      ),
+      by = "cohortId"
+    ) %>%
+    dplyr::mutate(
+      addedVersion = "XX",
+      getResults = "Yes"
+    )
 
   changes <-
     dplyr::bind_rows(

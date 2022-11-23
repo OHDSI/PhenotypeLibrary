@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
   cache = FALSE,
   comment = "#>",
   error = FALSE,
-  tidy = FALSE)
+  tidy = FALSE
+)
 
 library(reactable)
 ```
@@ -33,7 +34,7 @@ camelCaseToTitleCase <- function(string) {
   errorMessages <- checkmate::makeAssertCollection()
   checkmate::assertCharacter(string, add = errorMessages)
   checkmate::reportAssertions(collection = errorMessages)
-  
+
   string <- gsub("([A-Z])", " \\1", string)
   string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
   substr(string, 1, 1) <- toupper(substr(string, 1, 1))
@@ -61,9 +62,9 @@ for (i in (1:length(colnamesInReport))) {
     )
 }
 
-columnDefinitions[['Cohort Name']] <-
+columnDefinitions[["Cohort Name"]] <-
   reactable::colDef(
-    name = 'Cohort Name',
+    name = "Cohort Name",
     minWidth = 500,
     sortable = TRUE,
     resizable = TRUE,
@@ -73,9 +74,9 @@ columnDefinitions[['Cohort Name']] <-
     align = "left"
   )
 
-columnDefinitions[['Cohort Id']] <-
+columnDefinitions[["Cohort Id"]] <-
   reactable::colDef(
-    name = 'Cohort Id',
+    name = "Cohort Id",
     minWidth = 100,
     sticky = "left",
     sortable = TRUE,
@@ -85,32 +86,29 @@ columnDefinitions[['Cohort Id']] <-
     na = "",
     align = "left"
   )
-
-  
 ```
 
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
 
 reactable::reactable(
-    data = report,
-    columns = columnDefinitions, 
-    sortable = TRUE,
-    resizable = TRUE,
-    searchable = TRUE,
-    pagination = TRUE,
-    showPagination = TRUE,
-    showPageInfo = TRUE,
-    striped = TRUE,
-    compact = FALSE,
-    wrap = FALSE,
-    showSortIcon = TRUE,
-    showSortable = TRUE,
-    fullWidth = TRUE,
-    showPageSizeOptions = TRUE,
-    pageSizeOptions = c(10, 20, 50, 100, 1000),
-    defaultPageSize = 100
-  )
-  
+  data = report,
+  columns = columnDefinitions,
+  sortable = TRUE,
+  resizable = TRUE,
+  searchable = TRUE,
+  pagination = TRUE,
+  showPagination = TRUE,
+  showPageInfo = TRUE,
+  striped = TRUE,
+  compact = FALSE,
+  wrap = FALSE,
+  showSortIcon = TRUE,
+  showSortable = TRUE,
+  fullWidth = TRUE,
+  showPageSizeOptions = TRUE,
+  pageSizeOptions = c(10, 20, 50, 100, 1000),
+  defaultPageSize = 100
+)
 ```
 
 * **Cohort Id:** Id used by the [Library](https://github.com/OHDSI/PhenotypeLibrary) to identify the cohort. This is guaranteed to be backward compatible and so may be referenced in OHDSI HADES packages and studies using a combination of version number and cohort id.

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.0</span>
       </span>
     </div>
 
@@ -113,7 +113,7 @@ Object</h1>
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-09-06</h4>
+            <h4 data-toc-skip class="date">2022-11-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidelinesOnCohortDefinitionSetRObject.Rmd" class="external-link"><code>vignettes/GuidelinesOnCohortDefinitionSetRObject.Rmd</code></a></small>
       <div class="hidden name"><code>GuidelinesOnCohortDefinitionSetRObject.Rmd</code></div>
@@ -138,10 +138,12 @@ part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a>
 <a href="https://github.com/OHDSI/ROhdsiWebApi" class="external-link">ROhdsiWebApi</a>
 package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cohortIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1778211</span>,<span class="fl">1778212</span>,<span class="fl">1778213</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">cohortIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1778211</span>, <span class="fl">1778212</span>, <span class="fl">1778213</span><span class="op">)</span></span>
 <span><span class="fu">ROhdsiWebApi</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/ROhdsiWebApi/reference/authorizeWebApi.html" class="external-link">authorizeWebApi</a></span><span class="op">(</span>baseUrl <span class="op">=</span> <span class="va">baseUrl</span>, authMethod <span class="op">=</span> <span class="st">"windows"</span><span class="op">)</span></span>
-<span><span class="va">cohortDefinitionSet</span> <span class="op">&lt;-</span> <span class="fu">ROhdsiWebApi</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/ROhdsiWebApi/reference/exportCohortDefinitionSet.html" class="external-link">exportCohortDefinitionSet</a></span><span class="op">(</span>baseUrl <span class="op">=</span> <span class="va">baseUrl</span>,</span>
-<span>                                                               cohortIds <span class="op">=</span> <span class="va">cohortIds</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">cohortDefinitionSet</span> <span class="op">&lt;-</span> <span class="fu">ROhdsiWebApi</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/ROhdsiWebApi/reference/exportCohortDefinitionSet.html" class="external-link">exportCohortDefinitionSet</a></span><span class="op">(</span></span>
+<span>  baseUrl <span class="op">=</span> <span class="va">baseUrl</span>,</span>
+<span>  cohortIds <span class="op">=</span> <span class="va">cohortIds</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>The code above connects to ATLAS’ WebAPI, retrieves the
 <code>cohortDefinitions</code> as returns a data.frame object with
 required fields. The following columns are considered required for OHDSI
