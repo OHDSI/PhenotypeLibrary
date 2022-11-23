@@ -193,6 +193,9 @@ if (needToUpdate) {
   } else {
     messages <-
       c(messages, paste0("New Cohorts: ", length(newCohorts), " were added."))
+    messages <- c(messages,
+                  "")
+    
     for (i in (1:length(newCohorts))) {
       dataCohorts <- newLogFile %>%
         dplyr::filter(cohortId %in% newCohorts[[i]])
@@ -218,6 +221,8 @@ if (needToUpdate) {
           length(deprecatedCohorts),
           " were deprecated."
         ))
+    messages <- c(messages,
+                  "")
     for (i in (1:length(deprecatedCohorts))) {
       dataCohorts <- changes %>%
         dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
@@ -243,6 +248,8 @@ if (needToUpdate) {
           length(modifiedCohorts),
           " were modified."
         ))
+    messages <- c(messages,
+                  "")
     for (i in (1:length(modifiedCohorts))) {
       dataCohorts <- changes %>%
         dplyr::filter(cohortId %in% modifiedCohorts[[i]])

@@ -3,11 +3,13 @@ PhenotypeLibrary 3.4.0
 
 
 Accepted Cohort: 3 cohorts were accepted. cohortId 23, 24 and 25 were considered accepted to the OHDSI Phenotype Library. This cohort is deemed validated as it represents a convention and thus do not need to go through peer review process. 
+
     23: Inpatient Hospitalization (1Pe, 0Era)
     24: Emergency room visits (0Pe, 0Era)
     25: All cause mortality
 
 New Cohorts: 8 were added.
+
     100: [P] Alzheimer's disease
     119: [P] Systemic lupus erythematosus (FP)
     251: [P] Acute pancreatitis (7Pe, 0Era, 365W)
