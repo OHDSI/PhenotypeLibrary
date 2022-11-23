@@ -34,12 +34,12 @@ SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_dat
   C.visit_occurrence_id, C.condition_start_date as sort_date
 FROM 
 (
-  SELECT co.* 
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 0)
 ) C
 
-
+WHERE C.ordinal = 1
 -- End Condition Occurrence Criteria
 
   ) E

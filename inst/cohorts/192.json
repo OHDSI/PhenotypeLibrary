@@ -152,17 +152,55 @@
 	"ExpressionLimit" : {
 		"Type" : "All"
 	},
-	"InclusionRules" : [],
+	"InclusionRules" : [
+		{
+			"name" : "has no events in prior 'clean window' - 365 days",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 2,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 7,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
 	"EndStrategy" : {
 		"DateOffset" : {
-			"DateField" : "StartDate",
+			"DateField" : "EndDate",
 			"Offset" : 1
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 7
+		"EraPad" : 0
 	},
 	"CensorWindow" : {}
 }

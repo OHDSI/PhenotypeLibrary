@@ -129,8 +129,8 @@ from
 JOIN #Codesets cs on (o.observation_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
 
-WHERE (C.value_as_number >= 120.0000 and C.value_as_number <= 200.0000)
-AND C.unit_concept_id in (9529)
+WHERE (C.value_as_number >= 265.0000 and C.value_as_number <= 440.0000)
+AND C.unit_concept_id in (3195625)
 -- End Observation Criteria
 
   ) E
