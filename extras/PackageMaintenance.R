@@ -15,7 +15,16 @@
 # limitations under the License.
 
 
+# Format and check code ---------------------------------------------------
+styler::style_pkg()
+OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
+OhdsiRTools::updateCopyrightYearFolder()
 
+
+# this will source the script to update phenotypes
+source("extras/UpdatePhenotypes.R")
+
+# IMPORTANT ---
 # dont forget to update PhenotypeLog manually. Convert to xlsx, modify, save as csv
 data <- readxl::read_excel(file.path("inst", "PhenotypeLog.xlsx")) %>% 
   dplyr::mutate(addedDate = as.Date(.data$addedDate),
@@ -28,14 +37,9 @@ readr::write_excel_csv(
   append = FALSE,
   quote = "all"
 )
- # install package
+# install package
 
-# Format and check code ---------------------------------------------------
-styler::style_pkg()
-OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
-OhdsiRTools::updateCopyrightYearFolder()
 
-source("extras/UpdatePhenotypes.R")
 
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")
@@ -61,8 +65,8 @@ rmarkdown::render("vignettes/CohortDefinitionSubmissionRequirements.Rmd",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
-rmarkdown::render("vignettes/GuidelinesOnClinicalDescriptionForConditionPhenotypes.Rmd",
-                  output_file = "../inst/doc/GuidelinesOnClinicalDescriptionForConditionPhenotypes.pdf",
+rmarkdown::render("vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd",
+                  output_file = "../inst/doc/GuidanceOnClinicalDescriptionForConditionPhenotypes.pdf",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))
@@ -73,14 +77,14 @@ rmarkdown::render("vignettes/ReservedWordsWithSpecialMeaningToPhenotypers.Rmd",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
-rmarkdown::render("vignettes/GuidelinesOnLiteratureReview.Rmd",
-                  output_file = "../inst/doc/GuidelinesOnLiteratureReview.pdf",
+rmarkdown::render("vignettes/GuidanceOnLiteratureReview.Rmd",
+                  output_file = "../inst/doc/GuidanceOnLiteratureReview.pdf",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
-rmarkdown::render("vignettes/GuidelinesOnCohortDefinitionSetRObject.Rmd",
-                  output_file = "../inst/doc/GuidelinesOnCohortDefinitionSetRObject.pdf",
+rmarkdown::render("vignettes/GuidanceOnCohortDefinitionSetRObject.Rmd",
+                  output_file = "../inst/doc/GuidanceOnCohortDefinitionSetRObject.pdf",
                   rmarkdown::pdf_document(latex_engine = "pdflatex",
                                           toc = TRUE,
                                           number_sections = TRUE))

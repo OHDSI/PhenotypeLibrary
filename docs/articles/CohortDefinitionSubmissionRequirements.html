@@ -56,16 +56,19 @@
       <a href="../articles/CohortDefinitionSubmissionRequirements.html">Cohort Definition Submission Requirements</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnClinicalDescriptionForConditionPhenotypes.html">Guidelines on writing clinical description for Condition Phenotypes</a>
+      <a href="../articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html">Guidance on writing clinical description for Condition Phenotypes</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnCohortDefinitionSetRObject.html">Guidelines on Cohort Definition Set R Object</a>
+      <a href="../articles/GuidanceOnCohortDefinitionSetRObject.html">Guidance on Cohort Definition Set R Object</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnLiteratureReview.html">Guidelines on literature review</a>
+      <a href="../articles/GuidanceOnLiteratureReview.html">Guidance on literature review</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html">Guidelines on writing Cohort Definition Logic Description</a>
+      <a href="../articles/GuidanceOnWritingAnEvaluationReport.html">Guidance on writing an evaluation report</a>
+    </li>
+    <li>
+      <a href="../articles/GuidanceOnWritingCohortDefinitionLogicDescription.html">Guidance on writing Cohort Definition Logic Description</a>
     </li>
     <li>
       <a href="../articles/HowToUsePhenotypeLibraryRPackage.html">How to Use PhenotypeLibrary R Package</a>
@@ -112,7 +115,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-11-23</h4>
+            <h4 data-toc-skip class="date">2022-11-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/CohortDefinitionSubmissionRequirements.Rmd" class="external-link"><code>vignettes/CohortDefinitionSubmissionRequirements.Rmd</code></a></small>
       <div class="hidden name"><code>CohortDefinitionSubmissionRequirements.Rmd</code></div>
@@ -197,7 +200,7 @@ during the cohort definition development (build) process, and also
 provides context to the persons who might be interpreting the results of
 a study that used the phenotype.</li>
 </ul>
-<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnClinicalDescriptionForConditionPhenotypes.html" class="external-link">Guidelines
+<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html" class="external-link">Guidance
 on writing clinical description for Condition Phenotypes</a></p>
 </div>
 <div class="section level3">
@@ -215,7 +218,7 @@ references to (do not attach original articles) in the same thread and
 summarize the key salient information from the publication that may
 inform OHDSI phenotyping.</li>
 </ul>
-<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnLiteratureReview.html" class="external-link">Guidelines
+<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html" class="external-link">Guidance
 on Literature Review</a></p>
 </div>
 <div class="section level3">
@@ -227,7 +230,7 @@ on Literature Review</a></p>
 phenotyping. It is written after clinical description is complete.</li>
 <li>The logic description would follow the structure of building cohort
 definitions in Atlas, but without the full details. It is expected to
-succint.</li>
+succinct.</li>
 <li>We have experienced that taking this approach improves the quality
 of your cohort definitions, reduces bugs in your cohort definition and
 allows to build cohort definitions collaboratively.</li>
@@ -236,7 +239,7 @@ description indicates to the peer reviewers that the rules implemented
 in Atlas are deliberate design choices and not an unintentional accident
 (i.e. bug).</li>
 </ul>
-<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html" class="external-link">Guidelines
+<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingCohortDefinitionLogicDescription.html" class="external-link">Guidance
 on writing Cohort Definition Logic Description</a></p>
 </div>
 <div class="section level3">
@@ -248,19 +251,22 @@ development/evaluation iteration</p>
 <div class="section level3">
 <h3 id="published-cohort-diagnostics-output-on-one-or-more-data-sources">Published Cohort Diagnostics output on one or more data sources<a class="anchor" aria-label="anchor" href="#published-cohort-diagnostics-output-on-one-or-more-data-sources"></a>
 </h3>
-<p>heValuator and other evaluation/validation metrics as applicable.</p>
+<p>PheValuator and other evaluation/validation metrics as
+applicable.</p>
 </div>
 <div class="section level3">
 <h3 id="discuss-your-evaluationvalidation-findings-on-forums-ohdsi-org">Discuss your evaluation/validation findings on forums.ohdsi.org<a class="anchor" aria-label="anchor" href="#discuss-your-evaluationvalidation-findings-on-forums-ohdsi-org"></a>
 </h3>
-<p>Insights on sensitivity, specificity and index date
-mis-classification errors</p>
+<p>We expect every cohort definition to have CohortDiagnostics output
+from atleast one data source. We recommend that the output be reviewed
+using the following template where possible. Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingEvaluationReport.html" class="external-link">Guidance
+on Writing An Evaluation Report</a></p>
 </div>
 <div class="section level3">
 <h3 id="attach-cohortdefinitionset-r-object-">Attach ‘CohortDefinitionSet’ R object.<a class="anchor" aria-label="anchor" href="#attach-cohortdefinitionset-r-object-"></a>
 </h3>
 <p>For importing into atlas-phenotype.ohdsi.org</p>
-<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnCohortDefinitionSetRObject.html" class="external-link">Guidelines
+<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnCohortDefinitionSetRObject.html" class="external-link">Guidance
 on Cohort Definition Set R Object</a></p>
 <hr>
 </div>
