@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.5.0</span>
       </span>
     </div>
 
@@ -56,16 +56,19 @@
       <a href="../articles/CohortDefinitionSubmissionRequirements.html">Cohort Definition Submission Requirements</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnClinicalDescriptionForConditionPhenotypes.html">Guidelines on writing clinical description for Condition Phenotypes</a>
+      <a href="../articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html">Guidance on writing clinical description for Condition Phenotypes</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnCohortDefinitionSetRObject.html">Guidelines on Cohort Definition Set R Object</a>
+      <a href="../articles/GuidanceOnCohortDefinitionSetRObject.html">Guidance on Cohort Definition Set R Object</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnLiteratureReview.html">Guidelines on literature review</a>
+      <a href="../articles/GuidanceOnLiteratureReview.html">Guidance on literature review</a>
     </li>
     <li>
-      <a href="../articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html">Guidelines on writing Cohort Definition Logic Description</a>
+      <a href="../articles/GuidanceOnWritingAnEvaluationReport.html">Guidance on writing an evaluation report</a>
+    </li>
+    <li>
+      <a href="../articles/GuidanceOnWritingCohortDefinitionLogicDescription.html">Guidance on writing Cohort Definition Logic Description</a>
     </li>
     <li>
       <a href="../articles/HowToUsePhenotypeLibraryRPackage.html">How to Use PhenotypeLibrary R Package</a>
@@ -112,7 +115,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-11-23</h4>
+            <h4 data-toc-skip class="date">2022-11-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/HowToUsePhenotypeLibraryRPackage.Rmd" class="external-link"><code>vignettes/HowToUsePhenotypeLibraryRPackage.Rmd</code></a></small>
       <div class="hidden name"><code>HowToUsePhenotypeLibraryRPackage.Rmd</code></div>
@@ -142,7 +145,7 @@ follows:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/listPhenotypes.html">listPhenotypes</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 149 x 2</span></span></span>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 160 x 2</span></span></span>
 <span><span class="co">#&gt;    cohortId cohortName                                                    </span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>        2 [W] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)  </span></span>
@@ -155,7 +158,7 @@ follows:</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore throat (7Pe, 30Era)                                  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea or Vomiting (3Pe, 30Era)                           </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       11 [P] Malaise or fatigue (3P, 30Era)                            </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ... with 139 more rows</span></span></span></code></pre>
+<span><span class="co">#&gt; <span style="color: #949494;"># ... with 150 more rows</span></span></span></code></pre>
 <ul>
 <li>You can extract one or more cohort definitions into a
 cohortDefinitionSet object as</li>

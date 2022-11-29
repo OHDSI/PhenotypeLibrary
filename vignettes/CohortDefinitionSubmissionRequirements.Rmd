@@ -50,7 +50,7 @@ A submission to the OHDSI Phenotype Library is considered complete if it is acco
 - Clinical Description is required for peer review.
 - The motivation behind starting out with a clinical description is so that everyone has a shared understanding of the clinical phenotype i.e. what are the expected characteristics of the persons we are identifying from the data source. This step not only clarifies the clinical idea, but also helps justify why certain decisions were made during the cohort definition development (build) process, and also provides context to the persons who might be interpreting the results of a study that used the phenotype.
 
-Please see article [Guidelines on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnClinicalDescriptionForConditionPhenotypes.html)
+Please see article [Guidance on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html)
 
 ## Literature Review
 - Literature review is required for peer review.
@@ -58,30 +58,31 @@ Please see article [Guidelines on writing clinical description for Condition Phe
 - In OHDSI we like to learn from and improve the work of others. Performing a literature review to understand what others have done for this phenotype is considered best practice.
 - There is no fixed format for submission of literature review, but we expect that if your submission is based on literature review, you give references to (do not attach original articles) in the same thread and summarize the key salient information from the publication that may inform OHDSI phenotyping.
 
-Please see article [Guidelines on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnLiteratureReview.html)
+Please see article [Guidance on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html)
  
 ## Logic Description
 - Logic description is required for peer review.
 - We recommend you write a logic description prior to beginning phenotyping. It is written after clinical description is complete.
-- The logic description would follow the structure of building cohort definitions in Atlas, but without the full details. It is expected to succint.
+- The logic description would follow the structure of building cohort definitions in Atlas, but without the full details. It is expected to succinct.
 - We have experienced that taking this approach improves the quality of your cohort definitions, reduces bugs in your cohort definition and allows to build cohort definitions collaboratively.
 - It is also a required element for peer-review, as a logic description indicates to the peer reviewers that the rules implemented in Atlas are deliberate design choices and not an unintentional accident (i.e. bug).
 
-Please see article [Guidelines on writing Cohort Definition Logic Description](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnWritingCohortDefinitionLogicDescription.html)
+Please see article [Guidance on writing Cohort Definition Logic Description](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingCohortDefinitionLogicDescription.html)
 
 ## Your recommended cohort definitions (>= 1)
 Having followed OHDSI Best practices and gone through development/evaluation iteration
 
 ## Published Cohort Diagnostics output on one or more data sources 
-heValuator and other evaluation/validation metrics as applicable.
+PheValuator and other evaluation/validation metrics as applicable.
 
 ## Discuss your evaluation/validation findings on forums.ohdsi.org
-Insights on sensitivity, specificity and index date mis-classification errors
+We expect every cohort definition to have CohortDiagnostics output from atleast one data source. We recommend that the output be reviewed using the following template where possible.
+Please see article [Guidance on Writing An Evaluation Report](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingEvaluationReport.html)  
 
 ## Attach ‘CohortDefinitionSet’ R object.
 For importing into atlas-phenotype.ohdsi.org
 
-Please see article [Guidelines on Cohort Definition Set R Object](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidelinesOnCohortDefinitionSetRObject.html)  
+Please see article [Guidance on Cohort Definition Set R Object](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnCohortDefinitionSetRObject.html)  
 
 ------------------------------------------------
 # Post submission

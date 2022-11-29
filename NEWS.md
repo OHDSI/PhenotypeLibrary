@@ -1,3 +1,28 @@
+PhenotypeLibrary 3.5.0
+======================
+
+New Cohorts: 11 were added.
+
+    258: [P] Anaphylaxis or Anaphylactic shock events (1Pe, 0Era, 30W)
+    259: [P] Anaphylaxis all cause (1Pe, 0Era, 30W)
+    260: [P] ST elevated myocardial infarction with inpatient admission (7Pe, 180Era)
+    261: [P] Non ST elevated myocardial infarction with inpatient admission (7Pe, 180Era)
+    262: [P] Unstable Angina with inpatient admission (7Pe, 180Era)
+    263: [P] Unstable Angina OR NSTEMI with inpatient admission (7Pe, 180Era)
+    264: [P] Acute Hepatic Failure in persons with liver disease (90Pe, 180W)
+    265: [P] Drug Induced Acute Hepatic Failure (90Pe, 180W)
+    267: [P] Acute Kidney Injury AKI, in persons with chronic kidney disease (7Pe, 30W)
+    268: [P] Acute Kidney Injury AKI, in persons with NO chronic kidney disease (7Pe, 30W)
+    269: [P] Acute Kidney Injury (AKI) (7Pe, 30W)
+    
+Deprecated Cohorts: No new cohorts were added in this release.
+
+Modified Cohorts: 3 were modified.
+
+    71: [P] Acute myocardial infarction with inpatient admission (7Pe, 180Era)
+    221: [P] Anaphylaxis Non Environmental exposure related (1Pe, 0Era, 30W)
+    234: [P] Appendicitis (1Pe, 0Era, 365W)
+
 PhenotypeLibrary 3.4.0
 ======================
 
