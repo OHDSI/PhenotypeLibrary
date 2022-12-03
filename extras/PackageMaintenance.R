@@ -107,6 +107,12 @@ rmarkdown::render("vignettes/GuidanceOnWritingAnEvaluationReport.Rmd",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
+rmarkdown::render("vignettes/GuidanceOnPerformingPeerReview.Rmd",
+                  output_file = "../inst/doc/GuidanceOnPerformingPeerReview.pdf",
+                  rmarkdown::pdf_document(latex_engine = "pdflatex",
+                                          toc = TRUE,
+                                          number_sections = TRUE))
+
 
 
 # Build site---------------------------------------------------------

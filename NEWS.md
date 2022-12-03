@@ -8,27 +8,7 @@ New Cohorts: 2 were added.
     
 Deprecated Cohorts: No new cohorts were added in this release.
 
-Modified Cohorts: 19 were modified.
-
-    53: [W] SARS-CoV-2 test positive or negative result - keep persons with positive (0Ps, 0Era)
-    55: [W] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 21Era)
-    58: [W] SARS-CoV-2 test positive result (3Ps, 21Era)
-    60: [W] SARS-CoV-2 test positive and negative result (0Ps, 0Era)
-    64: [W] Flu-like symptoms fever, cough, malaise, fatigue, dyspnea, myalgia (3P, 30Era)
-    66: [W] Acute renal failure with inpatient admission (3Pe, 30Era)
-    67: [W] Hepatic failure with inpatient admission (3Pe, 30Era)
-    68: [W] Heart failure with inpatient admission (3Pe, 30Era)
-    69: [W] Angioedema with inpatient admission (7Ps, 30Era)
-    73: [W] Pregnancy (270P, 0Era)
-    86: [W] SARS-CoV-2 test positive or negative result (0Ps, 0Era)
-    87: [W] SARS-CoV-2 test (1Ps, 0Era)
-    207: [P] Acquired Pure Red Cell Aplasia
-    209: [P] Hemolytic Anemia Extra corpuscular ex hgpathy, memb defect, g6pd (7Pe, 0Era, 365W)
-    210: [P] Hemolytic Anemia Extra corpuscular ex hgpathy, memb defect (7Pe, 0Era, 365W)
-    229: [P] Progressive multifocal leukoencephalopathy
-    234: [P] Appendicitis (1Pe, 0Era, 365W)
-    268: [P] Acute Kidney Injury AKI, in persons with NO chronic kidney disease (7Pe, 30W)
-    269: [P] Acute Kidney Injury (AKI) (7Pe, 30W)
+Modified Cohorts: 0 were modified.
 
 PhenotypeLibrary 3.5.0
 ======================
