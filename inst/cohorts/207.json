@@ -16,6 +16,40 @@
 			},
 			{
 				"Measurement" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 20,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 30,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : true,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
 					"CodesetId" : 16,
 					"MeasurementTypeExclude" : false,
 					"ValueAsNumber" : {
@@ -65,6 +99,40 @@
 			},
 			{
 				"Measurement" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 20,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 30,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
 					"CodesetId" : 17,
 					"MeasurementTypeExclude" : false,
 					"ValueAsNumber" : {
@@ -1459,47 +1527,9 @@
 		"Type" : "First"
 	},
 	"ExpressionLimit" : {
-		"Type" : "All"
+		"Type" : "First"
 	},
 	"InclusionRules" : [
-		{
-			"name" : "Diagnosis of Pure Red Cell Aplasia within 30 days (including index)",
-			"description" : "Reduces misclassification from aplastic anemia",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 20,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 0,
-								"Coeff" : 1
-							},
-							"End" : {
-								"Days" : 30,
-								"Coeff" : 1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : true,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
 		{
 			"name" : "No congenital or genetic anemia",
 			"expression" : {
@@ -1537,7 +1567,7 @@
 			}
 		},
 		{
-			"name" : "Not Constitutional Pure Red Cell Aplasia",
+			"name" : "No Constitutional Pure Red Cell Aplasia",
 			"description" : "A congenital form of pure red cell aplasia",
 			"expression" : {
 				"Type" : "ALL",
@@ -1763,7 +1793,7 @@
 								"Coeff" : -1
 							},
 							"End" : {
-								"Days" : 1,
+								"Days" : 7,
 								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,
@@ -1790,7 +1820,7 @@
 								"Coeff" : -1
 							},
 							"End" : {
-								"Days" : 1,
+								"Days" : 7,
 								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,

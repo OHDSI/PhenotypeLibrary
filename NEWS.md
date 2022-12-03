@@ -1,3 +1,15 @@
+PhenotypeLibrary 3.6.0
+======================
+
+New Cohorts: 2 were added.
+
+    270: [P] Hemolytic Anemia (7Pe, 0Era, 365W)
+    271: [P] Hemolytic Anemia Intra corpuscular (FP)
+    
+Deprecated Cohorts: No new cohorts were added in this release.
+
+Modified Cohorts: 0 were modified.
+
 PhenotypeLibrary 3.5.0
 ======================
 

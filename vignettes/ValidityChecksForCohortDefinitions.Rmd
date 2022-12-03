@@ -36,7 +36,7 @@ knitr::opts_chunk$set(
 ## Cohort definition checks:
 - *Concept set mismatch*
     - We do not allow cohort definitions with unused concept sets
-    - At least one of the concept id(s) in the concept set should belong the domain of the rule. E.g. if the rule says ‘at least 1 occurrence of ‘condition_occurrence’’ - but the conceptId does not even have one conceptId belonging to the condition domain.
+    - At least one of the concept id(s) in the concept set should belong the domain of the rule. E.g. if the rule says ‘at least 1 occurrence of ‘condition_occurrence’ - but the conceptId's do not even have one conceptId belonging to the condition domain.
 
 - *Measurement units*
     - If using measurement - make sure units are specified. Cohort Definitions using measurement domains that do not have units will be automatically flagged for rejection. Reason: values may be on various scales and so value as number may not be meaningful.
@@ -52,6 +52,6 @@ knitr::opts_chunk$set(
 - Use of mapped concepts: concept set expression allows for selecting mapped concepts. When mapped concepts is selected in the concept set expression, it will be flagged for additional review. Mapped concepts are rarely needed and so will need additional justification.
 
 - * Event cohorts*
-- If in your phenotype a person may reasonably be expected to not be in the phenotype after starting in the phenotype: we expect an attempt to model the cohort definition as an event cohort i.e. cohort end date should be modled using exit criteria.
+- If in your phenotype a person may reasonably be expected to not be in the phenotype after starting in the phenotype: we expect an attempt to model the cohort definition as an event cohort i.e. cohort end date should be modeled using exit criteria.
 
 

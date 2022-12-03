@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Validity checks for Cohort Definitions • PhenotypeLibrary</title>
+<title>Guidance on writing an evaluation report • PhenotypeLibrary</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Validity checks for Cohort Definitions">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Guidance on writing an evaluation report">
 <meta property="og:description" content="PhenotypeLibrary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -114,14 +114,14 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Validity checks for Cohort Definitions</h1>
+      <h1 data-toc-skip>Guidance on writing an evaluation report</h1>
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
             <h4 data-toc-skip class="date">2022-12-03</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/ValidityChecksForCohortDefinitions.Rmd" class="external-link"><code>vignettes/ValidityChecksForCohortDefinitions.Rmd</code></a></small>
-      <div class="hidden name"><code>ValidityChecksForCohortDefinitions.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidanceOnPerformingPeerReview.Rmd" class="external-link"><code>vignettes/GuidanceOnPerformingPeerReview.Rmd</code></a></small>
+      <div class="hidden name"><code>GuidanceOnPerformingPeerReview.Rmd</code></div>
 
     </div>
 
@@ -130,94 +130,77 @@ Rao</h4>
 <p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is
 part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a></p>
 <p><em>This document is a DRAFT guidance.</em></p>
-<div class="section level2">
-<h2 id="name">Name<a class="anchor" aria-label="anchor" href="#name"></a>
-</h2>
+<p>If you accept an invitation to perform a peer review on a cohort
+definition that has been submitted to the OHDSI Phenotype library - then
+we ask that you please review this guidance document.</p>
+<p>Note: - OHDSI subscribes to open-peer review. - Reviewers are invited
+to provide their review from a pool of volunteers via OHDSI Phenotype
+Development and Evaluation Workgroup. More than one reviewer maybe asked
+to perform peer review. All reviewers review and identity will be open.
+- You may perform a live or an asynchronous review. Live review may be
+done in the OHDSI Phenotype Development and Evaluation workgroup. Here
+your review will be video recorded and archived. A live review has the
+advantage of it being a discussion moderated by the workgroup lead, and
+the submitter is usually present in the meeting. An asynchronous review
+is a written review and is done as a forum post in the original thread
+started by the submitter on forums.ohdsi.org - Anyone in the community
+may engage in the conversation and provide their input on both the
+contribution and the review.</p>
 <ul>
-<li>
-<em>Length</em> - cohort definition name should not be longer than
-90 characters</li>
-<li>
-<em>Name clash</em> - please check if there is another valid cohort
-with the exact same name. If yes, then we ask that you come up with
-another name. You can use the name of a deprecated cohort.</li>
-<li>
-<em>Reserved characters</em> - should not have ‘[’ or ’]’ in cohort
-name, as it is reserved for use in Phenotype library.</li>
+<li>Levels of Peer review * The workgroup lead or designee moderator
+will interpret your review and assign a level of confidence to the
+submission. The levels are incremental i.e. a definition that has level
+3 status should have also met level 2, 1, and 0.</li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="cohort-definition-checks">Cohort definition checks:<a class="anchor" aria-label="anchor" href="#cohort-definition-checks"></a>
-</h2>
-<ul>
-<li>
-<p><em>Concept set mismatch</em></p>
-<ul>
-<li>We do not allow cohort definitions with unused concept sets</li>
-<li>At least one of the concept id(s) in the concept set should belong
-the domain of the rule. E.g. if the rule says ‘at least 1 occurrence of
-‘condition_occurrence’ - but the conceptId’s do not even have one
-conceptId belonging to the condition domain.</li>
-</ul>
-</li>
-<li>
-<p><em>Measurement units</em></p>
-<ul>
-<li>If using measurement - make sure units are specified. Cohort
-Definitions using measurement domains that do not have units will be
-automatically flagged for rejection. Reason: values may be on various
-scales and so value as number may not be meaningful.</li>
-<li>Measurement_unit_concept_id should be standard omop vocabulary that
-belongs to the domain Unit and should be valid. See <a href="https://athena.ohdsi.org/search-terms/terms?domain=Unit&amp;standardConcept=Standard&amp;invalidReason=Valid&amp;page=1&amp;pageSize=500&amp;query=" class="external-link">Athena</a>
-</li>
-<li>If measurement_unit_concept_id are used then we expect that each
-rule only combines units that are on the same scale i.e. the
-unit_concept_id should have a conversion factor = 1.</li>
-<li>Exceptions
-<ul>
-<li>unit less measurements and if there is only one unit.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><em>Concept Sets used in Cohort Definitions</em></p></li>
-<li><p>Concept set names: We expect the names of the concept sets to be
-meaningful to a broad audience i.e. please remove any internal
-identifiers that are specific to an organization or project e.g. ‘[raos]
-Hypertension’ is not acceptable.</p></li>
-<li><p>Use of Non-standard concept codes: The OHDSI Phenotype library
-will flags cohort definitions that have non-standard concepts in the
-concept set expression for additional review. Additional justification
-will be required to accept a cohort definition for peer review if it has
-non-standard concepts. The justification will have to address, why a
-standard equivalent is not used and if the use of the non standard
-concepts changes the operating characteristics of the cohort definition
-compared to the use of standard concepts.</p></li>
-<li><p>Concept optimization: we expect the concept set to be an
-expression that is as parsimonious in its representation as possible. At
-a minimum, the concept set should be optimized, should not have
-duplicate concepts with same selection of included and exclude.</p></li>
-<li><p>Use of mapped concepts: concept set expression allows for
-selecting mapped concepts. When mapped concepts is selected in the
-concept set expression, it will be flagged for additional review. Mapped
-concepts are rarely needed and so will need additional
-justification.</p></li>
-<li><ul>
-<li>Event cohorts*</li>
-</ul></li>
-<li><p>If in your phenotype a person may reasonably be expected to not
-be in the phenotype after starting in the phenotype: we expect an
-attempt to model the cohort definition as an event cohort i.e. cohort
-end date should be modeled using exit criteria.</p></li>
-</ul>
-</div>
+<p>Level 0: All cohorts in this level have passed the minimum submission
+requirements detailed <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">here</a>.
+They are now ready for peer review. If the outcome of the peer review is
+rejection then the cohorts will stay in Level 0, but get a withdrawn =
+TRUE status. All cohorts will remain in this status until accepted or
+rejected. This cohort is not considered a peer reviewed cohort
+definition.</p>
+<p>Level 1: These cohorts have completed at-least one peer review. The
+reviewer has accepted the definition based on the high level summary of
+the evaluation contributed by the submitter. The reviewer may take the
+submission by face value. This level is the lowest level of review, and
+we expect &gt; 90% of definitions that have passed Level 0 to pass Level
+1 review.</p>
+<p>Level 2: These cohort have completed at-least one peer review. The
+reviewer has accepted the definition. To accept the peer reviewer has
+attested to have performed the following: - Independently reviewed
+Cohort Diagnostics (and PheValuator when available) from the submitter.
+- Verified that the submitter has discussed presence of errors as
+sensitivity errors, specificity errors, date misclassification errors,
+and verified that these errors are observed (in cohort diagnostics or
+PheValuator). - Independently performed an evaluation (see <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">Evaluation
+guideance</a>) for errors by reviewing the material submitted e.g. a)
+reviewed cohort diagnostics output from the submitter for incidence rate
+stability, visit context, index event breakdown, cohort characterization
+output. b) reviewed PheValuator output (where available). Adds to
+discussions on source of errors, by discussing the presence of
+sensitivity, specificity and index date misclassification and how they
+may impact potential studies. - Makes a recommendation to accept the
+definition with known errors.</p>
+<p>Level 3: A peer reviewer have reviewed the definition and
+independently performed an evaluation on a new data source and accepted
+the definition with known errors. The second reviewer should use data
+source that was not part of the original submission for the review
+(i.e., may evaluate on reviewers data, or from another data partner -
+but the output is expected to be publicly in OHDSI). See <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">evaluation
+guidance</a></p>
+<p>Level 4: The cohort definition has been used in multiple studies,
+publications or workshops. There is general consensus that this is a
+good cohort definition and is well adopted. It’s performance
+characteristics has been stable in different types of data sources,
+e.g. at least 1 claims based and one electronic health record data based
+data source, or one US data source and one European Data source. The
+definition has been referenced and used in the work of others and the
+output is considered high quality.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 

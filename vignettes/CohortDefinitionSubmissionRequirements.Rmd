@@ -27,14 +27,11 @@ knitr::opts_chunk$set(
 
 *This document is a DRAFT guidance.*
 
-A submission to the OHDSI Phenotype Library is considered complete if it is accompanied by:
-
-- OHDSI forum post with the title that starts with 'Phenotype submission -' example: 'Phenotype submission - Acute Hepatic Failure'
-- You have a clinical description conforming to the submission requirements.
+A submission to the OHDSI Phenotype Library is considered complete if the submission process has been followed
 
 # Submission process
 ## Post a new OHDSI Forum thread 
-- A new thread on [OHDSI forum](forums.ohdsi.org). By default the original poster (op) will be considered the phenotype submitter. 
+- A new thread on [OHDSI forum](forums.ohdsi.org). By default the original poster (op) will be considered the phenotype submitter. If an alternate person is the submitter, please post the submitters name.
 - General guidance for your forum post title. 
     - Title of the thread: should start with ‘Phenotype Submission - ‘. 
     - Examples of titles for the thread ‘Phenotype submission - Acute Hepatic Failure’
@@ -42,24 +39,21 @@ A submission to the OHDSI Phenotype Library is considered complete if it is acco
         - *Prefix*: ‘Phenotype submission -’ This prefix in your title makes it easier for reviewers to review your work, provide their feedback and for your contribution to make its way to the OHDSI Phenotype Library.
         - *Phenotype Name*: The phenotype name is expected to be a meaningful but succinct name. It should try to capture some of the key dimensions of the clinical idea e.g. in the name ‘Acute Hepatic Failure among persons with no pre-existing liver disease’. This name conveys that the clinical idea is ‘Acute’. It also tells us that there are exclusions for persons with pre-existing liver disease. Another example is ‘events of pneumonia’. Here the word ‘events’ tells us that a person may have more than one event of pneumonia. 
         - Note: among OHDSI Phenotype typers, some words have key meaning - please review [Reserved words with special meaning to Phentoypers](https://ohdsi.github.io/PhenotypeLibrary/articles/ReservedWordsWithSpecialMeaningToPhenotypers.html). If you use those words, please ensure your intention aligns with this document.
-        - Your submission is identified by your forum title. So a good name will help the community volunteer reviewers find your submission and promptly respond to it.
-- Phenotype names are necessarily short. As a result, it may not convey the full clinical meaning and can be ambiguous. That's one reason we ask that your submission be accompanied by a clinical description, that provides the additional information needed to fully describe the clinical idea.
+        - Your submission is identified by your forum title. So a good name will help the community volunteer reviewers find your submission and promptly respond to it. It is the submitter discretion to come up with a meaningful name that uniquely identify the submission.
+- Phenotype names are necessarily short. As a result, it may not convey the full clinical meaning and can be ambiguous. That's one reason we ask that your submission be accompanied by a clinical description. Clinical description provides the additional information needed to fully describe the clinical idea.
 
 
-## Start your post with a clinical description
-- Clinical Description is required for peer review.
-- The motivation behind starting out with a clinical description is so that everyone has a shared understanding of the clinical phenotype i.e. what are the expected characteristics of the persons we are identifying from the data source. This step not only clarifies the clinical idea, but also helps justify why certain decisions were made during the cohort definition development (build) process, and also provides context to the persons who might be interpreting the results of a study that used the phenotype.
+## Clinical description (Required)
+- Clinical Description is required for peer review. 
+- The motivation behind starting out with a clinical description is so that everyone has a shared understanding of the clinical phenotype i.e. what are the expected characteristics of the persons we are identifying from the data source. Please see article [Guidance on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html) Note: a reference to an authoritative source (s) would meet this requirement, but we recommend that you summarize the source (s).
 
-Please see article [Guidance on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html)
-
-## Literature Review
-- Literature review is required for peer review.
-- See 
-- In OHDSI we like to learn from and improve the work of others. Performing a literature review to understand what others have done for this phenotype is considered best practice.
-- There is no fixed format for submission of literature review, but we expect that if your submission is based on literature review, you give references to (do not attach original articles) in the same thread and summarize the key salient information from the publication that may inform OHDSI phenotyping.
-
-Please see article [Guidance on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html)
+## Literature Review (optional)
+- In OHDSI we like to learn from and improve the work of others. Performing a literature review helps us to understand how others have built code set or algorithms for the phenotype of interest, and what have they observed in terms of the performance characteristics. e.g. some algorithms may have gone through a chart review process.
+- There is no fixed format for submission of literature review. You could summarize by saying *joe et.al [3] restricted to inpatient visit, and reported as PPV of 98%*. Please cite joe et.al. article [3] - do not attach original article in the forum post. Please see article [Guidance on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html)
  
+## Phenotype development
+This step not only clarifies the clinical idea, but also helps justify why certain decisions were made during the cohort definition development (build) process, and also provides context to the persons who might be interpreting the results of a study that used the phenotype.
+
 ## Logic Description
 - Logic description is required for peer review.
 - We recommend you write a logic description prior to beginning phenotyping. It is written after clinical description is complete.

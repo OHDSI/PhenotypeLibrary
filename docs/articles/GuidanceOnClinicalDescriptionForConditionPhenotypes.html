@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.6.0</span>
       </span>
     </div>
 
@@ -63,6 +63,9 @@
     </li>
     <li>
       <a href="../articles/GuidanceOnLiteratureReview.html">Guidance on literature review</a>
+    </li>
+    <li>
+      <a href="../articles/GuidanceOnPerformingPeerReview.html">Guidance on writing an evaluation report</a>
     </li>
     <li>
       <a href="../articles/GuidanceOnWritingAnEvaluationReport.html">Guidance on writing an evaluation report</a>
@@ -116,7 +119,7 @@ Condition Phenotypes</h1>
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-11-28</h4>
+            <h4 data-toc-skip class="date">2022-12-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd" class="external-link"><code>vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd</code></a></small>
       <div class="hidden name"><code>GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd</code></div>
@@ -140,29 +143,31 @@ criteria.</p>
 <ul>
 <li><p>We ask that you start by referencing (e.g., by providing an
 internet hyperlink to) an authoritative source that guided your
-understanding of the phenotype’s clinical description. This is expected
-to be rewritten by clinical subject matter experts in the field of your
+understanding of the phenotype clinical description. This is expected to
+be written by clinical subject matter experts in the field of your
 phenotype. It almost uses medical Jargon like ‘Etiology’,
 ‘Pathogenesis’, ‘Evaluation’, ‘Treatment’, ‘Prognosis’.</p></li>
 <li><p>Because OHDSI subscribes to Open Science and international
-collaboration - we ask that you try to prioritize authorititaive sources
+collaboration - we ask that you try to prioritize authoritative sources
 that are publicly and openly available. Example of such authoritative
 sources include NIH National Library of Medicine Stat Pearls [StatPearls
 [Internet]. Treasure Island (FL): StatPearls Publishing; 2022 Jan-.
 Available from: <a href="https://www.ncbi.nlm.nih.gov/books/NBK430685/" class="external-link uri">https://www.ncbi.nlm.nih.gov/books/NBK430685/</a>] (<a href="https://www.ncbi.nlm.nih.gov/books/NBK430685/" class="external-link uri">https://www.ncbi.nlm.nih.gov/books/NBK430685/</a>)</p></li>
-<li><p>We then expect a short/succinct abstraction of the referenced
-authoritative source, but written in the context of helping a
-phenotyper. It is a reasonable expectation for the phenotyper to review
-the authoritative source referenced - however, by abstracting out the
-key ideas, we have observed, it helps make phenotype development more
-efficient and less likely to miss key ideas.</p></li>
+<li><p>We then ask that you write a short/succinct abstraction of the
+referenced authoritative source, but written in the context of helping a
+phenotyper. Again, we are not re-writing a medical text book but only
+abstracting key ideas that we should look for in persons with the
+phenotype. The purpose is to aid phenotype development and evaluation.
+e.g. the clinical description would convey that large number of
+individuals in the myocardial infarction phenotype maybe expected to
+have chest pain or tests for troponin.</p></li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="summary-of-authoritative-source">Summary of Authoritative source:<a class="anchor" aria-label="anchor" href="#summary-of-authoritative-source"></a>
 </h2>
-<p>We ask that you summarize using the following
-headings/components:</p>
+<p>We ask that you summarize using the following headings/components.
+This is optional but is expected in good submissions.</p>
 <ul>
 <li><p><strong>Overview:</strong> Key summary of the clinical
 concept.</p></li>
@@ -180,8 +185,9 @@ risks to a person from the clinical concept, including therapeutic
 procedures, surgeries, and drug exposures (where applicable).
 Pharmacologic, non-pharmacologic clinical actions.</p></li>
 <li><p><strong>Prognosis:</strong> statements that indicate the duration
-the clinical concept is expected to persist in a person. Three questions
-are expected to be addressed:</p></li>
+the clinical concept is expected to persist in a person. Please try to
+answer these three questions as they help with defining cohort end
+date:</p></li>
 <li><p>Can the person fully recover marking the end of an episode i.e.,
 is full recovery possible, or is it considered life long?
 Yes/No</p></li>
@@ -201,33 +207,13 @@ maximum of 365 days.</li>
 condition independently re-occur in the same person after full recovery
 from prior independent episode?</p></li>
 <li><p><strong>Disqualifiers:</strong></p></li>
-<li><p>A dis-qualifier is a mutually exclusive idea i.e. if this
-construct is present in the person then they cannot, at the same time,
-have the phenotype of interest. A mere presence of a clinical construct
-that can predispose/put a person at higher/lower risk for the phenotype
-is not a dis-qualifier.</p></li>
-<li><p>Occasionally, we may call something that is known to cause the
-outcome a dis-qualifier e.g., genetic conditions or malignancies. For
-this, we need a strong a priori knowledge with high certainty, e.g. 70
-to 80% of ppl with this cystic fibrosis will develop the chronic lung
-disease - then cystic fibrosis may be a dis-qualifier for chronic lung
-disease. To be a dis-qualifier, it has to be stated explicitly as a
-dis-qualifier in the clinical description (consider adding a reference).
-A good justification/rationale must be given to allow this construct as
-a dis-qualifier.</p></li>
-<li><p>All other ideas that don’t meet the two Guidance above, but are
-of interest to the phenotyper to be a dis-qualifier - have to be
-empirically evaluated and numerically shown to have an impact along with
-clinical description describing why it should be a dis-qualifier + what
-would happen to the phenotype of interest if it is not a
-dis-qualifier.</p></li>
-<li><p>In general we expect not more than a few dis-qualifiers. If we
-have more than 4 dis-qualifiers, we need to think hard as to why we have
-many dis-qualifiers. Dis-qualifiers are usually observed in some
-temporal relationship (i.e., an event about a person that should or
-should not occur during a specified temporal period with respect to
-cohort start date), e.g. should not have a diagnosis of liver cirrhosis
-at any time prior to acute hepatic failure.</p></li>
+<li><p>A dis-qualifier is a mutually exclusive idea i.e. an argument
+should be made that when this construct is present in the person then
+they cannot by definition have the phenotype of interest. i.e. this is
+not just a risk factor (confounder) that predisposes a person to be at
+higher/lower risk for the phenotype. Example: if the phenotype is
+Myocardial infarction among non-diabetic persons - then diabetes is a
+disqualifier.</p></li>
 <li><p><strong>Strengtheners:</strong></p></li>
 <li><p>conditions, when present, increase the likelihood that the person
 has the clinical idea. The observation of established risk factors in

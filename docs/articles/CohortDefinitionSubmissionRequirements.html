@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.6.0</span>
       </span>
     </div>
 
@@ -63,6 +63,9 @@
     </li>
     <li>
       <a href="../articles/GuidanceOnLiteratureReview.html">Guidance on literature review</a>
+    </li>
+    <li>
+      <a href="../articles/GuidanceOnPerformingPeerReview.html">Guidance on writing an evaluation report</a>
     </li>
     <li>
       <a href="../articles/GuidanceOnWritingAnEvaluationReport.html">Guidance on writing an evaluation report</a>
@@ -115,7 +118,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2022-11-28</h4>
+            <h4 data-toc-skip class="date">2022-12-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/CohortDefinitionSubmissionRequirements.Rmd" class="external-link"><code>vignettes/CohortDefinitionSubmissionRequirements.Rmd</code></a></small>
       <div class="hidden name"><code>CohortDefinitionSubmissionRequirements.Rmd</code></div>
@@ -128,14 +131,7 @@ Rao</h4>
 part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a></p>
 <p><em>This document is a DRAFT guidance.</em></p>
 <p>A submission to the OHDSI Phenotype Library is considered complete if
-it is accompanied by:</p>
-<ul>
-<li>OHDSI forum post with the title that starts with ‘Phenotype
-submission -’ example: ‘Phenotype submission - Acute Hepatic
-Failure’</li>
-<li>You have a clinical description conforming to the submission
-requirements.</li>
-</ul>
+the submission process has been followed</p>
 <div class="section level2">
 <h2 id="submission-process">Submission process<a class="anchor" aria-label="anchor" href="#submission-process"></a>
 </h2>
@@ -145,7 +141,8 @@ requirements.</li>
 <ul>
 <li>A new thread on <a href="forums.ohdsi.org">OHDSI forum</a>. By
 default the original poster (op) will be considered the phenotype
-submitter.</li>
+submitter. If an alternate person is the submitter, please post the
+submitters name.</li>
 <li>General guidance for your forum post title.
 <ul>
 <li>Title of the thread: should start with ’Phenotype Submission -
@@ -174,52 +171,59 @@ words with special meaning to Phentoypers</a>. If you use those words,
 please ensure your intention aligns with this document.</li>
 <li>Your submission is identified by your forum title. So a good name
 will help the community volunteer reviewers find your submission and
-promptly respond to it.</li>
+promptly respond to it. It is the submitter discretion to come up with a
+meaningful name that uniquely identify the submission.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Phenotype names are necessarily short. As a result, it may not
 convey the full clinical meaning and can be ambiguous. That’s one reason
-we ask that your submission be accompanied by a clinical description,
-that provides the additional information needed to fully describe the
-clinical idea.</li>
+we ask that your submission be accompanied by a clinical description.
+Clinical description provides the additional information needed to fully
+describe the clinical idea.</li>
 </ul>
 </div>
 <div class="section level3">
-<h3 id="start-your-post-with-a-clinical-description">Start your post with a clinical description<a class="anchor" aria-label="anchor" href="#start-your-post-with-a-clinical-description"></a>
+<h3 id="clinical-description-required">Clinical description (Required)<a class="anchor" aria-label="anchor" href="#clinical-description-required"></a>
 </h3>
 <ul>
 <li>Clinical Description is required for peer review.</li>
 <li>The motivation behind starting out with a clinical description is so
 that everyone has a shared understanding of the clinical phenotype
 i.e. what are the expected characteristics of the persons we are
-identifying from the data source. This step not only clarifies the
-clinical idea, but also helps justify why certain decisions were made
-during the cohort definition development (build) process, and also
-provides context to the persons who might be interpreting the results of
-a study that used the phenotype.</li>
+identifying from the data source. Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html" class="external-link">Guidance
+on writing clinical description for Condition Phenotypes</a> Note: a
+reference to an authoritative source (s) would meet this requirement,
+but we recommend that you summarize the source (s).</li>
 </ul>
-<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html" class="external-link">Guidance
-on writing clinical description for Condition Phenotypes</a></p>
 </div>
 <div class="section level3">
-<h3 id="literature-review">Literature Review<a class="anchor" aria-label="anchor" href="#literature-review"></a>
+<h3 id="literature-review-optional">Literature Review (optional)<a class="anchor" aria-label="anchor" href="#literature-review-optional"></a>
 </h3>
 <ul>
-<li>Literature review is required for peer review.</li>
-<li>See</li>
 <li>In OHDSI we like to learn from and improve the work of others.
-Performing a literature review to understand what others have done for
-this phenotype is considered best practice.</li>
-<li>There is no fixed format for submission of literature review, but we
-expect that if your submission is based on literature review, you give
-references to (do not attach original articles) in the same thread and
-summarize the key salient information from the publication that may
-inform OHDSI phenotyping.</li>
+Performing a literature review helps us to understand how others have
+built code set or algorithms for the phenotype of interest, and what
+have they observed in terms of the performance characteristics.
+e.g. some algorithms may have gone through a chart review process.</li>
+<li>There is no fixed format for submission of literature review. You
+could summarize by saying <em>joe et.al [3] restricted to inpatient
+visit, and reported as PPV of 98%</em>. Please cite joe et.al. article
+[3] - do not attach original article in the forum post. Please see
+article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html" class="external-link">Guidance
+on Literature Review</a>
+</li>
 </ul>
-<p>Please see article <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html" class="external-link">Guidance
-on Literature Review</a></p>
+</div>
+<div class="section level3">
+<h3 id="phenotype-development">Phenotype development<a class="anchor" aria-label="anchor" href="#phenotype-development"></a>
+</h3>
+<p>This step not only clarifies the clinical idea, but also helps
+justify why certain decisions were made during the cohort definition
+development (build) process, and also provides context to the persons
+who might be interpreting the results of a study that used the
+phenotype.</p>
 </div>
 <div class="section level3">
 <h3 id="logic-description">Logic Description<a class="anchor" aria-label="anchor" href="#logic-description"></a>
