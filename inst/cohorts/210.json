@@ -22,7 +22,7 @@
 								},
 								"StartWindow" : {
 									"Start" : {
-										"Days" : 0,
+										"Days" : 30,
 										"Coeff" : 1
 									},
 									"End" : {
@@ -33,7 +33,7 @@
 									"UseEventEnd" : false
 								},
 								"RestrictVisit" : false,
-								"IgnoreObservationPeriod" : true,
+								"IgnoreObservationPeriod" : false,
 								"Occurrence" : {
 									"Type" : 2,
 									"Count" : 1,
@@ -62,7 +62,7 @@
 								},
 								"StartWindow" : {
 									"Start" : {
-										"Days" : 0,
+										"Days" : 30,
 										"Coeff" : 1
 									},
 									"End" : {
@@ -73,7 +73,7 @@
 									"UseEventEnd" : false
 								},
 								"RestrictVisit" : false,
-								"IgnoreObservationPeriod" : true,
+								"IgnoreObservationPeriod" : false,
 								"Occurrence" : {
 									"Type" : 2,
 									"Count" : 1,
@@ -145,7 +145,7 @@
 								},
 								"StartWindow" : {
 									"Start" : {
-										"Days" : 0,
+										"Days" : 30,
 										"Coeff" : 1
 									},
 									"End" : {
@@ -156,7 +156,7 @@
 									"UseEventEnd" : false
 								},
 								"RestrictVisit" : false,
-								"IgnoreObservationPeriod" : true,
+								"IgnoreObservationPeriod" : false,
 								"Occurrence" : {
 									"Type" : 2,
 									"Count" : 1,
@@ -188,6 +188,162 @@
 							"CONCEPT_CLASS_ID" : null
 						}
 					]
+				}
+			},
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ANY",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 1,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 30,
+										"Coeff" : 1
+									},
+									"End" : {
+										"Days" : 30,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"Measurement" : {
+										"CodesetId" : 2,
+										"MeasurementTypeExclude" : false,
+										"ValueAsNumber" : {
+											"Value" : 4,
+											"Op" : "bt",
+											"Extent" : 11
+										},
+										"Unit" : [
+											{
+												"CONCEPT_ID" : 4121395,
+												"CONCEPT_NAME" : "g/dL",
+												"STANDARD_CONCEPT" : null,
+												"STANDARD_CONCEPT_CAPTION" : "Unknown",
+												"INVALID_REASON" : null,
+												"INVALID_REASON_CAPTION" : "Unknown",
+												"CONCEPT_CODE" : "258795003",
+												"DOMAIN_ID" : "Unit",
+												"VOCABULARY_ID" : "SNOMED",
+												"CONCEPT_CLASS_ID" : null
+											},
+											{
+												"CONCEPT_ID" : 8713,
+												"CONCEPT_NAME" : "gram per deciliter",
+												"STANDARD_CONCEPT" : null,
+												"STANDARD_CONCEPT_CAPTION" : "Unknown",
+												"INVALID_REASON" : null,
+												"INVALID_REASON_CAPTION" : "Unknown",
+												"CONCEPT_CODE" : "g/dL",
+												"DOMAIN_ID" : "Unit",
+												"VOCABULARY_ID" : "UCUM",
+												"CONCEPT_CLASS_ID" : null
+											},
+											{
+												"CONCEPT_ID" : 8950,
+												"CONCEPT_NAME" : "gram per deciliter calculated",
+												"STANDARD_CONCEPT" : null,
+												"STANDARD_CONCEPT_CAPTION" : "Unknown",
+												"INVALID_REASON" : null,
+												"INVALID_REASON_CAPTION" : "Unknown",
+												"CONCEPT_CODE" : "g/dL{calc}",
+												"DOMAIN_ID" : "Unit",
+												"VOCABULARY_ID" : "UCUM",
+												"CONCEPT_CLASS_ID" : null
+											}
+										]
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 30,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 30,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"Measurement" : {
+										"CodesetId" : 18,
+										"MeasurementTypeExclude" : false,
+										"ValueAsNumber" : {
+											"Value" : 5,
+											"Op" : "bt",
+											"Extent" : 30
+										},
+										"Unit" : [
+											{
+												"CONCEPT_ID" : 8554,
+												"CONCEPT_NAME" : "percent",
+												"STANDARD_CONCEPT" : null,
+												"STANDARD_CONCEPT_CAPTION" : "Unknown",
+												"INVALID_REASON" : null,
+												"INVALID_REASON_CAPTION" : "Unknown",
+												"CONCEPT_CODE" : "%",
+												"DOMAIN_ID" : "Unit",
+												"VOCABULARY_ID" : "UCUM",
+												"CONCEPT_CLASS_ID" : null
+											}
+										]
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 30,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 30,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
+					"CodesetId" : 6,
+					"ConditionTypeExclude" : false
 				}
 			}
 		],
@@ -1113,43 +1269,6 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "Washout period - 365 days",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 6,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 365,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 1,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 0,
-							"Count" : 0,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
 			"name" : "No normal low Hemoglobin measurement in blood on index date",
 			"expression" : {
 				"Type" : "ALL",
@@ -1531,7 +1650,7 @@
 	],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 90
 	},
 	"CensorWindow" : {}
 }

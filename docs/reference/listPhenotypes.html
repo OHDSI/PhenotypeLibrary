@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.7.0</span>
       </span>
     </div>
 
@@ -47,7 +47,7 @@
       <a href="../articles/GuidanceOnLiteratureReview.html">Guidance on literature review</a>
     </li>
     <li>
-      <a href="../articles/GuidanceOnPerformingPeerReview.html">Guidance on writing an evaluation report</a>
+      <a href="../articles/GuidanceOnPerformingPeerReview.html">Guidance on performing peer review</a>
     </li>
     <li>
       <a href="../articles/GuidanceOnWritingAnEvaluationReport.html">Guidance on writing an evaluation report</a>
@@ -112,20 +112,20 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">listPhenotypes</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 160 x 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cohortId cohortName                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        2 [W] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        3 [P] Cough (3Ps, 30Era)                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        4 [P] Diarrhea (7Ps, 30Era)                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        5 [P] Dyspnea (14Pe, 30Era)                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        6 [P] Fever (3Pe, 30Era)                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        7 [P] Headache, Migraine or related Neurologic pain (7Pe, 30Era)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        8 [P] Anosmia OR Hyposmia OR Dysgeusia (7Ps, 180Era)            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore throat (7Pe, 30Era)                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea or Vomiting (3Pe, 30Era)                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       11 [P] Malaise or fatigue (3P, 30Era)                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 150 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 161 x 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cohortId cohortName                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        2 [W] COVID-19 diagnosis or SARS-CoV-2 test (1pos) (3Ps, 7Era)        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        3 [P] Cough or Sputum (3Ps, 30Era)                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        4 [P] Diarrhea (7Ps, 30Era)                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        5 [P] Dyspnea (7Pe, 90Era)                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        6 [P] Fever (3Pe, 30Era)                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        7 [P] Headache or Headache disorder (7Pe, 30Era)                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        8 [P] Altered smell or taste including Anosmia, Hyposmia or Dysgeusia~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore throat (7Pe, 30Era)                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea or Vomiting (3Pe, 30Era)                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       11 [P] Malaise and or fatigue (3P, 30Era)                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 151 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

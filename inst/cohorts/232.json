@@ -103,7 +103,7 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "has no events in prior 'clean window' - 365 days",
+			"name" : "washout - 90 days",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
@@ -116,7 +116,7 @@
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 365,
+								"Days" : 90,
 								"Coeff" : -1
 							},
 							"End" : {
