@@ -210,6 +210,7 @@
 						},
 						"StartWindow" : {
 							"Start" : {
+								"Days" : 30,
 								"Coeff" : -1
 							},
 							"End" : {
@@ -233,7 +234,7 @@
 			}
 		},
 		{
-			"name" : "Exclude persons with muscle pain that may beexplained by injury, ischemia or systemic inflammation",
+			"name" : "Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
@@ -257,7 +258,7 @@
 							"UseEventEnd" : false
 						},
 						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : true,
+						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
 							"Type" : 0,
 							"Count" : 0,

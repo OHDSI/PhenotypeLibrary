@@ -834,14 +834,21 @@ FROM cteIncludedEvents Results
 
 ;
 
+-- date offset strategy
+
+select event_id, person_id, 
+  case when DATEADD(day,60,end_date) > op_end_date then op_end_date else DATEADD(day,60,end_date) end as end_date
+INTO #strategy_ends
+from #included_events;
 
 
 -- generate cohort periods into #final_cohort
 with cohort_ends (event_id, person_id, end_date) as
 (
 	-- cohort exit dates
-  -- By default, cohort exit at the event's op end date
-select event_id, person_id, op_end_date as end_date from #included_events
+  -- End Date Strategy
+SELECT event_id, person_id, end_date from #strategy_ends
+
 ),
 first_ends (person_id, start_date, end_date) as
 (
@@ -861,7 +868,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 (	
 	SELECT
 		person_id
-		, DATEADD(day,-1 * 0, event_date)  as end_date
+		, DATEADD(day,-1 * 365, event_date)  as end_date
 	FROM
 	(
 		SELECT
@@ -884,7 +891,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 
 			SELECT
 				person_id
-				, DATEADD(day,0,end_date) as end_date
+				, DATEADD(day,365,end_date) as end_date
 				, 1 AS event_type
 				, NULL
 			FROM #cohort_rows
@@ -1057,6 +1064,8 @@ TRUNCATE TABLE #inclusion_rules;
 DROP TABLE #inclusion_rules;
 
 
+TRUNCATE TABLE #strategy_ends;
+DROP TABLE #strategy_ends;
 
 
 TRUNCATE TABLE #cohort_rows;

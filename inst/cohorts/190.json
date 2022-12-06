@@ -52,7 +52,7 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "has no events in prior 'clean window' - 14 days",
+			"name" : "washout - 30 days",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
@@ -65,6 +65,7 @@
 						},
 						"StartWindow" : {
 							"Start" : {
+								"Days" : 30,
 								"Coeff" : -1
 							},
 							"End" : {
@@ -90,14 +91,14 @@
 	],
 	"EndStrategy" : {
 		"DateOffset" : {
-			"DateField" : "StartDate",
-			"Offset" : 1
+			"DateField" : "EndDate",
+			"Offset" : 7
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 7
+		"EraPad" : 0
 	},
 	"CensorWindow" : {}
 }

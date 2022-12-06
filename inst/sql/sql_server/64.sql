@@ -322,30 +322,6 @@ FROM
   select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
   FROM primary_events pe
   
-JOIN (
--- Begin Criteria Group
-select 0 as index_id, person_id, event_id
-FROM
-(
-  select E.person_id, E.event_id 
-  FROM primary_events E
-  INNER JOIN
-  (
-    -- Begin Demographic Criteria
-SELECT 0 as index_id, e.person_id, e.event_id
-FROM primary_events E
-JOIN @cdm_database_schema.PERSON P ON P.PERSON_ID = E.PERSON_ID
-WHERE (E.start_date >= DATEFROMPARTS(2016, 9, 1) and E.start_date <= DATEFROMPARTS(2020, 12, 31))
-GROUP BY e.person_id, e.event_id
--- End Demographic Criteria
-
-  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
-  GROUP BY E.person_id, E.event_id
-  HAVING COUNT(index_id) = 1
-) G
--- End Criteria Group
-) AC on AC.person_id = pe.person_id and AC.event_id = pe.event_id
-
 ) QE
 
 ;

@@ -1,3 +1,14 @@
+PhenotypeLibrary 3.7.0
+======================
+
+Accepted Cohorts: The following cohorts were added
+
+    63: Transverse myelitis or symptoms (1Ps, 0Era, 365W)
+    
+Deprecated Cohorts: No new cohorts were added in this release.
+
+Modified Cohorts: several symptom and sign based cohorts were updated to support discussion https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
+
 PhenotypeLibrary 3.6.0
 ======================
 

@@ -1,16 +1,15 @@
 cohortName,ruleSequence,ruleName,cohortId
 123,0,>=365 prior enrollment,123
 13,0,Washout period of 30 days,13
-13,1,"Exclude persons with muscle pain that may beexplained by injury, ischemia or systemic inflammation",13
-189,0,has no events in prior 'clean window' - 14 days,189
+13,1,"Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",13
+189,0,washout period - 14 days,189
 19,0,Washout period of 90 days,19
 19,1,Exclude if concomitant ,19
-190,0,has no events in prior 'clean window' - 14 days,190
-191,0,has no events in prior 'clean window' - 14 days,191
+190,0,washout - 30 days,190
+191,0,washout period - 14 days,191
 191,1,"Not senile, cancer or stroke related",191
-192,0,has no events in prior 'clean window' - 365 days,192
-193,0,has no events in prior 'clean window' - 14 days,193
-194,0,has no events in prior 'clean window' - 30 days,194
+193,0,Washout - 14 days,193
+194,0,washout - 30 days,194
 205,0,Washout period of 365 days,205
 205,1,Should have Acute Pancreatitis within 1 day,205
 205,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,205
@@ -34,9 +33,8 @@ cohortName,ruleSequence,ruleName,cohortId
 207,3,No normal Hematocrit measurement in blood on index date,207
 207,4,No Polycythemia on index date,207
 207,5,No Bone marrow transplant,207
-208,0,Febrile neutropenia Or (if fever) neutropenia or significant infections,208
+208,0,Inpatient Visit,208
 208,1,No Normal Neutrophil count (ANC ),208
-208,2,Require an inpatient or ER visit ,208
 209,0,Washout period - 365 days,209
 209,1,No normal low Hemoglobin measurement in blood on index date,209
 209,2,No Polycythemia on index date,209
@@ -46,14 +44,13 @@ cohortName,ruleSequence,ruleName,cohortId
 209,6,No Glucose-6-phosphate dehydrogenase deficiency anemia,209
 209,7,No Inherited disorder of porphyrin metabolism,209
 209,8,No Paroxysmal nocturnal hemoglobinuria,209
-210,0,Washout period - 365 days,210
-210,1,No normal low Hemoglobin measurement in blood on index date,210
-210,2,No Polycythemia on index date,210
-210,3,No Hereditary hemoglobinopathy,210
-210,4,No Erythrocyte membrane defect,210
-210,5,No Hereditary hemolytic anemia,210
-210,6,No Inherited disorder of porphyrin metabolism,210
-210,7,No Paroxysmal nocturnal hemoglobinuria,210
+210,0,No normal low Hemoglobin measurement in blood on index date,210
+210,1,No Polycythemia on index date,210
+210,2,No Hereditary hemoglobinopathy,210
+210,3,No Erythrocyte membrane defect,210
+210,4,No Hereditary hemolytic anemia,210
+210,5,No Inherited disorder of porphyrin metabolism,210
+210,6,No Paroxysmal nocturnal hemoglobinuria,210
 211,0,"No Congenital or Genetic Neutropenia, Leukopenia or Agranulocytosis",211
 211,1,No Congenital or Genetic anemia,211
 211,2,No Congenital or Genetic Thrombocytopenia,211
@@ -69,40 +66,37 @@ cohortName,ruleSequence,ruleName,cohortId
 214,6,No low Hematocrit measurement in blood within 7 days,214
 214,7,No thrombocytopenia within 7 days,214
 214,8,No low Platelet measurement in blood within 7 days,214
-215,0,No congenital or genetic thrombocytopenia,215
-215,1,No Platelet count > 100 on index date,215
-215,2,No thrombocytosis on index date,215
-215,3,No Pancytopenia or bone marrow disorder diagnosis within 7 days,215
-215,4,"No Neutropenia, Agranulocytosis diagnosis within 7 days",215
-215,5,No low neutrophil count within 7 days,215
-215,6,No Anemia diagnosis within 7 days,215
-215,7,No low Hemoglobin measurement in blood within 7 days,215
-216,0,No congenital or genetic thrombocytopenia,216
-216,1,No Platelet count > 100 on index date,216
-216,2,No thrombocytosis on index date,216
-216,3,No Hypersplenism,216
-216,4,No Antiphospholipid syndrome,216
-216,5,No Paroxysmal nocturnal hemoglobinuria,216
-216,6,No Hemolytic uremic syndrome,216
-216,7,No Thrombotic microangiopathy,216
-216,8,"No major autoimmune disorders (RA, MS, Psoriasis, SLE, CD, UC, Addisons, Graves, Sjogren, Myasthenia Gravis, Vasculitis, Celiac)",216
-216,9,No Chronic Liver Disease,216
-216,10,No Pregnancy related HELLP syndrome (in past 3 months),216
-216,11,"No tumors of hematopoietic cells including lymphoma, leukemia, myeloma and related",216
-216,12,No Nutritional deficiency,216
-216,13,No Pancytopenia or bone marrow disorder diagnosis within 7 days,216
-216,14,"No Neutropenia, Agranulocytosis diagnosis within 7 days",216
-216,15,No low neutrophil count within 7 days,216
-216,16,No Anemia diagnosis within 7 days,216
-216,17,No low Hemoglobin measurement in blood within 7 days,216
-216,18,No low Hematocrit measurement in blood within 7 days,216
+215,0,washout period of 365 days  ,215
+215,1,No congenital or genetic thrombocytopenia,215
+215,2,No Platelet count > 100 on index date,215
+215,3,No thrombocytosis on index date,215
+215,4,No Pancytopenia or bone marrow disorder diagnosis within 7 days,215
+215,5,"No Neutropenia, Agranulocytosis diagnosis within 7 days",215
+215,6,No low neutrophil count within 7 days,215
+215,7,No Anemia diagnosis within 7 days,215
+215,8,No low Hemoglobin measurement in blood within 7 days,215
+216,0,365 days  washout period ,216
+216,1,No congenital or genetic thrombocytopenia,216
+216,2,No Platelet count > 100 on index date,216
+216,3,No thrombocytosis on index date,216
+216,4,No Hypersplenism,216
+216,5,No Antiphospholipid syndrome,216
+216,6,No Paroxysmal nocturnal hemoglobinuria,216
+216,7,No Hemolytic uremic syndrome,216
+216,8,No Thrombotic microangiopathy,216
+216,9,"No major autoimmune disorders (RA, MS, Psoriasis, SLE, CD, UC, Addisons, Graves, Sjogren, Myasthenia Gravis, Vasculitis, Celiac)",216
+216,10,No Chronic Liver Disease,216
+216,11,No Pregnancy related HELLP syndrome (in past 3 months),216
+216,12,"No tumors of hematopoietic cells including lymphoma, leukemia, myeloma and related",216
+216,13,No Nutritional deficiency,216
+216,14,No Pancytopenia or bone marrow disorder diagnosis within 7 days,216
+216,15,"No Neutropenia, Agranulocytosis diagnosis within 7 days",216
+216,16,No low neutrophil count within 7 days,216
+216,17,No Anemia diagnosis within 7 days,216
+216,18,No low Hemoglobin measurement in blood within 7 days,216
+216,19,No low Hematocrit measurement in blood within 7 days,216
 217,0,No congenital or genetic thrombocytopenia,217
-217,1,No Platelet count > 100 on index date,217
-217,2,No Pancytopenia,217
-217,3,No bone marrow infiltration,217
-217,4,No bone marrow hypoplasia,217
-217,5,No Bone marrow disorder,217
-217,6,No recent sepsis,217
+217,1,No Platelet count > 150 on index date,217
 218,0,Washout period - 180 days,218
 218,1,Requires hospitalization,218
 218,2,No major trauma in last 14 days,218
@@ -147,7 +141,7 @@ cohortName,ruleSequence,ruleName,cohortId
 230,1,has no certain chronic liver disease events in prior 0 - 365 days,230
 230,2,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,230
 231,0,has no events in prior 'clean window' - 365 days,231
-232,0,has no events in prior 'clean window' - 365 days,232
+232,0,washout - 90 days,232
 233,0,has no events in prior 'clean window' - 180 days,233
 234,0,has no events in prior 'clean window' - 365 days,234
 237,0,has no events in prior 'clean window' - 365 days,237
@@ -155,9 +149,9 @@ cohortName,ruleSequence,ruleName,cohortId
 239,0,has no events in prior 'clean window' - 365 days,239
 239,1,No hypersomnia in 365 days prior to index and including index,239
 240,0,has no events in prior 'clean window' - 365 days,240
-241,0,has no events in prior 'clean window' - 30 days,241
-243,0,has no events in prior 'clean window' - 365 days,243
-244,0,has no events in prior 'clean window' - 180 days,244
+241,0,washout - 30 days,241
+243,0,washout - 365 days,243
+244,0,washout - 180 days,244
 248,0,has no events in prior 'clean window' - 365 days,248
 249,0,has no events in prior 'clean window' - 365 days,249
 251,0,Washout period of 365 days,251
@@ -233,13 +227,14 @@ cohortName,ruleSequence,ruleName,cohortId
 30,0,At least 3 distinct drug eras of TB drugs,30
 45,0,Has a lab test for SARS-Cov-2 test within 3 days,45
 53,0,Have atleast 1 positive,53
-54,0,has no events in prior 'clean window' - 42 days,54
+54,0,washout period - 42 days (6 weeks),54
 54,1,Has febrile seizure diagnosis ,54
-57,0,has no events in prior 'clean window' - 30 days,57
+57,0,Washout period - 30 days,57
 59,0,No SARS-Cov-2 test,59
 60,0,Positive test result,60
 60,1,Negative test result,60
-62,0,has no events in prior 'clean window' - 42 days,62
+62,0,Washout period - 42 days (6 weeks),62
 63,0,has no events in prior 'clean window' - 365 days,63
 73,0,At least 1 outcome 1 day after or end of observation before end of pregnancy post-2020,73
 73,1,No outcome in the prior 60d,73
+95,0,Washout - 90 days,95

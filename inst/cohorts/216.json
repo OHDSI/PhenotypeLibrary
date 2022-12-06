@@ -3468,6 +3468,43 @@
 	},
 	"InclusionRules" : [
 		{
+			"name" : "365 days  washout period ",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 30,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 365,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
 			"name" : "No congenital or genetic thrombocytopenia",
 			"expression" : {
 				"Type" : "ALL",
@@ -4531,7 +4568,7 @@
 	],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 365
+		"EraPad" : 0
 	},
 	"CensorWindow" : {}
 }
