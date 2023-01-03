@@ -105,6 +105,26 @@ try(ROhdsiWebApi::insertCohortDefinitionSetInPackage(
 ),
 silent = TRUE)
 
+# generate cohort sql using latest version of circeR
+remotes::install_github("OHDSI/circeR")
+circeOptions <- CirceR::createGenerateOptions(generateStats = TRUE)
+
+cohortJsonFiles <- list.files(path = file.path("inst", "cohorts"), pattern = ".json") %>% sort()
+
+for (i in (1:length(cohortJsonFiles))) {
+  jsonFileName <- cohortJsonFiles[i]
+  sqlFileName <- stringr::str_replace_all(string = jsonFileName, pattern = stringr::fixed(".json"), replacement = ".sql")
+  
+  writeLines(paste0(" - Generating ", sqlFileName))
+  
+  json <- SqlRender::readSql(sourceFile = file.path("inst", "cohorts", jsonFileName))
+  sql <- CirceR::buildCohortQuery(expression = json, options = circeOptions)
+  SqlRender::writeSql(sql = sql, targetFile = file.path("inst", "sql", sqlFileName))
+}
+
+
+
+
 # doing this again, because atlasId is not required for CohortDefinitionSet
 exportableCohorts  %>%
   dplyr::select(cohortId,

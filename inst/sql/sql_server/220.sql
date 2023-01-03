@@ -174,9 +174,9 @@ FROM
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-180,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= DATEADD(day,3,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
-HAVING COUNT(cc.event_id) = 1
+HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
 
   ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
@@ -205,8 +205,10 @@ FROM
   INNER JOIN
   (
     -- Begin Correlated Criteria
-select 0 as index_id, cc.person_id, cc.event_id
-from (SELECT p.person_id, p.event_id 
+select 0 as index_id, p.person_id, p.event_id
+from #qualified_events p
+LEFT JOIN (
+SELECT p.person_id, p.event_id 
 FROM #qualified_events P
 JOIN (
   -- Begin Condition Occurrence Criteria
@@ -222,9 +224,9 @@ FROM
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= DATEADD(day,3,P.START_DATE) ) cc 
-GROUP BY cc.person_id, cc.event_id
-HAVING COUNT(cc.event_id) >= 1
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-180,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(cc.event_id) = 0
 -- End Correlated Criteria
 
   ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
@@ -548,14 +550,40 @@ FROM
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= DATEADD(day,-1,P.START_DATE) AND A.START_DATE <= DATEADD(day,1,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+) A on A.person_id = P.person_id  AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+GROUP BY p.person_id, p.event_id
+HAVING COUNT(cc.event_id) = 0
+-- End Correlated Criteria
+
+UNION ALL
+-- Begin Correlated Criteria
+select 1 as index_id, p.person_id, p.event_id
+from #qualified_events p
+LEFT JOIN (
+SELECT p.person_id, p.event_id 
+FROM #qualified_events P
+JOIN (
+  -- Begin Observation Criteria
+select C.person_id, C.observation_id as event_id, C.observation_date as start_date, DATEADD(d,1,C.observation_date) as END_DATE,
+       C.visit_occurrence_id, C.observation_date as sort_date
+from 
+(
+  select o.* 
+  FROM @cdm_database_schema.OBSERVATION o
+JOIN #Codesets cs on (o.observation_concept_id = cs.concept_id and cs.codeset_id = 9)
+) C
+
+
+-- End Observation Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
 GROUP BY p.person_id, p.event_id
 HAVING COUNT(cc.event_id) = 0
 -- End Correlated Criteria
 
   ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
   GROUP BY E.person_id, E.event_id
-  HAVING COUNT(index_id) = 1
+  HAVING COUNT(index_id) = 2
 ) G
 -- End Criteria Group
 ) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
@@ -628,7 +656,7 @@ FROM cteIncludedEvents Results
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,1,start_date) > op_end_date then op_end_date else DATEADD(day,1,start_date) end as end_date
+  case when DATEADD(day,1,end_date) > op_end_date then op_end_date else DATEADD(day,1,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 

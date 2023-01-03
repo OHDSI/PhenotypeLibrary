@@ -7,14 +7,25 @@ CREATE TABLE #Codesets (
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 5 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4333912,4194210,195240,379012,79908)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (79908,4319324,4317279,73001,81286,4345578,4263710,4102023,439142,137967)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4333912,4194210,195240,379012,79908)
+  and ca.ancestor_concept_id in (79908,4319324,4317279,73001,81286,4345578,4263710,4102023)
   and c.invalid_reason is null
 
 ) I
+LEFT JOIN
+(
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (434657)
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (434657)
+  and c.invalid_reason is null
+
+) E ON I.concept_id = E.concept_id
+WHERE E.concept_id is null
 ) C
 ;
 
@@ -113,7 +124,7 @@ FROM
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= DATEADD(day,-365,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+) A on A.person_id = P.person_id  AND A.START_DATE >= DATEADD(day,-180,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
 GROUP BY p.person_id, p.event_id
 HAVING COUNT(cc.event_id) = 0
 -- End Correlated Criteria
@@ -184,7 +195,7 @@ FROM cteIncludedEvents Results
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,1,end_date) > op_end_date then op_end_date else DATEADD(day,1,end_date) end as end_date
+  case when DATEADD(day,3,end_date) > op_end_date then op_end_date else DATEADD(day,3,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 

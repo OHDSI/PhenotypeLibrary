@@ -1,3 +1,20 @@
+PhenotypeLibrary 3.8.0
+======================
+
+Accepted Cohorts: The following cohorts were added
+
+    269: Acute Kidney Injury AKI (7Pe, 30W)
+	Discussed here https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067 and peer reviewed by Azza Shoaibi and accepted after modifications. See recording dated August 12th 2022
+
+New Cohorts: 2 were added.
+
+    276: [P] Sudden Vision Loss (1Pe, 0Era, 365W)
+    277: [P] Sudden Hearing Loss (1Pe, 0Era, 365W)
+	
+Deprecated Cohorts: No new cohorts were added in this release.
+
+   
+
 PhenotypeLibrary 3.7.0
 ======================
 

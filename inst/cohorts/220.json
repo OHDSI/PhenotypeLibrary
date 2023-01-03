@@ -516,43 +516,6 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "Washout period 180 days",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 10,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 180,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 1,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 0,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
 			"name" : "Angioedema within 3 days  ",
 			"expression" : {
 				"Type" : "ALL",
@@ -581,6 +544,43 @@
 						"Occurrence" : {
 							"Type" : 2,
 							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "Washout period 180 days",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 10,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 180,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
 							"IsDistinct" : false
 						}
 					}
@@ -815,18 +815,45 @@
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 1,
+								"Days" : 7,
 								"Coeff" : -1
 							},
 							"End" : {
-								"Days" : 1,
-								"Coeff" : 1
+								"Days" : 0,
+								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,
 							"UseEventEnd" : false
 						},
 						"RestrictVisit" : false,
 						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"Observation" : {
+								"CodesetId" : 9,
+								"ObservationTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 7,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
 							"Type" : 0,
 							"Count" : 0,
@@ -841,7 +868,7 @@
 	],
 	"EndStrategy" : {
 		"DateOffset" : {
-			"DateField" : "StartDate",
+			"DateField" : "EndDate",
 			"Offset" : 1
 		}
 	},

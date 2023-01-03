@@ -7,6 +7,12 @@
 					"CodesetId" : 2,
 					"ConditionTypeExclude" : false
 				}
+			},
+			{
+				"Observation" : {
+					"CodesetId" : 2,
+					"ObservationTypeExclude" : false
+				}
 			}
 		],
 		"ObservationWindow" : {
@@ -162,6 +168,33 @@
 						},
 						"RestrictVisit" : false,
 						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"Observation" : {
+								"CodesetId" : 2,
+								"ObservationTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 30,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
 							"Type" : 0,
 							"Count" : 0,
