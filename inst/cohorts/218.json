@@ -567,6 +567,106 @@
 							"Count" : 0,
 							"IsDistinct" : false
 						}
+					},
+					{
+						"Criteria" : {
+							"Observation" : {
+								"CodesetId" : 1,
+								"ObservationTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 180,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CorrelatedCriteria" : {
+									"Type" : "ALL",
+									"CriteriaList" : [
+										{
+											"Criteria" : {
+												"Measurement" : {
+													"CodesetId" : 13,
+													"MeasurementTypeExclude" : false,
+													"ValueAsNumber" : {
+														"Value" : 0,
+														"Op" : "gt"
+													},
+													"RangeHigh" : {
+														"Value" : 100,
+														"Op" : "gt"
+													},
+													"RangeHighRatio" : {
+														"Value" : 5,
+														"Op" : "gt"
+													}
+												}
+											},
+											"StartWindow" : {
+												"Start" : {
+													"Days" : 7,
+													"Coeff" : -1
+												},
+												"End" : {
+													"Days" : 7,
+													"Coeff" : 1
+												},
+												"UseIndexEnd" : false,
+												"UseEventEnd" : false
+											},
+											"RestrictVisit" : false,
+											"IgnoreObservationPeriod" : false,
+											"Occurrence" : {
+												"Type" : 2,
+												"Count" : 1,
+												"IsDistinct" : false
+											}
+										}
+									],
+									"DemographicCriteriaList" : [],
+									"Groups" : []
+								},
+								"CodesetId" : 12,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 180,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
 					}
 				],
 				"DemographicCriteriaList" : [],
@@ -1255,7 +1355,7 @@
 			}
 		},
 		{
-			"name" : "No alcohol intoxication on day off",
+			"name" : "No alcohol intoxication in the last 14 days ",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [

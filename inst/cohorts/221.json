@@ -629,7 +629,34 @@
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 180,
+								"Days" : 30,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"Observation" : {
+								"CodesetId" : 2,
+								"ObservationTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 30,
 								"Coeff" : -1
 							},
 							"End" : {
@@ -789,6 +816,33 @@
 						},
 						"RestrictVisit" : false,
 						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"Observation" : {
+								"CodesetId" : 6,
+								"ObservationTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
 							"Type" : 0,
 							"Count" : 0,
