@@ -4,7 +4,8 @@ PhenotypeLibrary 3.8.0
 Accepted Cohorts: The following cohorts were added
 
     269: Acute Kidney Injury AKI (7Pe, 30W)
-	Discussed here https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067 and peer reviewed by Azza Shoaibi and accepted after modifications. See recording dated August 12th 2022
+    
+Discussed https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067 and peer reviewed by Azza Shoaibi and accepted after modifications. See recording dated August 12th 2022
 
 New Cohorts: 2 were added.
 
@@ -25,6 +26,7 @@ Accepted Cohorts: The following cohorts were added
 Deprecated Cohorts: No new cohorts were added in this release.
 
 Modified Cohorts: several symptom and sign based cohorts were updated to support discussion https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
+
 
 PhenotypeLibrary 3.6.0
 ======================
