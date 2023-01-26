@@ -221,7 +221,7 @@ FROM cteIncludedEvents Results
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,90,start_date) > op_end_date then op_end_date else DATEADD(day,90,start_date) end as end_date
+  case when DATEADD(day,90,end_date) > op_end_date then op_end_date else DATEADD(day,90,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -252,7 +252,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 (	
 	SELECT
 		person_id
-		, DATEADD(day,-1 * 0, event_date)  as end_date
+		, DATEADD(day,-1 * 365, event_date)  as end_date
 	FROM
 	(
 		SELECT
@@ -275,7 +275,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 
 			SELECT
 				person_id
-				, DATEADD(day,0,end_date) as end_date
+				, DATEADD(day,365,end_date) as end_date
 				, 1 AS event_type
 				, NULL
 			FROM #cohort_rows

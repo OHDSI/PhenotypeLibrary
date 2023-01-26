@@ -1,3 +1,30 @@
+PhenotypeLibrary 3.9.0
+======================
+
+New Cohorts: 19 were added.
+
+    134: [P] Persons with Attention Deficit Hyperactivity Disorder (FP)
+    278: [P] Pain that is Non Chronic, Non Generalized (3Pe, 7Era)
+    279: [P] Low Back Pain (30Pe, 180Era)
+    280: [P] Abdominal Pain (3Pe, 7Era)
+    281: [P] Epigastric Pain (3Pe, 7Era)
+    282: [P] Joint Pain (3Pe, 30Era)
+    283: [P] Prostatitis (180Pe, 365Era)
+    284: [P] Myocarditis or Pericarditis (30Pe, 90Era)
+    285: [P] Myocarditis or Pericarditis Not due to infections (30Pe, 90Era)
+    287: [P] Transverse myelitis includes Myelitis Unspecified and neuromyelitis optica (90Pe, 365Era)
+    288: [P] Type 2 Diabetes Mellitus indexed on diagnosis, treatment or lab results (FP)
+    289: [P] Presence Of Cardiac Arrhythmia (3Pe, 60Era)
+    290: [P] Thyroiditis indexed on diagnosis or treatment without (FP)
+    291: [P] Gynecomastia, indexed on diagnosis, procedure or symptoms (FP)
+    292: [P] Hepatic Failure (365Pe, 365Era)
+    293: [P] Acute Hepatic Injury with no chronic hepatic failure (180Pe, 180Era)
+    294: [P] Acute Hepatic Injury with no pre-existing liver disease (180Pe, 180Era)
+    295: [P] Acute Hepatic Failure in persons with no pre-existing liver disease (365Pe, 365Era)
+    296: Transverse myelitis or symptoms indexed on symptoms or diagnosis (180Pe, 180Era)
+Deprecated Cohorts: No new cohorts were added in this release.
+
+
 PhenotypeLibrary 3.8.0
 ======================
 

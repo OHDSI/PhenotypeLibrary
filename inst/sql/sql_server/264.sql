@@ -309,12 +309,12 @@ SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_dat
   C.visit_occurrence_id, C.condition_start_date as sort_date
 FROM 
 (
-  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
 ) C
 
-WHERE C.ordinal = 1
+
 -- End Condition Occurrence Criteria
 
   ) E
@@ -921,7 +921,7 @@ FROM cteIncludedEvents Results
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,90,end_date) > op_end_date then op_end_date else DATEADD(day,90,end_date) end as end_date
+  case when DATEADD(day,365,end_date) > op_end_date then op_end_date else DATEADD(day,365,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -952,7 +952,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 (	
 	SELECT
 		person_id
-		, DATEADD(day,-1 * 0, event_date)  as end_date
+		, DATEADD(day,-1 * 365, event_date)  as end_date
 	FROM
 	(
 		SELECT
@@ -975,7 +975,7 @@ with cteEndDates (person_id, end_date) AS -- the magic
 
 			SELECT
 				person_id
-				, DATEADD(day,0,end_date) as end_date
+				, DATEADD(day,365,end_date) as end_date
 				, 1 AS event_type
 				, NULL
 			FROM #cohort_rows
