@@ -50,45 +50,7 @@
 	"ExpressionLimit" : {
 		"Type" : "All"
 	},
-	"InclusionRules" : [
-		{
-			"name" : "Washout period - 30 days",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 2,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 30,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 1,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 0,
-							"Count" : 0,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		}
-	],
+	"InclusionRules" : [],
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
@@ -98,7 +60,7 @@
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 1
 	},
 	"CensorWindow" : {}
 }

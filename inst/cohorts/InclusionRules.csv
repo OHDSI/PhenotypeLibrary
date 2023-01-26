@@ -1,15 +1,10 @@
 cohortName,ruleSequence,ruleName,cohortId
 123,0,>=365 prior enrollment,123
-13,0,Washout period of 30 days,13
-13,1,"Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",13
-189,0,washout period - 14 days,189
+13,0,"Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",13
+134,0,has at least one condition record of ADHD,134
 19,0,Washout period of 90 days,19
 19,1,Exclude if concomitant ,19
-190,0,washout - 30 days,190
-191,0,washout period - 14 days,191
-191,1,"Not senile, cancer or stroke related",191
-193,0,Washout - 14 days,193
-194,0,washout - 30 days,194
+191,0,"Not senile, cancer or stroke related",191
 205,0,Washout period of 365 days,205
 205,1,Should have Acute Pancreatitis within 1 day,205
 205,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,205
@@ -66,15 +61,14 @@ cohortName,ruleSequence,ruleName,cohortId
 214,6,No low Hematocrit measurement in blood within 7 days,214
 214,7,No thrombocytopenia within 7 days,214
 214,8,No low Platelet measurement in blood within 7 days,214
-215,0,washout period of 365 days  ,215
-215,1,No congenital or genetic thrombocytopenia,215
-215,2,No Platelet count > 100 on index date,215
-215,3,No thrombocytosis on index date,215
-215,4,No Pancytopenia or bone marrow disorder diagnosis within 7 days,215
-215,5,"No Neutropenia, Agranulocytosis diagnosis within 7 days",215
-215,6,No low neutrophil count within 7 days,215
-215,7,No Anemia diagnosis within 7 days,215
-215,8,No low Hemoglobin measurement in blood within 7 days,215
+215,0,No congenital or genetic thrombocytopenia,215
+215,1,No Platelet count > 100 on index date,215
+215,2,No thrombocytosis on index date,215
+215,3,No Pancytopenia or bone marrow disorder diagnosis within 7 days,215
+215,4,"No Neutropenia, Agranulocytosis diagnosis within 7 days",215
+215,5,No low neutrophil count within 7 days,215
+215,6,No Anemia diagnosis within 7 days,215
+215,7,No low Hemoglobin measurement in blood within 7 days,215
 216,0,365 days  washout period ,216
 216,1,No congenital or genetic thrombocytopenia,216
 216,2,No Platelet count > 100 on index date,216
@@ -112,13 +106,12 @@ cohortName,ruleSequence,ruleName,cohortId
 218,12,No alcohol intoxication in the last 14 days ,218
 219,0,Has Inpatient or ER visit ,219
 220,0,Angioedema within 3 days  ,220
-220,1,Washout period 180 days,220
-220,2,No Cardiac Edema,220
-220,3,No Cellulitis,220
-220,4,No Erysipelas,220
-220,5,No Dermatitis or Eczema,220
-220,6,No Lymphedema ,220
-220,7,No insect bites,220
+220,1,No Cardiac Edema,220
+220,2,No Cellulitis,220
+220,3,No Erysipelas,220
+220,4,No Dermatitis or Eczema,220
+220,5,No Lymphedema ,220
+220,6,No insect bites,220
 221,0,Washout period 30 days,221
 221,1,No Food anaphylaxis on index date,221
 221,2,No anaphylaxis due to substances other than food or drug on index date,221
@@ -131,45 +124,29 @@ cohortName,ruleSequence,ruleName,cohortId
 223,1,Does NOT have Eclampsia at baseline ,223
 224,0,Washout period - 180 days,224
 224,1,Has No Congenital QT Syndrome,224
-225,0,has no events in prior 'clean window' in relation to event start - 365 days - washout period,225
-225,1,No Systemic Lupus Erythematosus,225
-226,0,has no events in prior 'clean window' - 365 days,226
-227,0,has no events in prior 'clean window' - 365 days,227
-228,0,has no events in prior 'clean window' - 365 days,228
-230,0,has no autoimmune hepatitis events in prior 'clean window' - 365 days,230
-230,1,has no certain chronic liver disease events in prior 0 - 365 days,230
-230,2,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,230
-231,0,has no events in prior 'clean window' - 365 days,231
-232,0,washout - 90 days,232
+225,0,No Systemic Lupus Erythematosus,225
+230,0,has no certain chronic liver disease events in prior 0 - 365 days,230
+230,1,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,230
 233,0,has no events in prior 'clean window' - 180 days,233
-234,0,has no events in prior 'clean window' - 365 days,234
-237,0,has no events in prior 'clean window' - 365 days,237
-238,0,has no events in prior 'clean window' - 365 days,238
-239,0,has no events in prior 'clean window' - 365 days,239
-239,1,No hypersomnia in 365 days prior to index and including index,239
-240,0,has no events in prior 'clean window' - 180 days,240
-241,0,washout - 30 days,241
+239,0,No hypersomnia in 365 days prior to index and including index,239
 243,0,washout - 365 days,243
-244,0,washout - 180 days,244
 248,0,has no events in prior 'clean window' - 365 days,248
 249,0,has no events in prior 'clean window' - 365 days,249
-251,0,Washout period of 365 days,251
-251,1,Should have Acute Pancreatitis within 1 day,251
-251,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,251
-251,3,Should NOT have Hereditary Pancreatitis any time,251
-253,0,Washout period of 365 days,253
-253,1,Should have Acute Pancreatitis within 1 day,253
-253,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,253
-253,3,Should NOT have Hereditary Pancreatitis any time,253
-253,4,Should NOT have Alcoholic Pancreatitis on or before Acute Pancreatitis,253
-253,5,Should NOT have evidence Alcoholism or Severe Alcohol related disorders in past 1 year,253
-253,6,Should NOT have evidence Alcohol intoxication in past 30 days,253
-253,7,Should NOT have evidence Cholangitis or Cholecystitis in past 1 year,253
-253,8,Should NOT have evidence Biliary Tract Disease in past in past 1 year,253
-253,9,Should NOT have evidence of recent Endoscopic retrograde cholangiopancreatography,253
-253,10,Should NOT have evidence of Intestinal ischemia including acute mesenteric ischemia,253
-253,11,Should NOT have evidence of Gastrointestinal perforation,253
-253,12,Should NOT have evidence of Intestinal Obstruction,253
+251,0,Should have Acute Pancreatitis within 1 day,251
+251,1,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,251
+251,2,Should NOT have Hereditary Pancreatitis any time,251
+253,0,Should have Acute Pancreatitis within 1 day,253
+253,1,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,253
+253,2,Should NOT have Hereditary Pancreatitis any time,253
+253,3,Should NOT have Alcoholic Pancreatitis on or before Acute Pancreatitis,253
+253,4,Should NOT have evidence Alcoholism or Severe Alcohol related disorders in past 1 year,253
+253,5,Should NOT have evidence Alcohol intoxication in past 30 days,253
+253,6,Should NOT have evidence Cholangitis or Cholecystitis in past 1 year,253
+253,7,Should NOT have evidence Biliary Tract Disease in past in past 1 year,253
+253,8,Should NOT have evidence of recent Endoscopic retrograde cholangiopancreatography,253
+253,9,Should NOT have evidence of Intestinal ischemia including acute mesenteric ischemia,253
+253,10,Should NOT have evidence of Gastrointestinal perforation,253
+253,11,Should NOT have evidence of Intestinal Obstruction,253
 254,0,Adult Age,254
 254,1,Additional Criteria,254
 255,0,"No occurrence of any other specific dementia diagnosis (e.g., VD, Pick’s disease, or Lewy body dementia [LBD]) after the Alzheimer's disease diagnosis date",255
@@ -178,8 +155,6 @@ cohortName,ruleSequence,ruleName,cohortId
 256,0,has no events in prior 'clean window' 183 days,256
 256,1,Remove congenital Facial Palsy,256
 256,2,Not Upper Motor Neuron,256
-258,0,has no events in prior 'clean window' - 30 days,258
-259,0,Washout period 30 days,259
 264,0,Prior Liver Disease,264
 265,0,Chronic Hepatic Failure,265
 265,1,Viral Hepatitis,265
@@ -204,43 +179,98 @@ cohortName,ruleSequence,ruleName,cohortId
 265,20,Wilsons Disease,265
 265,21,Neoplasm of liver,265
 265,22,Other liver problems entry event criteria,265
-267,0,Washout period with no AKI codes - 30 days,267
-267,1,Has prior chronic kidney disease,267
-267,2,No ESKD at baseline,267
-267,3,No chronic dialysis at baseline (-365 to 8 days) ,267
-267,4,No Kidney Transplant any time prior ,267
-268,0,Washout period with no AKI codes,268
-268,1,Has no prior chronic kidney disease,268
-268,2,No ESKD at baseline,268
-268,3,No chronic dialysis at baseline (-365 to 8 days) ,268
-268,4,No Kidney Transplant any time prior ,268
+267,0,Has prior chronic kidney disease,267
+267,1,No ESKD at baseline,267
+267,2,No chronic dialysis at baseline (-365 to 8 days) ,267
+267,3,No Kidney Transplant any time prior ,267
+268,0,Has no prior chronic kidney disease,268
+268,1,No ESKD at baseline,268
+268,2,No chronic dialysis at baseline (-365 to 8 days) ,268
+268,3,No Kidney Transplant any time prior ,268
 269,0,Washout period with no AKI codes,269
 269,1,No ESKD at baseline,269
 269,2,No chronic dialysis at baseline (-365 to 8 days) ,269
 269,3,No Kidney Transplant any time prior ,269
 27,0,No COPD prior,27
-270,0,Washout period - 365 days,270
-270,1,No normal low Hemoglobin measurement in blood on index date,270
-270,2,No Polycythemia on index date,270
+270,0,No normal low Hemoglobin measurement in blood on index date,270
+270,1,No Polycythemia on index date,270
 276,0,Washout - no prior vision loss in 365 days prior,276
 276,1,No eye pathology,276
-277,0,Washout - no prior hearing loss in 365 days prior,277
-277,1,Not a congenital anomaly of hearing,277
-277,2,Has no middle ear related disease,277
-277,3,Has no inner ear related disease,277
-277,4,Has not had audiometry in past 365 days,277
+277,0,Not a congenital anomaly of hearing,277
+277,1,Has no middle ear related disease,277
+277,2,Has no inner ear related disease,277
+277,3,Has not had audiometry in past 365 days,277
+278,0,Non Chronic Pain,278
+278,1,Not generalized or diffuse pain,278
 28,0,No prior asthma,28
+283,0,No Prior Chronic Prostatitis,283
+283,1,No history of Prostatitis prior to first prostatitis,283
+283,2,No testicular lesions,283
+283,3,No bladder neoplasm,283
+283,4,No abdominal or inguinal hernia,283
+285,0,Remove subjects with Infectious Myocarditis or Pericarditis,285
+288,0,no Type 1 diabetes mellitus diagnosis on or prior to T2DM,288
+288,1,no secondary diabetes diagnosis on or prior to T2DM,288
+288,2,has at least one diagnosis of T2DM on or within 365d of index date,288
+290,0,Thyroiditis including hypothyroidism and hyperthyroidism,290
+290,1,Excluding alternative causes of hypothyroidism,290
+291,0,Require Gynecomastia diagnosis ,291
+291,1,restrict to males ,291
+292,0,have no chronic hepatic failure on the day of diagnosis ,292
+293,0,have no chronic hepatic failure,293
+294,0,Chronic Hepatic Failure,294
+294,1,Viral Hepatitis,294
+294,2,Liver Cirrhosis,294
+294,3,Liver Fibrosis,294
+294,4,Toxic Liver Disease (7d),294
+294,5,Hepatic Necrosis (7d),294
+294,6,Alcohol use disorder,294
+294,7,Alcoholic Hepatitis,294
+294,8,Alcoholic Fatty Liver,294
+294,9,"Malignancies that spread to liver (breast, esophageal, stomach, pancreatic, lung, kidney, melanoma)",294
+294,10,Chronic Hepatic Failure,294
+294,11,Other Chronic Liver Disease,294
+294,12,Ascites (7d),294
+294,13,Portal Hypertension (7d),294
+294,14,History of Liver Transplant,294
+294,15,Cholestasis (7d),294
+294,16,Non-Alcoholic Fatty Liver Disease,294
+294,17,Autoimmune Hepatitis,294
+294,18,Primary Biliary Cholangitis,294
+294,19,Hemochromatosis,294
+294,20,Wilsons Disease,294
+294,21,Neoplasm of liver,294
+294,22,Other liver problems entry event criteria,294
+295,0,Chronic Hepatic Failure,295
+295,1,Viral Hepatitis,295
+295,2,Liver Cirrhosis,295
+295,3,Liver Fibrosis,295
+295,4,Toxic Liver Disease (7d),295
+295,5,Hepatic Necrosis (7d),295
+295,6,Alcohol use disorder,295
+295,7,Alcoholic Hepatitis,295
+295,8,Alcoholic Fatty Liver,295
+295,9,"Malignancies that spread to liver (breast, esophageal, stomach, pancreatic, lung, kidney, melanoma)",295
+295,10,Chronic Hepatic Failure,295
+295,11,Other Chronic Liver Disease,295
+295,12,Ascites (7d),295
+295,13,Portal Hypertension (7d),295
+295,14,History of Liver Transplant,295
+295,15,Cholestasis (7d),295
+295,16,Non-Alcoholic Fatty Liver Disease,295
+295,17,Autoimmune Hepatitis,295
+295,18,Primary Biliary Cholangitis,295
+295,19,Hemochromatosis,295
+295,20,Wilsons Disease,295
+295,21,Neoplasm of liver,295
+295,22,Other liver problems entry event criteria,295
 30,0,At least 3 distinct drug eras of TB drugs,30
 45,0,Has a lab test for SARS-Cov-2 test within 3 days,45
 53,0,Have atleast 1 positive,53
-54,0,washout period - 42 days (6 weeks),54
-54,1,Has febrile seizure diagnosis ,54
-57,0,Washout period - 30 days,57
+54,0,Has febrile seizure diagnosis ,54
 59,0,No SARS-Cov-2 test,59
 60,0,Positive test result,60
 60,1,Negative test result,60
-62,0,Washout period - 42 days (6 weeks),62
 63,0,has no events in prior 'clean window' - 365 days,63
 73,0,At least 1 outcome 1 day after or end of observation before end of pregnancy post-2020,73
 73,1,No outcome in the prior 60d,73
-95,0,Washout - 90 days,95

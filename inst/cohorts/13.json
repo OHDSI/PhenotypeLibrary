@@ -196,44 +196,6 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "Washout period of 30 days",
-			"description" : "This rule will prevent a person to renter for 30 days after entering a cohort. This is based on the assumption that any event of myalgia within the washout period is part of an ongoing episode of care and thus not an independent event or case.",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 2,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 30,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 1,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : true,
-						"Occurrence" : {
-							"Type" : 0,
-							"Count" : 0,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
 			"name" : "Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",
 			"expression" : {
 				"Type" : "ALL",
@@ -280,7 +242,7 @@
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 30
 	},
 	"CensorWindow" : {}
 }
