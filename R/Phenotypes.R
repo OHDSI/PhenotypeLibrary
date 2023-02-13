@@ -102,7 +102,7 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
     ) |>
     dplyr::filter(cohortId %in% c(cohortIds)) |>
     dplyr::mutate(
-      addedVersion = as.character(addedVersion),
+      addedVersion = as.character(Version),
       addedDate = as.Date(addedDate),
       deprecatedVersion = as.character(deprecatedVersion),
       deprecatedDate = as.Date(deprecatedDate),
@@ -205,12 +205,15 @@ updatePhenotypeLog <- function(updates) {
     dplyr::arrange(cohortId)
 
   noChanges <- phenotypeLog |>
-    dplyr::inner_join(oldLog |> 
-                        dplyr::select(cohortId, 
-                                      cohortName,
-                                      addedDate,
-                                      updatedDate,
-                                      notes),
+    dplyr::inner_join(
+      oldLog |>
+        dplyr::select(
+          cohortId,
+          cohortName,
+          addedDate,
+          updatedDate,
+          notes
+        ),
       by = c(
         "cohortId",
         "cohortName",
@@ -221,12 +224,15 @@ updatePhenotypeLog <- function(updates) {
     )
 
   withChanges <- phenotypeLog |>
-    dplyr::anti_join(oldLog |> 
-                       dplyr::select(cohortId, 
-                                     cohortName,
-                                     addedDate,
-                                     updatedDate,
-                                     notes),
+    dplyr::anti_join(
+      oldLog |>
+        dplyr::select(
+          cohortId,
+          cohortName,
+          addedDate,
+          updatedDate,
+          notes
+        ),
       by = c(
         "cohortId",
         "cohortName",
@@ -287,9 +293,6 @@ updatePhenotypeLog <- function(updates) {
           sort()
       ),
       by = "cohortId"
-    ) |>
-    dplyr::mutate(
-      addedVersion = "XX"
     )
 
   changes <-
@@ -304,8 +307,6 @@ updatePhenotypeLog <- function(updates) {
   log <-
     dplyr::bind_rows(noChanges, changes) |>
     dplyr::arrange(cohortId)
-  
-  colnames(log) <- 
 
-  return(log)
+    return(log)
 }

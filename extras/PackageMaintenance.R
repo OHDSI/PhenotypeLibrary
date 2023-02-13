@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+rstudioapi::restartSession(command = "")
+remotes::install_github("OHDSI/PhenotypeLibrary")
 
 # Format and check code ---------------------------------------------------
 styler::style_pkg()

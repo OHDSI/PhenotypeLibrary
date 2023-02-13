@@ -1,5 +1,4 @@
 # Import phenotypes from ATLAS -------------------------------------------------
-remotes::install_github("OHDSI/PhenotypeLibrary")
 oldCohortDefinitions <- PhenotypeLibrary::listPhenotypes()
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
@@ -92,21 +91,23 @@ exportableCohorts <-
     modifiedDate = as.Date(modifiedDate)
   ) |>
   dplyr::arrange(cohortId) |>
-  dplyr::select(cohortId,
-                atlasId,
-                cohortName,
-                description,
-                createdDate,
-                modifiedDate,
-                createdBy,
-                modifiedBy)
+  dplyr::select(
+    cohortId,
+    atlasId,
+    cohortName,
+    description,
+    createdDate,
+    modifiedDate,
+    createdBy,
+    modifiedBy
+  )
 
 cohortRecord <- c()
 for (i in 1:nrow(exportableCohorts)) {
-  cohortRecord[[i]] <- exportableCohorts[i,]
+  cohortRecord[[i]] <- exportableCohorts[i, ]
   librarian <-
     stringr::str_replace(
-      string = exportableCohorts[i,]$createdBy[[1]]$name,
+      string = exportableCohorts[i, ]$createdBy[[1]]$name,
       pattern = "na\\\\",
       replacement = ""
     )
@@ -123,7 +124,8 @@ for (i in 1:nrow(exportableCohorts)) {
   
   cohortRecord[[i]]$lastModifiedBy <- NA
   if (length(cohortRecord[[i]]$modifiedBy) > 1) {
-    cohortRecord[[i]]$lastModifiedBy <- cohortRecord[[i]]$modifiedBy[[1]]$name
+    cohortRecord[[i]]$lastModifiedBy <-
+      cohortRecord[[i]]$modifiedBy[[1]]$name
   }
   
   if (all(!is.na(cohortRecord[[i]]$description),
@@ -173,18 +175,19 @@ for (i in 1:nrow(exportableCohorts)) {
     }
   }
 }
-cohortRecord <- dplyr::bind_rows(cohortRecord) |> 
-  dplyr::select(-createdBy,
-                -modifiedBy) |> 
+cohortRecord <- dplyr::bind_rows(cohortRecord) |>
+  dplyr::select(-createdBy,-modifiedBy) |>
   dplyr::mutate(id = cohortId,
-                name = cohortName) |> 
+                name = id) |>
   dplyr::relocate(cohortId, cohortName)
 
 cohortRecord |>
-  readr::write_excel_csv(file = "inst/Cohorts.csv",
-                         append = FALSE,
-                         na = "",
-                         quote = "all")
+  readr::write_excel_csv(
+    file = "inst/Cohorts.csv",
+    append = FALSE,
+    na = "",
+    quote = "all"
+  )
 
 try(ROhdsiWebApi::insertCohortDefinitionSetInPackage(
   fileName = "inst/Cohorts.csv",
@@ -199,17 +202,26 @@ silent = TRUE)
 remotes::install_github("OHDSI/circeR")
 circeOptions <- CirceR::createGenerateOptions(generateStats = TRUE)
 
-cohortJsonFiles <- list.files(path = file.path("inst", "cohorts"), pattern = ".json") |> sort()
+cohortJsonFiles <-
+  list.files(path = file.path("inst", "cohorts"), pattern = ".json") |> sort()
 
 for (i in (1:length(cohortJsonFiles))) {
   jsonFileName <- cohortJsonFiles[i]
-  sqlFileName <- stringr::str_replace_all(string = jsonFileName, pattern = stringr::fixed(".json"), replacement = ".sql")
+  sqlFileName <-
+    stringr::str_replace_all(
+      string = jsonFileName,
+      pattern = stringr::fixed(".json"),
+      replacement = ".sql"
+    )
   
   writeLines(paste0(" - Generating ", sqlFileName))
   
-  json <- SqlRender::readSql(sourceFile = file.path("inst", "cohorts", jsonFileName))
-  sql <- CirceR::buildCohortQuery(expression = json, options = circeOptions)
-  SqlRender::writeSql(sql = sql, targetFile = file.path("inst", "sql", sqlFileName))
+  json <-
+    SqlRender::readSql(sourceFile = file.path("inst", "cohorts", jsonFileName))
+  sql <-
+    CirceR::buildCohortQuery(expression = json, options = circeOptions)
+  SqlRender::writeSql(sql = sql,
+                      targetFile = file.path("inst", "sql", sqlFileName))
 }
 
 
@@ -256,9 +268,7 @@ if (needToUpdate) {
   news <- readLines("NEWS.md")
   
   changes <- newLogFile |>
-    dplyr::anti_join(
-      oldLogFile
-    )
+    dplyr::anti_join(oldLogFile)
   
   newCohorts <- setdiff(x = sort(newLogFile$cohortId),
                         y = sort(oldLogFile$cohortId))
