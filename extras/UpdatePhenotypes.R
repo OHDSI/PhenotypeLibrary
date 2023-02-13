@@ -1,5 +1,5 @@
 # Import phenotypes from ATLAS -------------------------------------------------
-
+remotes::install_github("OHDSI/PhenotypeLibrary")
 oldCohortDefinitions <- PhenotypeLibrary::listPhenotypes()
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
@@ -175,10 +175,12 @@ for (i in 1:nrow(exportableCohorts)) {
 }
 cohortRecord <- dplyr::bind_rows(cohortRecord) |> 
   dplyr::select(-createdBy,
-                -modifiedBy)
+                -modifiedBy) |> 
+  dplyr::mutate(id = cohortId,
+                name = cohortName) |> 
+  dplyr::relocate(cohortId, cohortName)
 
-
-exportableCohorts |>
+cohortRecord |>
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
                          na = "",
@@ -211,20 +213,10 @@ for (i in (1:length(cohortJsonFiles))) {
 }
 
 
-newLogSource <- webApiCohorts |>
-  dplyr::filter(id %in% c(exportableCohorts  |>
-                            dplyr::pull(cohortId)))
-
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
 
-
-browser()
-debug(PhenotypeLibrary::updatePhenotypeLog)
-
-
-
 newLogFile <-
-  PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
+  PhenotypeLibrary::updatePhenotypeLog(updates = cohortRecord)
 
 needToUpdate <- TRUE
 if (identical(x = oldLogFile, y = newLogFile)) {

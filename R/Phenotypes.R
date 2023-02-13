@@ -149,8 +149,8 @@ updatePhenotypeLog <- function(updates) {
     dplyr::mutate(
       addedDate = as.Date(createdDate),
       updatedDate = as.Date(modifiedDate),
-      cohortId = id,
-      cohortName = name,
+      cohortId = cohortId,
+      cohortName = cohortName,
       notes = as.character(description)
     ) |>
     dplyr::mutate( # peer evaluation
@@ -202,32 +202,15 @@ updatePhenotypeLog <- function(updates) {
       )
     ) |>
     tidyr::replace_na(replace = list(notes = "")) |>
-    dplyr::select(
-      cohortId,
-      cohortName,
-      addedDate,
-      updatedDate,
-      notes
-    ) |>
     dplyr::arrange(cohortId)
 
-  phenotypeLog2 <- c()
-  for (j in (1:nrow(phenotypeLog))) {
-    nameFormatted <- gsub(
-      pattern = "_",
-      replacement = " ",
-      x = gsub("\\[(.*?)\\]_", "", gsub(" ", "_", phenotypeLog[j, ]$cohortName))
-    ) %>%
-      stringr::str_squish() %>%
-      stringr::str_trim()
-
-    phenotypeLog2[[j]] <- phenotypeLog[j, ]
-    phenotypeLog2[[j]]$cohortNameFormatted <- nameFormatted
-  }
-  phenotypeLog <- dplyr::bind_rows(phenotypeLog2)
-
   noChanges <- phenotypeLog |>
-    dplyr::inner_join(oldLog,
+    dplyr::inner_join(oldLog |> 
+                        dplyr::select(cohortId, 
+                                      cohortName,
+                                      addedDate,
+                                      updatedDate,
+                                      notes),
       by = c(
         "cohortId",
         "cohortName",
@@ -238,7 +221,12 @@ updatePhenotypeLog <- function(updates) {
     )
 
   withChanges <- phenotypeLog |>
-    dplyr::anti_join(oldLog,
+    dplyr::anti_join(oldLog |> 
+                       dplyr::select(cohortId, 
+                                     cohortName,
+                                     addedDate,
+                                     updatedDate,
+                                     notes),
       by = c(
         "cohortId",
         "cohortName",
@@ -255,11 +243,7 @@ updatePhenotypeLog <- function(updates) {
     dplyr::filter(stringr::str_detect(
       string = cohortName,
       pattern = stringr::fixed("[P]")
-    )) |>
-    dplyr::mutate(
-      addedVersion = "NA",
-      getResults = "No"
-    )
+    ))
 
   # Deprecated
   deprecated <- withChanges |>
@@ -269,8 +253,7 @@ updatePhenotypeLog <- function(updates) {
     )) |>
     dplyr::mutate(
       deprecatedVersion = "XX",
-      deprecatedDate = updatedDate,
-      getResults = "No"
+      deprecatedDate = updatedDate
     )
 
   # Withdrawn
@@ -278,8 +261,7 @@ updatePhenotypeLog <- function(updates) {
     dplyr::filter(stringr::str_detect(
       string = cohortName,
       pattern = stringr::fixed("[W]")
-    )) |>
-    dplyr::mutate(getResults = "No")
+    ))
 
   # Error
   error <- withChanges |>
@@ -289,8 +271,7 @@ updatePhenotypeLog <- function(updates) {
     )) |>
     dplyr::mutate(
       deprecatedVersion = "XX",
-      deprecatedDate = updatedDate,
-      getResults = "No"
+      deprecatedDate = updatedDate
     )
 
   # New Cohorts -----------------------
@@ -308,8 +289,7 @@ updatePhenotypeLog <- function(updates) {
       by = "cohortId"
     ) |>
     dplyr::mutate(
-      addedVersion = "XX",
-      getResults = "Yes"
+      addedVersion = "XX"
     )
 
   changes <-
@@ -323,19 +303,9 @@ updatePhenotypeLog <- function(updates) {
 
   log <-
     dplyr::bind_rows(noChanges, changes) |>
-    dplyr::arrange(cohortId) |>
-    dplyr::select(
-      cohortId,
-      cohortName,
-      getResults,
-      addedDate,
-      addedVersion,
-      deprecatedDate,
-      deprecatedVersion,
-      updatedDate,
-      updatedVersion,
-      notes
-    )
+    dplyr::arrange(cohortId)
+  
+  colnames(log) <- 
 
   return(log)
 }
