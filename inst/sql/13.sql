@@ -7,7 +7,7 @@ CREATE TABLE #Codesets (
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (442752)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (442752,4150129)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
@@ -18,11 +18,11 @@ UNION  select c.concept_id
 ) C UNION ALL 
 SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37312366,195464,258828,442315,442774,36713056,4298555,37118025)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37312366,195464,258828,442315,442774,36713056,4298555,37118025,4083964)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (37312366,195464,258828,442315,442774,36713056,4298555,37118025)
+  and ca.ancestor_concept_id in (37312366,195464,258828,442315,442774,36713056,4298555,37118025,4083964)
   and c.invalid_reason is null
 
 ) I
@@ -106,7 +106,7 @@ FROM
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-1,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-3,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
 GROUP BY p.person_id, p.event_id
 HAVING COUNT(cc.event_id) = 0
 -- End Correlated Criteria
@@ -222,14 +222,14 @@ select @target_cohort_id as cohort_definition_id, person_id, start_date, end_dat
 FROM #final_cohort CO
 ;
 
-{@generateStats != 0}?{
+{1 != 0}?{
 -- BEGIN: Censored Stats
 
 delete from @results_database_schema.cohort_censor_stats where cohort_definition_id = @target_cohort_id;
 
 -- END: Censored Stats
 }
-{@generateStats != 0 & 1 != 0}?{
+{1 != 0 & 1 != 0}?{
 
 -- Create a temp table of inclusion rule rows for joining in the inclusion rule impact analysis
 

@@ -117,14 +117,17 @@ UNION  select c.concept_id
 ) C
 ;
 
-with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
+SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
+INTO #qualified_events
+FROM 
 (
--- Begin Primary Events
+  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
+  FROM (-- Begin Primary Events
 select P.ordinal as event_id, P.person_id, P.start_date, P.end_date, op_start_date, op_end_date, cast(P.visit_occurrence_id as bigint) as visit_occurrence_id
 FROM
 (
   select E.person_id, E.start_date, E.end_date,
-         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC) ordinal,
+         row_number() OVER (PARTITION BY E.person_id ORDER BY E.sort_date ASC, E.event_id) ordinal,
          OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
   FROM 
   (
@@ -177,14 +180,7 @@ AND C.unit_concept_id in (8784,8647)
 ) P
 
 -- End Primary Events
-
-)
-SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
-INTO #qualified_events
-FROM 
-(
-  select pe.event_id, pe.person_id, pe.start_date, pe.end_date, pe.op_start_date, pe.op_end_date, row_number() over (partition by pe.person_id order by pe.start_date ASC) as ordinal, cast(pe.visit_occurrence_id as bigint) as visit_occurrence_id
-  FROM primary_events pe
+) pe
   
 ) QE
 
@@ -772,8 +768,9 @@ TRUNCATE TABLE #Inclusion_8;
 DROP TABLE #Inclusion_8;
 
 
-with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date, op_end_date, ordinal) as
-(
+select event_id, person_id, start_date, end_date, op_start_date, op_end_date
+into #included_events
+FROM (
   SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, row_number() over (partition by person_id order by start_date ASC) as ordinal
   from
   (
@@ -786,10 +783,7 @@ with cteIncludedEvents(event_id, person_id, start_date, end_date, op_start_date,
   -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
   WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),9)-1)
 
-)
-select event_id, person_id, start_date, end_date, op_start_date, op_end_date
-into #included_events
-FROM cteIncludedEvents Results
+) Results
 
 ;
 
@@ -802,10 +796,16 @@ from #included_events;
 
 
 -- generate cohort periods into #final_cohort
-with cohort_ends (event_id, person_id, end_date) as
-(
-	-- cohort exit dates
-  -- End Date Strategy
+select person_id, start_date, end_date
+INTO #cohort_rows
+from ( -- first_ends
+	select F.person_id, F.start_date, F.end_date
+	FROM (
+	  select I.event_id, I.person_id, I.start_date, CE.end_date, row_number() over (partition by I.person_id, I.event_id order by CE.end_date) as ordinal 
+	  from #included_events I
+	  join ( -- cohort_ends
+-- cohort exit dates
+-- End Date Strategy
 SELECT event_id, person_id, end_date from #strategy_ends
 
 UNION ALL
@@ -854,69 +854,55 @@ AND C.unit_concept_id in (8784,8647)
 GROUP BY i.event_id, i.person_id
 
 
-),
-first_ends (person_id, start_date, end_date) as
-(
-	select F.person_id, F.start_date, F.end_date
-	FROM (
-	  select I.event_id, I.person_id, I.start_date, E.end_date, row_number() over (partition by I.person_id, I.event_id order by E.end_date) as ordinal 
-	  from #included_events I
-	  join cohort_ends E on I.event_id = E.event_id and I.person_id = E.person_id and E.end_date >= I.start_date
+    ) CE on I.event_id = CE.event_id and I.person_id = CE.person_id and CE.end_date >= I.start_date
 	) F
 	WHERE F.ordinal = 1
-)
-select person_id, start_date, end_date
-INTO #cohort_rows
-from first_ends;
+) FE;
 
-with cteEndDates (person_id, end_date) AS -- the magic
-(	
-	SELECT
-		person_id
-		, DATEADD(day,-1 * 365, event_date)  as end_date
-	FROM
-	(
-		SELECT
-			person_id
-			, event_date
-			, event_type
-			, MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS start_ordinal 
-			, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type) AS overall_ord
-		FROM
-		(
-			SELECT
-				person_id
-				, start_date AS event_date
-				, -1 AS event_type
-				, ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
-			FROM #cohort_rows
-		
-			UNION ALL
-		
-
-			SELECT
-				person_id
-				, DATEADD(day,365,end_date) as end_date
-				, 1 AS event_type
-				, NULL
-			FROM #cohort_rows
-		) RAWDATA
-	) e
-	WHERE (2 * e.start_ordinal) - e.overall_ord = 0
-),
-cteEnds (person_id, start_date, end_date) AS
-(
+select person_id, min(start_date) as start_date, end_date
+into #final_cohort
+from ( --cteEnds
 	SELECT
 		 c.person_id
 		, c.start_date
-		, MIN(e.end_date) AS end_date
+		, MIN(ed.end_date) AS end_date
 	FROM #cohort_rows c
-	JOIN cteEndDates e ON c.person_id = e.person_id AND e.end_date >= c.start_date
+	JOIN ( -- cteEndDates
+    SELECT
+      person_id
+      , DATEADD(day,-1 * 365, event_date)  as end_date
+    FROM
+    (
+      SELECT
+        person_id
+        , event_date
+        , event_type
+        , MAX(start_ordinal) OVER (PARTITION BY person_id ORDER BY event_date, event_type, start_ordinal ROWS UNBOUNDED PRECEDING) AS start_ordinal 
+        , ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY event_date, event_type, start_ordinal) AS overall_ord
+      FROM
+      (
+        SELECT
+          person_id
+          , start_date AS event_date
+          , -1 AS event_type
+          , ROW_NUMBER() OVER (PARTITION BY person_id ORDER BY start_date) AS start_ordinal
+        FROM #cohort_rows
+
+        UNION ALL
+
+
+        SELECT
+          person_id
+          , DATEADD(day,365,end_date) as end_date
+          , 1 AS event_type
+          , NULL
+        FROM #cohort_rows
+      ) RAWDATA
+    ) e
+    WHERE (2 * e.start_ordinal) - e.overall_ord = 0
+  ) ed ON c.person_id = ed.person_id AND ed.end_date >= c.start_date
 	GROUP BY c.person_id, c.start_date
-)
-select person_id, min(start_date) as start_date, end_date
-into #final_cohort
-from cteEnds
+) e
 group by person_id, end_date
 ;
 

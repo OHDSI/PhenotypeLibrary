@@ -7,11 +7,11 @@ CREATE TABLE #Codesets (
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (444413,377091)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (444413,377091,4196708)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (444413)
+  and ca.ancestor_concept_id in (444413,4196708)
   and c.invalid_reason is null
 
 ) I
@@ -220,14 +220,14 @@ select @target_cohort_id as cohort_definition_id, person_id, start_date, end_dat
 FROM #final_cohort CO
 ;
 
-{@generateStats != 0}?{
+{1 != 0}?{
 -- BEGIN: Censored Stats
 
 delete from @results_database_schema.cohort_censor_stats where cohort_definition_id = @target_cohort_id;
 
 -- END: Censored Stats
 }
-{@generateStats != 0 & 1 != 0}?{
+{1 != 0 & 1 != 0}?{
 
 -- Create a temp table of inclusion rule rows for joining in the inclusion rule impact analysis
 

@@ -279,14 +279,14 @@ select @target_cohort_id as cohort_definition_id, person_id, start_date, end_dat
 FROM #final_cohort CO
 ;
 
-{@generateStats != 0}?{
+{1 != 0}?{
 -- BEGIN: Censored Stats
 
 delete from @results_database_schema.cohort_censor_stats where cohort_definition_id = @target_cohort_id;
 
 -- END: Censored Stats
 }
-{@generateStats != 0 & 0 != 0}?{
+{1 != 0 & 0 != 0}?{
 
 CREATE TABLE #inclusion_rules (rule_sequence int);
 

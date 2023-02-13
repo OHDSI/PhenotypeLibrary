@@ -78,16 +78,105 @@ exportableCohorts <-
   ) |>
   dplyr::distinct() |>
   dplyr::select(id,
-                name) |>
+                name,
+                description,
+                createdDate,
+                modifiedDate,
+                createdBy,
+                modifiedBy) |>
   dplyr::mutate(
     cohortId = id,
     atlasId = id,
-    cohortName = name
+    cohortName = name,
+    createdDate = as.Date(createdDate),
+    modifiedDate = as.Date(modifiedDate)
   ) |>
   dplyr::arrange(cohortId) |>
   dplyr::select(cohortId,
                 atlasId,
-                cohortName)
+                cohortName,
+                description,
+                createdDate,
+                modifiedDate,
+                createdBy,
+                modifiedBy)
+
+cohortRecord <- c()
+for (i in 1:nrow(exportableCohorts)) {
+  cohortRecord[[i]] <- exportableCohorts[i,]
+  librarian <-
+    stringr::str_replace(
+      string = exportableCohorts[i,]$createdBy[[1]]$name,
+      pattern = "na\\\\",
+      replacement = ""
+    )
+  cohortRecord[[i]]$librarian <- librarian
+  librarian <- NULL
+  
+  cohortRecord[[i]]$cohortNameFormatted <- gsub(
+    pattern = "_",
+    replacement = " ",
+    x = gsub("\\[(.*?)\\]_", "", gsub(" ", "_", cohortRecord[[i]]$cohortName))
+  ) |>
+    stringr::str_squish() |>
+    stringr::str_trim()
+  
+  cohortRecord[[i]]$lastModifiedBy <- NA
+  if (length(cohortRecord[[i]]$modifiedBy) > 1) {
+    cohortRecord[[i]]$lastModifiedBy <- cohortRecord[[i]]$modifiedBy[[1]]$name
+  }
+  
+  if (all(!is.na(cohortRecord[[i]]$description),
+          nchar(cohortRecord[[i]]$description) > 5)) {
+    textInDescription <-
+      cohortRecord[[i]]$description |>
+      stringr::str_replace_all(pattern = ";", replacement = "") |>
+      stringr::str_split(pattern = "\n")
+    strings <- textInDescription[[1]]
+    textInDescription <- NULL
+    
+    strings <-
+      stringr::str_split(string = strings, pattern = stringr::fixed(": "))
+    
+    if (all(
+      !is.na(cohortRecord[[i]]$description[[1]]),
+      stringr::str_detect(
+        string = cohortRecord[[i]]$description,
+        pattern = stringr::fixed(":")
+      )
+    )) {
+      stringValues <- c()
+      for (j in (1:length(strings))) {
+        stringValues[[j]] <- dplyr::tibble()
+        if (length(strings[[j]]) == 2) {
+          stringValues[[j]] <- dplyr::tibble(
+            name = strings[[j]][[1]],
+            value = strings[[j]][[2]] |>
+              stringr::str_squish() |>
+              stringr::str_trim()
+          )
+        }
+      }
+      
+      stringValues <- dplyr::bind_rows(stringValues)
+      
+      if (nrow(stringValues) > 0) {
+        data <- stringValues |>
+          tidyr::pivot_wider()
+        stringValues <- NULL
+        
+        if (nrow(data) > 0) {
+          cohortRecord[[i]] <- cohortRecord[[i]] |>
+            tidyr::crossing(data)
+        }
+      }
+    }
+  }
+}
+cohortRecord <- dplyr::bind_rows(cohortRecord) |> 
+  dplyr::select(-createdBy,
+                -modifiedBy)
+
 
 exportableCohorts |>
   readr::write_excel_csv(file = "inst/Cohorts.csv",
@@ -121,18 +210,6 @@ for (i in (1:length(cohortJsonFiles))) {
   SqlRender::writeSql(sql = sql, targetFile = file.path("inst", "sql", sqlFileName))
 }
 
-
-
-
-# doing this again, because atlasId is not required for CohortDefinitionSet
-exportableCohorts  |>
-  dplyr::select(cohortId,
-                cohortName) |>
-  dplyr::arrange(cohortId) |>
-  readr::write_excel_csv(file = "inst/Cohorts.csv",
-                         append = FALSE,
-                         na = "",
-                         quote = "all")
 
 newLogSource <- webApiCohorts |>
   dplyr::filter(id %in% c(exportableCohorts  |>

@@ -211,6 +211,21 @@ updatePhenotypeLog <- function(updates) {
     ) |>
     dplyr::arrange(cohortId)
 
+  phenotypeLog2 <- c()
+  for (j in (1:nrow(phenotypeLog))) {
+    nameFormatted <- gsub(
+      pattern = "_",
+      replacement = " ",
+      x = gsub("\\[(.*?)\\]_", "", gsub(" ", "_", phenotypeLog[j, ]$cohortName))
+    ) %>%
+      stringr::str_squish() %>%
+      stringr::str_trim()
+
+    phenotypeLog2[[j]] <- phenotypeLog[j, ]
+    phenotypeLog2[[j]]$cohortNameFormatted <- nameFormatted
+  }
+  phenotypeLog <- dplyr::bind_rows(phenotypeLog2)
+
   noChanges <- phenotypeLog |>
     dplyr::inner_join(oldLog,
       by = c(
