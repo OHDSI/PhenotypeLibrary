@@ -1,6 +1,5 @@
 # Import phenotypes from ATLAS -------------------------------------------------
 
-library(magrittr)
 oldCohortDefinitions <- PhenotypeLibrary::listPhenotypes()
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
@@ -31,7 +30,7 @@ webApiCohorts <-
 
 exportableCohorts <-
   dplyr::bind_rows(
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -40,7 +39,7 @@ exportableCohorts <-
           negate = TRUE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -49,7 +48,7 @@ exportableCohorts <-
           negate = FALSE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -58,7 +57,7 @@ exportableCohorts <-
           negate = FALSE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -67,7 +66,7 @@ exportableCohorts <-
           negate = FALSE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -76,21 +75,21 @@ exportableCohorts <-
           negate = FALSE
         )
       )
-  ) %>%
-  dplyr::distinct() %>%
+  ) |>
+  dplyr::distinct() |>
   dplyr::select(id,
-                name) %>%
+                name) |>
   dplyr::mutate(
     cohortId = id,
     atlasId = id,
     cohortName = name
-  ) %>%
-  dplyr::arrange(cohortId) %>%
+  ) |>
+  dplyr::arrange(cohortId) |>
   dplyr::select(cohortId,
                 atlasId,
                 cohortName)
 
-exportableCohorts %>%
+exportableCohorts |>
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
                          na = "",
@@ -109,7 +108,7 @@ silent = TRUE)
 remotes::install_github("OHDSI/circeR")
 circeOptions <- CirceR::createGenerateOptions(generateStats = TRUE)
 
-cohortJsonFiles <- list.files(path = file.path("inst", "cohorts"), pattern = ".json") %>% sort()
+cohortJsonFiles <- list.files(path = file.path("inst", "cohorts"), pattern = ".json") |> sort()
 
 for (i in (1:length(cohortJsonFiles))) {
   jsonFileName <- cohortJsonFiles[i]
@@ -126,20 +125,27 @@ for (i in (1:length(cohortJsonFiles))) {
 
 
 # doing this again, because atlasId is not required for CohortDefinitionSet
-exportableCohorts  %>%
+exportableCohorts  |>
   dplyr::select(cohortId,
-                cohortName) %>%
-  dplyr::arrange(cohortId) %>%
+                cohortName) |>
+  dplyr::arrange(cohortId) |>
   readr::write_excel_csv(file = "inst/Cohorts.csv",
                          append = FALSE,
                          na = "",
                          quote = "all")
 
-newLogSource <- webApiCohorts %>%
-  dplyr::filter(id %in% c(exportableCohorts  %>%
-                                  dplyr::pull(cohortId)))
+newLogSource <- webApiCohorts |>
+  dplyr::filter(id %in% c(exportableCohorts  |>
+                            dplyr::pull(cohortId)))
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
+
+
+browser()
+debug(PhenotypeLibrary::updatePhenotypeLog)
+
+
+
 newLogFile <-
   PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
 
@@ -180,7 +186,7 @@ if (needToUpdate) {
   # Update news -----------------------------------------------------------
   news <- readLines("NEWS.md")
   
-  changes <- newLogFile %>%
+  changes <- newLogFile |>
     dplyr::anti_join(
       oldLogFile
     )
@@ -190,19 +196,19 @@ if (needToUpdate) {
   
   deprecatedCohorts <- setdiff(
     x = sort(
-      newLogFile %>%
-        dplyr::filter(!is.na(deprecatedDate)) %>%
+      newLogFile |>
+        dplyr::filter(!is.na(deprecatedDate)) |>
         dplyr::pull(cohortId)
     ),
     y = sort(
-      oldLogFile %>%
-        dplyr::filter(!is.na(deprecatedDate)) %>%
+      oldLogFile |>
+        dplyr::filter(!is.na(deprecatedDate)) |>
         dplyr::pull(cohortId)
     )
   )
   
-  modifiedCohorts <- changes %>%
-    dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
+  modifiedCohorts <- changes |>
+    dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
     dplyr::pull(cohortId)
   
   messages <- c("")
@@ -217,7 +223,7 @@ if (needToUpdate) {
                   "")
     
     for (i in (1:length(newCohorts))) {
-      dataCohorts <- newLogFile %>%
+      dataCohorts <- newLogFile |>
         dplyr::filter(cohortId %in% newCohorts[[i]])
       messages <-
         c(messages,
@@ -244,7 +250,7 @@ if (needToUpdate) {
     messages <- c(messages,
                   "")
     for (i in (1:length(deprecatedCohorts))) {
-      dataCohorts <- changes %>%
+      dataCohorts <- changes |>
         dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
       messages <-
         c(messages,
@@ -271,7 +277,7 @@ if (needToUpdate) {
     messages <- c(messages,
                   "")
     for (i in (1:length(modifiedCohorts))) {
-      dataCohorts <- changes %>%
+      dataCohorts <- changes |>
         dplyr::filter(cohortId %in% modifiedCohorts[[i]])
       messages <-
         c(messages,

@@ -14,7 +14,7 @@ testthat::test_that(desc = "Function getPlCohortDefinitionSet", code = {
     expected = 1
   )
   testthat::expect_equal(
-    object = colnames(cohortDefinitionSet) %>% sort(),
+    object = colnames(cohortDefinitionSet) |> sort(),
     expected = c("cohortId", "cohortName", "json", "sql")
   )
 })

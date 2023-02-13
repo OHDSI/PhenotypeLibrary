@@ -36,7 +36,6 @@ The [OHDSI Phenotype Library](https://github.com/OHDSI/PhenotypeLibrary) uses an
 
 * **Cohorts in OHDSI Phenotype Library**
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
-
 camelCaseToTitleCase <- function(string) {
   errorMessages <- checkmate::makeAssertCollection()
   checkmate::assertCharacter(string, add = errorMessages)
@@ -96,7 +95,6 @@ columnDefinitions[["Cohort Id"]] <-
 ```
 
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
-
 reactable::reactable(
   data = report,
   columns = columnDefinitions,

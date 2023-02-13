@@ -26,7 +26,7 @@ source("extras/UpdatePhenotypes.R")
 
 # IMPORTANT ---
 # dont forget to update PhenotypeLog manually. Convert to xlsx, modify, save as csv
-data <- readxl::read_excel(file.path("inst", "PhenotypeLog.xlsx")) %>% 
+data <- readxl::read_excel(file.path("inst", "PhenotypeLog.xlsx")) |> 
   dplyr::mutate(addedDate = as.Date(.data$addedDate),
                 updatedDate = as.Date(.data$updatedDate),
                 deprecatedDate = as.Date(.data$deprecatedDate))
