@@ -14,34 +14,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+rstudioapi::restartSession(command = "")
+remotes::install_github("OHDSI/PhenotypeLibrary")
+
+
+
+# this will source the script to update phenotypes
+source("extras/UpdatePhenotypes.R")
+
+
+#############
+# install package
+#################
+
 
 # Format and check code ---------------------------------------------------
 styler::style_pkg()
 OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
-
-# this will source the script to update phenotypes
-source("extras/UpdatePhenotypes.R")
-
-# IMPORTANT ---
-# dont forget to update PhenotypeLog manually. Convert to xlsx, modify, save as csv
-data <- readxl::read_excel(file.path("inst", "PhenotypeLog.xlsx")) %>% 
-  dplyr::mutate(addedDate = as.Date(.data$addedDate),
-                updatedDate = as.Date(.data$updatedDate),
-                deprecatedDate = as.Date(.data$deprecatedDate))
-readr::write_excel_csv(
-  x = data,
-  file = file.path("inst", "PhenotypeLog.csv"),
-  na = "",
-  append = FALSE,
-  quote = "all"
-)
-
-
-#############
-# install package
-#################
 
 
 # Create manual -----------------------------------------------------------

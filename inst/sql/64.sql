@@ -7,11 +7,11 @@ CREATE TABLE #Codesets (
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (444413,437663,4141062,4152360)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (444413,437663,4141062,4152360,4178904)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (444413,437663,4141062,4152360)
+  and ca.ancestor_concept_id in (444413,437663,4141062,4152360,4178904)
   and c.invalid_reason is null
 
 ) I
@@ -62,21 +62,21 @@ UNION  select c.concept_id
 ) C UNION ALL 
 SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4223659,4272240,1572255,439926,44829293,44823445,1572256)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4223659,4272240,44782753)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4223659,4272240,1572255,439926,44829293,44823445,1572256)
+  and ca.ancestor_concept_id in (4223659,4272240,44782753)
   and c.invalid_reason is null
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4158491,37396808,4219363,4221911,37205051,37205052,45772721,4225027,40484614,4092860,4090207,44782753)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4158491,37396808,4219363,4221911,37205051,37205052,45772721,4225027,40484614,4092860,4090207)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4158491,37396808,4219363,4221911,37205051,37205052,45772721,4225027,40484614,4092860,4090207,44782753)
+  and ca.ancestor_concept_id in (4158491,37396808,4219363,4221911,37205051,37205052,45772721,4225027,40484614,4092860,4090207)
   and c.invalid_reason is null
 
 ) E ON I.concept_id = E.concept_id
@@ -84,22 +84,22 @@ WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 5 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4185711,43530714,436235)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4185711,43530714,436235,4289517)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4185711,43530714,436235)
+  and ca.ancestor_concept_id in (4185711,43530714,436235,4289517)
   and c.invalid_reason is null
 
 ) I
 ) C UNION ALL 
 SELECT 6 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4191650,312437)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4305080,4041664)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4191650,312437)
+  and ca.ancestor_concept_id in (4305080,4041664)
   and c.invalid_reason is null
 
 ) I
@@ -424,14 +424,14 @@ select @target_cohort_id as cohort_definition_id, person_id, start_date, end_dat
 FROM #final_cohort CO
 ;
 
-{@generateStats != 0}?{
+{1 != 0}?{
 -- BEGIN: Censored Stats
 
 delete from @results_database_schema.cohort_censor_stats where cohort_definition_id = @target_cohort_id;
 
 -- END: Censored Stats
 }
-{@generateStats != 0 & 0 != 0}?{
+{1 != 0 & 0 != 0}?{
 
 CREATE TABLE #inclusion_rules (rule_sequence int);
 

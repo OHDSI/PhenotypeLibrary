@@ -2,9 +2,9 @@ cohortName,ruleSequence,ruleName,cohortId
 123,0,>=365 prior enrollment,123
 13,0,"Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",13
 134,0,has at least one condition record of ADHD,134
+142,0,has 365d prior observation,142
 19,0,Washout period of 90 days,19
 19,1,Exclude if concomitant ,19
-191,0,"Not senile, cancer or stroke related",191
 205,0,Washout period of 365 days,205
 205,1,Should have Acute Pancreatitis within 1 day,205
 205,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,205
@@ -129,7 +129,6 @@ cohortName,ruleSequence,ruleName,cohortId
 230,1,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,230
 233,0,has no events in prior 'clean window' - 180 days,233
 239,0,No hypersomnia in 365 days prior to index and including index,239
-243,0,washout - 365 days,243
 248,0,has no events in prior 'clean window' - 365 days,248
 249,0,has no events in prior 'clean window' - 365 days,249
 251,0,Should have Acute Pancreatitis within 1 day,251
@@ -201,7 +200,6 @@ cohortName,ruleSequence,ruleName,cohortId
 277,2,Has no inner ear related disease,277
 277,3,Has not had audiometry in past 365 days,277
 278,0,Non Chronic Pain,278
-278,1,Not generalized or diffuse pain,278
 28,0,No prior asthma,28
 283,0,No Prior Chronic Prostatitis,283
 283,1,No history of Prostatitis prior to first prostatitis,283
@@ -264,7 +262,16 @@ cohortName,ruleSequence,ruleName,cohortId
 295,20,Wilsons Disease,295
 295,21,Neoplasm of liver,295
 295,22,Other liver problems entry event criteria,295
+298,0,Exclude any event preceded by kidney biopsy in -7 to -1 days,298
+298,1,Exclude chronic kidney disease or dialysis,298
+298,2,Exclude any event that is preceded by renal or glomerular disease -365 to 0,298
 30,0,At least 3 distinct drug eras of TB drugs,30
+300,0,Gender = Female,300
+300,1,Not eligible during a pregnancy,300
+300,2,Not eligible after menopause,300
+318,0,have no chronic hepatic failure on the day of diagnosis ,318
+324,0,No evidence of no pain,324
+332,0,Chronic Pain,332
 45,0,Has a lab test for SARS-Cov-2 test within 3 days,45
 53,0,Have atleast 1 positive,53
 54,0,Has febrile seizure diagnosis ,54
@@ -274,3 +281,4 @@ cohortName,ruleSequence,ruleName,cohortId
 63,0,has no events in prior 'clean window' - 365 days,63
 73,0,At least 1 outcome 1 day after or end of observation before end of pregnancy post-2020,73
 73,1,No outcome in the prior 60d,73
+78,0,Limit to inpatient visit,78

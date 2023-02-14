@@ -1,3 +1,32 @@
+PhenotypeLibrary 3.10.0
+======================
+
+Accepted Cohorts: The following cohorts were added
+
+    119: Systemic lupus erythematosus indexed on signs, symptoms, treatment or diagnosis (FP)
+    296: Transverse myelitis or symptoms indexed on symptoms or diagnosis (180Pe, 180Era)
+    
+New Cohorts: 17 were added.
+
+    142: [P] Earliest event of ST elevated myocardial infarction (7P, 1E)
+    192: [P] Skin or mucosal bleeding events (1Pe, 7Era)
+    298: [P] Urinary bleed events in persons without renal glomerular disease (30Pe, 7Era)
+    299: [P] Acute gastrointestinal bleeding events (7Pe, 30Era)
+    300: [P] Heavy menstrual bleeding (menorrhagia) events (60Pe, 180Era)
+    318: [P] All events of Acute Hepatic Failure in persons without chronic hepatic failure (90Pe, 365Era)
+    324: [P] Pain (3Pe, 7Era)
+    325: [P] Inpatient Hospitalization By Site of care or type of service (0Pe, 1Era)
+    327: [P] Pharyngitis (3Pe, 7Era)
+    328: [P] Wheezing (3Pe, 30Era)
+    329: [P] Pneumonitis and lung infections (14Pe, 30Era)
+    330: [P] Abdominal Bloating (1Pe, 7Era)
+    331: [P] Encephalopathy (1Pe, 14Era)
+    332: [P] Pain or ache that is Chronic (3Pe, 180Era)
+    333: [P] Alcohol Use Disorder (365Pe, 365Era)
+    334: [P] Asthma (FP)
+    335: [P] Anxiety or Fear (3Pe, 30Era)
+Deprecated Cohorts: No new cohorts were added in this release.
+
 PhenotypeLibrary 3.9.0
 ======================
 

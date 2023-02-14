@@ -1,6 +1,4 @@
 # Import phenotypes from ATLAS -------------------------------------------------
-
-library(magrittr)
 oldCohortDefinitions <- PhenotypeLibrary::listPhenotypes()
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
@@ -31,7 +29,7 @@ webApiCohorts <-
 
 exportableCohorts <-
   dplyr::bind_rows(
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -40,7 +38,7 @@ exportableCohorts <-
           negate = TRUE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -49,7 +47,7 @@ exportableCohorts <-
           negate = FALSE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -58,7 +56,7 @@ exportableCohorts <-
           negate = FALSE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -67,7 +65,7 @@ exportableCohorts <-
           negate = FALSE
         )
       ),
-    webApiCohorts %>%
+    webApiCohorts |>
       dplyr::filter(
         stringr::str_detect(
           string = name,
@@ -76,25 +74,120 @@ exportableCohorts <-
           negate = FALSE
         )
       )
-  ) %>%
-  dplyr::distinct() %>%
+  ) |>
+  dplyr::distinct() |>
   dplyr::select(id,
-                name) %>%
+                name,
+                description,
+                createdDate,
+                modifiedDate,
+                createdBy,
+                modifiedBy) |>
   dplyr::mutate(
     cohortId = id,
     atlasId = id,
-    cohortName = name
-  ) %>%
-  dplyr::arrange(cohortId) %>%
-  dplyr::select(cohortId,
-                atlasId,
-                cohortName)
+    cohortName = name,
+    createdDate = as.Date(createdDate),
+    modifiedDate = as.Date(modifiedDate)
+  ) |>
+  dplyr::arrange(cohortId) |>
+  dplyr::select(
+    cohortId,
+    atlasId,
+    cohortName,
+    description,
+    createdDate,
+    modifiedDate,
+    createdBy,
+    modifiedBy
+  )
 
-exportableCohorts %>%
-  readr::write_excel_csv(file = "inst/Cohorts.csv",
-                         append = FALSE,
-                         na = "",
-                         quote = "all")
+cohortRecord <- c()
+for (i in 1:nrow(exportableCohorts)) {
+  cohortRecord[[i]] <- exportableCohorts[i, ]
+  librarian <-
+    stringr::str_replace(
+      string = exportableCohorts[i, ]$createdBy[[1]]$name,
+      pattern = "na\\\\",
+      replacement = ""
+    )
+  cohortRecord[[i]]$librarian <- librarian
+  librarian <- NULL
+  
+  cohortRecord[[i]]$cohortNameFormatted <- gsub(
+    pattern = "_",
+    replacement = " ",
+    x = gsub("\\[(.*?)\\]_", "", gsub(" ", "_", cohortRecord[[i]]$cohortName))
+  ) |>
+    stringr::str_squish() |>
+    stringr::str_trim()
+  
+  cohortRecord[[i]]$lastModifiedBy <- NA
+  if (length(cohortRecord[[i]]$modifiedBy) > 1) {
+    cohortRecord[[i]]$lastModifiedBy <-
+      cohortRecord[[i]]$modifiedBy[[1]]$name
+  }
+  
+  if (all(!is.na(cohortRecord[[i]]$description),
+          nchar(cohortRecord[[i]]$description) > 5)) {
+    textInDescription <-
+      cohortRecord[[i]]$description |>
+      stringr::str_replace_all(pattern = ";", replacement = "") |>
+      stringr::str_split(pattern = "\n")
+    strings <- textInDescription[[1]]
+    textInDescription <- NULL
+    
+    strings <-
+      stringr::str_split(string = strings, pattern = stringr::fixed(": "))
+    
+    if (all(
+      !is.na(cohortRecord[[i]]$description[[1]]),
+      stringr::str_detect(
+        string = cohortRecord[[i]]$description,
+        pattern = stringr::fixed(":")
+      )
+    )) {
+      stringValues <- c()
+      for (j in (1:length(strings))) {
+        stringValues[[j]] <- dplyr::tibble()
+        if (length(strings[[j]]) == 2) {
+          stringValues[[j]] <- dplyr::tibble(
+            name = strings[[j]][[1]],
+            value = strings[[j]][[2]] |>
+              stringr::str_squish() |>
+              stringr::str_trim()
+          )
+        }
+      }
+      
+      stringValues <- dplyr::bind_rows(stringValues)
+      
+      if (nrow(stringValues) > 0) {
+        data <- stringValues |>
+          tidyr::pivot_wider()
+        stringValues <- NULL
+        
+        if (nrow(data) > 0) {
+          cohortRecord[[i]] <- cohortRecord[[i]] |>
+            tidyr::crossing(data)
+        }
+      }
+    }
+  }
+}
+cohortRecord <- dplyr::bind_rows(cohortRecord) |>
+  dplyr::select(-createdBy,-modifiedBy) |>
+  dplyr::mutate(id = cohortId,
+                name = id) |>
+  dplyr::relocate(cohortId, cohortName)
+
+cohortRecord |>
+  readr::write_excel_csv(
+    file = "inst/Cohorts.csv",
+    append = FALSE,
+    na = "",
+    quote = "all"
+  )
 
 try(ROhdsiWebApi::insertCohortDefinitionSetInPackage(
   fileName = "inst/Cohorts.csv",
@@ -109,54 +202,80 @@ silent = TRUE)
 remotes::install_github("OHDSI/circeR")
 circeOptions <- CirceR::createGenerateOptions(generateStats = TRUE)
 
-cohortJsonFiles <- list.files(path = file.path("inst", "cohorts"), pattern = ".json") %>% sort()
+cohortJsonFiles <-
+  list.files(path = file.path("inst", "cohorts"), pattern = ".json") |> sort()
 
 for (i in (1:length(cohortJsonFiles))) {
   jsonFileName <- cohortJsonFiles[i]
-  sqlFileName <- stringr::str_replace_all(string = jsonFileName, pattern = stringr::fixed(".json"), replacement = ".sql")
+  sqlFileName <-
+    stringr::str_replace_all(
+      string = jsonFileName,
+      pattern = stringr::fixed(".json"),
+      replacement = ".sql"
+    )
   
   writeLines(paste0(" - Generating ", sqlFileName))
   
-  json <- SqlRender::readSql(sourceFile = file.path("inst", "cohorts", jsonFileName))
-  sql <- CirceR::buildCohortQuery(expression = json, options = circeOptions)
-  SqlRender::writeSql(sql = sql, targetFile = file.path("inst", "sql", sqlFileName))
+  json <-
+    SqlRender::readSql(sourceFile = file.path("inst", "cohorts", jsonFileName))
+  sql <-
+    CirceR::buildCohortQuery(expression = json, options = circeOptions)
+  SqlRender::writeSql(sql = sql,
+                      targetFile = file.path("inst", "sql", sqlFileName))
 }
 
 
 
+# write Cohorts.csv
+if ('atlasId' %in% colnames(cohortRecord)) {
+  cohortRecord$atlasId <- NULL
+}
+if ('id' %in% colnames(cohortRecord)) {
+  cohortRecord$id <- NULL
+}
+if ('name' %in% colnames(cohortRecord)) {
+  cohortRecord$name <- NULL
+}
+if ('Version' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(addedVersion = Version)
+}
+if ('Reviewer' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(reviewer = Reviewer)
+}
+if ('Logic' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(logicDescription = Logic)
+}
+if ('Contributor' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(contributor = Contributor)
+}
+if ('Status' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(status = Status)
+}
+readr::write_excel_csv(
+  x = cohortRecord |> 
+    dplyr::arrange(cohortId),
+  file = "inst/Cohorts.csv",
+  append = FALSE,
+  na = "",
+  quote = "all"
+)
 
-# doing this again, because atlasId is not required for CohortDefinitionSet
-exportableCohorts  %>%
-  dplyr::select(cohortId,
-                cohortName) %>%
-  dplyr::arrange(cohortId) %>%
-  readr::write_excel_csv(file = "inst/Cohorts.csv",
-                         append = FALSE,
-                         na = "",
-                         quote = "all")
-
-newLogSource <- webApiCohorts %>%
-  dplyr::filter(id %in% c(exportableCohorts  %>%
-                                  dplyr::pull(cohortId)))
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
-newLogFile <-
-  PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
 
 needToUpdate <- TRUE
-if (identical(x = oldLogFile, y = newLogFile)) {
+if (identical(x = oldLogFile, y = cohortRecord)) {
   needToUpdate <- FALSE
   writeLines("No changes to cohort definitions. No update to version needed.")
 }
 
+
 if (needToUpdate) {
-  readr::write_excel_csv(
-    x = newLogFile,
-    file = "inst/PhenotypeLog.csv",
-    append = FALSE,
-    na = "",
-    quote = "all"
-  )
   
   # Update description -----------------------------------------------------------
   description <- readLines("DESCRIPTION")
@@ -180,30 +299,28 @@ if (needToUpdate) {
   # Update news -----------------------------------------------------------
   news <- readLines("NEWS.md")
   
-  changes <- newLogFile %>%
-    dplyr::anti_join(
-      oldLogFile
-    )
+  changes <- cohortRecord |>
+    dplyr::anti_join(oldLogFile)
   
-  newCohorts <- setdiff(x = sort(newLogFile$cohortId),
+  newCohorts <- setdiff(x = sort(cohortRecord$cohortId),
                         y = sort(oldLogFile$cohortId))
   
   deprecatedCohorts <- setdiff(
     x = sort(
-      newLogFile %>%
-        dplyr::filter(!is.na(deprecatedDate)) %>%
+      cohortRecord |>
+        dplyr::filter(!is.na(deprecatedDate)) |>
         dplyr::pull(cohortId)
     ),
     y = sort(
-      oldLogFile %>%
-        dplyr::filter(!is.na(deprecatedDate)) %>%
+      oldLogFile |>
+        dplyr::filter(!is.na(deprecatedDate)) |>
         dplyr::pull(cohortId)
     )
   )
   
-  modifiedCohorts <- changes %>%
-    dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) %>%
-    dplyr::pull(cohortId)
+  # modifiedCohorts <- changes |>
+  #   dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
+  #   dplyr::pull(cohortId)
   
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -217,7 +334,7 @@ if (needToUpdate) {
                   "")
     
     for (i in (1:length(newCohorts))) {
-      dataCohorts <- newLogFile %>%
+      dataCohorts <- cohortRecord |>
         dplyr::filter(cohortId %in% newCohorts[[i]])
       messages <-
         c(messages,
@@ -244,7 +361,7 @@ if (needToUpdate) {
     messages <- c(messages,
                   "")
     for (i in (1:length(deprecatedCohorts))) {
-      dataCohorts <- changes %>%
+      dataCohorts <- changes |>
         dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
       messages <-
         c(messages,
@@ -255,32 +372,32 @@ if (needToUpdate) {
     }
   }
   
-  if (length(modifiedCohorts) == 0) {
-    messages <-
-      c(messages,
-        "Modified Cohorts: No cohorts were modified in this release.")
-  } else {
-    messages <-
-      c(messages,
-        "",
-        paste0(
-          "Modified Cohorts: ",
-          length(modifiedCohorts),
-          " were modified."
-        ))
-    messages <- c(messages,
-                  "")
-    for (i in (1:length(modifiedCohorts))) {
-      dataCohorts <- changes %>%
-        dplyr::filter(cohortId %in% modifiedCohorts[[i]])
-      messages <-
-        c(messages,
-          paste0("    ",
-                 dataCohorts$cohortId,
-                 ": ",
-                 dataCohorts$cohortName))
-    }
-  }
+  # if (length(modifiedCohorts) == 0) {
+  #   messages <-
+  #     c(messages,
+  #       "Modified Cohorts: No cohorts were modified in this release.")
+  # } else {
+  #   messages <-
+  #     c(messages,
+  #       "",
+  #       paste0(
+  #         "Modified Cohorts: ",
+  #         length(modifiedCohorts),
+  #         " were modified."
+  #       ))
+  #   messages <- c(messages,
+  #                 "")
+  #   for (i in (1:length(modifiedCohorts))) {
+  #     dataCohorts <- changes |>
+  #       dplyr::filter(cohortId %in% modifiedCohorts[[i]])
+  #     messages <-
+  #       c(messages,
+  #         paste0("    ",
+  #                dataCohorts$cohortId,
+  #                ": ",
+  #                dataCohorts$cohortName))
+  #   }
+  # }
   
   news <- c(
     paste0("PhenotypeLibrary ", newVersion),
