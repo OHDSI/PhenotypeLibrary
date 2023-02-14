@@ -225,25 +225,57 @@ for (i in (1:length(cohortJsonFiles))) {
 }
 
 
+
+# write Cohorts.csv
+if ('atlasId' %in% colnames(cohortRecord)) {
+  cohortRecord$atlasId <- NULL
+}
+if ('id' %in% colnames(cohortRecord)) {
+  cohortRecord$id <- NULL
+}
+if ('name' %in% colnames(cohortRecord)) {
+  cohortRecord$name <- NULL
+}
+if ('Version' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(addedVersion = Version)
+}
+if ('Reviewer' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(reviewer = Reviewer)
+}
+if ('Logic' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(logicDescription = Logic)
+}
+if ('Contributor' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(contributor = Contributor)
+}
+if ('Status' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(status = Status)
+}
+readr::write_excel_csv(
+  x = cohortRecord |> 
+    dplyr::arrange(cohortId),
+  file = "inst/Cohorts.csv",
+  append = FALSE,
+  na = "",
+  quote = "all"
+)
+
+
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
 
-newLogFile <-
-  PhenotypeLibrary::updatePhenotypeLog(updates = cohortRecord)
-
 needToUpdate <- TRUE
-if (identical(x = oldLogFile, y = newLogFile)) {
+if (identical(x = oldLogFile, y = cohortRecord)) {
   needToUpdate <- FALSE
   writeLines("No changes to cohort definitions. No update to version needed.")
 }
 
+
 if (needToUpdate) {
-  readr::write_excel_csv(
-    x = newLogFile,
-    file = "inst/PhenotypeLog.csv",
-    append = FALSE,
-    na = "",
-    quote = "all"
-  )
   
   # Update description -----------------------------------------------------------
   description <- readLines("DESCRIPTION")
@@ -267,15 +299,15 @@ if (needToUpdate) {
   # Update news -----------------------------------------------------------
   news <- readLines("NEWS.md")
   
-  changes <- newLogFile |>
+  changes <- cohortRecord |>
     dplyr::anti_join(oldLogFile)
   
-  newCohorts <- setdiff(x = sort(newLogFile$cohortId),
+  newCohorts <- setdiff(x = sort(cohortRecord$cohortId),
                         y = sort(oldLogFile$cohortId))
   
   deprecatedCohorts <- setdiff(
     x = sort(
-      newLogFile |>
+      cohortRecord |>
         dplyr::filter(!is.na(deprecatedDate)) |>
         dplyr::pull(cohortId)
     ),
@@ -286,9 +318,9 @@ if (needToUpdate) {
     )
   )
   
-  modifiedCohorts <- changes |>
-    dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
-    dplyr::pull(cohortId)
+  # modifiedCohorts <- changes |>
+  #   dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
+  #   dplyr::pull(cohortId)
   
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -302,7 +334,7 @@ if (needToUpdate) {
                   "")
     
     for (i in (1:length(newCohorts))) {
-      dataCohorts <- newLogFile |>
+      dataCohorts <- cohortRecord |>
         dplyr::filter(cohortId %in% newCohorts[[i]])
       messages <-
         c(messages,
@@ -340,32 +372,32 @@ if (needToUpdate) {
     }
   }
   
-  if (length(modifiedCohorts) == 0) {
-    messages <-
-      c(messages,
-        "Modified Cohorts: No cohorts were modified in this release.")
-  } else {
-    messages <-
-      c(messages,
-        "",
-        paste0(
-          "Modified Cohorts: ",
-          length(modifiedCohorts),
-          " were modified."
-        ))
-    messages <- c(messages,
-                  "")
-    for (i in (1:length(modifiedCohorts))) {
-      dataCohorts <- changes |>
-        dplyr::filter(cohortId %in% modifiedCohorts[[i]])
-      messages <-
-        c(messages,
-          paste0("    ",
-                 dataCohorts$cohortId,
-                 ": ",
-                 dataCohorts$cohortName))
-    }
-  }
+  # if (length(modifiedCohorts) == 0) {
+  #   messages <-
+  #     c(messages,
+  #       "Modified Cohorts: No cohorts were modified in this release.")
+  # } else {
+  #   messages <-
+  #     c(messages,
+  #       "",
+  #       paste0(
+  #         "Modified Cohorts: ",
+  #         length(modifiedCohorts),
+  #         " were modified."
+  #       ))
+  #   messages <- c(messages,
+  #                 "")
+  #   for (i in (1:length(modifiedCohorts))) {
+  #     dataCohorts <- changes |>
+  #       dplyr::filter(cohortId %in% modifiedCohorts[[i]])
+  #     messages <-
+  #       c(messages,
+  #         paste0("    ",
+  #                dataCohorts$cohortId,
+  #                ": ",
+  #                dataCohorts$cohortName))
+  #   }
+  # }
   
   news <- c(
     paste0("PhenotypeLibrary ", newVersion),
