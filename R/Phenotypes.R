@@ -48,9 +48,11 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   checkmate::reportAssertions(collection = errorMessages)
 
   cohorts <- listPhenotypes() |>
-    filter(cohortId %in% cohortIds) |> 
-    dplyr::select(cohortId,
-                  cohortName)
+    filter(.data$cohortId %in% cohortIds) |>
+    dplyr::select(
+      "cohortId",
+      "cohortName"
+    )
   jsonFolder <- system.file("cohorts", package = "PhenotypeLibrary")
   sqlFolder <- system.file("sql", "sql_server", package = "PhenotypeLibrary")
 
@@ -102,11 +104,11 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
       system.file("Cohorts.csv", package = "PhenotypeLibrary"),
       col_types = readr::cols()
     ) |>
-    dplyr::filter(cohortId %in% c(cohortIds)) |>
+    dplyr::filter(.data$cohortId %in% c(cohortIds)) |>
     dplyr::mutate(
-      addedDate = as.Date(createdDate),
-      updatedDate = as.Date(modifiedDate)
+      addedDate = as.Date(.data$createdDate),
+      updatedDate = as.Date(.data$modifiedDate)
     ) |>
-    dplyr::arrange(cohortId)
+    dplyr::arrange(.data$cohortId)
   return(log)
 }

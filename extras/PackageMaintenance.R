@@ -17,10 +17,6 @@
 rstudioapi::restartSession(command = "")
 remotes::install_github("OHDSI/PhenotypeLibrary")
 
-# Format and check code ---------------------------------------------------
-styler::style_pkg()
-OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
-OhdsiRTools::updateCopyrightYearFolder()
 
 
 # this will source the script to update phenotypes
@@ -30,6 +26,13 @@ source("extras/UpdatePhenotypes.R")
 #############
 # install package
 #################
+
+
+# Format and check code ---------------------------------------------------
+styler::style_pkg()
+OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
+OhdsiRTools::updateCopyrightYearFolder()
+
 
 
 # Create manual -----------------------------------------------------------
