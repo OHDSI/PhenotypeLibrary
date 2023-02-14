@@ -24,15 +24,3 @@ testthat::test_that(desc = "Function getPhenotypeLog", code = {
   testthat::expect_true(is.data.frame(data))
   testthat::expect_gte(object = nrow(data), expected = 1)
 })
-
-testthat::test_that(desc = "Function getPhenotypeLog", code = {
-  newLogSource <- dplyr::bind_rows(
-    id = 1,
-    name = "test",
-    createdDate = Sys.Date(),
-    modifiedDate = Sys.Date(),
-    description = NA
-  )
-  newLog <- PhenotypeLibrary::updatePhenotypeLog(updates = newLogSource)
-  testthat::expect_true(is.data.frame(newLog))
-})

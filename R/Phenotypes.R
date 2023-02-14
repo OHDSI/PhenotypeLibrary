@@ -48,7 +48,9 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   checkmate::reportAssertions(collection = errorMessages)
 
   cohorts <- listPhenotypes() |>
-    filter(cohortId %in% cohortIds)
+    filter(cohortId %in% cohortIds) |> 
+    dplyr::select(cohortId,
+                  cohortName)
   jsonFolder <- system.file("cohorts", package = "PhenotypeLibrary")
   sqlFolder <- system.file("sql", "sql_server", package = "PhenotypeLibrary")
 
@@ -102,21 +104,9 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
     ) |>
     dplyr::filter(cohortId %in% c(cohortIds)) |>
     dplyr::mutate(
-      addedVersion = as.character(addedVersion),
-      addedDate = as.Date(addedDate),
-      deprecatedVersion = as.character(deprecatedVersion),
-      deprecatedDate = as.Date(deprecatedDate),
-      updatedVersion = as.character(updatedVersion),
-      updatedDate = as.Date(updatedDate),
-      notes = as.character(notes),
+      addedDate = as.Date(createdDate),
+      updatedDate = as.Date(modifiedDate)
     ) |>
-    tidyr::replace_na(replace = list(
-      getResults = "No",
-      addedVersion = "",
-      deprecatedVersion = "",
-      updatedVersion = "",
-      notes = ""
-    )) |>
     dplyr::arrange(cohortId)
   return(log)
 }
