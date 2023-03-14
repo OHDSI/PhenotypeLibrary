@@ -1,3 +1,22 @@
+PhenotypeLibrary 3.11.0
+======================
+Accepted Cohorts: 2 were accepted.
+    234: Appendicitis (1Pe, 180Era)
+    213: Acquired Neutropenia or unspecified leukopenia (21Pe, 365Era)
+
+New Cohorts: 9 were added.
+
+    339: [P] Hypotension (1Pe, 3Era)
+    340: [P] Hives, Erythema, Eruption, Urticaria (1Pe, 7Era)
+    341: [P] Loss of mentation including coma, loss of consciousness, altered consciousness (1Pe, 3Era)
+    342: [P] Urinary Incontinence (1Pe, 3Era)
+    343: [P] Fecal Incontinence (1Pe, 3Era)
+    344: [P] Doctors office or clinic visit without other overlapping visits (0Pe, 0Era)
+    345: [P] Doctors office or clinic visit (0Pe, 0Era)
+    346: [P] Non urgent outpatient visit without overlapping inpatient or emergency visit (0Pe, 0Era)
+    347: [P] Ambulance utilization (0Pe, 0Era)
+
+
 PhenotypeLibrary 3.10.0
 ======================
 

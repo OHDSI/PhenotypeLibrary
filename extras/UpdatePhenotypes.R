@@ -399,6 +399,34 @@ if (needToUpdate) {
   #   }
   # }
   
+  acceptedCohorts <- cohortRecord |> 
+    dplyr::filter(addedVersion == newVersion)
+  
+  if (nrow(acceptedCohorts) == 0) {
+    messages <-
+      c("Accepted Cohorts: No cohorts were accepted in this release.",
+        messages
+        )
+  } else {
+    messages <-
+      c(paste0("Accepted Cohorts: ", nrow(acceptedCohorts), " were accepted."),
+        messages)
+    messages <- c(messages,
+                  "")
+    
+    for (i in (1:nrow(acceptedCohorts))) {
+      dataCohorts <- cohortRecord |>
+        dplyr::filter(cohortId %in% acceptedCohorts[i,]$cohortId)
+      messages <-
+        c(
+          paste0("    ",
+                 dataCohorts$cohortId,
+                 ": ",
+                 dataCohorts$cohortName),
+          messages)
+    }
+  }
+  
   news <- c(
     paste0("PhenotypeLibrary ", newVersion),
     "======================",
