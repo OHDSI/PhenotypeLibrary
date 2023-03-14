@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.10.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.11.0</span>
       </span>
     </div>
 
@@ -112,24 +112,24 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">listPhenotypes</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 199 x 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cohor~1 cohor~2 descr~3 createdD~4 modified~5 libra~6 cohor~7 lastM~8 logic~9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>       2 [W] CO~ <span style="color: #949494;">"</span>Logic~ 2021-09-22 2023-02-13 rao@oh~ COVID-~ <span style="color: #BB0000;">NA</span>      Withdr~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>       3 [P] Co~ <span style="color: #949494;">"</span>Statu~ 2021-09-22 2023-01-03 rao@oh~ Cough ~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>       4 [P] Di~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-01-03 rao@oh~ Diarrh~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>       5 [P] Dy~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-01-03 rao@oh~ Dyspne~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>       6 [P] Fe~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Fever ~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>       7 [P] He~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Headac~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>       8 [P] Al~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Altere~ <span style="color: #BB0000;">NA</span>      Altere~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>       9 [P] So~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Sore t~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      10 [P] Na~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2022-12-06 rao@oh~ Nausea~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      11 [P] Ma~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Malais~ <span style="color: #BB0000;">NA</span>      All ev~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 189 more rows, 6 more variables: status &lt;chr&gt;, hashTag &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributor &lt;chr&gt;, Forum &lt;chr&gt;, addedVersion &lt;chr&gt;, reviewer &lt;chr&gt;, and</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names 1: cohortId, 2: cohortName, 3: description,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   4: createdDate, 5: modifiedDate, 6: librarian, 7: cohortNameFormatted,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   8: lastModifiedBy, 9: logicDescription</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 208 x 16</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cohortId cohor~1 descr~2 createdD~3 modified~4 libra~5 cohor~6 lastM~7 status</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        2 [W] CO~ <span style="color: #949494;">"</span>Statu~ 2021-09-22 2023-03-14 rao@oh~ COVID-~ <span style="color: #BB0000;">NA</span>      Withd~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        3 [P] Co~ <span style="color: #949494;">"</span>Statu~ 2021-09-22 2023-01-03 rao@oh~ Cough ~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        4 [P] Di~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-01-03 rao@oh~ Diarrh~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        5 [P] Dy~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-01-03 rao@oh~ Dyspne~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        6 [P] Fe~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Fever ~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        7 [P] He~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Headac~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        8 [P] Al~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Altere~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        9 [P] So~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Sore t~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       10 [P] Na~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2022-12-06 rao@oh~ Nausea~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       11 [P] Ma~ <span style="color: #949494;">"</span>Statu~ 2021-09-23 2023-02-12 rao@oh~ Malais~ <span style="color: #BB0000;">NA</span>      Pendi~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 198 more rows, 7 more variables: logicDescription &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   hashTag &lt;chr&gt;, contributor &lt;chr&gt;, Forum &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   peer &lt;chr&gt;, Reviewer &lt;lgl&gt;, and abbreviated variable names 1: cohortName,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   2: description, 3: createdDate, 4: modifiedDate, 5: librarian,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   6: cohortNameFormatted, 7: lastModifiedBy</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

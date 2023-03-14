@@ -240,9 +240,9 @@ if ('Version' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(addedVersion = Version)
 }
-if ('Reviewer' %in% colnames(cohortRecord)) {
+if ('Peer' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
-    dplyr::rename(reviewer = Reviewer)
+    dplyr::rename(peer = Peer)
 }
 if ('Logic' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
@@ -305,18 +305,18 @@ if (needToUpdate) {
   newCohorts <- setdiff(x = sort(cohortRecord$cohortId),
                         y = sort(oldLogFile$cohortId))
   
-  deprecatedCohorts <- setdiff(
-    x = sort(
-      cohortRecord |>
-        dplyr::filter(!is.na(deprecatedDate)) |>
-        dplyr::pull(cohortId)
-    ),
-    y = sort(
-      oldLogFile |>
-        dplyr::filter(!is.na(deprecatedDate)) |>
-        dplyr::pull(cohortId)
-    )
-  )
+  # deprecatedCohorts <- setdiff(
+  #   x = sort(
+  #     cohortRecord |>
+  #       dplyr::filter(!is.na(deprecatedDate)) |>
+  #       dplyr::pull(cohortId)
+  #   ),
+  #   y = sort(
+  #     oldLogFile |>
+  #       dplyr::filter(!is.na(deprecatedDate)) |>
+  #       dplyr::pull(cohortId)
+  #   )
+  # )
   
   # modifiedCohorts <- changes |>
   #   dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
@@ -345,59 +345,37 @@ if (needToUpdate) {
     }
   }
   
-  if (length(deprecatedCohorts) == 0) {
+  
+  acceptedCohorts <- cohortRecord |> 
+    dplyr::filter(addedVersion == newVersion)
+  
+  if (nrow(acceptedCohorts) == 0) {
     messages <-
-      c(messages,
-        "Deprecated Cohorts: No new cohorts were added in this release.")
+      c("Accepted Cohorts: No cohorts were accepted in this release.",
+        messages
+        )
   } else {
-    messages <-
-      c(messages,
-        "",
-        paste0(
-          "Deprecated Cohorts: ",
-          length(deprecatedCohorts),
-          " were deprecated."
-        ))
-    messages <- c(messages,
-                  "")
-    for (i in (1:length(deprecatedCohorts))) {
-      dataCohorts <- changes |>
-        dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
+    
+    for (i in (1:nrow(acceptedCohorts))) {
+      dataCohorts <- cohortRecord |>
+        dplyr::filter(cohortId %in% acceptedCohorts[i,]$cohortId)
       messages <-
-        c(messages,
+        c(
           paste0("    ",
                  dataCohorts$cohortId,
                  ": ",
-                 dataCohorts$cohortName))
+                 dataCohorts$cohortName),
+          messages)
     }
+    
+    messages <-
+      c(paste0("Accepted Cohorts: ", nrow(acceptedCohorts), " were accepted."),
+        messages)
+    messages <- c(messages,
+                  "")
+    
+
   }
-  
-  # if (length(modifiedCohorts) == 0) {
-  #   messages <-
-  #     c(messages,
-  #       "Modified Cohorts: No cohorts were modified in this release.")
-  # } else {
-  #   messages <-
-  #     c(messages,
-  #       "",
-  #       paste0(
-  #         "Modified Cohorts: ",
-  #         length(modifiedCohorts),
-  #         " were modified."
-  #       ))
-  #   messages <- c(messages,
-  #                 "")
-  #   for (i in (1:length(modifiedCohorts))) {
-  #     dataCohorts <- changes |>
-  #       dplyr::filter(cohortId %in% modifiedCohorts[[i]])
-  #     messages <-
-  #       c(messages,
-  #         paste0("    ",
-  #                dataCohorts$cohortId,
-  #                ": ",
-  #                dataCohorts$cohortName))
-  #   }
-  # }
   
   news <- c(
     paste0("PhenotypeLibrary ", newVersion),
