@@ -345,59 +345,6 @@ if (needToUpdate) {
     }
   }
   
-  # if (length(deprecatedCohorts) == 0) {
-  #   messages <-
-  #     c(messages,
-  #       "Deprecated Cohorts: No new cohorts were added in this release.")
-  # } else {
-  #   messages <-
-  #     c(messages,
-  #       "",
-  #       paste0(
-  #         "Deprecated Cohorts: ",
-  #         length(deprecatedCohorts),
-  #         " were deprecated."
-  #       ))
-  #   messages <- c(messages,
-  #                 "")
-  #   for (i in (1:length(deprecatedCohorts))) {
-  #     dataCohorts <- changes |>
-  #       dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
-  #     messages <-
-  #       c(messages,
-  #         paste0("    ",
-  #                dataCohorts$cohortId,
-  #                ": ",
-  #                dataCohorts$cohortName))
-  #   }
-  # }
-  
-  # if (length(modifiedCohorts) == 0) {
-  #   messages <-
-  #     c(messages,
-  #       "Modified Cohorts: No cohorts were modified in this release.")
-  # } else {
-  #   messages <-
-  #     c(messages,
-  #       "",
-  #       paste0(
-  #         "Modified Cohorts: ",
-  #         length(modifiedCohorts),
-  #         " were modified."
-  #       ))
-  #   messages <- c(messages,
-  #                 "")
-  #   for (i in (1:length(modifiedCohorts))) {
-  #     dataCohorts <- changes |>
-  #       dplyr::filter(cohortId %in% modifiedCohorts[[i]])
-  #     messages <-
-  #       c(messages,
-  #         paste0("    ",
-  #                dataCohorts$cohortId,
-  #                ": ",
-  #                dataCohorts$cohortName))
-  #   }
-  # }
   
   acceptedCohorts <- cohortRecord |> 
     dplyr::filter(addedVersion == newVersion)
@@ -408,11 +355,6 @@ if (needToUpdate) {
         messages
         )
   } else {
-    messages <-
-      c(paste0("Accepted Cohorts: ", nrow(acceptedCohorts), " were accepted."),
-        messages)
-    messages <- c(messages,
-                  "")
     
     for (i in (1:nrow(acceptedCohorts))) {
       dataCohorts <- cohortRecord |>
@@ -425,6 +367,14 @@ if (needToUpdate) {
                  dataCohorts$cohortName),
           messages)
     }
+    
+    messages <-
+      c(paste0("Accepted Cohorts: ", nrow(acceptedCohorts), " were accepted."),
+        messages)
+    messages <- c(messages,
+                  "")
+    
+
   }
   
   news <- c(
