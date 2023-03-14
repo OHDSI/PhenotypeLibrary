@@ -240,9 +240,9 @@ if ('Version' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(addedVersion = Version)
 }
-if ('Reviewer' %in% colnames(cohortRecord)) {
+if ('Peer' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
-    dplyr::rename(reviewer = Reviewer)
+    dplyr::rename(peer = Peer)
 }
 if ('Logic' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
