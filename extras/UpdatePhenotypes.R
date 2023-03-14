@@ -305,18 +305,18 @@ if (needToUpdate) {
   newCohorts <- setdiff(x = sort(cohortRecord$cohortId),
                         y = sort(oldLogFile$cohortId))
   
-  deprecatedCohorts <- setdiff(
-    x = sort(
-      cohortRecord |>
-        dplyr::filter(!is.na(deprecatedDate)) |>
-        dplyr::pull(cohortId)
-    ),
-    y = sort(
-      oldLogFile |>
-        dplyr::filter(!is.na(deprecatedDate)) |>
-        dplyr::pull(cohortId)
-    )
-  )
+  # deprecatedCohorts <- setdiff(
+  #   x = sort(
+  #     cohortRecord |>
+  #       dplyr::filter(!is.na(deprecatedDate)) |>
+  #       dplyr::pull(cohortId)
+  #   ),
+  #   y = sort(
+  #     oldLogFile |>
+  #       dplyr::filter(!is.na(deprecatedDate)) |>
+  #       dplyr::pull(cohortId)
+  #   )
+  # )
   
   # modifiedCohorts <- changes |>
   #   dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
@@ -345,32 +345,32 @@ if (needToUpdate) {
     }
   }
   
-  if (length(deprecatedCohorts) == 0) {
-    messages <-
-      c(messages,
-        "Deprecated Cohorts: No new cohorts were added in this release.")
-  } else {
-    messages <-
-      c(messages,
-        "",
-        paste0(
-          "Deprecated Cohorts: ",
-          length(deprecatedCohorts),
-          " were deprecated."
-        ))
-    messages <- c(messages,
-                  "")
-    for (i in (1:length(deprecatedCohorts))) {
-      dataCohorts <- changes |>
-        dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
-      messages <-
-        c(messages,
-          paste0("    ",
-                 dataCohorts$cohortId,
-                 ": ",
-                 dataCohorts$cohortName))
-    }
-  }
+  # if (length(deprecatedCohorts) == 0) {
+  #   messages <-
+  #     c(messages,
+  #       "Deprecated Cohorts: No new cohorts were added in this release.")
+  # } else {
+  #   messages <-
+  #     c(messages,
+  #       "",
+  #       paste0(
+  #         "Deprecated Cohorts: ",
+  #         length(deprecatedCohorts),
+  #         " were deprecated."
+  #       ))
+  #   messages <- c(messages,
+  #                 "")
+  #   for (i in (1:length(deprecatedCohorts))) {
+  #     dataCohorts <- changes |>
+  #       dplyr::filter(cohortId %in% deprecatedCohorts[[i]])
+  #     messages <-
+  #       c(messages,
+  #         paste0("    ",
+  #                dataCohorts$cohortId,
+  #                ": ",
+  #                dataCohorts$cohortName))
+  #   }
+  # }
   
   # if (length(modifiedCohorts) == 0) {
   #   messages <-
