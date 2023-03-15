@@ -20,18 +20,18 @@
 	"ConceptSets" : [
 		{
 			"id" : 4,
-			"name" : "Epigastric Pain",
+			"name" : "Tonsillitis",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 197381,
-							"CONCEPT_NAME" : "Epigastric pain",
+							"CONCEPT_ID" : 4083666,
+							"CONCEPT_NAME" : "Inflamed tonsils",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "79922009",
+							"CONCEPT_CODE" : "281795003",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -39,33 +39,24 @@
 						"isExcluded" : false,
 						"includeDescendants" : true,
 						"includeMapped" : false
-					},
+					}
+				]
+			}
+		},
+		{
+			"id" : 7,
+			"name" : "Lesion of Nose",
+			"expression" : {
+				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4306292,
-							"CONCEPT_NAME" : "Upper abdominal pain",
+							"CONCEPT_ID" : 4116650,
+							"CONCEPT_NAME" : "Lesion of nose",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "83132003",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 194491,
-							"CONCEPT_NAME" : "Tenderness of epigastrium",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "301403003",
+							"CONCEPT_CODE" : "301191003",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -88,13 +79,13 @@
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 3
+			"Offset" : 7
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 7
+		"EraPad" : 30
 	},
 	"CensorWindow" : {}
 }

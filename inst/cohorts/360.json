@@ -4,8 +4,14 @@
 		"CriteriaList" : [
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 4,
+					"CodesetId" : 2,
 					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"Observation" : {
+					"CodesetId" : 2,
+					"ObservationTypeExclude" : false
 				}
 			}
 		],
@@ -19,19 +25,19 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 4,
-			"name" : "Epigastric Pain",
+			"id" : 2,
+			"name" : "Pleural Effusion",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 197381,
-							"CONCEPT_NAME" : "Epigastric pain",
+							"CONCEPT_ID" : 254061,
+							"CONCEPT_NAME" : "Pleural effusion",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "79922009",
+							"CONCEPT_CODE" : "60046008",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -42,33 +48,50 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4306292,
-							"CONCEPT_NAME" : "Upper abdominal pain",
+							"CONCEPT_ID" : 38001034,
+							"CONCEPT_NAME" : "Pleural effusion w/o CC/MCC",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "83132003",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
+							"CONCEPT_CODE" : "188",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "DRG",
+							"CONCEPT_CLASS_ID" : "MS-DRG"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : false,
+						"includeDescendants" : true,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 194491,
-							"CONCEPT_NAME" : "Tenderness of epigastrium",
+							"CONCEPT_ID" : 38001033,
+							"CONCEPT_NAME" : "Pleural effusion w CC",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "301403003",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
+							"CONCEPT_CODE" : "187",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "DRG",
+							"CONCEPT_CLASS_ID" : "MS-DRG"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 38001032,
+							"CONCEPT_NAME" : "Pleural effusion w MCC",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "186",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "DRG",
+							"CONCEPT_CLASS_ID" : "MS-DRG"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -79,7 +102,7 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"ExpressionLimit" : {
 		"Type" : "All"
@@ -94,7 +117,7 @@
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 7
+		"EraPad" : 30
 	},
 	"CensorWindow" : {}
 }

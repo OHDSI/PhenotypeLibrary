@@ -4,7 +4,7 @@
 		"CriteriaList" : [
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 4,
+					"CodesetId" : 2,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -19,19 +19,19 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 4,
-			"name" : "Epigastric Pain",
+			"id" : 2,
+			"name" : "Respiratory Failure",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 197381,
-							"CONCEPT_NAME" : "Epigastric pain",
+							"CONCEPT_ID" : 4256228,
+							"CONCEPT_NAME" : "Respiratory failure",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "79922009",
+							"CONCEPT_CODE" : "409622000",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -39,33 +39,24 @@
 						"isExcluded" : false,
 						"includeDescendants" : true,
 						"includeMapped" : false
-					},
+					}
+				]
+			}
+		},
+		{
+			"id" : 3,
+			"name" : "Chronic Respiratory Failure",
+			"expression" : {
+				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4306292,
-							"CONCEPT_NAME" : "Upper abdominal pain",
+							"CONCEPT_ID" : 314971,
+							"CONCEPT_NAME" : "Chronic respiratory failure",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "83132003",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 194491,
-							"CONCEPT_NAME" : "Tenderness of epigastrium",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "301403003",
+							"CONCEPT_CODE" : "39871006",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -79,12 +70,50 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"ExpressionLimit" : {
 		"Type" : "All"
 	},
-	"InclusionRules" : [],
+	"InclusionRules" : [
+		{
+			"name" : "No Chronic Respiratory Failure in past 365 days",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 3,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 365,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
@@ -94,7 +123,7 @@
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 7
+		"EraPad" : 30
 	},
 	"CensorWindow" : {}
 }

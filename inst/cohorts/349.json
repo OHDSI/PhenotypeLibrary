@@ -4,8 +4,14 @@
 		"CriteriaList" : [
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 4,
+					"CodesetId" : 0,
 					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"ProcedureOccurrence" : {
+					"CodesetId" : 0,
+					"ProcedureTypeExclude" : false
 				}
 			}
 		],
@@ -19,19 +25,19 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 4,
-			"name" : "Epigastric Pain",
+			"id" : 0,
+			"name" : "Lower Gastrointestinal bleeding",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 197381,
-							"CONCEPT_NAME" : "Epigastric pain",
+							"CONCEPT_ID" : 4103703,
+							"CONCEPT_NAME" : "Melena",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "79922009",
+							"CONCEPT_CODE" : "2901004",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -42,30 +48,47 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4306292,
-							"CONCEPT_NAME" : "Upper abdominal pain",
+							"CONCEPT_ID" : 4245614,
+							"CONCEPT_NAME" : "Bleeding from anus",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "83132003",
+							"CONCEPT_CODE" : "6072007",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : false,
+						"includeDescendants" : true,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 194491,
-							"CONCEPT_NAME" : "Tenderness of epigastrium",
+							"CONCEPT_ID" : 28779,
+							"CONCEPT_NAME" : "Bleeding esophageal varices",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "301403003",
+							"CONCEPT_CODE" : "17709002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 443530,
+							"CONCEPT_NAME" : "Hematochezia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "405729008",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -79,7 +102,7 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"ExpressionLimit" : {
 		"Type" : "All"
@@ -88,13 +111,13 @@
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 3
+			"Offset" : 7
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 7
+		"EraPad" : 30
 	},
 	"CensorWindow" : {}
 }

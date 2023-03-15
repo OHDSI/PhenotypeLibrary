@@ -2,8 +2,7 @@ cohortName,ruleSequence,ruleName,cohortId
 123,0,>=365 prior enrollment,123
 13,0,"Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",13
 134,0,has at least one condition record of ADHD,134
-19,0,Washout period of 90 days,19
-19,1,Exclude if concomitant ,19
+19,0,Exclude if concomitant non acute pneumonia,19
 205,0,Washout period of 365 days,205
 205,1,Should have Acute Pancreatitis within 1 day,205
 205,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,205
@@ -271,15 +270,15 @@ cohortName,ruleSequence,ruleName,cohortId
 318,0,have no chronic hepatic failure on the day of diagnosis ,318
 324,0,No evidence of no pain,324
 332,0,Chronic Pain,332
-344,0,Should be a site of visit that is commonly considered non urgent,344
-344,1,Should not be overlapping with an Inpatient site of care,344
-344,2,Should not be overlapping with an Inpatient Care as defined by procedure or observation codes,344
-344,3,Should not be overlapping with Emergency room site of care,344
-344,4,Should not be overlapping with Urgent Care as defined by procedure or observation codes,344
+344,0,Should not be overlapping with an Inpatient site of care,344
+344,1,Should not be overlapping with an Inpatient Care as defined by procedure or observation codes,344
+344,2,Should not be overlapping with Emergency room site of care,344
+344,3,Should not be overlapping with Urgent Care as defined by procedure or observation codes,344
 346,0,Should not be overlapping with an Inpatient site of care,346
 346,1,Should not be overlapping with an Inpatient Care as defined by procedure or observation codes,346
 346,2,Should not be overlapping with Emergency room site of care,346
 346,3,Should not be overlapping with Urgent Care as defined by procedure or observation codes,346
+358,0,No Chronic Respiratory Failure in past 365 days,358
 45,0,Has a lab test for SARS-Cov-2 test within 3 days,45
 53,0,Have atleast 1 positive,53
 54,0,Has febrile seizure diagnosis ,54
