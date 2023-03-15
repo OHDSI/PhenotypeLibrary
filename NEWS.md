@@ -1,3 +1,23 @@
+PhenotypeLibrary 3.12.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 13 were added.
+
+    348: [P] Hematuria (7Pe, 30Era)
+    349: [P] Lower gastrointestinal bleeding events (7Pe, 30Era)
+    350: [P] Hemoptysis (7Pe, 30Era)
+    351: [P] Nasal Polyp (365Pe, 365Era)
+    352: [P] Inflamed Tonsil (7Pe, 30Era)
+    353: [P] Conjunctivitis (3Pe, 7Era)
+    354: [P] Nasal Congestion or Rhinitis or Common Cold (3Pe, 7Era)
+    355: [P] Laryngitis (3Pe, 7Era)
+    356: [P] Epistaxis (3Pe, 7Era)
+    357: [P] Pulmonary Edema (3Pe, 30Era)
+    358: [P] Acute Respiratory Failure among persons with no chronic respiratory failure (3Pe, 30Era)
+    359: [P] Acute Respiratory Failure (3Pe, 30Era)
+    360: [P] Pleural Effusion (3Pe, 30Era)
+
 PhenotypeLibrary 3.11.0
 ======================
 Accepted Cohorts: 2 were accepted.

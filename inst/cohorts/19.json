@@ -20,26 +20,9 @@
 	"ConceptSets" : [
 		{
 			"id" : 2,
-			"name" : "Acute Pneumonia",
+			"name" : "Acute Typical Pneumonia",
 			"expression" : {
 				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 255848,
-							"CONCEPT_NAME" : "Pneumonia",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233604007",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
 					{
 						"concept" : {
 							"CONCEPT_ID" : 46269693,
@@ -124,13 +107,30 @@
 						"isExcluded" : true,
 						"includeDescendants" : true,
 						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4318404,
+							"CONCEPT_NAME" : "Lung consolidation",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "95436008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
 					}
 				]
 			}
 		},
 		{
 			"id" : 3,
-			"name" : "Non Acute Pneumonia",
+			"name" : "Non Acute Typical Pneumonia",
 			"expression" : {
 				"items" : [
 					{
@@ -230,45 +230,7 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "Washout period of 90 days",
-			"description" : "This rule will prevent a person to renter for after entering a cohort during the washout period. This is based on the assumption that any event within the washout period is part of an ongoing episode of care and thus not an independent event or case.",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 2,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 1,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : true,
-						"Occurrence" : {
-							"Type" : 0,
-							"Count" : 0,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
-			"name" : "Exclude if concomitant ",
+			"name" : "Exclude if concomitant non acute pneumonia",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
@@ -281,11 +243,11 @@
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 0,
+								"Days" : 1,
 								"Coeff" : -1
 							},
 							"End" : {
-								"Days" : 0,
+								"Days" : 1,
 								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,
@@ -308,13 +270,13 @@
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 90
+			"Offset" : 14
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 30
 	},
 	"CensorWindow" : {}
 }
