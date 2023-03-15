@@ -3,25 +3,21 @@
 	"PrimaryCriteria" : {
 		"CriteriaList" : [
 			{
-				"VisitOccurrence" : {
-					"CodesetId" : 8,
-					"VisitTypeExclude" : false
+				"ConditionOccurrence" : {
+					"CodesetId" : 0,
+					"ConditionTypeExclude" : false
 				}
 			},
 			{
-				"VisitDetail" : {
-					"CodesetId" : 8
+				"ProcedureOccurrence" : {
+					"CodesetId" : 1,
+					"ProcedureTypeExclude" : false
 				}
 			},
 			{
-				"VisitOccurrence" : {
-					"VisitTypeExclude" : false,
-					"VisitSourceConcept" : 8
-				}
-			},
-			{
-				"VisitDetail" : {
-					"VisitDetailSourceConcept" : 8
+				"Observation" : {
+					"CodesetId" : 1,
+					"ObservationTypeExclude" : false
 				}
 			}
 		],
@@ -35,22 +31,22 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 8,
-			"name" : "Doctors office",
+			"id" : 0,
+			"name" : "Epistaxis",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 38004693,
-							"CONCEPT_NAME" : "Clinic or Group Practice",
+							"CONCEPT_ID" : 4051478,
+							"CONCEPT_NAME" : "Posterior epistaxis",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "70",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "Medicare Specialty",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "232355001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -58,16 +54,16 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 38004453,
-							"CONCEPT_NAME" : "Family Practice",
+							"CONCEPT_ID" : 4049224,
+							"CONCEPT_NAME" : "Anterior epistaxis",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "8",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "Medicare Specialty",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "232354002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -75,16 +71,16 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 8716,
-							"CONCEPT_NAME" : "Independent Clinic",
+							"CONCEPT_ID" : 4082142,
+							"CONCEPT_NAME" : "Evidence of recent epistaxis",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "49",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "CMS Place of Service",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "277236000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -92,16 +88,41 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 581477,
-							"CONCEPT_NAME" : "Office Visit",
+							"CONCEPT_ID" : 4096682,
+							"CONCEPT_NAME" : "Bleeding from nose",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "OMOP4822458",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "Visit",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "249366005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 1,
+			"name" : "Epistaxis procedures",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45768610,
+							"CONCEPT_NAME" : "Epistaxis care",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "707076002",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -109,16 +130,16 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 8977,
-							"CONCEPT_NAME" : "Public Health Clinic",
+							"CONCEPT_ID" : 4262407,
+							"CONCEPT_NAME" : "Control of hemorrhage of nose",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "71",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "CMS Place of Service",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "35807001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -126,16 +147,16 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 8761,
-							"CONCEPT_NAME" : "Rural Health Clinic",
+							"CONCEPT_ID" : 4055146,
+							"CONCEPT_NAME" : "Packing of nose for anterior epistaxis",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "72",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "CMS Place of Service",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "242906003",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -143,16 +164,16 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 38003620,
-							"CONCEPT_NAME" : "Walk-in Retail Health Clinic",
+							"CONCEPT_ID" : 45772698,
+							"CONCEPT_NAME" : "Epistaxis care management",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "17",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "CMS Place of Service",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "704134002",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -163,7 +184,7 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "All"
+		"Type" : "First"
 	},
 	"ExpressionLimit" : {
 		"Type" : "All"
@@ -172,13 +193,13 @@
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 0
+			"Offset" : 3
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 7
 	},
 	"CensorWindow" : {}
 }
