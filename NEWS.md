@@ -1,3 +1,17 @@
+PhenotypeLibrary 3.13.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 7 were added.
+
+    304: Neurofibromatosis type 1 (FP)
+    305: Neurofibromatosis type 1 without Type 2 (FP)
+    306: Optical pathway glioma and neurofibromatosis (FP)
+    307: Optical pathway glioma or non malignant neoplasm of optic nerve w neurofibromatosis (FP)
+    308: Optical pathway glioma with MRI imaging and ophthalmology visits Neurofibromatosis (FP)
+    361: [P] Restless Leg Syndrome (FP)
+    362: [P] Acute Kidney Injury AKI (7Pe, 30W)
+
 PhenotypeLibrary 3.12.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
