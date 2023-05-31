@@ -1,0 +1,177 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ANY",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 0,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 2,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
+					"CodesetId" : 1,
+					"ConditionTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 0,
+			"name" : "Dysuria",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 197684,
+							"CONCEPT_NAME" : "Dysuria",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "49650001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 1,
+			"name" : "Lower Urinary Tract Finding",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4021780,
+							"CONCEPT_NAME" : "Lower urinary tract finding",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "106100005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 2,
+			"name" : "Urinary tract pain",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4082798,
+							"CONCEPT_NAME" : "Urinary tract pain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "247382002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 3
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 7
+	},
+	"CensorWindow" : {}
+}

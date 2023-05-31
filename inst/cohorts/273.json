@@ -1,0 +1,173 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CodesetId" : 1,
+					"ConditionTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 1,
+			"name" : "Ventricular tachycardia",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4103295,
+							"CONCEPT_NAME" : "Ventricular tachycardia",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "25569003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 3,
+			"name" : "Inpatient or ER visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9203,
+							"CONCEPT_NAME" : "Emergency Room Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ER",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "All"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Has Inpatient or ER visit ",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"VisitOccurrence" : {
+								"CodesetId" : 3,
+								"VisitTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"EndWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"End" : {
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : true
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 1
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 7
+	},
+	"CensorWindow" : {}
+}

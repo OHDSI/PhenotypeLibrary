@@ -1,0 +1,519 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 4,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 7,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 0,
+									"Count" : 0,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"ConditionOccurrence" : {
+										"CodesetId" : 5,
+										"ConditionTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 7,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 0,
+									"Count" : 0,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"DrugExposure" : {
+										"CodesetId" : 6,
+										"DrugTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 1,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
+					"CodesetId" : 1,
+					"OccurrenceStartDate" : {
+						"Value" : "2015-10-01",
+						"Op" : "gte"
+					},
+					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"ConditionOccurrence" : {
+					"CodesetId" : 7,
+					"ConditionTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 1,
+			"name" : "Inflammatory dermatosis verbatim",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45766714,
+							"CONCEPT_NAME" : "Inflammatory dermatosis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "703938007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 4,
+			"name" : "Infection of skin",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4029043,
+							"CONCEPT_NAME" : "Infection of skin",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "108365000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 434119,
+							"CONCEPT_NAME" : "Hidradenitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "69741000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 435613,
+							"CONCEPT_NAME" : "Cellulitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "128045006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 378425,
+							"CONCEPT_NAME" : "Blepharitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "41446000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 381859,
+							"CONCEPT_NAME" : "Infective otitis externa",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "86981007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37110555,
+							"CONCEPT_NAME" : "Neutrophilic dermatosis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "724834006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4030291,
+							"CONCEPT_NAME" : "Viral infection of skin",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "128937004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 5,
+			"name" : "Contact Dermatitis",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 134438,
+							"CONCEPT_NAME" : "Contact dermatitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "40275004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37311784,
+							"CONCEPT_NAME" : "Exogenous dermatitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "817956002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 6,
+			"name" : "Coritcosteroids",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 920458,
+							"CONCEPT_NAME" : "betamethasone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1514",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 1518254,
+							"CONCEPT_NAME" : "dexamethasone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "3264",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 975125,
+							"CONCEPT_NAME" : "hydrocortisone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "5492",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 1550557,
+							"CONCEPT_NAME" : "prednisolone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8638",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 903963,
+							"CONCEPT_NAME" : "triamcinolone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10759",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 1551099,
+							"CONCEPT_NAME" : "prednisone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8640",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 1506270,
+							"CONCEPT_NAME" : "methylprednisolone",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "6902",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 7,
+			"name" : "Eczema but not Inflammatory hyperkeratotic dermatosis",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 133835,
+							"CONCEPT_NAME" : "Eczema",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "43116000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4197912,
+							"CONCEPT_NAME" : "Inflammatory hyperkeratotic dermatosis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "80524004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42596380,
+							"CONCEPT_NAME" : "Allergic dermatitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "311411000009101",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED Veterinary",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 1
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 365
+	},
+	"CensorWindow" : {}
+}

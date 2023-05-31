@@ -1,3 +1,54 @@
+PhenotypeLibrary 3.14.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 44 were added.
+
+    363: [P] Joint Stiffness (3Pe, 7Era)
+    364: [P] Sleep disorder (3Pe, 7Era)
+    365: [P] Dysuria (3Pe, 7Era)
+    366: [P] Streptococcal throat infection (14Pe, 30Era)
+    367: [P] Allergic Rhinitis (14Pe, 30Era)
+    368: [P] Sinusitis (7Pe, 30Era)
+    369: [P] Allergic condition (14Pe, 30Era)
+    370: [P] Allergic disorder (14Pe, 30Era)
+    371: [P] Claudication Pain (365Pe, 365Era)
+    372: [P] Otitis media (3Pe, 30Era)
+    373: [P] Iron deficiency Anemia (365Pe, 365Era)
+    374: [P] Drug Dependence Disorder (30Pe, 365Era)
+    375: [P] Gall stone disorder (30Pe, 365Era)
+    376: [P] Skin Bleeding (1Pe, 7Era)
+    377: [P] Skin Petechiae (1Pe, 7Era)
+    378: [P] Skin Purpura (1Pe, 7Era)
+    379: [P] Ecchymosis (1Pe, 7Era)
+    380: [P] Jaundice (1Pe, 7Era)
+    381: [P] Skin Itching  (1Pe, 7Era)
+    382: [P] Prurititc Rash (1Pe, 7Era)
+    383: [P] Eczematous Atopic Dermatitis and non hyperkeratotic dermatosis (1Pe, 365Era)
+    384: [P] Contact Dermatitis (14Pe, 60Era)
+    385: [P] Intertrigo (14Pe, 60Era)
+    386: [P] Seborrheic dermatitis (14Pe, 60Era)
+    387: [P] Photodermatitis (14Pe, 60Era)
+    388: [P] Peripheral Neuritis (FP)
+    389: [P] Peripheral Neuropathy or Neuritits (FP)
+    391: [P] Hearing Loss (30Pe, 365Era)
+    392: [P] Otalgia or Otitis (3Pe, 30Era)
+    393: [P] Low Back Pain or Injury (3Pe, 7Era)
+    394: [P] Gastroesophageal reflux disease (365Pe, 365Era)
+    395: [P] Dysmenorrhea (90Pe, 365Era)
+    396: [P] Osteoarthritis (FP)
+    397: [P] Benign Prostatic Hyperplasia (FP)
+    398: [P] Bladder Outflow Obstruction (0Pe, 180Era)
+    399: [P] Kidney Stone (1Pe, 30Era)
+    400: [P] Prostate Cancer among adult males (FP)
+    401: [P] Uterine Fibroids (FP)
+    402: [P] Ventilatory assist for respiratory findings with Acute Respiratory Failure (0Pe, 0Era)
+    403: [P] Acute Respiratory Failure in inpatient or Emergency room (0Pe, 0Era)
+    404: [P] Ventricular Tachycardia, in an Inpatient or Emergency room setting (1Pe, 7Era)
+    405: [P] Atrial Fibrillation or Flutter (1Pe, 365Era)
+    406: [P] Intellectual Disability (FP)
+    407: [P] Hemorrhoids (1Pe, 30Era)
+
 PhenotypeLibrary 3.13.0
 ======================
 Accepted Cohorts: 5 cohorts were accepted in this release.
