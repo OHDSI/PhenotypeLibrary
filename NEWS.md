@@ -1,3 +1,17 @@
+PhenotypeLibrary 3.15.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 7 were added.
+
+    410: [P] Acute Urinary tract infections UTI (1Pe, 30Era)
+    411: [P] Sepsis or Septic Shock (1Pe, 7Era)
+    412: Transverse myelitis indexed on diagnosis (1Ps, 0Era, 365W)
+    414: [P] Acute Skin Eruption symptoms (1Pe, 7Era)
+    415: [P] Skin Erythema (1Pe, 7Era)
+    416: [P] Skin Rash (1Pe, 7Era)
+    417: [P] Acute gastrointestinal bleeding events (7Pe, 30Era)
+
 PhenotypeLibrary 3.14.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
