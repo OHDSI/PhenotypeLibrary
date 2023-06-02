@@ -219,11 +219,11 @@ Peer: Evan Minty
 Contributor: Gowtham A. Rao
 Forum: https://forums.ohdsi.org/t/phenotype-submission-transverse-myelitis/17769
 Logic: events with a diagnosis of transverse myelitis indexed on diagnosis of transverse myelitis, related spinal disease or symptoms of transverse myelitis, followed by a diagnosis of transverse myelitis within 30 days. Events have a 365 days washout period. The events persist for 1 day. Symptoms of Transverse Myelitis included asthenia, muscle weakness, myelitis, paresthesia.","2021-10-05","2023-03-14","rao@ohdsi.org","Transverse myelitis or symptoms indexed on symptoms or diagnosis (1Ps, 0Era, 365W)",,"Accepted","events with a diagnosis of transverse myelitis indexed on diagnosis of transverse myelitis, related spinal disease or symptoms of transverse myelitis, followed by a diagnosis of transverse myelitis within 30 days. Events have a 365 days washout period. The events persist for 1 day. Symptoms of Transverse Myelitis included asthenia, muscle weakness, myelitis, paresthesia.","#Accepted, #Level2","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-transverse-myelitis/17769","3.7.0","Evan Minty",
-64,"[P] Flu-like symptoms fever, cough, malaise, fatigue, dyspnea, myalgia (3Pe, 30Era)","Status: Pending peer review.
+64,"[P] Composite Flu-like symptoms fever, cough, malaise, fatigue, dyspnea, myalgia (3Pe, 30Era)","Status: Pending peer review.
 hashTag: #Symptoms, #Signs
 Contributor: Gowtham A. Rao
 Forum: https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
-Logic: All events of flue like symptoms or signs","2021-10-05","2023-02-12","rao@ohdsi.org","Flu-like symptoms fever, cough, malaise, fatigue, dyspnea, myalgia (3Pe, 30Era)",,"Pending peer review.","All events of flue like symptoms or signs","#Symptoms, #Signs","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
+Logic: All events of flue like symptoms or signs","2021-10-05","2023-06-01","rao@ohdsi.org","Composite Flu-like symptoms fever, cough, malaise, fatigue, dyspnea, myalgia (3Pe, 30Era)",,"Pending peer review.","All events of flue like symptoms or signs","#Symptoms, #Signs","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
 65,"[W] Acute pancreatitis with inpatient admission (3Pe, 30Era)","Status: Withdrawn
 Logic: Withdrawn and replaced by 205","2021-10-05","2023-03-14","rao@ohdsi.org","Acute pancreatitis with inpatient admission (3Pe, 30Era)",,"Withdrawn","Withdrawn and replaced by 205",,,,,,
 66,"[W] Acute renal failure with inpatient admission (3Pe, 30Era)","Status: Withdrawn
@@ -615,12 +615,12 @@ Logic: all events of Acute Kidney Injury with washout period of 30 days. Persons
 Contributor: Gowtham A. Rao
 Forum: 
 Logic: all events of Acute Kidney Injury with washout period of 30 days. Persons should have chronic kidney disease that is is not ESKD, and should be not on chronic dialysis or had kidney transplant. Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury  or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3.  kidney Transplant any time prior ; applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.  ","2022-11-29","2023-02-13","rao@ohdsi.org","Acute Kidney Injury AKI, in persons with NO chronic kidney disease (7Pe, 7Era)",,"Pending peer review.","all events of Acute Kidney Injury with washout period of 30 days. Persons should have chronic kidney disease that is is not ESKD, and should be not on chronic dialysis or had kidney transplant. Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3. kidney Transplant any time prior applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.",,"Gowtham A. Rao","",,,
-269,"[D] Acute Kidney Injury AKI (7Pe, 30W)","Status: Accepted
+269,"[D] Acute Kidney Injury AKI (7Pe, 30Era)","Status: Accepted
 Contributor: Gowtham A. Rao
 Version: 3.8.0
 hashTag: #PhenotypePhebruary, #2022
 Forum: https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067
-Logic: Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury  or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3.  kidney Transplant any time prior ; applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.  ","2022-11-29","2023-04-25","rao@ohdsi.org","Acute Kidney Injury AKI (7Pe, 30W)",,"Accepted","Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3. kidney Transplant any time prior applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.","#PhenotypePhebruary, #2022","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067","3.8.0",,
+Logic: This accepted cohort was Deprecated because the rule to exclude no chronic dialysis was incorrect. This definition was replaced by 362. Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury  or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3.  kidney Transplant any time prior ; applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.  ","2022-11-29","2023-06-01","rao@ohdsi.org","Acute Kidney Injury AKI (7Pe, 30Era)",,"Accepted","This accepted cohort was Deprecated because the rule to exclude no chronic dialysis was incorrect. This definition was replaced by 362. Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3. kidney Transplant any time prior applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.","#PhenotypePhebruary, #2022","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067","3.8.0",,
 270,"[P] Hemolytic Anemia (7Pe, 180Era)","Status: Pending peer review.
 Contributor: Gowtham A. Rao
 Forum: https://forums.ohdsi.org/t/phenotype-submission-hemolytic-anemia/17856
@@ -653,7 +653,7 @@ Logic: all events of Sudden Hearing Loss or hearing loss that is managed by cort
 hashTag: #Symptoms, #Pain
 Contributor: Gowtham A. Rao
 Forum: https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
-Logic: all events of non chronic non generalized or diffuse pain","2023-01-04","2023-05-31","rao@ohdsi.org","Pain or ache that is Non Chronic (3Pe, 7Era)",,"Pending peer review.","all events of non chronic non generalized or diffuse pain","#Symptoms, #Pain","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
+Logic: all events of non chronic non generalized or diffuse pain","2023-01-04","2023-06-02","rao@ohdsi.org","Pain or ache that is Non Chronic (3Pe, 7Era)",,"Pending peer review.","all events of non chronic non generalized or diffuse pain","#Symptoms, #Pain","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
 279,"[P] Low Back Pain or injury (30Pe, 180Era)","Status: Pending peer review.
 hashTag: #Symptoms, #Pain
 Contributor: Gowtham A. Rao
@@ -748,11 +748,11 @@ hashTag: #Symptoms, #urinary
 Contributor: Gowtham A. Rao
 Forum: 
 Logic: all events of urinary bleeds in persons with no recent kidney biopsy, no chronic kidney disease or recent renal glomerular disease","2023-02-02","2023-05-30","rao@ohdsi.org","Urinary bleed events in persons without renal glomerular disease (30Pe, 7Era)",,"Pending peer review.","all events of urinary bleeds in persons with no recent kidney biopsy, no chronic kidney disease or recent renal glomerular disease","#Symptoms, #urinary","Gowtham A. Rao","",,,
-299,"[P] Acute gastrointestinal bleeding events (7Pe, 30Era)","Status: Pending peer review.
+299,"[P] Acute gastrointestinal bleeding or perforation events (7Pe, 30Era)","Status: Pending peer review.
 hashTag: #Symptoms
 Contributor: Gowtham A. Rao
 Forum: 
-Logic: all events of gastrointestinal bleed","2023-02-02","2023-03-15","rao@ohdsi.org","Acute gastrointestinal bleeding events (7Pe, 30Era)",,"Pending peer review.","all events of gastrointestinal bleed","#Symptoms","Gowtham A. Rao","",,,
+Logic: all events of gastrointestinal bleed or perforation","2023-02-02","2023-06-02","rao@ohdsi.org","Acute gastrointestinal bleeding or perforation events (7Pe, 30Era)",,"Pending peer review.","all events of gastrointestinal bleed or perforation","#Symptoms","Gowtham A. Rao","",,,
 300,"[P] Heavy menstrual bleeding (menorrhagia) events (60Pe, 180Era)","Status: Pending peer review.
 hashTag: #Symptoms
 Contributor: Gowtham A. Rao
@@ -797,7 +797,7 @@ Logic: all events of acute hepatic failure. no chronic hepatic failure.","2023-0
 hashTag: #Symptoms, #Pain
 Contributor: Gowtham A. Rao
 Forum: https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
-Logic: all events of pain","2023-02-12","2023-05-31","rao@ohdsi.org","Pain (3Pe, 7Era)",,"Pending peer review.","all events of pain","#Symptoms, #Pain","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
+Logic: all events of pain","2023-02-12","2023-06-02","rao@ohdsi.org","Pain (3Pe, 7Era)",,"Pending peer review.","all events of pain","#Symptoms, #Pain","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
 325,"[P] Inpatient Hospitalization By Site of care or type of service (0Pe, 1Era)","Status: Pending
 hashTag: #Visits
 Contributor: Gowtham A. Rao
@@ -956,12 +956,12 @@ hashTag:
 Contributor: Gowtham A Rao
 Forum: https://forums.ohdsi.org/t/phenotype-phebruary-2023-p11-neurofibromatosis-type-1-with-optical-pathway-glioma/18236
 Logic: Earliest event of restless leg syndrome","2023-04-25","2023-04-25","rao@ohdsi.org","Restless Leg Syndrome (FP)",,"Pending peer review.","Earliest event of restless leg syndrome","","Gowtham A Rao","https://forums.ohdsi.org/t/phenotype-phebruary-2023-p11-neurofibromatosis-type-1-with-optical-pathway-glioma/18236",,,
-362,"[P] Acute Kidney Injury AKI (7Pe, 30W)","Status: Accepted
-Contributor: Gowtham A. Rao
+362,"[P] Acute Kidney Injury AKI (7Pe, 30Era)","Status: Accepted
+Contributor: Marcela V Rivera; David Vizcaya
 Version: 3.8.0
 hashTag: #PhenotypePhebruary, #2022
 Forum: https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067
-Logic: Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury  or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3.  kidney Transplant any time prior ; applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.  ","2023-04-25","2023-04-25","rao@ohdsi.org","Acute Kidney Injury AKI (7Pe, 30W)",,"Accepted","Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3. kidney Transplant any time prior applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.","#PhenotypePhebruary, #2022","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067","3.8.0",,
+Logic: Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury  or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3.  kidney Transplant any time prior ; applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.  ","2023-04-25","2023-06-01","rao@ohdsi.org","Acute Kidney Injury AKI (7Pe, 30Era)",,"Accepted","Acute Kidney Injury (AKI) indexed on a diagnosis of Acute kidney injury or a Dialysis procedure at a medicare certified esrd facility for acute kidney injury without esrd, excluding events/patients with 1. a diagnosis of End-Stage Kidney Disease in the 365 days before AKI occurrence 2. patients receiving chronic dialysis defined as more than 3 recorded events of dialysis in 365 days before AKI occurrence 3. kidney Transplant any time prior applying a washout period of 30 days between observed events. patients exit the cohort 7 days post index.","#PhenotypePhebruary, #2022","Marcela V Rivera David Vizcaya","https://forums.ohdsi.org/t/phenotype-phebruary-day-29-acute-kidney-injury/16067","3.8.0",,
 363,"[P] Joint Stiffness (3Pe, 7Era)","Status: Pending peer review.
 hashTag: #Symptoms
 Contributor: Gowtham A. Rao
@@ -1172,3 +1172,40 @@ Logic: Persons with intellectual disability","2023-05-31","2023-05-31","rao@ohds
 Contributor: Gowtham A. Rao
 Forum: 
 Logic: all events of Hemorrhoids ","2023-05-31","2023-05-31","rao@ohdsi.org","Hemorrhoids (1Pe, 30Era)",,"Pending peer review.","all events of Hemorrhoids",,"Gowtham A. Rao","",,,
+410,"[P] Acute Urinary tract infections UTI (1Pe, 30Era)","Status: Pending peer review.
+hashTag: #Symptoms
+Contributor: Stephen H. Fortin
+Forum: 
+Logic: Earliest event of diagnosis of certain urinary tract infections, cohort exist is end of observation period. https://onlinelibrary.wiley.com/doi/full/10.1002/pds.5492","2023-06-01","2023-06-01","rao@ohdsi.org","Acute Urinary tract infections UTI (1Pe, 30Era)",,"Pending peer review.","Earliest event of diagnosis of certain urinary tract infections, cohort exist is end of observation period. https://onlinelibrary.wiley.com/doi/full/10.1002/pds.5492","#Symptoms","Stephen H. Fortin","",,,
+411,"[P] Sepsis or Septic Shock (1Pe, 7Era)","Status: Pending peer review.
+hashTag: 
+Contributor: Gowtham A. Rao
+Forum: 
+Logic: All events of Sepsis or Septic Shock","2023-06-01","2023-06-01","rao@ohdsi.org","Sepsis or Septic Shock (1Pe, 7Era)",,"Pending peer review.","All events of Sepsis or Septic Shock","","Gowtham A. Rao","",,,
+412,"Transverse myelitis indexed on diagnosis (1Ps, 0Era, 365W)","Status: Accepted
+hashTag: #Accepted, #Level2
+Version: 3.7.0
+Peer: Evan Minty
+Contributor: Gowtham A. Rao
+Forum: https://forums.ohdsi.org/t/phenotype-submission-transverse-myelitis/17769
+Logic: events with a diagnosis of transverse myelitis indexed on diagnosis of transverse myelitis. Events have a 365 days washout period. The events persist for 1 day. Symptoms of Transverse Myelitis included asthenia, muscle weakness, myelitis, paresthesia.","2023-06-02","2023-06-02","rao@ohdsi.org","Transverse myelitis indexed on diagnosis (1Ps, 0Era, 365W)",,"Accepted","events with a diagnosis of transverse myelitis indexed on diagnosis of transverse myelitis. Events have a 365 days washout period. The events persist for 1 day. Symptoms of Transverse Myelitis included asthenia, muscle weakness, myelitis, paresthesia.","#Accepted, #Level2","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-transverse-myelitis/17769","3.7.0","Evan Minty",
+414,"[P] Acute Skin Eruption symptoms (1Pe, 7Era)","Status: Pending peer review.
+hashTag: #Symptoms
+Contributor: Gowtham A. Rao
+Forum: https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
+Logic: All events of certain skin eruption symptoms","2023-06-02","2023-06-02","rao@ohdsi.org","Acute Skin Eruption symptoms (1Pe, 7Era)",,"Pending peer review.","All events of certain skin eruption symptoms","#Symptoms","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
+415,"[P] Skin Erythema (1Pe, 7Era)","Status: Pending peer review.
+hashTag: #Symptoms
+Contributor: Gowtham A. Rao
+Forum: https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
+Logic: All events of Skin Erythema","2023-06-02","2023-06-02","rao@ohdsi.org","Skin Erythema (1Pe, 7Era)",,"Pending peer review.","All events of Skin Erythema","#Symptoms","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
+416,"[P] Skin Rash (1Pe, 7Era)","Status: Pending peer review.
+hashTag: #Symptoms
+Contributor: Gowtham A. Rao
+Forum: https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895
+Logic: All events of Skin Erythema","2023-06-02","2023-06-02","rao@ohdsi.org","Skin Rash (1Pe, 7Era)",,"Pending peer review.","All events of Skin Erythema","#Symptoms","Gowtham A. Rao","https://forums.ohdsi.org/t/phenotype-submission-symptoms-and-signs/17895",,,
+417,"[P] Acute gastrointestinal bleeding events (7Pe, 30Era)","Status: Pending peer review.
+hashTag: #Symptoms
+Contributor: Gowtham A. Rao
+Forum: 
+Logic: all events of gastrointestinal bleed","2023-06-02","2023-06-02","rao@ohdsi.org","Acute gastrointestinal bleeding events (7Pe, 30Era)",,"Pending peer review.","all events of gastrointestinal bleed","#Symptoms","Gowtham A. Rao","",,,
