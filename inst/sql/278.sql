@@ -131,7 +131,7 @@ FROM
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,7,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
 GROUP BY p.person_id, p.event_id
 HAVING COUNT(cc.event_id) = 0
 -- End Correlated Criteria
@@ -174,7 +174,7 @@ FROM (
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,3,end_date) > op_end_date then op_end_date else DATEADD(day,3,end_date) end as end_date
+  case when DATEADD(day,0,end_date) > op_end_date then op_end_date else DATEADD(day,0,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -208,7 +208,7 @@ from ( --cteEnds
 	JOIN ( -- cteEndDates
     SELECT
       person_id
-      , DATEADD(day,-1 * 7, event_date)  as end_date
+      , DATEADD(day,-1 * 0, event_date)  as end_date
     FROM
     (
       SELECT
@@ -229,7 +229,7 @@ from ( --cteEnds
 
         SELECT
           person_id
-          , DATEADD(day,7,end_date) as end_date
+          , DATEADD(day,0,end_date) as end_date
           , 1 AS event_type
         FROM #cohort_rows
       ) RAWDATA

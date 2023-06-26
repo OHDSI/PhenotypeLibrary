@@ -37,12 +37,12 @@ SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_dat
   C.visit_occurrence_id, C.condition_start_date as sort_date
 FROM 
 (
-  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
 
-WHERE C.ordinal = 1
+
 -- End Condition Occurrence Criteria
 
 UNION ALL
@@ -51,19 +51,19 @@ select C.person_id, C.observation_id as event_id, C.observation_date as start_da
        C.visit_occurrence_id, C.observation_date as sort_date
 from 
 (
-  select o.* , row_number() over (PARTITION BY o.person_id ORDER BY o.observation_date, o.observation_id) as ordinal
+  select o.* 
   FROM @cdm_database_schema.OBSERVATION o
 JOIN #Codesets cs on (o.observation_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
 
-WHERE C.ordinal = 1
+
 -- End Observation Criteria
 
   ) E
 	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
   WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
 ) P
-WHERE P.ordinal = 1
+
 -- End Primary Events
 ) pe
   
@@ -91,9 +91,15 @@ FROM (
   ) MG -- matching groups
 
 ) Results
-WHERE Results.ordinal = 1
+
 ;
 
+-- date offset strategy
+
+select event_id, person_id, 
+  case when DATEADD(day,0,end_date) > op_end_date then op_end_date else DATEADD(day,0,end_date) end as end_date
+INTO #strategy_ends
+from #included_events;
 
 
 -- generate cohort periods into #final_cohort
@@ -106,8 +112,9 @@ from ( -- first_ends
 	  from #included_events I
 	  join ( -- cohort_ends
 -- cohort exit dates
--- By default, cohort exit at the event's op end date
-select event_id, person_id, op_end_date as end_date from #included_events
+-- End Date Strategy
+SELECT event_id, person_id, end_date from #strategy_ends
+
     ) CE on I.event_id = CE.event_id and I.person_id = CE.person_id and CE.end_date >= I.start_date
 	) F
 	WHERE F.ordinal = 1
@@ -175,6 +182,8 @@ delete from @results_database_schema.cohort_censor_stats where cohort_definition
 
 
 
+TRUNCATE TABLE #strategy_ends;
+DROP TABLE #strategy_ends;
 
 
 TRUNCATE TABLE #cohort_rows;

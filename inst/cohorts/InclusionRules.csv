@@ -3,23 +3,6 @@ cohortName,ruleSequence,ruleName,cohortId
 13,0,"Exclude persons with muscle pain that may be explained by injury, ischemia or chronic systemic inflammation",13
 134,0,has at least one condition record of ADHD,134
 19,0,Exclude if concomitant non acute pneumonia,19
-205,0,Washout period of 365 days,205
-205,1,Should have Acute Pancreatitis within 1 day,205
-205,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,205
-205,3,Should NOT have Hereditary Pancreatitis any time,205
-206,0,Washout period of 365 days,206
-206,1,Should have Acute Pancreatitis within 1 day,206
-206,2,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,206
-206,3,Should NOT have Hereditary Pancreatitis any time,206
-206,4,Should NOT have Alcoholic Pancreatitis on or before Acute Pancreatitis,206
-206,5,Should NOT have evidence Alcoholism or Severe Alcohol related disorders in past 1 year,206
-206,6,Should NOT have evidence Alcohol intoxication in past 30 days,206
-206,7,Should NOT have evidence Cholangitis or Cholecystitis in past 1 year,206
-206,8,Should NOT have evidence Biliary Tract Disease in past in past 1 year,206
-206,9,Should NOT have evidence of recent Endoscopic retrograde cholangiopancreatography,206
-206,10,Should NOT have evidence of Intestinal ischemia including acute mesenteric ischemia,206
-206,11,Should NOT have evidence of Gastrointestinal perforation,206
-206,12,Should NOT have evidence of Intestinal Obstruction,206
 207,0,No congenital or genetic anemia,207
 207,1,No Constitutional Pure Red Cell Aplasia,207
 207,2,No normal Hemoglobin measurement in blood on index date,207
@@ -127,8 +110,6 @@ cohortName,ruleSequence,ruleName,cohortId
 230,1,has no Systemic Lupus Erythematosus events in prior 0 - 365 days,230
 233,0,has no events in prior 'clean window' - 180 days,233
 239,0,No hypersomnia in 365 days prior to index and including index,239
-248,0,has no events in prior 'clean window' - 365 days,248
-249,0,has no events in prior 'clean window' - 365 days,249
 251,0,Should have Acute Pancreatitis within 1 day,251
 251,1,Should NOT have Chronic Pancreatitis on or before Acute Pancreatitis,251
 251,2,Should NOT have Hereditary Pancreatitis any time,251
@@ -188,7 +169,7 @@ cohortName,ruleSequence,ruleName,cohortId
 269,1,No ESKD at baseline,269
 269,2,No chronic dialysis at baseline (-365 to 8 days) ,269
 269,3,No Kidney Transplant any time prior ,269
-27,0,No COPD prior,27
+27,0,No Chronic Obstructive Lung Disease (COPD) prior,27
 270,0,No normal low Hemoglobin measurement in blood on index date,270
 270,1,No Polycythemia on index date,270
 273,0,Has Inpatient or ER visit ,273
@@ -213,7 +194,6 @@ cohortName,ruleSequence,ruleName,cohortId
 290,0,Thyroiditis including hypothyroidism and hyperthyroidism,290
 290,1,Excluding alternative causes of hypothyroidism,290
 291,0,Require Gynecomastia diagnosis ,291
-291,1,restrict to males ,291
 292,0,have no chronic hepatic failure on the day of diagnosis ,292
 293,0,have no chronic hepatic failure,293
 294,0,Chronic Hepatic Failure,294
@@ -304,6 +284,7 @@ cohortName,ruleSequence,ruleName,cohortId
 60,0,Positive test result,60
 60,1,Negative test result,60
 63,0,has no events in prior 'clean window' - 365 days,63
-73,0,At least 1 outcome 1 day after or end of observation before end of pregnancy post-2020,73
-73,1,No outcome in the prior 60d,73
+693,0,"No congenital or genetic neutropenia, leukopenia or agranulocytosis",693
+693,1,No Normal Neutrophil count on index date,693
+693,2,No Neutrophilia on index date,693
 78,0,Limit to inpatient visit,78
