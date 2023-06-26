@@ -2234,7 +2234,7 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "No COPD prior",
+			"name" : "No Chronic Obstructive Lung Disease (COPD) prior",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
@@ -2251,7 +2251,7 @@
 							},
 							"End" : {
 								"Days" : 0,
-								"Coeff" : 1
+								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,
 							"UseEventEnd" : false
@@ -2277,7 +2277,7 @@
 							},
 							"End" : {
 								"Days" : 0,
-								"Coeff" : 1
+								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,
 							"UseEventEnd" : false
@@ -2296,6 +2296,12 @@
 			}
 		}
 	],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 0
+		}
+	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",

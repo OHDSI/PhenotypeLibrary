@@ -225,7 +225,6 @@ for (i in (1:length(cohortJsonFiles))) {
 }
 
 
-
 # write Cohorts.csv
 if ('atlasId' %in% colnames(cohortRecord)) {
   cohortRecord$atlasId <- NULL
@@ -344,7 +343,6 @@ expectedFields <- c('cohortId',
                     'recommendedReferentConceptIds',
                     'hasInclusionRule',
                     'hasRestrictInitialEvents',
-                    'cohortNameLong',
                     'ohdsiForumPost',
                     'metaDataAll',
                     'createdDate',
@@ -377,6 +375,8 @@ cohortRecord <- cohortRecord |>
   dplyr::select(dplyr::all_of(expectedFields)) |>
   dplyr::arrange(cohortId)
 
+cohortRecord <- cohortRecord |>
+  dplyr::mutate(cohortNameLong = dplyr::coalesce(cohortNameLong, cohortName))
 
 readr::write_excel_csv(
   x = cohortRecord,

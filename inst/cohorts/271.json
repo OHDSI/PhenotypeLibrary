@@ -196,7 +196,7 @@
 			"PostDays" : 0
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "First"
+			"Type" : "All"
 		}
 	},
 	"AdditionalCriteria" : {
@@ -1118,12 +1118,18 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"ExpressionLimit" : {
 		"Type" : "All"
 	},
 	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 0
+		}
+	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
