@@ -256,6 +256,34 @@ if ('Status' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(status = Status)
 }
+if ('Subset' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendSubsetOperator = Subset)
+}
+if ('HasInclusionRule' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(hasInclusionRule = HasInclusionRule)
+}
+if ('HasRestrictInitialEvents' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(hasRestrictInitialEvents = HasRestrictInitialEvents)
+}
+if ('Circe' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(isCirceJson = Circe)
+}
+if ('Forum' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(ohdsiForumPost = Forum)
+}
+if ('Era' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendedEraCollapseDurations = Era)
+}
+if ('Persistence' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendedEraPersistenceDurations = Persistence)
+}
 readr::write_excel_csv(
   x = cohortRecord |> 
     dplyr::arrange(cohortId),
