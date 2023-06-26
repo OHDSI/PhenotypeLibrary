@@ -312,19 +312,21 @@ if ('description' %in% colnames(cohortRecord)) {
 }
 if ('cohortName' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
-    dplyr::rename(cohortNameLong = cohortName)
+    dplyr::rename(cohortNameAtlas = cohortName)
 }
 if ('cohortNameFormatted' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(cohortName = cohortNameFormatted)
 }
-if ('LongCohortName' %in% colnames(cohortRecord)) {
+if ('LongName' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
-    dplyr::rename(cohortNameLong = LongCohortName)
+    dplyr::rename(cohortNameLong = LongName)
 }
 
 expectedFields <- c('cohortId',
                     'cohortName',
+                    'cohortNameLong',
+                    'cohortNameAtlas',
                     'librarian',
                     'status',
                     'addedVersion',
@@ -383,6 +385,7 @@ readr::write_excel_csv(
   na = "",
   quote = "all"
 )
+
 
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
