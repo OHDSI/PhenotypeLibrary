@@ -138,7 +138,7 @@ for (i in 1:nrow(exportableCohorts)) {
     textInDescription <- NULL
     
     strings <-
-      stringr::str_split(string = strings, pattern = stringr::fixed(": "))
+      stringr::str_split(string = strings, pattern = stringr::fixed(":"))
     
     if (all(
       !is.na(cohortRecord[[i]]$description[[1]]),
@@ -250,14 +250,125 @@ if ('Logic' %in% colnames(cohortRecord)) {
 }
 if ('Contributor' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
-    dplyr::rename(contributor = Contributor)
+    dplyr::rename(contributors = Contributor)
 }
 if ('Status' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(status = Status)
 }
+if ('Subset' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendSubsetOperators = Subset)
+}
+if ('HasInclusionRule' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(hasInclusionRule = HasInclusionRule)
+}
+if ('HasRestrictInitialEvents' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(hasRestrictInitialEvents = HasRestrictInitialEvents)
+}
+if ('Circe' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(isCirceJson = Circe)
+}
+if ('Forum' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(ohdsiForumPost = Forum)
+}
+if ('Era' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendedEraCollapseDurations = Era)
+}
+if ('Persistence' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendedEraPersistenceDurations = Persistence)
+}
+if ('COrcId' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(contributorOrcIds = COrcId)
+}
+if ('COrg' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(contributorOrganizations = COrg)
+}
+if ('refCId' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(recommendedReferentConceptIds = refCId)
+}
+if ('peer' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(peerReviewers = peer)
+}
+if ('POrcId' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(peerReviewerOrcIds = POrcId)
+}
+if ('description' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(metaDataAll = description)
+}
+if ('cohortName' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(cohortNameLong = cohortName)
+}
+if ('cohortNameFormatted' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(cohortName = cohortNameFormatted)
+}
+
+expectedFields <- c('cohortId',
+                    'cohortName',
+                    'librarian',
+                    'status',
+                    'addedVersion',
+                    'logicDescription',
+                    'hashTag',
+                    'isCirceJson',
+                    'contributors',
+                    'contributorOrcIds',
+                    'contributorOrganization',
+                    'peerReviewers',
+                    'peerReviewerOrcIds',
+                    'recommendedEraPersistenceDurations',
+                    'recommendedEraCollapseDurations',
+                    'recommendSubsetOperators',
+                    'recommendedReferentConceptIds',
+                    'hasInclusionRule',
+                    'hasRestrictInitialEvents',
+                    'cohortNameLong',
+                    'ohdsiForumPost',
+                    'metaDataAll',
+                    'createdDate',
+                    'modifiedDate',
+                    'lastModifiedBy'
+)
+
+presentInBoth <- intersect(expectedFields,
+                           colnames(cohortRecord))
+new <- setdiff(colnames(cohortRecord),
+               expectedFields)
+missing <- setdiff(expectedFields,
+                   colnames(cohortRecord))
+
+if (length(new) > 0) {
+  stop(paste0("The following new fields observed please check and update ", 
+              paste0(new, collapse = ", ")))
+}
+
+if (length(missing) > 0) {
+  stop(paste0("The following fields were missing please check and update ", 
+              paste0(missing, collapse = ", ")))
+}
+
+if (sort(presentInBoth) != sort(expectedFields)) {
+  stop("Something is odd. Please check.")
+}
+
+
 readr::write_excel_csv(
   x = cohortRecord |> 
+    dplyr::select(expectedFields) |> 
     dplyr::arrange(cohortId),
   file = "inst/Cohorts.csv",
   append = FALSE,
@@ -353,7 +464,7 @@ if (needToUpdate) {
     messages <-
       c("Accepted Cohorts: No cohorts were accepted in this release.",
         messages
-        )
+      )
   } else {
     
     for (i in (1:nrow(acceptedCohorts))) {
@@ -374,7 +485,7 @@ if (needToUpdate) {
     messages <- c(messages,
                   "")
     
-
+    
   }
   
   news <- c(
