@@ -138,7 +138,7 @@ for (i in 1:nrow(exportableCohorts)) {
     textInDescription <- NULL
     
     strings <-
-      stringr::str_split(string = strings, pattern = stringr::fixed(": "))
+      stringr::str_split(string = strings, pattern = stringr::fixed(":"))
     
     if (all(
       !is.na(cohortRecord[[i]]$description[[1]]),
