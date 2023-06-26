@@ -303,6 +303,8 @@ if ('peer' %in% colnames(cohortRecord)) {
 if ('POrcId' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(peerReviewerOrcIds = POrcId)
+} else {
+  cohortRecord$peerReviewerOrcIds <- ""
 }
 if ('description' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
@@ -316,6 +318,10 @@ if ('cohortNameFormatted' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(cohortName = cohortNameFormatted)
 }
+if ('LongCohortName' %in% colnames(cohortRecord)) {
+  cohortRecord <- cohortRecord |> 
+    dplyr::rename(cohortNameLong = LongCohortName)
+}
 
 expectedFields <- c('cohortId',
                     'cohortName',
@@ -327,7 +333,7 @@ expectedFields <- c('cohortId',
                     'isCirceJson',
                     'contributors',
                     'contributorOrcIds',
-                    'contributorOrganization',
+                    'contributorOrganizations',
                     'peerReviewers',
                     'peerReviewerOrcIds',
                     'recommendedEraPersistenceDurations',
@@ -361,15 +367,17 @@ if (length(missing) > 0) {
               paste0(missing, collapse = ", ")))
 }
 
-if (sort(presentInBoth) != sort(expectedFields)) {
+if (!all(sort(presentInBoth) == sort(expectedFields))) {
   stop("Something is odd. Please check.")
 }
 
+cohortRecord <- cohortRecord |>
+  dplyr::select(dplyr::all_of(expectedFields)) |>
+  dplyr::arrange(cohortId)
+
 
 readr::write_excel_csv(
-  x = cohortRecord |> 
-    dplyr::select(expectedFields) |> 
-    dplyr::arrange(cohortId),
+  x = cohortRecord,
   file = "inst/Cohorts.csv",
   append = FALSE,
   na = "",
