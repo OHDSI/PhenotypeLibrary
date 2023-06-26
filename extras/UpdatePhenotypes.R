@@ -259,18 +259,18 @@ if ('Subset' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(recommendSubsetOperators = Subset)
 }
-if ('HasInclusionRule' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(hasInclusionRule = HasInclusionRule)
-}
-if ('HasRestrictInitialEvents' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(hasRestrictInitialEvents = HasRestrictInitialEvents)
-}
-if ('Circe' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(isCirceJson = Circe)
-}
+# if ('HasInclusionRule' %in% colnames(cohortRecord)) {
+#   cohortRecord <- cohortRecord |> 
+#     dplyr::rename(hasInclusionRule = HasInclusionRule)
+# }
+# if ('HasRestrictInitialEvents' %in% colnames(cohortRecord)) {
+#   cohortRecord <- cohortRecord |> 
+#     dplyr::rename(hasRestrictInitialEvents = HasRestrictInitialEvents)
+# }
+# if ('Circe' %in% colnames(cohortRecord)) {
+#   cohortRecord <- cohortRecord |> 
+#     dplyr::rename(isCirceJson = Circe)
+# }
 if ('Forum' %in% colnames(cohortRecord)) {
   cohortRecord <- cohortRecord |> 
     dplyr::rename(ohdsiForumPost = Forum)
@@ -331,7 +331,7 @@ expectedFields <- c('cohortId',
                     'addedVersion',
                     'logicDescription',
                     'hashTag',
-                    'isCirceJson',
+                    # 'isCirceJson',
                     'contributors',
                     'contributorOrcIds',
                     'contributorOrganizations',
@@ -341,10 +341,10 @@ expectedFields <- c('cohortId',
                     'recommendedEraCollapseDurations',
                     'recommendSubsetOperators',
                     'recommendedReferentConceptIds',
-                    'hasInclusionRule',
-                    'hasRestrictInitialEvents',
+                    # 'hasInclusionRule',
+                    # 'hasRestrictInitialEvents',
                     'ohdsiForumPost',
-                    'metaDataAll',
+                    # 'metaDataAll',
                     'createdDate',
                     'modifiedDate',
                     'lastModifiedBy'
