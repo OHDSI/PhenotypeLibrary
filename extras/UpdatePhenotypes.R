@@ -249,10 +249,15 @@ expectedFields <- c('cohortId',
                     'lastModifiedBy'
 )
 
+colnames(cohortRecord) <- colnames(cohortRecord) |> 
+  stringr::str_squish()
+
 presentInBoth <- intersect(expectedFields,
                            colnames(cohortRecord))
 new <- setdiff(colnames(cohortRecord),
                expectedFields)
+
+
 missing <- setdiff(expectedFields,
                    colnames(cohortRecord))
 
