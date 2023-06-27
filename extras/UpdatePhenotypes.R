@@ -152,7 +152,9 @@ for (i in 1:nrow(exportableCohorts)) {
         stringValues[[j]] <- dplyr::tibble()
         if (length(strings[[j]]) == 2) {
           stringValues[[j]] <- dplyr::tibble(
-            name = strings[[j]][[1]],
+            name = strings[[j]][[1]] |>
+              stringr::str_squish() |>
+              stringr::str_trim(),
             value = strings[[j]][[2]] |>
               stringr::str_squish() |>
               stringr::str_trim()
@@ -225,6 +227,11 @@ for (i in (1:length(cohortJsonFiles))) {
 }
 
 
+cohortRecord <- cohortRecord |> 
+  dplyr::rename(cohortNameAtlas = cohortName,
+                cohortName = cohortNameFormatted)
+  
+
 expectedFields <- c('cohortId',
                     'cohortName',
                     'cohortNameLong',
@@ -249,17 +256,23 @@ expectedFields <- c('cohortId',
                     'lastModifiedBy'
 )
 
-colnames(cohortRecord) <- colnames(cohortRecord) |> 
-  stringr::str_squish()
+
 
 presentInBoth <- intersect(expectedFields,
                            colnames(cohortRecord))
-new <- setdiff(colnames(cohortRecord),
-               expectedFields)
 
+new <- setdiff(colnames(cohortRecord),
+               c(expectedFields,
+                 "atlasId",
+                 "id",
+                 "name",
+                 "cohortNameFormatted",
+                 "description"))
 
 missing <- setdiff(expectedFields,
-                   colnames(cohortRecord))
+                   c(colnames(cohortRecord),
+                     "cohortNameLong",
+                     "status"))
 
 if (length(new) > 0) {
   stop(paste0("The following new fields observed please check and update ", 
@@ -271,9 +284,9 @@ if (length(missing) > 0) {
               paste0(missing, collapse = ", ")))
 }
 
-if (!all(sort(presentInBoth) == sort(expectedFields))) {
-  stop("Something is odd. Please check.")
-}
+toBeRemoved <- setdiff(colnames(cohortRecord),
+                       expectedFields)
+print(paste0("Removed : ", paste0(toBeRemoved, collapse = ", ")))
 
 cohortRecord <- cohortRecord |>
   dplyr::select(dplyr::all_of(expectedFields)) |>
