@@ -169,12 +169,17 @@ for (i in 1:nrow(exportableCohorts)) {
         
         if (nrow(data) > 0) {
           cohortRecord[[i]] <- cohortRecord[[i]] |>
-            tidyr::crossing(data)
+            tidyr::crossing(data |> 
+                              dplyr::select(dplyr::all_of(
+                                setdiff(x = colnames(data),
+                                        y = colnames(cohortRecord[[i]]))
+                              )))
         }
       }
     }
   }
 }
+
 cohortRecord <- dplyr::bind_rows(cohortRecord) |>
   dplyr::select(-createdBy,-modifiedBy) |>
   dplyr::mutate(id = cohortId,
