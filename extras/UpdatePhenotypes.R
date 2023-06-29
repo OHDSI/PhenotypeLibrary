@@ -134,7 +134,6 @@ for (i in 1:nrow(exportableCohorts)) {
       cohortRecord[[i]]$description |>
       stringr::str_replace_all(pattern = ";", replacement = "") |>
       stringr::str_split(pattern = "\n")
-    
     strings <- textInDescription[[1]]
     textInDescription <- NULL
     
@@ -153,7 +152,7 @@ for (i in 1:nrow(exportableCohorts)) {
         stringValues[[j]] <- dplyr::tibble()
         if (length(strings[[j]]) == 2) {
           stringValues[[j]] <- dplyr::tibble(
-            name = strings[[j]][[1]] |> stringr::str_squish() |> stringr::str_trim(),
+            name = strings[[j]][[1]],
             value = strings[[j]][[2]] |>
               stringr::str_squish() |>
               stringr::str_trim()
@@ -176,7 +175,6 @@ for (i in 1:nrow(exportableCohorts)) {
     }
   }
 }
-
 cohortRecord <- dplyr::bind_rows(cohortRecord) |>
   dplyr::select(-createdBy,-modifiedBy) |>
   dplyr::mutate(id = cohortId,
