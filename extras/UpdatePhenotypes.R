@@ -138,7 +138,7 @@ for (i in 1:nrow(exportableCohorts)) {
     textInDescription <- NULL
     
     strings <-
-      stringr::str_split(string = strings, pattern = stringr::fixed(": "))
+      stringr::str_split(string = strings, pattern = stringr::fixed(":"))
     
     if (all(
       !is.na(cohortRecord[[i]]$description[[1]]),
@@ -152,7 +152,7 @@ for (i in 1:nrow(exportableCohorts)) {
         stringValues[[j]] <- dplyr::tibble()
         if (length(strings[[j]]) == 2) {
           stringValues[[j]] <- dplyr::tibble(
-            name = strings[[j]][[1]],
+            name = strings[[j]][[1]] |> stringr::str_squish() |> stringr::str_trim(),
             value = strings[[j]][[2]] |>
               stringr::str_squish() |>
               stringr::str_trim()
@@ -169,12 +169,17 @@ for (i in 1:nrow(exportableCohorts)) {
         
         if (nrow(data) > 0) {
           cohortRecord[[i]] <- cohortRecord[[i]] |>
-            tidyr::crossing(data)
+            tidyr::crossing(data |> 
+                              dplyr::select(dplyr::all_of(
+                                setdiff(x = colnames(data),
+                                        y = colnames(cohortRecord[[i]]))
+                              )))
         }
       }
     }
   }
 }
+
 cohortRecord <- dplyr::bind_rows(cohortRecord) |>
   dplyr::select(-createdBy,-modifiedBy) |>
   dplyr::mutate(id = cohortId,
@@ -225,39 +230,70 @@ for (i in (1:length(cohortJsonFiles))) {
 }
 
 
-
-# write Cohorts.csv
-if ('atlasId' %in% colnames(cohortRecord)) {
-  cohortRecord$atlasId <- NULL
-}
 if ('id' %in% colnames(cohortRecord)) {
   cohortRecord$id <- NULL
 }
 if ('name' %in% colnames(cohortRecord)) {
   cohortRecord$name <- NULL
 }
-if ('Version' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(addedVersion = Version)
+cohortRecord <- cohortRecord |> 
+  dplyr::rename(metaDataAll = description)
+
+cohortRecord <- cohortRecord |> 
+  dplyr::mutate(isCirceJson = 1)
+
+expectedFields <- c('cohortId',
+                    'cohortName',
+                    'cohortNameFormatted',
+                    'cohortNameLong',
+                    'cohortNameAtlas',
+                    'librarian',
+                    'status',
+                    'addedVersion',
+                    'logicDescription',
+                    'hashTag',
+                    'isCirceJson',
+                    'contributors',
+                    'contributorOrcIds',
+                    'contributorOrganizations',
+                    'peerReviewers',
+                    'peerReviewerOrcIds',
+                    'recommendedEraPersistenceDurations',
+                    'recommendedEraCollapseDurations',
+                    'recommendSubsetOperators',
+                    'recommendedReferentConceptIds',
+                    'cohortNameLong',
+                    'ohdsiForumPost',
+                    'metaDataAll',
+                    'createdDate',
+                    'modifiedDate',
+                    'lastModifiedBy'
+)
+
+presentInBoth <- intersect(expectedFields,
+                           colnames(cohortRecord))
+new <- setdiff(colnames(cohortRecord),
+               expectedFields)
+missing <- setdiff(expectedFields,
+                   colnames(cohortRecord))
+
+if (length(new) > 0) {
+  stop(paste0("The following new fields observed please check and update ", 
+              paste0(new, collapse = ", ")))
 }
-if ('Peer' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(peer = Peer)
+
+if (length(missing) > 0) {
+  stop(paste0("The following fields were missing please check and update ", 
+              paste0(missing, collapse = ", ")))
 }
-if ('Logic' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(logicDescription = Logic)
+
+if (!all(sort(presentInBoth) |> unique() == sort(expectedFields) |> unique())) {
+  stop("Something is odd. Please check.")
 }
-if ('Contributor' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(contributor = Contributor)
-}
-if ('Status' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(status = Status)
-}
+
 readr::write_excel_csv(
-  x = cohortRecord |> 
+  x = cohortRecord |>
+    dplyr::select(dplyr::all_of(presentInBoth)) |>
     dplyr::arrange(cohortId),
   file = "inst/Cohorts.csv",
   append = FALSE,
@@ -353,7 +389,7 @@ if (needToUpdate) {
     messages <-
       c("Accepted Cohorts: No cohorts were accepted in this release.",
         messages
-        )
+      )
   } else {
     
     for (i in (1:nrow(acceptedCohorts))) {
@@ -374,7 +410,7 @@ if (needToUpdate) {
     messages <- c(messages,
                   "")
     
-
+    
   }
   
   news <- c(
