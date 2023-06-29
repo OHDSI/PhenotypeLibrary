@@ -230,100 +230,23 @@ for (i in (1:length(cohortJsonFiles))) {
 }
 
 
-
-# write Cohorts.csv
-if ('atlasId' %in% colnames(cohortRecord)) {
-  cohortRecord$atlasId <- NULL
-}
 if ('id' %in% colnames(cohortRecord)) {
   cohortRecord$id <- NULL
 }
 if ('name' %in% colnames(cohortRecord)) {
   cohortRecord$name <- NULL
 }
-if ('Version' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(addedVersion = Version)
-}
-if ('Peer' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(peer = Peer)
-}
-if ('Logic' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(logicDescription = Logic)
-}
-if ('Contributor' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(contributors = Contributor)
-}
-if ('Status' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(status = Status)
-}
-if ('Subset' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(recommendSubsetOperators = Subset)
-}
-if ('HasInclusionRule' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(hasInclusionRule = HasInclusionRule)
-}
-if ('HasRestrictInitialEvents' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(hasRestrictInitialEvents = HasRestrictInitialEvents)
-}
-if ('Circe' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(isCirceJson = Circe)
-}
-if ('Forum' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(ohdsiForumPost = Forum)
-}
-if ('Era' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(recommendedEraCollapseDurations = Era)
-}
-if ('Persistence' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(recommendedEraPersistenceDurations = Persistence)
-}
-if ('COrcId' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(contributorOrcIds = COrcId)
-}
-if ('COrg' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(contributorOrganizations = COrg)
-}
-if ('refCId' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(recommendedReferentConceptIds = refCId)
-}
-if ('peer' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(peerReviewers = peer)
-}
-if ('POrcId' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(peerReviewerOrcIds = POrcId)
-}
-if ('description' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(metaDataAll = description)
-}
-if ('cohortName' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(cohortNameLong = cohortName)
-}
-if ('cohortNameFormatted' %in% colnames(cohortRecord)) {
-  cohortRecord <- cohortRecord |> 
-    dplyr::rename(cohortName = cohortNameFormatted)
-}
+cohortRecord <- cohortRecord |> 
+  dplyr::rename(metaDataAll = description)
+
+cohortRecord <- cohortRecord |> 
+  dplyr::mutate(isCirceJson = 1)
 
 expectedFields <- c('cohortId',
                     'cohortName',
+                    'cohortNameFormatted',
+                    'cohortNameLong',
+                    'cohortNameAtlas',
                     'librarian',
                     'status',
                     'addedVersion',
@@ -332,15 +255,13 @@ expectedFields <- c('cohortId',
                     'isCirceJson',
                     'contributors',
                     'contributorOrcIds',
-                    'contributorOrganization',
+                    'contributorOrganizations',
                     'peerReviewers',
                     'peerReviewerOrcIds',
                     'recommendedEraPersistenceDurations',
                     'recommendedEraCollapseDurations',
                     'recommendSubsetOperators',
                     'recommendedReferentConceptIds',
-                    'hasInclusionRule',
-                    'hasRestrictInitialEvents',
                     'cohortNameLong',
                     'ohdsiForumPost',
                     'metaDataAll',
@@ -366,7 +287,7 @@ if (length(missing) > 0) {
               paste0(missing, collapse = ", ")))
 }
 
-if (sort(presentInBoth) != sort(expectedFields)) {
+if (!all(sort(presentInBoth) |> unique() == sort(expectedFields) |> unique())) {
   stop("Something is odd. Please check.")
 }
 
