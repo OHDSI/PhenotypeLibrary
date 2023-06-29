@@ -152,7 +152,7 @@ for (i in 1:nrow(exportableCohorts)) {
         stringValues[[j]] <- dplyr::tibble()
         if (length(strings[[j]]) == 2) {
           stringValues[[j]] <- dplyr::tibble(
-            name = strings[[j]][[1]],
+            name = strings[[j]][[1]] |> stringr::str_squish() |> stringr::str_trim(),
             value = strings[[j]][[2]] |>
               stringr::str_squish() |>
               stringr::str_trim()
