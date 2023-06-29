@@ -5,7 +5,6 @@
 			{
 				"ConditionOccurrence" : {
 					"CodesetId" : 0,
-					"First" : true,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -15,7 +14,7 @@
 			"PostDays" : 0
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "First"
+			"Type" : "All"
 		}
 	},
 	"ConceptSets" : [
@@ -49,13 +48,19 @@
 		"Type" : "First"
 	},
 	"ExpressionLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 0
+		}
+	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 1
 	},
 	"CensorWindow" : {}
 }

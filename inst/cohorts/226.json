@@ -20,7 +20,7 @@
 	"ConceptSets" : [
 		{
 			"id" : 0,
-			"name" : "Drug rash with eosinophilia and systemic symptoms syndrome [DRESS]",
+			"name" : "Drug reaction with eosinophilia and systemic symptoms",
 			"expression" : {
 				"items" : [
 					{
@@ -45,22 +45,22 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "All"
+		"Type" : "First"
 	},
 	"ExpressionLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"InclusionRules" : [],
 	"EndStrategy" : {
 		"DateOffset" : {
 			"DateField" : "EndDate",
-			"Offset" : 1
+			"Offset" : 0
 		}
 	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 30
+		"EraPad" : 1
 	},
 	"CensorWindow" : {}
 }

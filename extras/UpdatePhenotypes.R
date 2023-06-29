@@ -273,7 +273,7 @@ expectedFields <- c('cohortId',
 presentInBoth <- intersect(expectedFields,
                            colnames(cohortRecord))
 new <- setdiff(colnames(cohortRecord),
-               expectedFields)
+               c(expectedFields, 'atlasId'))
 missing <- setdiff(expectedFields,
                    colnames(cohortRecord))
 
@@ -291,10 +291,21 @@ if (!all(sort(presentInBoth) |> unique() == sort(expectedFields) |> unique())) {
   stop("Something is odd. Please check.")
 }
 
+cohortRecord <- cohortRecord |>
+  dplyr::select(dplyr::all_of(presentInBoth)) |>
+  dplyr::arrange(cohortId)
+
+cohortRecord <- cohortRecord |>
+  dplyr::mutate(isReferenceCohort = dplyr::if_else(
+    stringr::str_detect(string = cohortNameAtlas,
+                        pattern = stringr::fixed("[R]")),
+    1,
+    0
+  ))
+
+
 readr::write_excel_csv(
-  x = cohortRecord |>
-    dplyr::select(dplyr::all_of(presentInBoth)) |>
-    dplyr::arrange(cohortId),
+  x = cohortRecord,
   file = "inst/Cohorts.csv",
   append = FALSE,
   na = "",
