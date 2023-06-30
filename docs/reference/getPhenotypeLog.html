@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.15.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.0</span>
       </span>
     </div>
 
@@ -123,14 +123,17 @@ by the OHDSI PhenotypeLibrary.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getPhenotypeLog</span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName             description createdDate modifiedDate librarian</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 [W] COVID-19 diagnosi~ <span style="color: #949494;">"</span>Status: W~ 2021-09-22  2023-03-14   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 12 more variables: cohortNameFormatted &lt;chr&gt;, lastModifiedBy &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   status &lt;chr&gt;, logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;, contributor &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Forum &lt;chr&gt;, addedVersion &lt;chr&gt;, peer &lt;chr&gt;, Reviewer &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   addedDate &lt;date&gt;, updatedDate &lt;date&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 29</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName     atlasId metaDataAll createdDate modifiedDate librarian</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 [W] COVID-19 ~       2 <span style="color: #949494;">"</span>\n cohort~ 2021-09-22  2023-06-29   rao@ohds~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 22 more variables: cohortNameFormatted &lt;chr&gt;, lastModifiedBy &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   cohortNameLong &lt;chr&gt;, cohortNameAtlas &lt;chr&gt;, status &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   addedVersion &lt;chr&gt;, logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributors &lt;chr&gt;, contributorOrcIds &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributorOrganizations &lt;chr&gt;, peerReviewers &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   peerReviewerOrcIds &lt;lgl&gt;, recommendedEraPersistenceDurations &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   recommendedEraCollapseDurations &lt;chr&gt;, recommendSubsetOperators &lt;chr&gt;, ...</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
