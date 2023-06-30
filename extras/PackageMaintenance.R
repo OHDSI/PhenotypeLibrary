@@ -22,7 +22,7 @@ remotes::install_github("OHDSI/PhenotypeLibrary")
 # this will source the script to update phenotypes
 source("extras/UpdatePhenotypes.R")
 
-
+stop("Please install the package")
 #############
 # install package
 #################
