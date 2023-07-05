@@ -4,7 +4,7 @@
 		"CriteriaList" : [
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 3,
+					"CodesetId" : 0,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -14,13 +14,13 @@
 			"PostDays" : 0
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "First"
+			"Type" : "All"
 		}
 	},
 	"ConceptSets" : [
 		{
-			"id" : 3,
-			"name" : "Peripheral neuritis no descendants",
+			"id" : 0,
+			"name" : "Peripheral neuritis",
 			"expression" : {
 				"items" : [
 					{
@@ -37,7 +37,7 @@
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : false,
+						"includeDescendants" : true,
 						"includeMapped" : false
 					}
 				]
@@ -45,16 +45,22 @@
 		}
 	],
 	"QualifiedLimit" : {
-		"Type" : "All"
-	},
-	"ExpressionLimit" : {
 		"Type" : "First"
 	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
 	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 0
+		}
+	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",
-		"EraPad" : 0
+		"EraPad" : 1
 	},
 	"CensorWindow" : {}
 }

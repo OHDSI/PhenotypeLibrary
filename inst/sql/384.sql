@@ -5,7 +5,7 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (134438)
 UNION  select c.concept_id
@@ -37,20 +37,19 @@ SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_dat
   C.visit_occurrence_id, C.condition_start_date as sort_date
 FROM 
 (
-  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 1)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 0)
 ) C
 
-WHERE C.condition_start_date >= DATEFROMPARTS(2015, 10, 1)
-AND C.ordinal = 1
+
 -- End Condition Occurrence Criteria
 
   ) E
 	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
   WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
 ) P
-WHERE P.ordinal = 1
+
 -- End Primary Events
 ) pe
   
@@ -81,13 +80,13 @@ FROM (
   WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),0)-1)
 }
 ) Results
-WHERE Results.ordinal = 1
+
 ;
 
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,14,end_date) > op_end_date then op_end_date else DATEADD(day,14,end_date) end as end_date
+  case when DATEADD(day,0,end_date) > op_end_date then op_end_date else DATEADD(day,0,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -121,7 +120,7 @@ from ( --cteEnds
 	JOIN ( -- cteEndDates
     SELECT
       person_id
-      , DATEADD(day,-1 * 60, event_date)  as end_date
+      , DATEADD(day,-1 * 1, event_date)  as end_date
     FROM
     (
       SELECT
@@ -142,7 +141,7 @@ from ( --cteEnds
 
         SELECT
           person_id
-          , DATEADD(day,60,end_date) as end_date
+          , DATEADD(day,1,end_date) as end_date
           , 1 AS event_type
         FROM #cohort_rows
       ) RAWDATA

@@ -5,7 +5,6 @@
 			{
 				"ConditionOccurrence" : {
 					"CodesetId" : 0,
-					"First" : true,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -15,13 +14,13 @@
 			"PostDays" : 7
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "First"
+			"Type" : "All"
 		}
 	},
 	"ConceptSets" : [
 		{
 			"id" : 0,
-			"name" : "Ulcerative colitis",
+			"name" : "Ulcerative colitis or complications",
 			"expression" : {
 				"items" : [
 					{
@@ -134,9 +133,15 @@
 		"Type" : "First"
 	},
 	"ExpressionLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 0
+		}
+	},
 	"CensoringCriteria" : [],
 	"CollapseSettings" : {
 		"CollapseType" : "ERA",

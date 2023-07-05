@@ -5,7 +5,7 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4023572)
 UNION  select c.concept_id
@@ -39,7 +39,7 @@ FROM
 (
   SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 4)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 0)
 ) C
 
 
@@ -83,7 +83,7 @@ FROM (
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,1,end_date) > op_end_date then op_end_date else DATEADD(day,1,end_date) end as end_date
+  case when DATEADD(day,0,end_date) > op_end_date then op_end_date else DATEADD(day,0,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -117,7 +117,7 @@ from ( --cteEnds
 	JOIN ( -- cteEndDates
     SELECT
       person_id
-      , DATEADD(day,-1 * 0, event_date)  as end_date
+      , DATEADD(day,-1 * 1, event_date)  as end_date
     FROM
     (
       SELECT
@@ -140,7 +140,7 @@ from ( --cteEnds
 
         SELECT
           person_id
-          , DATEADD(day,0,end_date) as end_date
+          , DATEADD(day,1,end_date) as end_date
           , 1 AS event_type
           , NULL
         FROM #cohort_rows
