@@ -226,7 +226,7 @@ for (i in (1:length(cohortJsonFiles))) {
   sql <-
     CirceR::buildCohortQuery(expression = json, options = circeOptions)
   SqlRender::writeSql(sql = sql,
-                      targetFile = file.path("inst", "sql", sqlFileName))
+                      targetFile = file.path("inst", "sql", "sql_server", sqlFileName))
 }
 
 
