@@ -25,76 +25,30 @@ knitr::opts_chunk$set(
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
 
-*This document is a DRAFT guidance.*
 
-A submission to the OHDSI Phenotype Library is considered complete if the submission process has been followed
+**Post a new OHDSI Forum thread ** A new thread on [OHDSI forum](forums.ohdsi.org). Title of the thread: should start with ‘Phenotype Submission - ‘. Examples of titles for the thread ‘Phenotype submission - Acute Hepatic Failure’. Using this naming convention makes it easier to find your submission, and for the community reviewers to review your work. 
 
-# Submission process
-## Post a new OHDSI Forum thread 
-- A new thread on [OHDSI forum](forums.ohdsi.org). By default the original poster (op) will be considered the phenotype submitter. If an alternate person is the submitter, please post the submitters name.
-- General guidance for your forum post title. 
-    - Title of the thread: should start with ‘Phenotype Submission - ‘. 
-    - Examples of titles for the thread ‘Phenotype submission - Acute Hepatic Failure’
-    - This name has two parts - 
-        - *Prefix*: ‘Phenotype submission -’ This prefix in your title makes it easier for reviewers to review your work, provide their feedback and for your contribution to make its way to the OHDSI Phenotype Library.
-        - *Phenotype Name*: The phenotype name is expected to be a meaningful but succinct name. It should try to capture some of the key dimensions of the clinical idea e.g. in the name ‘Acute Hepatic Failure among persons with no pre-existing liver disease’. This name conveys that the clinical idea is ‘Acute’. It also tells us that there are exclusions for persons with pre-existing liver disease. Another example is ‘events of pneumonia’. Here the word ‘events’ tells us that a person may have more than one event of pneumonia. 
-        - Note: among OHDSI Phenotype typers, some words have key meaning - please review [Reserved words with special meaning to Phentoypers](https://ohdsi.github.io/PhenotypeLibrary/articles/ReservedWordsWithSpecialMeaningToPhenotypers.html). If you use those words, please ensure your intention aligns with this document.
-        - Your submission is identified by your forum title. So a good name will help the community volunteer reviewers find your submission and promptly respond to it. It is the submitter discretion to come up with a meaningful name that uniquely identify the submission.
-- Phenotype names are necessarily short. As a result, it may not convey the full clinical meaning and can be ambiguous. That's one reason we ask that your submission be accompanied by a clinical description. Clinical description provides the additional information needed to fully describe the clinical idea.
+**Attach cohort definitions ** This is usually a Atlas generated cohort JSON output as a .txt file. Please attach this  .txt file to your forum post. If you have more than one cohort definition, then upload each cohort json as individual .txt files. Please give each definition a clear name.
+
+**Provide meta data ** about the uploaded cohort definition. The library collects the following user/community/author-submitted metadata as attribute of each submitted cohort definition. 
+
+-  *Cohort Definition Names:* Please provide a short and long name for each of the cohort definition submitted. This will be the name used to discover your cohort definitions.
+-  *Contributor names:* This is your full name and is used to provide attribution to you for your contribution. We recommend that you also give your ORCID's. 
+-  *Clinical description:* We ask your to describe the clinical idea being modeled by your cohort definition. This is to help the community understand what clinical idea is the cohort definition trying to model. Please see article [Guidance on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html)
+-  *Logic description:* This is a concise explanation of the cohort definition's technical logic. It is written is a human understandable format. Commonly you will ifnd this used in a manuscript's methods section to help a non technical scientist understand the modeling process. It helps a reviewer relate to the rules implemented in Atlas such as if a rule was deliberate or unintentional accident (i.e. bug). e.g. All events of treatment for hypertension with hydrocholorthiazide when a person was more than 18 at treatment initiation and had not received treatment before. Please see article [Guidance on writing Cohort Definition Logic Description](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingCohortDefinitionLogicDescription.html)
+-  *Recommended Study applications:* If you want the community to know that the definition is recommended to be used only in a certain context. e.g. some cohort definitions maybe modeled in such a way that it is recommended for use as an outcome for a study.
+- *Assertion Statement:* We would like to ask for an assertion by the submitter that the cohort definition was executed on atleast one real person level observational health data sources and resulted in a cohort with atleast 1 person. 
+
+**Other recommendeded items (optional)**
+- Link to CohortDiagnostics output 
+- Summary of PheValuator reported operating characteristics.
+- Literature Review: Performing a literature review helps us to understand how others have built code set or algorithms for the phenotype of interest, and what have they observed in terms of the performance characteristics. e.g. some algorithms may have gone through a chart review process. There is no fixed format for submission of literature review. You could summarize by saying *joe et.al [3] restricted to inpatient visit, and reported as PPV of 98%*. Please cite joe et.al. article [3] - do not attach original article in the forum post. Please see article [Guidance on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html)
+- We recommend that you provide a commentary on the observed performance characteristics. Please see article [Guidance on Writing An Evaluation Report](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingEvaluationReport.html)  
 
 
-## Clinical description (Required)
-- Clinical Description is required for peer review. 
-- The motivation behind starting out with a clinical description is so that everyone has a shared understanding of the clinical phenotype i.e. what are the expected characteristics of the persons we are identifying from the data source. Please see article [Guidance on writing clinical description for Condition Phenotypes](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html) Note: a reference to an authoritative source (s) would meet this requirement, but we recommend that you summarize the source (s).
-
-## Literature Review (optional)
-- In OHDSI we like to learn from and improve the work of others. Performing a literature review helps us to understand how others have built code set or algorithms for the phenotype of interest, and what have they observed in terms of the performance characteristics. e.g. some algorithms may have gone through a chart review process.
-- There is no fixed format for submission of literature review. You could summarize by saying *joe et.al [3] restricted to inpatient visit, and reported as PPV of 98%*. Please cite joe et.al. article [3] - do not attach original article in the forum post. Please see article [Guidance on Literature Review](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnLiteratureReview.html)
- 
-## Phenotype development
-This step not only clarifies the clinical idea, but also helps justify why certain decisions were made during the cohort definition development (build) process, and also provides context to the persons who might be interpreting the results of a study that used the phenotype.
-
-## Logic Description
-- Logic description is required for peer review.
-- We recommend you write a logic description prior to beginning phenotyping. It is written after clinical description is complete.
-- The logic description would follow the structure of building cohort definitions in Atlas, but without the full details. It is expected to succinct.
-- We have experienced that taking this approach improves the quality of your cohort definitions, reduces bugs in your cohort definition and allows to build cohort definitions collaboratively.
-- It is also a required element for peer-review, as a logic description indicates to the peer reviewers that the rules implemented in Atlas are deliberate design choices and not an unintentional accident (i.e. bug).
-
-Please see article [Guidance on writing Cohort Definition Logic Description](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingCohortDefinitionLogicDescription.html)
-
-## Your recommended cohort definitions (>= 1)
-Having followed OHDSI Best practices and gone through development/evaluation iteration
-
-## Published Cohort Diagnostics output on one or more data sources 
-PheValuator and other evaluation/validation metrics as applicable.
-
-## Discuss your evaluation/validation findings on forums.ohdsi.org
-We expect every cohort definition to have CohortDiagnostics output from atleast one data source. We recommend that the output be reviewed using the following template where possible.
-Please see article [Guidance on Writing An Evaluation Report](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnWritingEvaluationReport.html)  
-
-## Attach ‘CohortDefinitionSet’ R object.
-For importing into atlas-phenotype.ohdsi.org
-
-Please see article [Guidance on Cohort Definition Set R Object](https://ohdsi.github.io/PhenotypeLibrary/articles/GuidanceOnCohortDefinitionSetRObject.html)  
-
-------------------------------------------------
-# Post submission
-
-## Validity Checks prior to consideration
-- Your submissions will be subjected to the following routine [Validity Checks For CohortDefinitions](https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html)
-- Your submission is expected to pass these tests prior to being posted into atlas-phenotype.ohdsi.org
-  
-## Addition to [Atlas-phenotype] (https://atlas-phenotype.ohdsi.org/)
-- If your cohort definitions pass the validity checks, it will be posted to [Atlas-phenotype] (https://atlas-phenotype.ohdsi.org/)
-- Cohort definitions will make it to [OHDSI Phenotype Library] (https://github.com/OHDSI/PhenotypeLibrary)
-- The [Cohort Definitions in OHDSI Phenotype Library are here] (https://ohdsi.github.io/PhenotypeLibrary/articles/CohortDefinitionsInOhdsiPhenotypeLibrary.html) but will be flagged as 'Under review' with submission date. The added version field will be empty, as your cohort definition is not considered to be accepted.
-- *NOTE: the cohort definitions in this state, are not guaranteed to be immutable. The definitions may change.*
-
-## Assignment for Peer Review
+**Assignment for Peer Review**
+- Peer review is optional. If you would like your submission to be peer reviewered, please say so on the forum post.
 - OHDSI will perform on open peer review through the OHDSI Phenotype Development and Evaluation workgroup.
-- Workgroup members ill be assigned as peer reviewers. The peer review will be oral feedback followed by a recommendation.
-- The peer review will be video recorded and the recordings will be available in the workgroup archives.
-- It is up-to the submitter to then consider the peer review recommendations, make changes, or not.
+- Workgroup members will be assigned as peer reviewers. 
 - Based on the decision of the peer reviewer(s) the cohort definition would be considered accepted.
 - Once accepted, the cohort definitions will be made immutable and a version number will be assigned to it. Key peer review notes will usually be referenced (commonly to the forum post).

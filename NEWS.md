@@ -1,5 +1,10 @@
-PhenotypeLibrary 3.16.0
+PhenotypeLibrary 3.16.1
 ======================
+Updated readme file and CohortDefinitionsubmissionRequirement document
+Removed some rogue files.
+
+PhenotypeLibrary 3.16.0
+
 Metadata documentation has improved in this release. 
 
 Reference Cohorts: 251 cohort definitions called reference cohorts have been added.
@@ -68,7 +73,7 @@ also an indicator field called isReferenceCohort.
     501: [P][R] Crohn's disease
     502: [P][R] Kidney stone
     503: [P][R] Type 2 diabetes mellitus
-    504: [P][R] Sjögren's syndrome
+    504: [P][R] Sj?gren's syndrome
     505: [P][R] Cough
     506: [P][R] Chronic obstructive lung disease
     507: [P][R] Pneumonia
@@ -196,7 +201,7 @@ also an indicator field called isReferenceCohort.
     630: [P][R] Facial palsy
     631: [P][R] Livebirth
     632: [P][R] Antiphospholipid syndrome
-    633: [P][R] Waldenström macroglobulinemia
+    633: [P][R] Waldenstr?m macroglobulinemia
     634: [P][R] Immunoglobulin A vasculitis
     635: [P][R] Ventricular tachycardia
     636: [P][R] Malignant tumor of breast
@@ -208,7 +213,7 @@ also an indicator field called isReferenceCohort.
     642: [P][R] Immune reconstitution syndrome
     643: [P][R] Follicular non-Hodgkin's lymphoma
     644: [P][R] Malignant tumor of prostate
-    645: [P][R] Guillain-Barré syndrome
+    645: [P][R] Guillain-Barr? syndrome
     646: [P][R] Bradycardia
     647: [P][R] Retinopathy due to diabetes mellitus
     648: [P][R] Malignant tumor of colon
