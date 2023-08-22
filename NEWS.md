@@ -1,3 +1,7 @@
+PhenotypeLibrary 3.16.2
+======================
+Formatting and rewrite of vignettes.
+
 PhenotypeLibrary 3.16.1
 ======================
 Updated readme file and CohortDefinitionsubmissionRequirement document

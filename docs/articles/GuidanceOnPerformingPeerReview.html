@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.2</span>
       </span>
     </div>
 
@@ -118,7 +118,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2023-08-15</h4>
+            <h4 data-toc-skip class="date">2023-08-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidanceOnPerformingPeerReview.Rmd" class="external-link"><code>vignettes/GuidanceOnPerformingPeerReview.Rmd</code></a></small>
       <div class="hidden name"><code>GuidanceOnPerformingPeerReview.Rmd</code></div>
@@ -127,80 +127,94 @@ Rao</h4>
 
     
     
-<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is
-part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a></p>
+<div class="section level2">
+<h2 id="phenotypelibrary-hades">
+<a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a>
+&amp; <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a><a class="anchor" aria-label="anchor" href="#phenotypelibrary-hades"></a>
+</h2>
 <p><em>This document is a DRAFT guidance.</em></p>
 <p>If you accept an invitation to perform a peer review on a cohort
-definition that has been submitted to the OHDSI Phenotype library - then
-we ask that you please review this guidance document.</p>
-<p>Note: - OHDSI subscribes to open-peer review. - Reviewers are invited
-to provide their review from a pool of volunteers via OHDSI Phenotype
-Development and Evaluation Workgroup. More than one reviewer maybe asked
-to perform peer review. All reviewers review and identity will be open.
-- You may perform a live or an asynchronous review. Live review may be
-done in the OHDSI Phenotype Development and Evaluation workgroup. Here
-your review will be video recorded and archived. A live review has the
-advantage of it being a discussion moderated by the workgroup lead, and
-the submitter is usually present in the meeting. An asynchronous review
-is a written review and is done as a forum post in the original thread
-started by the submitter on forums.ohdsi.org - Anyone in the community
-may engage in the conversation and provide their input on both the
-contribution and the review.</p>
+definition submitted to the OHDSI Phenotype Library, please review this
+guidance document.</p>
+<div class="section level3">
+<h3 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
+</h3>
 <ul>
-<li>Levels of Peer review * The workgroup lead or designee moderator
-will interpret your review and assign a level of confidence to the
-submission. The levels are incremental i.e. a definition that has level
-3 status should have also met level 2, 1, and 0.</li>
+<li>OHDSI subscribes to open-peer review.</li>
+<li>Reviewers are invited from a pool of volunteers via the OHDSI
+Phenotype Development and Evaluation Workgroup. More than one reviewer
+may be asked to perform a peer review. All reviewers’ review and
+identity will be open.</li>
+<li>You may perform a live or asynchronous review. A live review may be
+done in the OHDSI Phenotype Development and Evaluation Workgroup, where
+it will be video recorded and archived. An asynchronous review is a
+written review done as a forum post in the original thread started by
+the submitter on forums.ohdsi.org.</li>
+<li>Anyone in the community may engage in the conversation and provide
+input on both the contribution and the review.</li>
 </ul>
-<p>Level 0: All cohorts in this level have passed the minimum submission
+</div>
+<div class="section level3">
+<h3 id="levels-of-peer-review">Levels of Peer Review<a class="anchor" aria-label="anchor" href="#levels-of-peer-review"></a>
+</h3>
+<p>The workgroup lead or designee moderator will interpret your review
+and assign a level of confidence to the submission. The levels are
+incremental, meaning a definition that has level 3 status should have
+also met levels 2, 1, and 0.</p>
+<div class="section level4">
+<h4 id="level-0">Level 0<a class="anchor" aria-label="anchor" href="#level-0"></a>
+</h4>
+<p>All cohorts in this level have passed the minimum submission
 requirements detailed <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">here</a>.
-They are now ready for peer review. If the outcome of the peer review is
-rejection then the cohorts will stay in Level 0, but get a withdrawn =
-TRUE status. All cohorts will remain in this status until accepted or
-rejected. This cohort is not considered a peer reviewed cohort
-definition.</p>
-<p>Level 1: These cohorts have completed at-least one peer review. The
-reviewer has accepted the definition based on the high level summary of
-the evaluation contributed by the submitter. The reviewer may take the
-submission by face value. This level is the lowest level of review, and
-we expect &gt; 90% of definitions that have passed Level 0 to pass Level
-1 review.</p>
-<p>Level 2: These cohort have completed at-least one peer review. The
-reviewer has accepted the definition. To accept the peer reviewer has
-attested to have performed the following: - Independently reviewed
-Cohort Diagnostics (and PheValuator when available) from the submitter.
-- Verified that the submitter has discussed presence of errors as
-sensitivity errors, specificity errors, date misclassification errors,
-and verified that these errors are observed (in cohort diagnostics or
-PheValuator). - Independently performed an evaluation (see <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">Evaluation
-guideance</a>) for errors by reviewing the material submitted e.g. a)
-reviewed cohort diagnostics output from the submitter for incidence rate
-stability, visit context, index event breakdown, cohort characterization
-output. b) reviewed PheValuator output (where available). Adds to
-discussions on source of errors, by discussing the presence of
-sensitivity, specificity and index date misclassification and how they
-may impact potential studies. - Makes a recommendation to accept the
-definition with known errors.</p>
-<p>Level 3: A peer reviewer have reviewed the definition and
-independently performed an evaluation on a new data source and accepted
-the definition with known errors. The second reviewer should use data
-source that was not part of the original submission for the review
-(i.e., may evaluate on reviewers data, or from another data partner -
-but the output is expected to be publicly in OHDSI). See <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">evaluation
-guidance</a></p>
-<p>Level 4: The cohort definition has been used in multiple studies,
-publications or workshops. There is general consensus that this is a
-good cohort definition and is well adopted. It’s performance
-characteristics has been stable in different types of data sources,
-e.g. at least 1 claims based and one electronic health record data based
-data source, or one US data source and one European Data source. The
-definition has been referenced and used in the work of others and the
-output is considered high quality.</p>
+They are now ready for peer review. If rejected, the cohorts will remain
+in Level 0, with a withdrawn = TRUE status.</p>
+</div>
+<div class="section level4">
+<h4 id="level-1">Level 1<a class="anchor" aria-label="anchor" href="#level-1"></a>
+</h4>
+<p>These cohorts have completed at least one peer review, accepted based
+on a high-level summary of the evaluation contributed by the submitter.
+This level is the lowest level of review; we expect &gt; 90% of
+definitions that have passed Level 0 to pass Level 1 review.</p>
+</div>
+<div class="section level4">
+<h4 id="level-2">Level 2<a class="anchor" aria-label="anchor" href="#level-2"></a>
+</h4>
+<p>These cohorts have completed at least one peer review, accepted by
+the reviewer. Acceptance requires: - Independent review of Cohort
+Diagnostics (and PheValuator when available) from the submitter. -
+Verification that errors such as sensitivity errors, specificity errors,
+and date misclassification errors are discussed and observed. -
+Independent evaluation for errors by reviewing submitted materials. - A
+recommendation to accept the definition with known errors.</p>
+</div>
+<div class="section level4">
+<h4 id="level-3">Level 3<a class="anchor" aria-label="anchor" href="#level-3"></a>
+</h4>
+<p>A peer reviewer has reviewed the definition and independently
+performed an evaluation on a new data source, accepting the definition
+with known errors. The second reviewer should use a data source not part
+of the original submission for the review. See <a href="https://ohdsi.github.io/PhenotypeLibrary/articles/ValidityChecksForCohortDefinitions.html" class="external-link">evaluation
+guidance</a>.</p>
+</div>
+<div class="section level4">
+<h4 id="level-4">Level 4<a class="anchor" aria-label="anchor" href="#level-4"></a>
+</h4>
+<p>The cohort definition has been used in multiple studies,
+publications, or workshops, and there is a general consensus that it is
+well-adopted. Its performance characteristics have been stable in
+different types of data sources. The definition has been referenced and
+used by others, and the output is considered high quality.</p>
+</div>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
