@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.2</span>
       </span>
     </div>
 
@@ -118,7 +118,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2023-08-15</h4>
+            <h4 data-toc-skip class="date">2023-08-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidanceOnCohortDefinitionSetRObject.Rmd" class="external-link"><code>vignettes/GuidanceOnCohortDefinitionSetRObject.Rmd</code></a></small>
       <div class="hidden name"><code>GuidanceOnCohortDefinitionSetRObject.Rmd</code></div>
@@ -127,20 +127,18 @@ Rao</h4>
 
     
     
-<p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is
-part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a></p>
 <p><em>This document is a DRAFT guidance.</em></p>
 <div class="section level2">
-<h2 id="how-to-create-a-cohort-definition-set-object">How to create a cohort definition set object<a class="anchor" aria-label="anchor" href="#how-to-create-a-cohort-definition-set-object"></a>
+<h2 id="how-to-create-a-cohort-definition-set-object">How to Create a Cohort Definition Set Object<a class="anchor" aria-label="anchor" href="#how-to-create-a-cohort-definition-set-object"></a>
 </h2>
 <div class="section level3">
 <h3 id="structure">Structure<a class="anchor" aria-label="anchor" href="#structure"></a>
 </h3>
 <div class="section level4">
-<h4 id="downloading-cohorts-from-atlas">Downloading cohorts from ATLAS<a class="anchor" aria-label="anchor" href="#downloading-cohorts-from-atlas"></a>
+<h4 id="downloading-cohorts-from-atlas">Downloading Cohorts from ATLAS<a class="anchor" aria-label="anchor" href="#downloading-cohorts-from-atlas"></a>
 </h4>
-<p>We can create cohorts using <a href="https://github.com/OHDSI/Atlas" class="external-link">ATLAS</a> and extract them using
-<a href="https://github.com/OHDSI/ROhdsiWebApi" class="external-link">ROhdsiWebApi</a>
+<p>You can create cohorts using <a href="https://github.com/OHDSI/Atlas" class="external-link">ATLAS</a> and extract them using
+the <a href="https://github.com/OHDSI/ROhdsiWebApi" class="external-link">ROhdsiWebApi</a>
 package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cohortIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1778211</span>, <span class="fl">1778212</span>, <span class="fl">1778213</span><span class="op">)</span></span>
@@ -149,25 +147,19 @@ package:</p>
 <span>  baseUrl <span class="op">=</span> <span class="va">baseUrl</span>,</span>
 <span>  cohortIds <span class="op">=</span> <span class="va">cohortIds</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The code above connects to ATLAS’ WebAPI, retrieves the
-<code>cohortDefinitions</code> as returns a data.frame object with
-required fields. The following columns are considered required for OHDSI
-submission.</p>
-<ul>
-<li>
-<strong>cohortId</strong>: The cohortId will be the same as the
-atlasId upon export from ATLAS. We provide this column in case you’d
-like to alter the numbering scheme for your cohort definition set.</li>
-<li>
-<strong>cohortName</strong>: The name of the cohort in ATLAS.</li>
-<li>
+<p>The code connects to ATLAS’ WebAPI, retrieves the
+<code>cohortDefinitions</code>, and returns a data.frame object with the
+required fields. The following columns are considered mandatory for
+OHDSI submission: - <strong>cohortId</strong>: The cohortId will be the
+same as the atlasId upon export from ATLAS. This column is provided in
+case you’d like to alter the numbering scheme for your cohort definition
+set. - <strong>cohortName</strong>: The name of the cohort in ATLAS. -
 <strong>json</strong>: The <a href="https://github.com/OHDSI/circe-be" class="external-link">Circe</a> compliant JSON
-representation of the cohort definition</li>
-</ul>
-<p>When cohort json is submitted, the PhentoypeLibrary will create the
-SQL using Circe. The only instance when the submitted SQL will be used
-are when the cohort definitions does not conform to circe/atlas cohort
-definition standard.</p>
+representation of the cohort definition.</p>
+<p>When the cohort JSON is submitted, the PhenotypeLibrary will create
+the SQL using Circe. The submitted SQL will only be used when the cohort
+definitions do not conform to the circe/atlas cohort definition
+standard.</p>
 </div>
 </div>
 </div>

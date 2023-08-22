@@ -24,17 +24,7 @@ knitr::opts_chunk$set(
 library(reactable)
 ```
 
-[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/). This document is a summary of changes to the Cohort Definitions in [OHDSI Phenotype Library](https://github.com/OHDSI/PhenotypeLibrary) (Library).
 
-
-* **Cohort Id:** 
-The [OHDSI Phenotype Library](https://github.com/OHDSI/PhenotypeLibrary) uses an integer id, called cohort Id to catalog and uniquely identify all cohort definition algorithm that has been submitted. This id is assigned by [atlas-phenotype](atlas-phenotype.ohdsi.org) and gets propagated to this R package as part of its maintenance cycle. 
-
-* **Library conventions** We follow some conventions: At a high level, cohorts are either Accepted or Not Accepted. 
-- A cohort id (Cohort definition) that has been accepted to the library are guaranteed to persist as an immutable object. i.e., you may reference it in your study along with attribution to the authors of the definition. Example: if you are using OHDSI Phenotype Library 'All-cause mortality' in your study, then you may reference it as *See id 25 of the OHDSI Phenotype Library (replace with future publication reference)*. In your study script, you can use cohort id 25 as an outcome definition. Accepted cohorts may then be deprecated or marked as error. Deprecated cohorts [D] are still considered valid cohorts but based on a scientific peer review feedback an alternate cohort has been recommended. But, Deprecated cohorts may still be used in OHDSI studies. It will continue to be immutable and is referenceable. An Error cohort [E] is an accepted cohort that is known to have an error. This is equivalent to a soft delete and such cohorts should not be used in OHDSI studies. However, since it is an accepted cohort, it will continue to persist and be immutable in the OHDSI library.
-- A cohort id that has been submitted but is pending peer review - and thus not yet accepted to the library is mutable. The cohort definition may change between releases because the submitter and the reviewers may be evaluating different versions. But such definitions persist as immutable objects within a released version of the library. i.e. A cohort definition of fever that was present in the library as of version 3.5.0 maybe referenced as *See id 6 of the OHDSI Phenotype Library (replace with future publication reference) version 3.5.0*.  Cohorts that are pending peer review, may be withdrawn [W] by the submitter or the librarian. 
-
-* **Cohorts in OHDSI Phenotype Library**
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
 camelCaseToTitleCase <- function(string) {
   errorMessages <- checkmate::makeAssertCollection()
@@ -48,6 +38,26 @@ camelCaseToTitleCase <- function(string) {
 }
 
 report <- PhenotypeLibrary::getPhenotypeLog()
+columnsOfInterest <- c(
+  "cohortId",
+  "cohortNameLong",
+  "status",
+  "addedVersion",
+  "createdDate",
+  "modifiedDate",
+  "logicDescription",
+  "hashTag",
+  "contributors",
+  "contributorOrcIds",
+  "contributorOrganizations",
+  "peerReviewers",
+  "peerReviewerOrcIds",
+  "ohdsiForumPost"
+)
+report <- report |>
+  dplyr::select(dplyr::all_of(columnsOfInterest)) |>
+  dplyr::rename(cohortName = cohortNameLong)
+
 colnames(report) <- camelCaseToTitleCase(colnames(report))
 
 columnDefinitions <- list()
@@ -116,23 +126,5 @@ reactable::reactable(
 )
 ```
 
-
-
-* **Added Version:** The version of the PhenotypeLibrary R package when the cohort definition was accepted.
-
-* **Added Date:** The date the cohort was added. This is usually from [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home) when the source is [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home)
-
-* **Added Notes:** Any notes entered by the [OHDSI Phenotype Development and Evaluation Work group](https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5) (work group) for this Cohort Definition.
-
-* **Deprecated Version:** If there is an entry in this field it means the Cohort Definition is deprecated. It will have the version of PhenotypeLibrary when the Cohort Definition was deprecated.
-
-* **Deprecated Date:** The date the Cohort was deprecated. This is usually from [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home) when the source is [atlas-phenotype.ohdsi.org](https://atlas-phenotype.ohdsi.org/#/home)
-
-* **Deprecated Notes:** Any notes from the [Work group](https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5) regarding deprecation. 
-Updated Version: This field indicates the cohort definition has been modified. As a principle a Cohort Definition, once published to the OHDSI Phenotype Library is never updated or modified. This should be a rare occurrence, for situations like human accidental errors.
-
-* **Updated Date:** The date the Cohort was updated.
-
-* **Updated Notes:** Any notes from the [Work group](https://teams.microsoft.com/l/team/19%3a66a11855657c46918723073bff9e36f1%40thread.tacv2/conversations?groupId=b464dca0-06d1-477c-b66d-11827e4d0412&tenantId=a30f0094-9120-4aab-ba4c-e5509023b2d5) regarding update.
 
 

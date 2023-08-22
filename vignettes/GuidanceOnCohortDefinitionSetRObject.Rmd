@@ -23,17 +23,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-[PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
 
 *This document is a DRAFT guidance.*
 
-
-# How to create a cohort definition set object
+# How to Create a Cohort Definition Set Object
 ## Structure
 
-
-### Downloading cohorts from ATLAS
-We can create cohorts using [ATLAS](https://github.com/OHDSI/Atlas) and extract them using [ROhdsiWebApi](https://github.com/OHDSI/ROhdsiWebApi) package:
+### Downloading Cohorts from ATLAS
+You can create cohorts using [ATLAS](https://github.com/OHDSI/Atlas) and extract them using the [ROhdsiWebApi](https://github.com/OHDSI/ROhdsiWebApi) package:
 
 
 ```{r eval = FALSE, echo=TRUE}
@@ -44,13 +41,13 @@ cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
   cohortIds = cohortIds
 )
 ```
-The code above connects to ATLAS' WebAPI, retrieves the `cohortDefinitions` as returns a data.frame object with required fields. The following columns are considered required for OHDSI submission.
 
-- **cohortId**: The cohortId will be the same as the atlasId upon export from ATLAS. We provide this column in case you'd like to alter the numbering scheme for your cohort definition set.
+
+The code connects to ATLAS' WebAPI, retrieves the `cohortDefinitions`, and returns a data.frame object with the required fields. The following columns are considered mandatory for OHDSI submission:
+- **cohortId**: The cohortId will be the same as the atlasId upon export from ATLAS. This column is provided in case you'd like to alter the numbering scheme for your cohort definition set.
 - **cohortName**: The name of the cohort in ATLAS.
-- **json**: The [Circe](https://github.com/OHDSI/circe-be) compliant JSON representation of the cohort definition
+- **json**: The [Circe](https://github.com/OHDSI/circe-be) compliant JSON representation of the cohort definition.
 
-
-When cohort json is submitted, the PhentoypeLibrary will create the SQL using Circe. The only instance when the submitted SQL will be used are when the cohort definitions does not conform to circe/atlas cohort definition standard.
+When the cohort JSON is submitted, the PhenotypeLibrary will create the SQL using Circe. The submitted SQL will only be used when the cohort definitions do not conform to the circe/atlas cohort definition standard.
 
 
