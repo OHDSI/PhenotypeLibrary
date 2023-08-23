@@ -267,7 +267,8 @@ expectedFields <- c('cohortId',
                     'metaDataAll',
                     'createdDate',
                     'modifiedDate',
-                    'lastModifiedBy'
+                    'lastModifiedBy',
+                    'replaces'
 )
 
 presentInBoth <- intersect(expectedFields,

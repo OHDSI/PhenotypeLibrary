@@ -1,0 +1,3336 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ANY",
+						"CriteriaList" : [],
+						"DemographicCriteriaList" : [],
+						"Groups" : [
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"Observation" : {
+												"CodesetId" : 11,
+												"ObservationTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 11,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"VisitOccurrence" : {
+												"CodesetId" : 9,
+												"VisitTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"EndWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"End" : {
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : true
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							},
+							{
+								"Type" : "ALL",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"VisitOccurrence" : {
+												"CodesetId" : 10,
+												"VisitTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : [
+									{
+										"Type" : "ANY",
+										"CriteriaList" : [
+											{
+												"Criteria" : {
+													"ConditionOccurrence" : {
+														"CodesetId" : 12,
+														"ConditionTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ConditionOccurrence" : {
+														"CodesetId" : 13,
+														"ConditionTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ConditionOccurrence" : {
+														"CodesetId" : 14,
+														"ConditionTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"DrugExposure" : {
+														"CodesetId" : 15,
+														"DrugTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ProcedureOccurrence" : {
+														"CodesetId" : 15,
+														"ProcedureTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"DrugExposure" : {
+														"CodesetId" : 16,
+														"DrugTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ProcedureOccurrence" : {
+														"CodesetId" : 16,
+														"ProcedureTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ProcedureOccurrence" : {
+														"CodesetId" : 18,
+														"ProcedureTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											}
+										],
+										"DemographicCriteriaList" : [],
+										"Groups" : []
+									}
+								]
+							}
+						]
+					},
+					"CodesetId" : 2,
+					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"Observation" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ANY",
+						"CriteriaList" : [],
+						"DemographicCriteriaList" : [],
+						"Groups" : [
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"Observation" : {
+												"CodesetId" : 11,
+												"ObservationTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 11,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"VisitOccurrence" : {
+												"CodesetId" : 9,
+												"VisitTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"EndWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"End" : {
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : true
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							},
+							{
+								"Type" : "ALL",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"VisitOccurrence" : {
+												"CodesetId" : 10,
+												"VisitTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : [
+									{
+										"Type" : "ANY",
+										"CriteriaList" : [
+											{
+												"Criteria" : {
+													"ConditionOccurrence" : {
+														"CodesetId" : 12,
+														"ConditionTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ConditionOccurrence" : {
+														"CodesetId" : 13,
+														"ConditionTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ConditionOccurrence" : {
+														"CodesetId" : 14,
+														"ConditionTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"DrugExposure" : {
+														"CodesetId" : 15,
+														"DrugTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ProcedureOccurrence" : {
+														"CodesetId" : 15,
+														"ProcedureTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"DrugExposure" : {
+														"CodesetId" : 16,
+														"DrugTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ProcedureOccurrence" : {
+														"CodesetId" : 16,
+														"ProcedureTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											},
+											{
+												"Criteria" : {
+													"ProcedureOccurrence" : {
+														"CodesetId" : 18,
+														"ProcedureTypeExclude" : false
+													}
+												},
+												"StartWindow" : {
+													"Start" : {
+														"Days" : 0,
+														"Coeff" : -1
+													},
+													"End" : {
+														"Days" : 0,
+														"Coeff" : 1
+													},
+													"UseIndexEnd" : false,
+													"UseEventEnd" : false
+												},
+												"RestrictVisit" : false,
+												"IgnoreObservationPeriod" : false,
+												"Occurrence" : {
+													"Type" : 2,
+													"Count" : 1,
+													"IsDistinct" : false
+												}
+											}
+										],
+										"DemographicCriteriaList" : [],
+										"Groups" : []
+									}
+								]
+							}
+						]
+					},
+					"CodesetId" : 2,
+					"ObservationTypeExclude" : false
+				}
+			},
+			{
+				"ConditionOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [],
+						"DemographicCriteriaList" : [],
+						"Groups" : [
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"VisitOccurrence" : {
+												"CodesetId" : 9,
+												"VisitTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"EndWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"End" : {
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : true
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 11,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"Observation" : {
+												"CodesetId" : 11,
+												"ObservationTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							},
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"ConditionOccurrence" : {
+												"CodesetId" : 12,
+												"ConditionTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ConditionOccurrence" : {
+												"CodesetId" : 13,
+												"ConditionTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 16,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"DrugExposure" : {
+												"CodesetId" : 16,
+												"DrugTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							},
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"ConditionOccurrence" : {
+												"CodesetId" : 14,
+												"ConditionTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 15,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"DrugExposure" : {
+												"CodesetId" : 15,
+												"DrugTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 18,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"Observation" : {
+												"CodesetId" : 18,
+												"ObservationTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							}
+						]
+					},
+					"CodesetId" : 19,
+					"ConditionTypeExclude" : false
+				}
+			},
+			{
+				"Observation" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ALL",
+						"CriteriaList" : [],
+						"DemographicCriteriaList" : [],
+						"Groups" : [
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"VisitOccurrence" : {
+												"CodesetId" : 9,
+												"VisitTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"EndWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"End" : {
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : true
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 11,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"Observation" : {
+												"CodesetId" : 11,
+												"ObservationTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							},
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"ConditionOccurrence" : {
+												"CodesetId" : 12,
+												"ConditionTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ConditionOccurrence" : {
+												"CodesetId" : 13,
+												"ConditionTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 16,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"DrugExposure" : {
+												"CodesetId" : 16,
+												"DrugTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							},
+							{
+								"Type" : "ANY",
+								"CriteriaList" : [
+									{
+										"Criteria" : {
+											"ConditionOccurrence" : {
+												"CodesetId" : 14,
+												"ConditionTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 15,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"DrugExposure" : {
+												"CodesetId" : 15,
+												"DrugTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"ProcedureOccurrence" : {
+												"CodesetId" : 18,
+												"ProcedureTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									},
+									{
+										"Criteria" : {
+											"Observation" : {
+												"CodesetId" : 18,
+												"ObservationTypeExclude" : false
+											}
+										},
+										"StartWindow" : {
+											"Start" : {
+												"Days" : 0,
+												"Coeff" : -1
+											},
+											"End" : {
+												"Days" : 0,
+												"Coeff" : 1
+											},
+											"UseIndexEnd" : false,
+											"UseEventEnd" : false
+										},
+										"RestrictVisit" : false,
+										"IgnoreObservationPeriod" : false,
+										"Occurrence" : {
+											"Type" : 2,
+											"Count" : 1,
+											"IsDistinct" : false
+										}
+									}
+								],
+								"DemographicCriteriaList" : [],
+								"Groups" : []
+							}
+						]
+					},
+					"CodesetId" : 19,
+					"ObservationTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 2,
+			"name" : "Anaphylaxis (criterion 1 or 2)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 434219,
+							"CONCEPT_NAME" : "Food anaphylaxis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "91941002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4083866,
+							"CONCEPT_NAME" : "Anaphylaxis caused by venom",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "241930003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4221182,
+							"CONCEPT_NAME" : "Anaphylaxis due to substance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "417516000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661863,
+							"CONCEPT_NAME" : "Anaphylaxis caused by insect bite and/or insect sting",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871926004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42538691,
+							"CONCEPT_NAME" : "Anaphylaxis caused by low temperature",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "762455001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40479646,
+							"CONCEPT_NAME" : "Anaphylaxis due to latex",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "441593005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4083995,
+							"CONCEPT_NAME" : "Exercise anaphylaxis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "241952007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 441202,
+							"CONCEPT_NAME" : "Anaphylaxis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "39579001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 762511,
+							"CONCEPT_NAME" : "Anaphylaxis due to diphtheria and tetanus vaccine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "428281000124107",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 762514,
+							"CONCEPT_NAME" : "Anaphylaxis due to Hepatitis B vaccine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "428321000124101",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 762509,
+							"CONCEPT_NAME" : "Anaphylaxis due to human papillomavirus vaccine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "428241000124101",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 762513,
+							"CONCEPT_NAME" : "Anaphylaxis due to meningococcal vaccine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "428301000124106",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 762515,
+							"CONCEPT_NAME" : "Anaphylaxis due to rotavirus vaccine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "428331000124103",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 3,
+			"name" : "Food anaphylaxis",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 434219,
+							"CONCEPT_NAME" : "Food anaphylaxis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "91941002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 4,
+			"name" : "Anaphylaxis due to substance",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4221182,
+							"CONCEPT_NAME" : "Anaphylaxis due to substance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "417516000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4084168,
+							"CONCEPT_NAME" : "Drug-induced anaphylaxis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "241937000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 434219,
+							"CONCEPT_NAME" : "Food anaphylaxis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "91941002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 442038,
+							"CONCEPT_NAME" : "Anaphylactic shock due to serum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "213320003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 5,
+			"name" : "Anaphylaxis caused by insect bite and/or insect sting",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661863,
+							"CONCEPT_NAME" : "Anaphylaxis caused by insect bite and/or insect sting",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871926004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 6,
+			"name" : "Insect bite or sting",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4173025,
+							"CONCEPT_NAME" : "Insect bite - wound",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "276433004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661864,
+							"CONCEPT_NAME" : "Allergic reaction caused by insect bite and/or insect sting",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871927008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 437478,
+							"CONCEPT_NAME" : "Bite of nonvenomous arthropod",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "217706007",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4114305,
+							"CONCEPT_NAME" : "Insect sting",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "299971005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661861,
+							"CONCEPT_NAME" : "Allergic reaction to insect bite",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871920005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36674264,
+							"CONCEPT_NAME" : "Bite of insect",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "771191003",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Event"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4266230,
+							"CONCEPT_NAME" : "Poisoning by venomous snake",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "61288004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4296183,
+							"CONCEPT_NAME" : "Insect bite reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "402150002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4032280,
+							"CONCEPT_NAME" : "Snake bite",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "238456006",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 442149,
+							"CONCEPT_NAME" : "Poisoning by bee sting",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "7998009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 7,
+			"name" : "Toxic effect of venom",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 440905,
+							"CONCEPT_NAME" : "Toxic effect of venom",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "44400004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 8,
+			"name" : "Accidental poisoning",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 436581,
+							"CONCEPT_NAME" : "Accidental poisoning",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "72431002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 9,
+			"name" : "Inpatient or ER Visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9203,
+							"CONCEPT_NAME" : "Emergency Room Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ER",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 10,
+			"name" : "Outpatient Visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9202,
+							"CONCEPT_NAME" : "Outpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "OP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 11,
+			"name" : "Inpatient Care Concepts",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4289459,
+							"CONCEPT_NAME" : "Initial hospital visit by physician",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "69399002",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45888082,
+							"CONCEPT_NAME" : "Subsequent Hospital Care Services",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1013668",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4203130,
+							"CONCEPT_NAME" : "Discharge from hospital",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "308283009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4307376,
+							"CONCEPT_NAME" : "Final inpatient visit with instructions at discharge",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "83362003",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4214577,
+							"CONCEPT_NAME" : "Inpatient care",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "394656005",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2721702,
+							"CONCEPT_NAME" : "Hospice general inpatient care; per diem",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "T2045",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "HCPCS",
+							"CONCEPT_CLASS_ID" : "HCPCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4027135,
+							"CONCEPT_NAME" : "Subsequent hospital visit by physician",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "12843005",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45888081,
+							"CONCEPT_NAME" : "Hospital Observation Care Discharge Services",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1013649",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45888494,
+							"CONCEPT_NAME" : "Inpatient Neonatal and Pediatric Critical Care Services",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1019134",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45888205,
+							"CONCEPT_NAME" : "Prolonged service in the inpatient or observation setting, requiring unit/floor time beyond the usual service",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1013800",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45889184,
+							"CONCEPT_NAME" : "New or Established Patient Initial Hospital Inpatient Care Services",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1013661",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 8715,
+							"CONCEPT_NAME" : "Hospital admission",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32485007",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45888973,
+							"CONCEPT_NAME" : "New or Established Patient Initial Inpatient Consultation Services",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1013700",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4202667,
+							"CONCEPT_NAME" : "Medical consultation on inpatient",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "53923005",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 12,
+			"name" : "Bronchospasm",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 256717,
+							"CONCEPT_NAME" : "Bronchospasm",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "4386001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 13,
+			"name" : "Stridor",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 253321,
+							"CONCEPT_NAME" : "Stridor",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "70407001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 14,
+			"name" : "Hypotension",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 317002,
+							"CONCEPT_NAME" : "Low blood pressure",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45007003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 313232,
+							"CONCEPT_NAME" : "Hemodialysis-associated hypotension",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "408667000",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 316447,
+							"CONCEPT_NAME" : "Chronic hypotension",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77545000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 314432,
+							"CONCEPT_NAME" : "Maternal hypotension syndrome",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "88887003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 15,
+			"name" : "Epinephrine",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 1343916,
+							"CONCEPT_NAME" : "epinephrine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "3992",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Ingredient"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 16,
+			"name" : "Diphenhydramine injection",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36224040,
+							"CONCEPT_NAME" : "diphenhydramine Injectable Product",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1158446",
+							"DOMAIN_ID" : "Drug",
+							"VOCABULARY_ID" : "RxNorm",
+							"CONCEPT_CLASS_ID" : "Clinical Dose Group"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 18,
+			"name" : "Cardio Pulmonary Resuscitation CPR",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4205502,
+							"CONCEPT_NAME" : "Resuscitation",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "439569004",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4230167,
+							"CONCEPT_NAME" : "Artificial respiration",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "40617009",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4013354,
+							"CONCEPT_NAME" : "Insertion of endotracheal tube",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "112798008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40487536,
+							"CONCEPT_NAME" : "Intubation of respiratory tract",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "447996002",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4202832,
+							"CONCEPT_NAME" : "Intubation",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "52765003",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 19,
+			"name" : "Anaphylaxis nonspecific codes",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43530807,
+							"CONCEPT_NAME" : "Allergic disposition",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "609328004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 439228,
+							"CONCEPT_NAME" : "Sulfonamide adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "293032001",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 443368,
+							"CONCEPT_NAME" : "Carbonic anhydrase inhibitor adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "293492009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 440281,
+							"CONCEPT_NAME" : "Bromine complexes adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "292639002",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 441488,
+							"CONCEPT_NAME" : "Adverse reaction to substance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "282100009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 440015,
+							"CONCEPT_NAME" : "Iron adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "293354007",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661841,
+							"CONCEPT_NAME" : "Adverse reaction to hydantoin and hydantoin derivative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871702008",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661819,
+							"CONCEPT_NAME" : "Adverse reaction to adrenergic receptor antagonist",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871566007",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 441207,
+							"CONCEPT_NAME" : "Adverse reaction to drug",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "62014003",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4303952,
+							"CONCEPT_NAME" : "Allergic reaction to substance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "418634005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 433389,
+							"CONCEPT_NAME" : "Tetracyclines group adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "293047005",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40490404,
+							"CONCEPT_NAME" : "Adverse reaction to biological substance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "446994009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 443351,
+							"CONCEPT_NAME" : "Vaccine adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "293104008",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 433658,
+							"CONCEPT_NAME" : "Penicillin adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "292954005",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 433399,
+							"CONCEPT_NAME" : "Opioid antagonist adverse reaction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "292736001",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 435730,
+							"CONCEPT_NAME" : "Adverse reaction to pharmaceutical excipient",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "438784000",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3661853,
+							"CONCEPT_NAME" : "Adverse reaction to arsenic and arsenic compound",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "871783000",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "All"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Washout period 30 days - applied only to outpatient visit",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"VisitOccurrence" : {
+								"CorrelatedCriteria" : {
+									"Type" : "ANY",
+									"CriteriaList" : [
+										{
+											"Criteria" : {
+												"ConditionOccurrence" : {
+													"CodesetId" : 2,
+													"ConditionTypeExclude" : false
+												}
+											},
+											"StartWindow" : {
+												"Start" : {
+													"Days" : 0,
+													"Coeff" : -1
+												},
+												"End" : {
+													"Days" : 0,
+													"Coeff" : 1
+												},
+												"UseIndexEnd" : false,
+												"UseEventEnd" : false
+											},
+											"RestrictVisit" : false,
+											"IgnoreObservationPeriod" : false,
+											"Occurrence" : {
+												"Type" : 2,
+												"Count" : 1,
+												"IsDistinct" : false
+											}
+										},
+										{
+											"Criteria" : {
+												"Observation" : {
+													"CodesetId" : 2,
+													"ObservationTypeExclude" : false
+												}
+											},
+											"StartWindow" : {
+												"Start" : {
+													"Days" : 0,
+													"Coeff" : -1
+												},
+												"End" : {
+													"Days" : 0,
+													"Coeff" : 1
+												},
+												"UseIndexEnd" : false,
+												"UseEventEnd" : false
+											},
+											"RestrictVisit" : false,
+											"IgnoreObservationPeriod" : false,
+											"Occurrence" : {
+												"Type" : 2,
+												"Count" : 1,
+												"IsDistinct" : false
+											}
+										}
+									],
+									"DemographicCriteriaList" : [],
+									"Groups" : []
+								},
+								"CodesetId" : 10,
+								"VisitTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 30,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No Food anaphylaxis on index date",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 3,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No anaphylaxis due to substances other than food or drug on index date",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 4,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No anaphylaxis due insect bite on index date",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 5,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No insect bite or sting",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 6,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"Observation" : {
+								"CodesetId" : 6,
+								"ObservationTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No Toxic effect of venom",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 7,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "Accidental poisoning",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 8,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "EndDate",
+			"Offset" : 1
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}
