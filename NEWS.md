@@ -1,4 +1,4 @@
-PhenotypeLibrary 3.17.2
+PhenotypeLibrary 3.17.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
 
