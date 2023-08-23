@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.17.0</span>
       </span>
     </div>
 
@@ -124,16 +124,16 @@ by the OHDSI PhenotypeLibrary.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getPhenotypeLog</span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 29</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName     atlasId metaDataAll createdDate modifiedDate librarian</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 [W] COVID-19 ~       2 <span style="color: #949494;">"</span>\n cohort~ 2021-09-22  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 22 more variables: cohortNameFormatted &lt;chr&gt;, lastModifiedBy &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   cohortNameLong &lt;chr&gt;, cohortNameAtlas &lt;chr&gt;, status &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   addedVersion &lt;chr&gt;, logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   cohortId cohortName         cohortNameFormatted cohortNameLong cohortNameAtlas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 [W] COVID-19 diag~ COVID-19 diagnosis~ COVID-19 diag~ [W] COVID-19 d~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 24 more variables: librarian &lt;chr&gt;, status &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;, isCirceJson &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributors &lt;chr&gt;, contributorOrcIds &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributorOrganizations &lt;chr&gt;, peerReviewers &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   peerReviewerOrcIds &lt;lgl&gt;, recommendedEraPersistenceDurations &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   recommendedEraCollapseDurations &lt;chr&gt;, recommendSubsetOperators &lt;chr&gt;, ...</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   recommendedEraCollapseDurations &lt;chr&gt;, recommendSubsetOperators &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   recommendedReferentConceptIds &lt;chr&gt;, ohdsiForumPost &lt;chr&gt;, ...</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
