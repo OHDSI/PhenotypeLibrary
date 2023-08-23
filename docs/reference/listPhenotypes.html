@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.16.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.17.0</span>
       </span>
     </div>
 
@@ -112,26 +112,26 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">listPhenotypes</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 530 x 27</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cohortId cohortName    atlasId metaDataAll createdDate modifiedDate librarian</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        2 [W] COVID-19~       2 <span style="color: #949494;">"</span>\n cohort~ 2021-09-22  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        3 [P] Cough or~       3 <span style="color: #949494;">"</span>\n cohort~ 2021-09-22  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        4 [P] Diarrhea        4 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        5 [P] Dyspnea         5 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        6 [P] Fever           6 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        7 [P] Headache~       7 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        8 [P] Altered ~       8 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore thr~       9 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea o~      10 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       11 [P] Malaise ~      11 <span style="color: #949494;">"</span>\n cohort~ 2021-09-23  2023-06-29   rao@ohds~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 520 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 20 more variables: cohortNameFormatted &lt;chr&gt;, lastModifiedBy &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   cohortNameLong &lt;chr&gt;, cohortNameAtlas &lt;chr&gt;, status &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   addedVersion &lt;chr&gt;, logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 569 x 27</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cohortId cohortName        cohortNameFormatted cohortNameLong cohortNameAtlas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        2 [W] COVID-19 dia~ COVID-19 diagnosis~ COVID-19 diag~ [W] COVID-19 d~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        3 [P] Cough or Spu~ Cough or Sputum     Cough or Sput~ [P] Cough or S~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        4 [P] Diarrhea      Diarrhea            Diarrhea       [P] Diarrhea   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        5 [P] Dyspnea       Dyspnea             Dyspnea        [P] Dyspnea    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        6 [P] Fever         Fever               Fever          [P] Fever      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        7 [P] Headache or ~ Headache or Headac~ Headache or H~ [P] Headache o~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        8 [P] Altered smel~ Altered smell or t~ Altered smell~ [P] Altered sm~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        9 [P] Sore throat   Sore throat         Sore throat    [P] Sore throat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       10 [P] Nausea or Vo~ Nausea or Vomiting  Nausea or Vom~ [P] Nausea or ~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       11 [P] Malaise and ~ Malaise and or fat~ Malaise and o~ [P] Malaise an~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 559 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># i 22 more variables: librarian &lt;chr&gt;, status &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;, isCirceJson &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributors &lt;chr&gt;, contributorOrcIds &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contributorOrganizations &lt;chr&gt;, peerReviewers &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   peerReviewerOrcIds &lt;lgl&gt;, recommendedEraPersistenceDurations &lt;chr&gt;, ...</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   peerReviewerOrcIds &lt;lgl&gt;, recommendedEraPersistenceDurations &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   recommendedEraCollapseDurations &lt;chr&gt;, recommendSubsetOperators &lt;chr&gt;, ...</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

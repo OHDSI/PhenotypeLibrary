@@ -1,3 +1,49 @@
+PhenotypeLibrary 3.17.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 39 were added.
+
+    701: [P][R] Ascites
+    702: [P] Alanine aminotransferase (ALT) elevated
+    703: [P] Aspartate aminotransferase (AST) elevated
+    705: [P] Total Bilirubin elevated
+    706: [P] Prothrombin time (PT) elevated
+    707: Inpatient Hospitalization (0Pe, 1Era)
+    708: [P] International normalized ratio (INR) elevated
+    709: [P][R] Chronic liver disease
+    710: [P] Cirrhosis of liver or its sequela
+    711: [P][R] Transplanted liver present
+    712: [P] Viral hepatitis including history of
+    713: [P] Alcoholic hepatitis or alcohol liver disorder
+    714: [P][R] Endometriosis (clinical)
+    715: [P] Hepatic fibrosis
+    716: [P] Acute Hepatic Injury
+    717: [P] Portal hypertension or esophageal varices
+    719: [P] Acute Hepatic Injury or jaundice while inpatient with no cooccurring certain liver disease
+    720: [P] Aplastic Anemia
+    721: [P] Sudden New Onset Blindness
+    722: [P] Endometriosis indexed on procedure with two or more diagnosis among females 15 to 49
+    723: [P] First Acute Hepatic Failure with no known severe liver disease
+    724: [P] First Acute Hepatic Failure with no known liver disease
+    725: [P] All events of Acute Kidney Injury (AKI), with a washout period of 30 days
+    726: [P] All events of Anaphylaxis, Mini-Sentinel
+    727: [P] All events of Angioedema, with a washout period of 180 days
+    728: [P] Autoimmune hemolytic anemia events not including evans syndrome
+    729: [P] Autoimmune hepatitis, with a washout period of 365 days
+    730: [P] Acute pancreatitis, indexed on visit with NO chronic or hereditary pancreatitis
+    731: [P] Sudden Hearing Loss, No congenital anomaly or middle or inner ear conditions
+    732: [P] Severe Cutaneous Adverse Reaction (SCAR = SJS+TEN+DRESS) with clean window
+    733: [P] Drug Rash with Eosinophilia and Systemic Symptoms (DRESS) with clean window
+    734: [P] Drug Rash with Eosinophilia and Systemic Symptoms (DRESS)
+    735: [P] Acute Liver Injury indexed on diagnosis or symptoms with no chronic hepatic failure
+    736: [P] Acute Liver Injury NO viral, alcoholic, chronic hepatic failure
+    737: [P] Neutropenic Fever, Inpatient or ER, indexed on fever or Infection, 90 days era
+    738: [P] Autoimmune hemolytic anemia
+    739: [P] All events of Isolated Immune Thrombocytopenia (ITP), with a washout period of 365 days
+    740: [P] Earliest event of Pulmonary arterial hypertension (PAH)
+    741: [P] Earliest event of Thrombotic microangiopathy (TMA) or Microangiopathic hemolytic anemia (MAHA)
+
 PhenotypeLibrary 3.16.2
 ======================
 Formatting and rewrite of vignettes.
