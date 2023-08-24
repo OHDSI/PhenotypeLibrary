@@ -4,7 +4,7 @@
 \name{PhenotypeLibrary-package}
 \alias{PhenotypeLibrary}
 \alias{PhenotypeLibrary-package}
-\title{PhenotypeLibrary: The OHDSI Phenotype library}
+\title{PhenotypeLibrary: The OHDSI Phenotype Library}
 \description{
 A repository to store the content of the OHDSI Phenotype library.
 }
