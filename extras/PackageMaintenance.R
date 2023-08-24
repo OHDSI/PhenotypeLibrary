@@ -35,6 +35,8 @@ styler::style_dir(path = "extras")
 OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
+# check using devtools
+devtools::check()
 
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")
