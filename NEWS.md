@@ -1,3 +1,9 @@
+PhenotypeLibrary 3.17.1
+======================
+Minor changes.
+Remove dependencies from suggests.
+Fix hyperlinks in vignettes.
+
 PhenotypeLibrary 3.17.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

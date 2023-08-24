@@ -35,9 +35,6 @@ styler::style_dir(path = "extras")
 OhdsiRTools::checkUsagePackage("PhenotypeLibrary")
 OhdsiRTools::updateCopyrightYearFolder()
 
-# check using devtools
-devtools::check()
-
 # Create manual -----------------------------------------------------------
 unlink("extras/PhenotypeLibrary.pdf")
 shell("R CMD Rd2pdf ./ --output=extras/PhenotypeLibrary.pdf")
@@ -150,11 +147,11 @@ pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
 
 
-# Release package to CRAN ------------------------------------------------------
-devtools::check_win_devel()
-
-devtools::check_rhub()
-
-devtools::release()
-
-devtools::check(cran = TRUE)
+# Cannot Release package to CRAN because of size restriction in CRAN ------------------------------------------------------
+# devtools::check_win_devel()
+#
+# devtools::check_rhub()
+#
+# devtools::release()
+#
+# devtools::check(cran = TRUE)
