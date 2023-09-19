@@ -1,3 +1,27 @@
+PhenotypeLibrary 3.18.0
+======================
+This release is a clean up of files and cohorts before adding cohorts from HowOften.
+getPhenotypeLog() now gives additional information about a cohort. These are programmatically
+derived from Circe model compatible cohort json.
+
+    censorWindowStartDate	censorWindowEndDate	collapseSettingsType	
+    collapseEraPad	exitStrategy	exitDateOffSetField	exitDateOffSet	
+    numberOfInclusionRules	qualifyingLimitType	primaryCriteriaLimit	
+    numberOfCohortEntryEvents	numberOfDomainsInEntryEvents	
+    domainsInEntryEvents	continousObservationWindowPrior	
+    continousObservationWindowPost	numberOfConceptSets	
+    demographicCriteria	demographicCriteriaAge	demographicCriteriaGender	
+    useOfObservationPeriodInclusionRule	restrictedByVisit	
+    domainConditionOccurrence	domainMeasurement	domainObservation	
+    domainVisitOccurrence	domainDeath	domainDrugExposure	
+    criteriaAgePrimaryCriteria	domainDeviceExposure	
+    domainProcedureOccurrence	criteriaAgeInclusionRules	
+    criteriaGenderPrimaryCriteria	criteriaGenderInclusionRules
+
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: No new cohorts were added in this release.
+
 PhenotypeLibrary 3.17.1
 ======================
 Minor changes.

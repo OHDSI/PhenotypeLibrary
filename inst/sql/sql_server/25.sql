@@ -6,6 +6,8 @@ CREATE TABLE #Codesets (
 
 
 
+UPDATE STATISTICS #Codesets;
+
 
 SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
 INTO #qualified_events
@@ -22,11 +24,11 @@ FROM
   FROM 
   (
   -- Begin Death Criteria
-select C.person_id, C.person_id as event_id, C.death_date as start_date, DATEADD(d,1,C.death_date) as end_date,
-  CAST(NULL as bigint) as visit_occurrence_id, C.death_date as sort_date
+select C.person_id, C.person_id as event_id, C.start_date, c.end_date,
+  CAST(NULL as bigint) as visit_occurrence_id, C.start_date as sort_date
 from 
 (
-  select d.*
+  select d.person_id,d.cause_concept_id,d.death_date as start_date, DATEADD(day,1,d.death_date) as end_date
   FROM @cdm_database_schema.DEATH d
 
 ) C

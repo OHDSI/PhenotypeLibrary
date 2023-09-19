@@ -33,6 +33,9 @@ ROhdsiWebApi::authorizeWebApi(
 webApiCohorts <-
   ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)
 
+webApiCohorts <- webApiCohorts |>
+  dplyr::filter(id %in% c(oldCohortDefinitionSet$cohortId))
+
 exportableCohorts <-
   dplyr::bind_rows(
     webApiCohorts |>
@@ -251,11 +254,15 @@ for (i in (1:length(cohortJsonFiles))) {
 if ("id" %in% colnames(cohortRecord)) {
   cohortRecord$id <- NULL
 }
+if ("atlasId" %in% colnames(cohortRecord)) {
+  cohortRecord$atlasId <- NULL
+}
 if ("name" %in% colnames(cohortRecord)) {
   cohortRecord$name <- NULL
 }
-cohortRecord <- cohortRecord |>
-  dplyr::rename(metaDataAll = description)
+if ("description" %in% colnames(cohortRecord)) {
+  cohortRecord$description <- NULL
+}
 
 cohortRecord <- cohortRecord |>
   dplyr::mutate(isCirceJson = 1)
@@ -265,7 +272,6 @@ expectedFields <- c(
   "cohortName",
   "cohortNameFormatted",
   "cohortNameLong",
-  "cohortNameAtlas",
   "librarian",
   "status",
   "addedVersion",
@@ -277,13 +283,9 @@ expectedFields <- c(
   "contributorOrganizations",
   "peerReviewers",
   "peerReviewerOrcIds",
-  "recommendedEraPersistenceDurations",
-  "recommendedEraCollapseDurations",
-  "recommendSubsetOperators",
   "recommendedReferentConceptIds",
   "cohortNameLong",
   "ohdsiForumPost",
-  "metaDataAll",
   "createdDate",
   "modifiedDate",
   "lastModifiedBy",
@@ -328,16 +330,35 @@ cohortRecord <- cohortRecord |>
 cohortRecord <- cohortRecord |>
   dplyr::mutate(isReferenceCohort = dplyr::if_else(
     stringr::str_detect(
-      string = cohortNameAtlas,
+      string = cohortName,
       pattern = stringr::fixed("[R]")
     ),
     1,
     0
   ))
 
+cohortRecordAugmented <- c()
+for (i in (1:nrow(cohortRecord))) {
+  cohortRecordUnit <- cohortRecord[i, ]
+  cohortJson <- SqlRender::readSql(sourceFile = file.path(
+    "inst",
+    "cohorts",
+    paste0(cohortRecordUnit$cohortId, ".json")
+  ))
+
+  parsed <-
+    PrivateScripts::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
+      RJSONIO::fromJSON(digits = 23))
+  if (nrow(parsed) > 0) {
+    cohortRecordAugmented[[i]] <- cohortRecordUnit |>
+      tidyr::crossing(parsed)
+  }
+}
+
+cohortRecordAugmented <- dplyr::bind_rows(cohortRecordAugmented)
 
 readr::write_excel_csv(
-  x = cohortRecord,
+  x = cohortRecordAugmented,
   file = "inst/Cohorts.csv",
   append = FALSE,
   na = "",
@@ -376,31 +397,10 @@ if (needToUpdate) {
 
   # Update news -----------------------------------------------------------
   news <- readLines("NEWS.md")
-
-  changes <- cohortRecord |>
-    dplyr::anti_join(oldLogFile)
-
   newCohorts <- setdiff(
     x = sort(cohortRecord$cohortId),
     y = sort(oldLogFile$cohortId)
   )
-
-  # deprecatedCohorts <- setdiff(
-  #   x = sort(
-  #     cohortRecord |>
-  #       dplyr::filter(!is.na(deprecatedDate)) |>
-  #       dplyr::pull(cohortId)
-  #   ),
-  #   y = sort(
-  #     oldLogFile |>
-  #       dplyr::filter(!is.na(deprecatedDate)) |>
-  #       dplyr::pull(cohortId)
-  #   )
-  # )
-
-  # modifiedCohorts <- changes |>
-  #   dplyr::filter(!cohortId %in% c(newCohorts, deprecatedCohorts)) |>
-  #   dplyr::pull(cohortId)
 
   messages <- c("")
   if (length(newCohorts) == 0) {
@@ -461,7 +461,11 @@ if (needToUpdate) {
 
     messages <-
       c(
-        paste0("Accepted Cohorts: ", nrow(acceptedCohorts), " were accepted."),
+        paste0(
+          "Accepted Cohorts: ",
+          nrow(acceptedCohorts),
+          " were accepted."
+        ),
         messages
       )
     messages <- c(
