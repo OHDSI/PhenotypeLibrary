@@ -33,6 +33,9 @@ ROhdsiWebApi::authorizeWebApi(
 webApiCohorts <-
   ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)
 
+webApiCohorts <- webApiCohorts |> 
+  dplyr::filter(id %in% c(oldCohortDefinitionSet$cohortId))
+
 exportableCohorts <-
   dplyr::bind_rows(
     webApiCohorts |>
@@ -193,14 +196,20 @@ for (i in 1:nrow(exportableCohorts)) {
 }
 
 cohortRecord <- dplyr::bind_rows(cohortRecord) |>
-  dplyr::select(-createdBy, -modifiedBy) |>
-  dplyr::mutate(
-    id = cohortId,
-    name = id
-  ) |>
+  dplyr::select(-createdBy,-modifiedBy) |>
+  dplyr::mutate(id = cohortId,
+                name = id) |>
   dplyr::relocate(cohortId, cohortName)
+# |>
+#   dplyr::select(
+#     -cohortNameAtlas,
+#     -recommendedEraPersistenceDurations,
+#     -recommendedEraCollapseDurations,
+#     -recommendSubsetOperators,
+#     -description
+#   )
 
-cohortRecord |>
+cohortRecord |> 
   readr::write_excel_csv(
     file = "inst/Cohorts.csv",
     append = FALSE,
@@ -265,7 +274,6 @@ expectedFields <- c(
   "cohortName",
   "cohortNameFormatted",
   "cohortNameLong",
-  "cohortNameAtlas",
   "librarian",
   "status",
   "addedVersion",
@@ -277,13 +285,9 @@ expectedFields <- c(
   "contributorOrganizations",
   "peerReviewers",
   "peerReviewerOrcIds",
-  "recommendedEraPersistenceDurations",
-  "recommendedEraCollapseDurations",
-  "recommendSubsetOperators",
   "recommendedReferentConceptIds",
   "cohortNameLong",
   "ohdsiForumPost",
-  "metaDataAll",
   "createdDate",
   "modifiedDate",
   "lastModifiedBy",
@@ -328,7 +332,7 @@ cohortRecord <- cohortRecord |>
 cohortRecord <- cohortRecord |>
   dplyr::mutate(isReferenceCohort = dplyr::if_else(
     stringr::str_detect(
-      string = cohortNameAtlas,
+      string = cohortName,
       pattern = stringr::fixed("[R]")
     ),
     1,
@@ -377,8 +381,9 @@ if (needToUpdate) {
   # Update news -----------------------------------------------------------
   news <- readLines("NEWS.md")
 
-  changes <- cohortRecord |>
-    dplyr::anti_join(oldLogFile)
+  # changes <- cohortRecord |>
+  #   dplyr::anti_join(oldLogFile |> 
+  #                      dplyr::select(colnames(cohortRecord)))
 
   newCohorts <- setdiff(
     x = sort(cohortRecord$cohortId),

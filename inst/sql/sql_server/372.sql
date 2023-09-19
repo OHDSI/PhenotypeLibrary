@@ -32,8 +32,10 @@ SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (437779)
 
 ) I
-) C
-;
+) C;
+
+UPDATE STATISTICS #Codesets;
+
 
 SELECT event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id
 INTO #qualified_events
@@ -50,11 +52,11 @@ FROM
   FROM 
   (
   -- Begin Condition Occurrence Criteria
-SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
-  C.visit_occurrence_id, C.condition_start_date as sort_date
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
 FROM 
 (
-  SELECT co.* 
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
@@ -103,7 +105,7 @@ FROM (
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,0,end_date) > op_end_date then op_end_date else DATEADD(day,0,end_date) end as end_date
+  case when DATEADD(day,14,end_date) > op_end_date then op_end_date else DATEADD(day,14,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -137,7 +139,7 @@ from ( --cteEnds
 	JOIN ( -- cteEndDates
     SELECT
       person_id
-      , DATEADD(day,-1 * 0, event_date)  as end_date
+      , DATEADD(day,-1 * 30, event_date)  as end_date
     FROM
     (
       SELECT
@@ -158,7 +160,7 @@ from ( --cteEnds
 
         SELECT
           person_id
-          , DATEADD(day,0,end_date) as end_date
+          , DATEADD(day,30,end_date) as end_date
           , 1 AS event_type
         FROM #cohort_rows
       ) RAWDATA
