@@ -8,7 +8,6 @@ oldCohortDefinitionSet <-
 
 
 for (i in (1:nrow(oldCohortDefinitions))) {
-  
   replaceStringIfNa <- function(string) {
     if (is.na(string)) {
       output <- ""
@@ -17,7 +16,7 @@ for (i in (1:nrow(oldCohortDefinitions))) {
     }
     return(output)
   }
-  
+
   description <- paste0(
     "cohortNameLong : ",
     replaceStringIfNa(oldCohortDefinitions[i, ]$cohortNameLong),
@@ -61,7 +60,7 @@ for (i in (1:nrow(oldCohortDefinitions))) {
     replaceStringIfNa(oldCohortDefinitions[i, ]$replaces),
     ";\n"
   )
-  
+
   baseUrl <- "https://atlas-phenotype.ohdsi.org/WebAPI"
   ROhdsiWebApi::authorizeWebApi(
     baseUrl = baseUrl,
@@ -69,14 +68,14 @@ for (i in (1:nrow(oldCohortDefinitions))) {
     webApiUsername = keyring::key_get("ohdsiAtlasPhenotypeUser"),
     webApiPassword = keyring::key_get("ohdsiAtlasPhenotypePassword")
   )
-  
+
   webApiInf <- ROhdsiWebApi::getCohortDefinition(
-    cohortId = oldCohortDefinitions[i,]$cohortId,
+    cohortId = oldCohortDefinitions[i, ]$cohortId,
     baseUrl = baseUrl
   )
-  
+
   webApiInf$description <- description
-  
+
   ROhdsiWebApi::updateCohortDefinition(
     cohortDefinition = webApiInf,
     baseUrl = baseUrl
