@@ -69,9 +69,9 @@ modifyCohortExit <- function(cohortDefinition,
                              drugCodeSetId = NULL,
                              persistenceWindow = 0,
                              surveillanceWindow = 0) {
-  if (exitStrategy = "end of continuous observation") {
+  if (exitStrategy == "end of continuous observation") {
     cohortDefinition$EndStrategy <- NULL
-  } else if (exitStrategy = "fixed duration relative to initial event") {
+  } else if (exitStrategy == "fixed duration relative to initial event") {
     cohortDefinition$EndStrategy <- NULL
     cohortDefinition$EndStrategy <- list()
     cohortDefinition$EndStrategy$DateOffset <- list()
@@ -88,7 +88,7 @@ modifyCohortExit <- function(cohortDefinition,
         )
       )
     }
-  } else if (exitStrategy = "end of continuous drug exposure") {
+  } else if (exitStrategy == "end of continuous drug exposure") {
     cohortDefinition$EndStrategy <- NULL
     cohortDefinition$EndStrategy <- list()
     cohortDefinition$EndStrategy$CustomEra <- numeric()
@@ -114,6 +114,115 @@ modifyCohortExit <- function(cohortDefinition,
 }
 
 
+getNumberOfInclusionRules <- function(cohortDefinition) {
+  length(cohortDefinition$InclusionRules)
+}
+
+getQualifyingEventLimitCriteria <- function(cohortDefinition) {
+  cohortDefinition$QualifiedLimit |> as.character()
+}
+
+getPrimaryCriteriaLimit <- function(cohortDefinition) {
+  cohortDefinition$PrimaryCriteria$PrimaryCriteriaLimit |> as.character()
+}
+
+getNumberOfCohortEntryEvents <- function(cohortDefinition) {
+  cohortDefinition$PrimaryCriteria$CriteriaList |> length()
+}
+
+
+getContinuousPriorObservationPeriodRequirement <-
+  function(cohortDefinition) {
+    priorDays <-
+      as.integer(cohortDefinition$PrimaryCriteria$ObservationWindow[["PriorDays"]])
+    postDays <-
+      as.integer(cohortDefinition$PrimaryCriteria$ObservationWindow[["PostDays"]])
+    output <- c()
+    output$priorDays <- priorDays
+    output$postDays <- postDays
+    return(output)
+  }
+
+
+getDomainsInEntryEvents <- function(cohortDefinition) {
+  cohortEntryEvents <-
+    getNumberOfCohortEntryEvents(cohortDefinition = cohortDefinition)
+  
+  domains <- c()
+  for (i in (1:cohortEntryEvents)) {
+    domains[i] <-
+      names(cohortDefinition$PrimaryCriteria$CriteriaList[[i]])
+  }
+  
+  uniqueDomains <- unique(domains) |> sort()
+  
+  output <- c()
+  output$uniqueDomains <- uniqueDomains
+  output$numberOfUniqueDomains <- length(uniqueDomains)
+  output$domains <-
+    dplyr::tibble(uniqueDomains) |>
+    dplyr::mutate(value = 1) |>
+    tidyr::pivot_wider(
+      names_from  = "uniqueDomains",
+      names_prefix = "domain",
+      values_from = "value"
+    )
+  return(output)
+}
+
+
+parseCohortDefinitionSpecifications <- function(cohortDefinition) {
+  censorWindow <-
+    readCensorWindow(cohortDefinition = cohortDefinition)
+  collapseSettings <-
+    readCollapseSettings(cohortDefinition = cohortDefinition)
+  cohortExit <- readCohortExit(cohortDefinition = cohortDefinition)
+  numberOfInclusionRules <-
+    getNumberOfInclusionRules(cohortDefinition = cohortDefinition)
+  qualifyingLimitType <-
+    getQualifyingEventLimitCriteria(cohortDefinition = cohortDefinition)
+  primaryCriteriaLimit <-
+    getPrimaryCriteriaLimit(cohortDefinition = cohortDefinition)
+  numberOfCohortEntryEvents <-
+    getNumberOfCohortEntryEvents(cohortDefinition = cohortDefinition)
+  domainsInEntryEventCriteria <-
+    getDomainsInEntryEvents(cohortDefinition = cohortDefinition)
+  continousObservationRequirement <-
+    getContinuousPriorObservationPeriodRequirement(cohortDefinition = cohortDefinition)
+  
+  
+  report <- dplyr::tibble(
+    censorWindowStartDate =
+      (if (length(censorWindow$censorWindowStartDate) > 0) {
+        censorWindow$censorWindowStartDate
+      } else
+        NA),
+    censorWindowEndDate =
+      (if (length(censorWindow$censorWindowEndDateDate) > 0) {
+        censorWindow$censorWindowEndDateDate
+      } else
+        NA),
+    collapseSettingsType = collapseSettings$collapseType,
+    collapseEraPad = collapseSettings$eraPad,
+    exitStrategy = cohortExit$exitStrategy,
+    exitDateOffSetField = cohortExit$dateOffSetField,
+    exitDateOffSet = cohortExit$dateOffSet,
+    exitDrugCodeSetId = cohortExit$drugCodeSetId,
+    exitPersistenceWindow = cohortExit$persistenceWindow,
+    exitSurveillanceWindow = cohortExit$surveillanceWindow,
+    numberOfInclusionRules = numberOfInclusionRules,
+    qualifyingLimitType = qualifyingLimitType,
+    primaryCriteriaLimit = primaryCriteriaLimit,
+    numberOfCohortEntryEvents = numberOfCohortEntryEvents,
+    numberOfDomainsInEntryEvents = domainsInEntryEventCriteria$numberOfUniqueDomains,
+    domainsInEntryEvents = paste0(domainsInEntryEventCriteria$uniqueDomains, collapse = ", "),
+    continousObservationPrior = continousObservationRequirement$priorDays,
+    continousObservationPost = continousObservationRequirement$postDays
+  ) |>
+    tidyr::crossing(domainsInEntryEventCriteria$domains)
+  
+  return(report)
+}
 
 
 parsePhenotypeLibraryDescription <- function(cohortDefinition) {
