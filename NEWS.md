@@ -1,3 +1,9 @@
+PhenotypeLibrary 3.18.1
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: No new cohorts were added in this release.
+
 PhenotypeLibrary 3.17.1
 ======================
 Minor changes.

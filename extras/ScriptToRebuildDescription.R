@@ -9,42 +9,56 @@ oldCohortDefinitionSet <-
 
 for (i in (1:nrow(oldCohortDefinitions))) {
   
+  replaceStringIfNa <- function(string) {
+    if (is.na(string)) {
+      output <- ""
+    } else {
+      output <- stringr::str_squish(stringr::str_trim(string))
+    }
+    return(output)
+  }
   
   description <- paste0(
     "cohortNameLong : ",
-    oldCohortDefinitions[i, ]$cohortNameLong,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$cohortNameLong),
     ";\n",
     "librarian : rao@ohdsi.org",
     ";\n",
     "status : ",
-    oldCohortDefinitions[i, ]$status,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$status),
     ";\n",
     "addedVersion : ",
-    oldCohortDefinitions[i, ]$addedVersion,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$addedVersion),
     ";\n",
     "logicDescription : ",
-    oldCohortDefinitions[i, ]$logicDescription,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$logicDescription),
     ";\n",
     "hashTag : ",
-    oldCohortDefinitions[i, ]$hashTag,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$hashTag),
     ";\n",
     "contributors : ",
-    oldCohortDefinitions[i, ]$contributors,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$contributors),
     ";\n",
     "contributorOrcIds : ",
-    oldCohortDefinitions[i, ]$contributorOrcIds,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$contributorOrcIds),
     ";\n",
     "contributorOrganizations : ",
-    oldCohortDefinitions[i, ]$contributorOrganizations,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$contributorOrganizations),
     ";\n",
     "peerReviewers : ",
-    oldCohortDefinitions[i, ]$peerReviewerOrcIds,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$peerReviewers),
+    ";\n",
+    "peerReviewerOrcIds : ",
+    replaceStringIfNa(oldCohortDefinitions[i, ]$peerReviewerOrcIds),
     ";\n",
     "recommendedReferentConceptIds : ",
-    oldCohortDefinitions[i, ]$recommendedReferentConceptIds,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$recommendedReferentConceptIds),
     ";\n",
     "ohdsiForumPost : ",
-    oldCohortDefinitions[i, ]$ohdsiForumPost,
+    replaceStringIfNa(oldCohortDefinitions[i, ]$ohdsiForumPost),
+    ";\n",
+    "replaces : ",
+    replaceStringIfNa(oldCohortDefinitions[i, ]$replaces),
     ";\n"
   )
   
