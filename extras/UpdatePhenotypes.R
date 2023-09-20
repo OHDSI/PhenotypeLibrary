@@ -341,7 +341,6 @@ cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
   cohortRecordUnit <- cohortRecord[i, ]
   
-  print(i)
   if (!file.exists(file.path(
     "inst",
     "cohorts",
