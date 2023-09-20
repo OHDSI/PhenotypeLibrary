@@ -340,7 +340,7 @@ cohortRecord <- readRDS("cohortRecord.rds")
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
   cohortRecordUnit <- cohortRecord[i, ]
-  
+
   if (!file.exists(file.path(
     "inst",
     "cohorts",
@@ -348,7 +348,7 @@ for (i in (1:nrow(cohortRecord))) {
   ))) {
     stop("cant find file")
   }
-  
+
   cohortJson <- SqlRender::readSql(sourceFile = file.path(
     "inst",
     "cohorts",
