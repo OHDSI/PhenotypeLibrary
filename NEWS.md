@@ -1,3 +1,265 @@
+PhenotypeLibrary 3.19.0
+======================
+This release includes the bulk of the cohorts submitted to the OHDSI PhenotypeLibrary
+in the month of September 2023, as part of the push for HowOften.
+
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 252 were added.
+
+    311: [P] Parasomnia
+    742: [P] Parasomnia or Sleep dysfunction with arousal disturbance
+    743: [P] Diabetic ketoacidosis IP-ER (SNOMED concept)
+    744: [P] Pulmonary Hypertension
+    745: [P] Inflammatory Bowel Disease
+    746: [P] Chronic Thromboembolic Pulmonary Hypertension
+    747: [P] Pulmonary Arterial Hypertension
+    748: [P] Psoriatic arthritis
+    749: [P] Plaque Psoriasis
+    750: [P] Pulmonary hypertension associated with left heart disease (WHO Group 2)
+    751: [P] Pulmonary hypertension associated with lung diseases and or hypoxia (WHO Group 3)
+    752: [P] Firearm Accidents (FA)
+    753: [P] Motor Vehicle Accidents (MVA)
+    754: [P] Down Syndrome
+    755: [P] Non-infectious uveitis and iridocyclitis
+    756: [P] Cystic Fibrosis
+    757: [P] Concomitant TNF - alpha Inhibitors and IL23 Inhibitors - GE 30D overlap
+    759: [P] Concomitant TNF - alpha Inhibitors and IL12_23 Inhibitors - GE 30D overlap
+    760: [P] Concomitant IL 23 Inhibitors and IL12_23 Inhibitors - GE 30D overlap
+    761: [P] Pulmonary arterial hypertension with Prior Left Heart or Vice Versa
+    762: [P] Endothelin receptor antagonists
+    763: [P] Phosphodiesterase 5 inhibitors and guanylate cyclase stimulators
+    764: [P] Prostacyclin analogues and prostacyclin receptor agonists
+    765: [P] Earliest event of Left Heart Failure
+    766: [P] Earliest event of Right Heart Failure
+    767: [P] Earliest event of Sarcoidosis
+    768: [P] Earliest event of Sickle Cell Anemia
+    769: [P] Scleroderma, first occurrence
+    770: [P] Essential Hypertension, first occurrence
+    771: [P] Pulmonary Hypertension (Group 2 Left heart disease, encompassing)
+    772: [P] Pulmonary Hypertension (Group 3 Chronic lung disease, encompassing)
+    773: [P] Congenital Heart Disease
+    774: [P] Portal Hypertension, first occurrence
+    775: [P] First Inflammatory Bowel Disease
+    776: [P] Antisynthetase syndrome
+    777: [P] Mixed connective tissue disease
+    778: [P] Undifferentiated connective tissue disease
+    779: [P] Overlap syndrome
+    780: [P] Raynaud?s disease or Raynaud's phenomenon
+    781: [P] Antiphospholipid syndrome
+    782: [P] CTEPH Prevalent (with Echo or RHC) with 2nd dx code 31-365 days after first dx
+    783: [P] Pulmonary endarterectomy
+    784: [P] Balloon Pulmonary Angioplasty
+    785: [P] Skin Burns
+    786: [P] Non-small cell lung cancer (NSCLC)
+    787: [P] Lung cancer
+    788: [P] Breast cancer
+    789: [P] Glioblastoma multiforme (GBM)
+    790: [P] Colorectal Cancer
+    791: [P] Multiple Myeloma
+    792: [P] Metastatic Hormone-Sensitive Prostate Cancer Synchronous
+    793: [P] Metastatic Hormone-Sensitive Prostate Cancer Metachronus
+    794: COPY OF [P][R] Bleeding
+    795: [P] Antineoplastic drugs against colorectal cancer
+    796: [P] Potential curative surgery for colorectal cancer
+    797: [P] Radiotherapy against colorectal cancer
+    798: [P] Primary adenocarcinoma of the colon or rectum
+    802: [P] Acute Respiratory Failure 2
+    803: [P] Fascial dehiscence and evisceration
+    804: [P] Anastomotic leak or dehiscence
+    805: [P] Intestinal obstruction (broad)
+    806: [P] Intraabdominal abscess
+    807: [P] Perioperative aspiration
+    808: [P] Postoperative hemorrhage
+    809: [P] Surgical wound infection (narrow)
+    810: [P] Distant metastasis following colorectal cancer (wide)
+    811: [P] Local recurrence after colorectal cancer
+    812: [P] Primary adenocarcinoma of the colon or rectum, MSI-H or dMMR, no surgery or oncological treatment
+    813: [P] Primary adenocarcinoma of the colon or rectum treated with potentially curative surgery
+    814: [P] Primary adenocarcinoma of the colon or rectum, no curative intended surgery and oncological treatment
+    817: [P] Primary adenocarcinoma of the colon or rectum, no curative intended surgery and oncological treatment2
+    818: [P] Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR
+    819: [P] Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, treated with curative intended surgery
+    820: [P] Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no curative surgery
+    821: [P] Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, no surgery or oncological treatment
+    822: [P] Primary adenocarcinoma of colon or rectum, MSI-H or dMMR, surgical treatment
+    823: [P] Primary adenocarcinoma of colon or rectum, MSI-H or dMMR, oncological treatment no surgery
+    824: [P] Primary adenocarcinoma of colon or rectum,  MSI-H or dMMR
+    825: [P] Primary adenocarcinoma of colon
+    826: [P] Primary adenocarcinoma of colon, no surgery or oncological treatment
+    827: [P] Primary adenocarcinoma of colon surgical treatment
+    828: [P] Primary adenocarcinoma of colon oncological treatment, no surgery
+    829: [P] Primary adenocarcinoma of colon, MSI-L, MSI-indeterminate, MSS or pMMR
+    830: [P] Primary adenocarcinoma of colon, MSI-L, MSI-indeterminate, MSS or pMMR, surgically treated
+    831: [P] Primary adenocarcinoma of colon MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no surgery
+    832: [P] Primary adenocarcinoma of colon MSI-L, MSI-indeterminate, MSS or pMMR, no surgery or oncological treatment
+    833: [P] Primary adenocarcinoma of colon MSI-H or dMMR
+    834: [P] Primary adenocarcinoma of colon MSI-H or dMMR, surgical treatment
+    835: [P] Primary adenocarcinoma of colon MSI-H or dMMR, oncological treatment, no surgery
+    836: [P] Primary adenocarcinoma of colon MSI-H or dMMR, no surgery or oncological treatment
+    837: [P] Primary adenocarcinoma of rectum
+    838: [P] Primary adenocarcinoma of rectum MSI-H or dMMR
+    839: [P] Primary adenocarcinoma of rectum, MSI-H or dMMR, no surgery or oncological treatment
+    840: [P] Primary adenocarcinoma of rectum MSI-H or dMMR, oncological treatment, no surgery
+    841: [P] Primary adenocarcinoma of rectum, MSI-H or dMMR, surgical treatment
+    842: [P] Primary adenocarcinoma of rectum, MSI-L, MSI-indeterminate, MSS or pMMR
+    843: [P] Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment,  no surgery
+    844: [P] Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, no surgery and no oncological treatment
+    845: [P] Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, treated with potentially curative surgery
+    846: [P] Primary adenocarcinoma of rectum oncological treatment, no surgery
+    847: [P] Primary adenocarcinoma of rectum surgical treatment
+    848: [P] Primary adenocarcinoma of rectum, no surgery or oncological treatment
+    850: [P] Intestinal obstruction (broad 2)
+    851: [P] Intraabdominal obstruction (broad)
+    852: [P] Surgical wound infection (broad)
+    854: [P] Distant metastasis following colorectal cancer (medium)
+    855: [P] Distant metastasis following colorectal cancer (narrow)
+    856: [P] Earliest event of Migraine, including history of migraine
+    857: [P] Earliest event of Migraine
+    858: [P] Earliest event of Rheumatoid Arthritis
+    859: [P] Earliest event of Crohns disease
+    860: [P] Earliest event of Ulcerative colitis
+    861: [P] Earliest event of Urinary tract infections (UTI)
+    862: [P] Earliest event of Alzheimer's disease derived from Imfeld, 2
+    863: [P] Cognitive impairment, incident
+    864: [P] Earliest event of Dementia
+    865: [P] Non-Emergent Major Non Cardiac Surgery
+    866: [P] AAA repair
+    867: [P] Lower Extremity Bypass
+    868: [P] Carotid Endarterectomy
+    869: [P] Lung Resection
+    870: [P] Esophagectomy
+    871: [P] Pancreatectomy
+    872: [P] Colectomy
+    873: [P] Cystectomy
+    874: [P] Nephrectomy
+    875: [P] Coronary Artery Bypass Graft Surgery
+    876: [P] Aortic or Mitral Valve Repair or Replacement
+    877: [P] Non-Emergent MNCS (age 18 or greater), post op Afib (parox)
+    878: [P] Non-Emergent MNCS (age 18 or greater), post op Afib (any)
+    879: Cxxx Endometriosis indexed on procedure with two or more diagnosis among females 15 to 49
+    881: [P] Acute myocardial infarction
+    882: [P] Decreased libido
+    884: [P] Diarrhea2
+    888: [P] Gastrointestinal bleeding
+    889: [P] Hyponatremia
+    890: [P] Hypotension
+    891: [P] Nausea
+    892: [P] Stroke
+    893: [P] Vertigo
+    894: [P] Abdominal pain
+    895: [P] Abnormal weight gain
+    896: [P] Abnormal weight loss
+    898: [P] Acute renal failure
+    899: [P] All-cause mortality
+    900: [P] Anaphylactoid reaction
+    901: [P] Anemia
+    907: [P] All-cause mortality2
+    910: [P] Anaphylactoid reaction2
+    913: [P] Anemia2
+    916: [P] Angioedema2
+    917: [P] Anxiety
+    918: [P] Bradycardia
+    919: [P] Cardiac arrhythmia
+    920: [P] Cardiovascular disease
+    921: [P] Cardiovascular-related mortality
+    922: [P] Chest pain or angina
+    923: [P] Kidney disease
+    924: [P] Coronary heart disease
+    925: [P] Cough
+    927: [P] Dementia2
+    928: [P] Depression2
+    929: [P] Edema2
+    930: [P] End stage renal disease2
+    931: [P] Fall2
+    932: [P] Gout2
+    933: [P] Headache2
+    934: [P] Heart failure2
+    935: [P] Hemorrhagic stroke2
+    936: [P] Hepatic failure2
+    937: [P] Hospitalization with heart failure2
+    938: [P] Hospitalization with heart failure
+    939: [P] Hospitalization with preinfarction syndrome
+    940: [P] Hyperkalemia
+    941: [P] Hypokalemia
+    942: [P] Hypomagnesemia
+    943: [P] Impotence
+    944: [P] Ischemic stroke
+    945: [P] Malignant neoplasm
+    946: [P] Measured renal dysfunction
+    947: [P] Neutropenia or agranulocytosis
+    948: [P] Rash
+    950: [P] Rhabdomyolysis2
+    953: [P] Sudden cardiac death
+    954: [P] Syncope
+    955: [P] Thrombocytopenia
+    956: [P] Transient ischemic attack
+    957: [P] Type 2 diabetes mellitus
+    958: [P] Syncope3
+    959: [P] Thrombocytopenia3
+    960: [P] Transient ischemic attack3
+    961: [P] Type 2 diabetes mellitus3
+    963: [P] Vomiting
+    964: [P] Chronic kidney disease
+    965: [P] 3-point MACE
+    967: [P] 4-point MACE
+    969: [P] Acute myocardial infarction2
+    970: [P] 4-point MACE2
+    975: [P] Acute renal failure2
+    976: [P] Glycemic control2
+    979: [P] Hospitalization with heart failure3
+    980: [P] Revascularization
+    982: [P] Stroke2
+    983: [P] Sudden cardiac death2
+    984: [P] Abnormal weight gain2
+    985: [P] Abnormal weight loss2
+    986: [P] Acute pancreatitis2
+    988: [P] All-cause mortality3
+    989: [P] Bladder cancer3
+    990: [P] Bone fracture3
+    991: [P] Breast cancer3
+    992: [P] Diabetic ketoacidosis3
+    993: [P] Diarrhea3
+    994: [P] Genitourinary infection3
+    995: [P] Hyperkalemia3
+    996: [P] Hypoglycemia3
+    997: [P] Hypotension3
+    998: [P] Joint pain3
+    999: [P] Lower extremity amputation3
+    1000: [P] Nausea3
+    1001: [P] Peripheral edema3
+    1002: [P] Photosensitivity3
+    1003: [P] Renal cancer3
+    1004: [P] Thyroid tumor3
+    1005: [P] Venous thromboembolism3
+    1006: [P] Vomiting3
+    1007: [P] Earliest event of Epilepsy
+    1009: [P] Earliest event of Treatment resistant depression (TRD)
+    1010: [P] Earliest event of Chronic Graft Versus Host Disease (GVHD)
+    1011: [P] Earliest event of Marginal zone lymphoma
+    1012: [P] Earliest event of Waldenstrom macroglobulinemia
+    1013: [P] Earliest event of Ankylosing Spondylitis
+    1015: [P] Earliest event of Pulmonary arterial hypertension (PAH)2
+    1016: [P] Earliest event of Polyarticular juvenile idiopathic arthritis (JIA)
+    1017: [P] Earliest event of Neonatal Thrombocytopenia (NT), less than 1 year old
+    1018: [P] Earliest event of Warm Autoimmune Hemolytic Anemia (wAIHA), occurring on or after October 2020
+    1019: [P] All events of Hemolytic Disease Fetus and Newborn (HDFN), RhD type, with a pregnancy episode
+    1020: [P] Earliest event of Major depressive disorder, with NO occurrence of certain psychiatric disorder
+    1021: [P] Earliest event of Myasthenia Gravis, inpatient, 2nd diagnosis or treatment, age gte 18
+    1022: [P] Earliest event of Depressive and Sleep Disorder
+    1023: [P] Earliest Event of Depressive Disorder with Suicidal Ideation or Attempt Prevalent
+    1024: [P] Earliest Event of Depressive Disorder with Anhedonia
+    1025: [P] First event of Attention-deficit hyperactivity (ADHD) disorder or procedure
+    1026: [P] Earliest Event of Multiple Sclerosis
+    1027: [P] Earliest event of Chronic Leukocytic Leukemia
+    1028: [P] Earliest event of Urothelial carcinoma
+    1029: [P] Earliest event of Mantle Cell Lymphoma
+    1030: [P] Earliest event of Prostate cancer, among adult males
+    1031: [P] Earliest event of Coronary artery disease (CAD)
+    1032: [P] Earliest event of Type 2 Diabetes Mellitus (DM), with no type 1 or secondary DM
+    1033: [P] Earliest event of Human Immunodeficiency Virus I (HIV), with treatment, lab or 2nd diagnosis
+    1034: [P] All events of Respiratory syncytial virus infection, with 30 days washout
+
 PhenotypeLibrary 3.18.0
 ======================
 This release is a clean up of files and cohorts before adding cohorts from HowOften.

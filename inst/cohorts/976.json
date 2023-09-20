@@ -1,0 +1,210 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"Measurement" : {
+					"CodesetId" : 0,
+					"MeasurementTypeExclude" : false,
+					"ValueAsNumber" : {
+						"Value" : 7,
+						"Op" : "lte"
+					},
+					"Unit" : [
+						{
+							"CONCEPT_ID" : 8554,
+							"CONCEPT_NAME" : "percent",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "%",
+							"DOMAIN_ID" : "Unit",
+							"VOCABULARY_ID" : "UCUM",
+							"CONCEPT_CLASS_ID" : null
+						}
+					]
+				}
+			},
+			{
+				"Measurement" : {
+					"CodesetId" : 0,
+					"MeasurementTypeExclude" : false,
+					"ValueAsNumber" : {
+						"Value" : 53,
+						"Op" : "lte"
+					},
+					"Unit" : [
+						{
+							"CONCEPT_ID" : 9579,
+							"CONCEPT_NAME" : "millimole per mole",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "mmol/mol",
+							"DOMAIN_ID" : "Unit",
+							"VOCABULARY_ID" : "UCUM",
+							"CONCEPT_CLASS_ID" : null
+						}
+					]
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 0,
+			"name" : "HbA1c_v2",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3004410,
+							"CONCEPT_NAME" : "Hemoglobin A1c (Glycated)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "4548-4",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3007263,
+							"CONCEPT_NAME" : "Hemoglobin A1c/Hemoglobin.total in Blood by calculation",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17855-8",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3003309,
+							"CONCEPT_NAME" : "Hemoglobin A1c/Hemoglobin.total in Blood by Electrophoresis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "4549-2",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3005673,
+							"CONCEPT_NAME" : "Hemoglobin A1c/Hemoglobin.total in Blood by HPLC",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17856-6",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40762352,
+							"CONCEPT_NAME" : "Hemoglobin A1c/Hemoglobin.total in Blood by IFCC protocol",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "59261-8",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40758583,
+							"CONCEPT_NAME" : "Hemoglobin A1c in Blood",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "55454-3",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3034639,
+							"CONCEPT_NAME" : "Hemoglobin A1c [Mass/volume] in Blood",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "41995-2",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "StartDate",
+			"Offset" : 1
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 90
+	},
+	"CensorWindow" : {}
+}

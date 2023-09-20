@@ -1,0 +1,601 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"Death" : {
+					"DeathTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"AdditionalCriteria" : {
+		"Type" : "ANY",
+		"CriteriaList" : [
+			{
+				"Criteria" : {
+					"ConditionOccurrence" : {
+						"CodesetId" : 0,
+						"ConditionTypeExclude" : false
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Days" : 30,
+						"Coeff" : -1
+					},
+					"End" : {
+						"Days" : 7,
+						"Coeff" : 1
+					},
+					"UseEventEnd" : false
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			},
+			{
+				"Criteria" : {
+					"ConditionOccurrence" : {
+						"CodesetId" : 6,
+						"ConditionTypeExclude" : false
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Days" : 30,
+						"Coeff" : -1
+					},
+					"End" : {
+						"Days" : 7,
+						"Coeff" : 1
+					},
+					"UseEventEnd" : false
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			},
+			{
+				"Criteria" : {
+					"ConditionOccurrence" : {
+						"CodesetId" : 1,
+						"ConditionTypeExclude" : false
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Days" : 30,
+						"Coeff" : -1
+					},
+					"End" : {
+						"Days" : 7,
+						"Coeff" : 1
+					},
+					"UseEventEnd" : false
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			},
+			{
+				"Criteria" : {
+					"ConditionOccurrence" : {
+						"CodesetId" : 3,
+						"ConditionTypeExclude" : false
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Days" : 30,
+						"Coeff" : -1
+					},
+					"End" : {
+						"Days" : 7,
+						"Coeff" : 1
+					},
+					"UseEventEnd" : false
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			},
+			{
+				"Criteria" : {
+					"ConditionOccurrence" : {
+						"CorrelatedCriteria" : {
+							"Type" : "ALL",
+							"CriteriaList" : [
+								{
+									"Criteria" : {
+										"VisitOccurrence" : {
+											"CodesetId" : 5,
+											"VisitTypeExclude" : false
+										}
+									},
+									"StartWindow" : {
+										"Start" : {
+											"Coeff" : -1
+										},
+										"End" : {
+											"Days" : 0,
+											"Coeff" : 1
+										},
+										"UseEventEnd" : false
+									},
+									"EndWindow" : {
+										"Start" : {
+											"Days" : 0,
+											"Coeff" : -1
+										},
+										"End" : {
+											"Coeff" : 1
+										},
+										"UseEventEnd" : true
+									},
+									"RestrictVisit" : false,
+									"IgnoreObservationPeriod" : false,
+									"Occurrence" : {
+										"Type" : 2,
+										"Count" : 1,
+										"IsDistinct" : false
+									}
+								}
+							],
+							"DemographicCriteriaList" : [],
+							"Groups" : []
+						},
+						"CodesetId" : 4,
+						"ConditionTypeExclude" : false
+					}
+				},
+				"StartWindow" : {
+					"Start" : {
+						"Days" : 30,
+						"Coeff" : -1
+					},
+					"End" : {
+						"Days" : 7,
+						"Coeff" : 1
+					},
+					"UseEventEnd" : false
+				},
+				"RestrictVisit" : false,
+				"IgnoreObservationPeriod" : false,
+				"Occurrence" : {
+					"Type" : 2,
+					"Count" : 1,
+					"IsDistinct" : false
+				}
+			}
+		],
+		"DemographicCriteriaList" : [],
+		"Groups" : []
+	},
+	"ConceptSets" : [
+		{
+			"id" : 0,
+			"name" : "[LEGEND HTN] Acute myocardial Infarction",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4329847,
+							"CONCEPT_NAME" : "Myocardial infarction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "22298006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 314666,
+							"CONCEPT_NAME" : "Old myocardial infarction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1755008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 1,
+			"name" : "[LEGEND HTN] intracranial bleed Hemorrhagic stroke",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 376713,
+							"CONCEPT_NAME" : "Cerebral hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "274100004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 439847,
+							"CONCEPT_NAME" : "Intracranial hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1386000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 432923,
+							"CONCEPT_NAME" : "Subarachnoid hemorrhage",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "21454007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 3,
+			"name" : "[LEGEND HTN] Sudden cardiac death",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4048809,
+							"CONCEPT_NAME" : "Brainstem death",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "230802007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 321042,
+							"CONCEPT_NAME" : "Cardiac arrest",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "410429000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 442289,
+							"CONCEPT_NAME" : "Death in less than 24 hours from onset of symptoms",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "53559009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4317150,
+							"CONCEPT_NAME" : "Sudden cardiac death",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "95281009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4132309,
+							"CONCEPT_NAME" : "Sudden death",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "26636000",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 437894,
+							"CONCEPT_NAME" : "Ventricular fibrillation",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "71908006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 4,
+			"name" : "[LEGEND HTN] Heart Failure ",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 315295,
+							"CONCEPT_NAME" : "Congestive rheumatic heart failure",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "82523003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 316139,
+							"CONCEPT_NAME" : "Heart failure",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "84114007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 5,
+			"name" : "Inpatient or ER visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9203,
+							"CONCEPT_NAME" : "Emergency Room Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ER",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 6,
+			"name" : "[LEGEND HTN] Ischemic stroke",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 372924,
+							"CONCEPT_NAME" : "Cerebral artery occlusion",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "20059004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 375557,
+							"CONCEPT_NAME" : "Cerebral embolism",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "75543006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 443454,
+							"CONCEPT_NAME" : "Cerebral infarction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "432504007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 441874,
+							"CONCEPT_NAME" : "Cerebral thrombosis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "71444005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}
