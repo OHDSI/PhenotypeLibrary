@@ -33,9 +33,6 @@ ROhdsiWebApi::authorizeWebApi(
 webApiCohorts <-
   ROhdsiWebApi::getCohortDefinitionsMetaData(baseUrl = baseUrl)
 
-webApiCohorts <- webApiCohorts |>
-  dplyr::filter(id %in% c(oldCohortDefinitionSet$cohortId))
-
 exportableCohorts <-
   dplyr::bind_rows(
     webApiCohorts |>
@@ -337,9 +334,22 @@ cohortRecord <- cohortRecord |>
     0
   ))
 
+saveRDS(cohortRecord, file = "cohortRecord.rds")
+cohortRecord <- readRDS("cohortRecord.rds")
+
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
   cohortRecordUnit <- cohortRecord[i, ]
+  
+  print(i)
+  if (!file.exists(file.path(
+    "inst",
+    "cohorts",
+    paste0(cohortRecordUnit$cohortId, ".json")
+  ))) {
+    stop("cant find file")
+  }
+  
   cohortJson <- SqlRender::readSql(sourceFile = file.path(
     "inst",
     "cohorts",

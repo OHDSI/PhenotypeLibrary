@@ -1,0 +1,4362 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CodesetId" : 2,
+					"First" : true,
+					"ConditionTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 365,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 2,
+			"name" : "BC",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4112853,
+							"CONCEPT_NAME" : "Malignant tumor of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "254837009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36532266,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36529727,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537070,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36553611,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36525094,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36554207,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522800,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559496,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3662037,
+							"CONCEPT_NAME" : "Primary malignant neoplasm of breast with axillary lymph node invasion",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1082901000112103",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559188,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501469,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562806,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36567470,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36531481,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36557230,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560656,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36524836,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36536533,
+							"CONCEPT_NAME" : "Pseudosarcomatous carcinoma of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8033/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36564893,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36544828,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36566266,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36520271,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36529700,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36547630,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530601,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36546431,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534984,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530111,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549237,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36551860,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36532096,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36541763,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534956,
+							"CONCEPT_NAME" : "T-cell large granular lymphocytic leukemia of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9831/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4080742,
+							"CONCEPT_NAME" : "Malignant lymphoma of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "278052009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 603292,
+							"CONCEPT_NAME" : "Secondary malignant neoplasm of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "145501000119108",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4175531,
+							"CONCEPT_NAME" : "Sarcoma of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "278050001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4201477,
+							"CONCEPT_NAME" : "Local recurrence of malignant tumor of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "314955001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4089865,
+							"CONCEPT_NAME" : "Malignant melanoma of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "188050009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562380,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501025,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36527921,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549156,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36550441,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36551719,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36544055,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540326,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36564531,
+							"CONCEPT_NAME" : "Adenocarcinoma with neuroendocrine differentiation of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8574/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36403034,
+							"CONCEPT_NAME" : "Apocrine adenocarcinoma in situ (C44._) of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8401/2-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36402992,
+							"CONCEPT_NAME" : "Apocrine adenocarcinoma in situ (C44._) of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8401/2-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36403054,
+							"CONCEPT_NAME" : "Apocrine adenocarcinoma in situ (C44._) of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8401/2-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36403041,
+							"CONCEPT_NAME" : "Apocrine adenocarcinoma in situ (C44._) of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8401/2-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36403043,
+							"CONCEPT_NAME" : "Apocrine adenocarcinoma in situ (C44._) of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8401/2-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559458,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36561444,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36544583,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552924,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558840,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562484,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36523657,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36518203,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552997,
+							"CONCEPT_NAME" : "B-cell chronic lymphocytic leukemia/small lymphocytic lymphoma of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9823/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534879,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36557634,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542241,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36527726,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36548875,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521708,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36557342,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36567600,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36547783,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma, NOS, of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9811/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36517708,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542171,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36545589,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521925,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36563852,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559944,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560924,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36550545,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540893,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hyperdiploidy of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9815/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36531836,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36554497,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36518236,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522728,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522361,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36544449,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542903,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36541815,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537301,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL) of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9816/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36545066,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36517645,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36531000,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36550597,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36532858,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552167,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559611,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559864,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36563662,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1) of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9818/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36548046,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558562,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537165,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560835,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36550456,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36567866,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549847,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36553636,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36543212,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1) of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9814/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542791,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558315,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562966,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562434,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559794,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36523028,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36566118,
+							"CONCEPT_NAME" : "Systemic EBV positive T-cell lymphoproliferative disease of childhood of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9724/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530731,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36543496,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36529743,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36532139,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36538241,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9817/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36527584,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36541064,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36565880,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36524263,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552121,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36536968,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36533524,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521995,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560535,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9812/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540250,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552589,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522859,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36523574,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534402,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36523513,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558702,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540417,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537778,
+							"CONCEPT_NAME" : "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9813/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559478,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559269,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36567615,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36548429,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521363,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562037,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36547579,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522989,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36519476,
+							"CONCEPT_NAME" : "Carcinosarcoma, embryonal of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8981/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549622,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36524276,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36519461,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560691,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44502559,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36533887,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560569,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44499659,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44500664,
+							"CONCEPT_NAME" : "Carcinosarcoma, NOS, of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8980/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42512254,
+							"CONCEPT_NAME" : "Dermatofibrosarcoma protuberans, fibrosarcomatous of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8832/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42512707,
+							"CONCEPT_NAME" : "Dermatofibrosarcoma protuberans, fibrosarcomatous of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8832/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36561161,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36538919,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36556000,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549025,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36526587,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36553345,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558045,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36566783,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36561649,
+							"CONCEPT_NAME" : "Langerhans cell histiocytosis, disseminated of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9751/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36533269,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36531399,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36544559,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36535414,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562047,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559859,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36561110,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549110,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540213,
+							"CONCEPT_NAME" : "Large cell carcinoma with rhabdoid phenotype of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8014/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36567173,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36566968,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36538145,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560911,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36539856,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36563615,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552672,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562163,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562803,
+							"CONCEPT_NAME" : "Large cell neuroendocrine carcinoma of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8013/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36556740,
+							"CONCEPT_NAME" : "Malignant histiocytosis of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36556920,
+							"CONCEPT_NAME" : "Malignant histiocytosis of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36548475,
+							"CONCEPT_NAME" : "Malignant histiocytosis of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36553343,
+							"CONCEPT_NAME" : "Malignant histiocytosis of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36556248,
+							"CONCEPT_NAME" : "Malignant histiocytosis of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36539400,
+							"CONCEPT_NAME" : "Malignant histiocytosis of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552848,
+							"CONCEPT_NAME" : "Malignant histiocytosis of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36564681,
+							"CONCEPT_NAME" : "Malignant histiocytosis of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530831,
+							"CONCEPT_NAME" : "Malignant histiocytosis of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9750/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36525289,
+							"CONCEPT_NAME" : "Mast cell sarcoma of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522514,
+							"CONCEPT_NAME" : "Mast cell sarcoma of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36528636,
+							"CONCEPT_NAME" : "Mast cell sarcoma of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530721,
+							"CONCEPT_NAME" : "Mast cell sarcoma of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36563022,
+							"CONCEPT_NAME" : "Mast cell sarcoma of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36527656,
+							"CONCEPT_NAME" : "Mast cell sarcoma of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36519441,
+							"CONCEPT_NAME" : "Mast cell sarcoma of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36555165,
+							"CONCEPT_NAME" : "Mast cell sarcoma of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542401,
+							"CONCEPT_NAME" : "Mast cell sarcoma of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9740/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549055,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36529963,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36546913,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540345,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552782,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522605,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559593,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36552805,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44499974,
+							"CONCEPT_NAME" : "Medullary carcinoma with lymphoid stroma of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8512/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42512327,
+							"CONCEPT_NAME" : "Mixed neuroendocrine non-neuroendocrine neoplasm (MiNEN) of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8154/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36547986,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36536755,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522677,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521162,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36543855,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36543906,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560717,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36531485,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36533064,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with FGFR1 abnormalities of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9967/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558971,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36526869,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36535279,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36543871,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36564647,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530708,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558474,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36528284,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36553853,
+							"CONCEPT_NAME" : "Myeloid or lymphoid neoplasm with PDGFRA rearrangement of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9965/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44502997,
+							"CONCEPT_NAME" : "Myeloid sarcoma of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9930/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42512321,
+							"CONCEPT_NAME" : "Myeloid sarcoma of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9930/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36557036,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540021,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36554839,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36536427,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542404,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36553240,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560807,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36519999,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537392,
+							"CONCEPT_NAME" : "Myeloproliferative neoplasm, unclassifiable of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9975/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36529381,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501141,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522453,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of central portion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36532906,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of lower-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534320,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530356,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36520875,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of overlapping lesion of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537327,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of upper-inner quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44500728,
+							"CONCEPT_NAME" : "Neuroendocrine carcinoma, NOS, of upper-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8246/3-C50.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44502228,
+							"CONCEPT_NAME" : "Neuroendocrine tumor, NOS, of breast, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8240/3-C50.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44500293,
+							"CONCEPT_NAME" : "Neuroendocrine tumor, NOS, of lower-outer quadrant of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8240/3-C50.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36403075,
+							"CONCEPT_NAME" : "Paget disease, mammary in situ (C50._) of nipple",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "8540/2-C50.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559945,
+							"CONCEPT_NAME" : "Precursor T-cell lymphoblastic leukemia of axillary tail of breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9837/3-C50.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

@@ -1,0 +1,1557 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ConditionOccurrence" : {
+					"CodesetId" : 9,
+					"First" : true,
+					"ConditionTypeExclude" : false
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 365,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 9,
+			"name" : "GBM",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37116832,
+							"CONCEPT_NAME" : "Epithelioid glioblastoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "733837004",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4195300,
+							"CONCEPT_NAME" : "Giant cell glioblastoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "44529004",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36563734,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of acoustic nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 603116,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of brain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1156414004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36528722,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of brain, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36528277,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of brain stem",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.7",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36527332,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of cauda equina",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 608242,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of central nervous system",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1157062009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534647,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of cerebellum, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540148,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of cerebral meninges",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C70.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534911,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of cerebrum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36558593,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of cranial nerve, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501313,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of frontal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36533353,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of meninges, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C70.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36522408,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of nervous system, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501749,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of occipital lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36532250,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of olfactory nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521643,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of optic nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36540351,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of overlapping lesion of brain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36546773,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of overlapping lesion of brain and central nervous system",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44503120,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of parietal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36538511,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of spinal cord",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C72.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537550,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of spinal meninges",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C70.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501040,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of temporal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36534225,
+							"CONCEPT_NAME" : "Giant cell glioblastoma of ventricle, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-C71.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4272187,
+							"CONCEPT_NAME" : "Glioblastoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "63634009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40483278,
+							"CONCEPT_NAME" : "Glioblastoma - category",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "443811009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37116869,
+							"CONCEPT_NAME" : "Glioblastoma isocitrate dehydrogenase wildtype",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "733889009",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40571980,
+							"CONCEPT_NAME" : "Glioblastoma multiforme",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "393563007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4174444,
+							"CONCEPT_NAME" : "Glioblastoma multiforme of brain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "276828006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37016197,
+							"CONCEPT_NAME" : "Glioblastoma multiforme of central nervous system",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "147131000119101",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4081049,
+							"CONCEPT_NAME" : "Glioblastoma multiforme of spinal cord",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "276829003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530743,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of acoustic nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44502360,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of brain stem",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.7",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36521928,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of cauda equina",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44500098,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of cerebellum, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36559512,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of cerebral meninges",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C70.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44499664,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of cerebrum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36533762,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of cranial nerve, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36560370,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of meninges, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C70.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36519363,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of nervous system, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501237,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of occipital lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36562899,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of olfactory nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36549985,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of optic nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36518040,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of overlapping lesion of brain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36564143,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of overlapping lesion of brain and central nervous system",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C72.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501601,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of parietal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36525256,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of pineal gland",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C75.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36536557,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of spinal meninges",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C70.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44502900,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of temporal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44499934,
+							"CONCEPT_NAME" : "Glioblastoma, NOS, of ventricle, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/3-C71.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4148715,
+							"CONCEPT_NAME" : "Gliosarcoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "35262004",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36520639,
+							"CONCEPT_NAME" : "Gliosarcoma of acoustic nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 607981,
+							"CONCEPT_NAME" : "Gliosarcoma of brain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1156461003",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44500527,
+							"CONCEPT_NAME" : "Gliosarcoma of brain, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36541894,
+							"CONCEPT_NAME" : "Gliosarcoma of brain stem",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.7",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36536638,
+							"CONCEPT_NAME" : "Gliosarcoma of cauda equina",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 608241,
+							"CONCEPT_NAME" : "Gliosarcoma of central nervous system",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1157061002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36537159,
+							"CONCEPT_NAME" : "Gliosarcoma of cerebellum, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.6",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36566931,
+							"CONCEPT_NAME" : "Gliosarcoma of cerebral meninges",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C70.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44501864,
+							"CONCEPT_NAME" : "Gliosarcoma of cerebrum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36542297,
+							"CONCEPT_NAME" : "Gliosarcoma of cranial nerve, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44499587,
+							"CONCEPT_NAME" : "Gliosarcoma of frontal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36538176,
+							"CONCEPT_NAME" : "Gliosarcoma of meninges, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C70.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36555099,
+							"CONCEPT_NAME" : "Gliosarcoma of nervous system, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36550517,
+							"CONCEPT_NAME" : "Gliosarcoma of occipital lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.4",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36543995,
+							"CONCEPT_NAME" : "Gliosarcoma of olfactory nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36535029,
+							"CONCEPT_NAME" : "Gliosarcoma of optic nerve",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36525693,
+							"CONCEPT_NAME" : "Gliosarcoma of overlapping lesion of brain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36530219,
+							"CONCEPT_NAME" : "Gliosarcoma of overlapping lesion of brain and central nervous system",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44503571,
+							"CONCEPT_NAME" : "Gliosarcoma of parietal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.3",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 603174,
+							"CONCEPT_NAME" : "Gliosarcoma of spinal cord",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1157072007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36531639,
+							"CONCEPT_NAME" : "Gliosarcoma of spinal cord",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C72.0",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36556753,
+							"CONCEPT_NAME" : "Gliosarcoma of spinal meninges",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C70.1",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44500906,
+							"CONCEPT_NAME" : "Gliosarcoma of temporal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.2",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36520925,
+							"CONCEPT_NAME" : "Gliosarcoma of ventricle, NOS",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-C71.5",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4099190,
+							"CONCEPT_NAME" : "Monstrocellular sarcoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "189923008",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42513833,
+							"CONCEPT_NAME" : "Neoplasm defined only by histology: Giant cell glioblastoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9441/3-NULL",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42514169,
+							"CONCEPT_NAME" : "Neoplasm defined only by histology: Glioblastoma, benign (C71._)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/0-NULL",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42514160,
+							"CONCEPT_NAME" : "Neoplasm defined only by histology: Glioblastoma, borderline (C71._)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9440/1-NULL",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42513835,
+							"CONCEPT_NAME" : "Neoplasm defined only by histology: Gliosarcoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "9442/3-NULL",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICDO3",
+							"CONCEPT_CLASS_ID" : "ICDO Condition"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 609186,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of brainstem",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "16845341000119105",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 609185,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of cerebellum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "16845301000119108",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 602047,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of cerebrum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "684901000119107",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36717624,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of frontal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "684911000119105",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 602048,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of occipital lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "684921000119103",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 602049,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of parietal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "684931000119100",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 602050,
+							"CONCEPT_NAME" : "Primary glioblastoma multiforme of temporal lobe",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "684941000119109",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4298749,
+							"CONCEPT_NAME" : "Small cell glioblastoma",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "384992008",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Morph Abnormality"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}
