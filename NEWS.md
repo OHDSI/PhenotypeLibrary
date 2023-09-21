@@ -1,3 +1,47 @@
+PhenotypeLibrary 3.20.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 37 were added.
+
+    1035: [P] New users of Thiazide diuretics
+    1036: [P] New users of Beta blockers
+    1037: [P] New users of SGLT2 inhibitor
+    1038: [P] New users of GLP-1 receptor antagonists
+    1039: [P] New users of DPP-4 inhibitors
+    1040: [P] New users of Tumor Necrosis Factor alpha (TNFa) inhibitors
+    1041: [P] New users of JAK inhibitors
+    1042: [P] New users of IL-23 inhibitors
+    1043: [P] New users of Fluoroquinolone systemic
+    1044: [P] New users of Cephalosporin systemetic
+    1045: [P] New users of Trimethoprim systemetic
+    1046: [P] New users of Thiazide diuretics nested in essential hypertension
+    1047: [P] New users of dihydropyridine calcium channel blockers nested in essential hypertension
+    1048: [P] New users of dihydropyridine calcium channel blockers
+    1049: [P] New users of Beta blockers nested in essential hypertension
+    1050: [P] New users of Beta blockers nested in Left Heart Failure
+    1051: [P] New users of SGLT2 inhibitor nested in Left Heart Failure
+    1052: [P] New users of Beta blockers nested in Acute Myocardial Infarction
+    1053: [P] New users of GLP-1 receptor antagonists nested in Type 2 diabetes mellitus
+    1054: [P] New users of SGLT2 inhibitor nested in Type 2 diabetes mellitus
+    1055: [P] New users of DPP-4 inhibitors nested in Type 2 diabetes mellitus
+    1056: [P] New users of GLP-1 receptor antagonists nested in obesity
+    1057: [P] New users of IL-23 inhibitors nested in Plaque psoriasis
+    1058: [P] New users of Tumor Necrosis Factor alpha (TNFa) inhibitors nested in Plaque psoriasis
+    1059: [P] New users of Tumor Necrosis Factor alpha (TNFa) inhibitors nested in Psoriatic Arthritis
+    1060: [P] New users of Fluoroquinolone systemic nested in Urinary Tract Infection
+    1061: [P] New users of Cephalosporin systemetic nested in Urinary Tract Infection
+    1062: [P] New users of Trimethoprim systemetic nested in Urinary Tract Infection
+    1063: [P] New users of Fluoroquinolone systemic nested in Acute Typical Pneumonia
+    1064: [P] New users of Cephalosporin systemetic nested in Acute Typical Pneumonia
+    1065: [P] New users of Trimethoprim systemetic nested in Acute Typical Pneumonia
+    1066: [P] New users of Tumor Necrosis Factor alpha (TNFa) inhibitors nested in Rheumatoid arthritis
+    1067: [P] New users of JAK inhibitors nested in Ulcerative colitis
+    1068: [P] New users of Tumor Necrosis Factor alpha (TNFa) inhibitors nested in Ulcerative colitis
+    1069: [P] New users of Tumor Necrosis Factor alpha (TNFa) inhibitors nested in Crohns disease
+    1070: [P] New users of JAK inhibitors nested in Rheumatoid arthritis
+    1071: [P] persons at risk at start of year 2012-2022 with 365d prior observation
+
 PhenotypeLibrary 3.19.0
 ======================
 This release includes the bulk of the cohorts submitted to the OHDSI PhenotypeLibrary
