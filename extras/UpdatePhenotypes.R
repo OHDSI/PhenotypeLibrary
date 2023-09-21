@@ -374,6 +374,10 @@ readr::write_excel_csv(
   quote = "all"
 )
 
+if (file.exists("cohortRecord.rds")) {
+  file.remove("cohortRecord.rds")
+}
+
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
 

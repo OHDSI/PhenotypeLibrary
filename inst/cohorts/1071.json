@@ -1,0 +1,162 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2022-01-01",
+						"EndDate" : "2022-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2021-01-01",
+						"EndDate" : "2021-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2020-01-01",
+						"EndDate" : "2020-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2019-01-01",
+						"EndDate" : "2019-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2018-01-01",
+						"EndDate" : "2018-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2017-01-01",
+						"EndDate" : "2017-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2016-01-01",
+						"EndDate" : "2016-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2015-01-01",
+						"EndDate" : "2015-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2014-01-01",
+						"EndDate" : "2014-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2013-01-01",
+						"EndDate" : "2013-01-01"
+					}
+				}
+			},
+			{
+				"ObservationPeriod" : {
+					"UserDefinedPeriod" : {
+						"StartDate" : "2012-01-01",
+						"EndDate" : "2012-01-01"
+					}
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 365,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "All"
+		}
+	},
+	"AdditionalCriteria" : {
+		"Type" : "ALL",
+		"CriteriaList" : [],
+		"DemographicCriteriaList" : [
+			{
+				"Age" : {
+					"Value" : 0,
+					"Op" : "bt",
+					"Extent" : 100
+				},
+				"Gender" : [
+					{
+						"CONCEPT_ID" : 8532,
+						"CONCEPT_NAME" : "FEMALE",
+						"STANDARD_CONCEPT" : null,
+						"STANDARD_CONCEPT_CAPTION" : "Unknown",
+						"INVALID_REASON" : null,
+						"INVALID_REASON_CAPTION" : "Unknown",
+						"CONCEPT_CODE" : "F",
+						"DOMAIN_ID" : "Gender",
+						"VOCABULARY_ID" : "Gender",
+						"CONCEPT_CLASS_ID" : null
+					},
+					{
+						"CONCEPT_ID" : 8507,
+						"CONCEPT_NAME" : "MALE",
+						"STANDARD_CONCEPT" : null,
+						"STANDARD_CONCEPT_CAPTION" : "Unknown",
+						"INVALID_REASON" : null,
+						"INVALID_REASON_CAPTION" : "Unknown",
+						"CONCEPT_CODE" : "M",
+						"DOMAIN_ID" : "Gender",
+						"VOCABULARY_ID" : "Gender",
+						"CONCEPT_CLASS_ID" : null
+					}
+				]
+			}
+		],
+		"Groups" : []
+	},
+	"ConceptSets" : [],
+	"QualifiedLimit" : {
+		"Type" : "All"
+	},
+	"ExpressionLimit" : {
+		"Type" : "All"
+	},
+	"InclusionRules" : [],
+	"EndStrategy" : {
+		"DateOffset" : {
+			"DateField" : "StartDate",
+			"Offset" : 1
+		}
+	},
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}
