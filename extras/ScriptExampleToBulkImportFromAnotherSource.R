@@ -1,21 +1,22 @@
-
-
-
 tabularData <- readxl::read_excel("AESI.xlsx")
 
 
 
-i = 1#(/17)
+i <- 1 # (/17)
 
 
 for (i in (2:nrow(tabularData))) {
-  toPost <- tabularData[i,]
-  
+  toPost <- tabularData[i, ]
+
   toPost$ohdsiForumPost <- "https://forums.ohdsi.org/t/15365"
-  cohortJson <- SqlRender::readSql(file.path("Covid19SubjectsAesiIncidenceRate\\inst\\cohorts\\",
-                                             paste0(toPost$atlasId,
-                                             ".json")))
-  
+  cohortJson <- SqlRender::readSql(file.path(
+    "Covid19SubjectsAesiIncidenceRate\\inst\\cohorts\\",
+    paste0(
+      toPost$atlasId,
+      ".json"
+    )
+  ))
+
 
   cohortNameFormatted <- paste0(
     gsub(
@@ -27,8 +28,8 @@ for (i in (2:nrow(tabularData))) {
       stringr::str_trim()
   )
   print(cohortNameFormatted)
-  
-  
+
+
   baseUrl <- "https://atlas-phenotype.ohdsi.org/WebAPI"
   ROhdsiWebApi::authorizeWebApi(
     baseUrl = baseUrl,
@@ -36,20 +37,24 @@ for (i in (2:nrow(tabularData))) {
     webApiUsername = keyring::key_get("ohdsiAtlasPhenotypeUser"),
     webApiPassword = keyring::key_get("ohdsiAtlasPhenotypePassword")
   )
-  
-  id <-  ROhdsiWebApi::postCohortDefinition(
-    name = paste0("[P] FDA AESI ",
-                  cohortNameFormatted),
+
+  id <- ROhdsiWebApi::postCohortDefinition(
+    name = paste0(
+      "[P] FDA AESI ",
+      cohortNameFormatted
+    ),
     cohortDefinition = cohortJson |>
       RJSONIO::fromJSON(digits = 23),
     baseUrl = baseUrl
   )
-  
-  
-  
-  cohortDefinition <- ROhdsiWebApi::getCohortDefinition(cohortId = id$id...1,
-                                                        baseUrl = baseUrl)
-  
+
+
+
+  cohortDefinition <- ROhdsiWebApi::getCohortDefinition(
+    cohortId = id$id...1,
+    baseUrl = baseUrl
+  )
+
   replaceStringIfNa <- function(string) {
     if (is.na(string)) {
       output <- ""
@@ -58,7 +63,7 @@ for (i in (2:nrow(tabularData))) {
     }
     return(output)
   }
-  
+
 
   description <- paste0(
     "cohortNameLong : ",
@@ -103,23 +108,24 @@ for (i in (2:nrow(tabularData))) {
     replaceStringIfNa(""),
     ";\n"
   )
-  
+
   newTextDescriptionStitched <- description |>
-    stringr::str_replace_all(pattern = "; ;",
-                             replacement = " ; ")
-  
+    stringr::str_replace_all(
+      pattern = "; ;",
+      replacement = " ; "
+    )
+
   writeLines(newTextDescriptionStitched)
-  
+
   cohortDefinition$description <- newTextDescriptionStitched
-  
+
   ROhdsiWebApi::updateCohortDefinition(cohortDefinition = cohortDefinition, baseUrl = baseUrl)
-  
 }
-    # paste0(
-    #   "Imported to the OHDSI Phenotype Library. It may be expected to be found with id = ",
-    #   id$id...1,
-    #   " in the next release. Thank you "
-    # ) |> clipr::write_clip()
-  
-  
+# paste0(
+#   "Imported to the OHDSI Phenotype Library. It may be expected to be found with id = ",
+#   id$id...1,
+#   " in the next release. Thank you "
+# ) |> clipr::write_clip()
+
+
 # }
