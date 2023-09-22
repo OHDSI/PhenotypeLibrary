@@ -1,3 +1,30 @@
+PhenotypeLibrary 3.21.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 20 were added.
+
+    1072: [P] CMV Anterior Uveitis
+    1073: [P] Serious Infection, opportunistic infections and other infections of interest event
+    1074: [P] Serious Infection
+    1075: [P] FDA AESI Narcolepsy
+    1076: [P] FDA AESI Anaphylaxis
+    1077: [P] FDA AESI Anaphylaxis v2
+    1078: [P] FDA AESI Bells Palsy
+    1079: [P] FDA AESI Encephalomyelitis
+    1080: [P] FDA AESI Guillain Barre Syndrome
+    1081: [P] FDA AESI Acute Myocardial Infarction
+    1082: [P] FDA AESI Myocarditis Pericarditis
+    1083: [P] FDA AESI Immune Thrombocytopenia (ITP)
+    1084: [P] FDA AESI Disseminated Intravascular Coagulation
+    1085: [P] FDA AESI Appendicitis
+    1086: [P] FDA AESI Transverse Myelitis
+    1087: [P] FDA AESI Hemorrhagic Stroke
+    1088: [P] FDA AESI Deep Vein Thrombosis (DVT)
+    1089: [P] FDA AESI Non-hemorrhagic Stroke
+    1090: [P] FDA AESI Pulmonary Embolism
+    1091: [P] FDA AESI Thrombosis with Thrombocytopenia (TWT)
+
 PhenotypeLibrary 3.20.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
