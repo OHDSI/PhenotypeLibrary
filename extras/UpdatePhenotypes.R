@@ -241,6 +241,12 @@ for (i in (1:length(cohortJsonFiles))) {
     SqlRender::readSql(sourceFile = file.path("inst", "cohorts", jsonFileName))
   sql <-
     CirceR::buildCohortQuery(expression = json, options = circeOptions)
+  writeLines(paste0(" --", sqlFileName))
+  unlink(
+    x = file.path("inst", "sql", "sql_server", sqlFileName),
+    recursive = TRUE,
+    force = TRUE
+  )
   SqlRender::writeSql(
     sql = sql,
     targetFile = file.path("inst", "sql", "sql_server", sqlFileName)
@@ -417,7 +423,8 @@ transformUrl <- function(url) {
 cohortRecordAugmented <- cohortRecordAugmented |>
   dplyr::select(ohdsiForumPost) |>
   dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = correctUrl)) |>
-  dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = transformUrl))
+  dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = transformUrl)) |> 
+  dplyr::arrange(cohortId)
 
 readr::write_excel_csv(
   x = cohortRecordAugmented,
