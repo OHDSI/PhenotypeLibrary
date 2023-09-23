@@ -112,3 +112,26 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
     dplyr::arrange(.data$cohortId)
   return(log)
 }
+
+
+
+#' Get conceptSets in cohorts
+#'
+#' @return
+#' Returns a table with one row per concept set for given cohort definitions.
+#'
+#' @param cohortIds  IDs of cohorts to extraction from the library.
+#'
+#' @return
+#' A tibble.
+#'
+#' @examples
+#' getPhenotypeLog(cohortIds = c(1, 2))
+#'
+#' @export
+getPlConceptSetDefinition <-
+  function(cohortIds = listPhenotypes()$cohortId) {
+    conceptSets <-
+      readRDS(file.path("inst", "ConceptSetsInCohortDefinition.RDS"))
+    return(conceptSets)
+  }

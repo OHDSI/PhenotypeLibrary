@@ -379,6 +379,27 @@ if (file.exists("cohortRecord.rds")) {
 }
 
 
+newCohortDefinitionSet <-
+  CohortGenerator::getCohortDefinitionSet(
+    settingsFileName = file.path("inst", "Cohorts.csv"),
+    jsonFolder = file.path("inst", "cohorts"),
+    sqlFolder = file.path("inst", "sql", "sql_server")
+  ) |> 
+  dplyr::select(cohortId,
+                json) |> 
+  dplyr::tibble() |> 
+  dplyr::arrange(cohortId)
+
+conceptSetsInAllCohortDefinition <- ConceptSetDiagnostics::extractConceptSetsInCohortDefinitionSet(
+  cohortDefinitionSet = newCohortDefinitionSet
+)
+
+saveRDS(object = conceptSetsInAllCohortDefinition |> 
+          dplyr::arrange(uniqueConceptSetId,
+                         cohortId,
+                         conceptSetId),
+        file = file.path("inst", "ConceptSetsInCohortDefinition.RDS"))
+
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
 
 needToUpdate <- TRUE
