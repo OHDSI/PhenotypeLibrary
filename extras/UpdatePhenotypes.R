@@ -421,7 +421,6 @@ transformUrl <- function(url) {
 }
 
 cohortRecordAugmented <- cohortRecordAugmented |>
-  dplyr::select(ohdsiForumPost) |>
   dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = correctUrl)) |>
   dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = transformUrl)) |> 
   dplyr::arrange(cohortId)
