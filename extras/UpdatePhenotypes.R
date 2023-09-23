@@ -366,6 +366,59 @@ for (i in (1:nrow(cohortRecord))) {
 
 cohortRecordAugmented <- dplyr::bind_rows(cohortRecordAugmented)
 
+## correct the url
+correctUrl <- function(url) {
+  # Check if the string likely represents a URL by looking for "http"
+  if (grepl("http", url, ignore.case = TRUE)) {
+    # Ensure the URL starts with "https://"
+    if (startsWith(tolower(url), "https//")) {
+      corrected_url <- sub("https//", "https://", url, ignore.case = TRUE)
+      return(corrected_url)
+    }
+    return(url)
+  }
+  return(url)
+}
+
+# Function to transform the URL
+transformUrl <- function(url) {
+  # Check if URL exists
+  if (is.na(url) || url == "" || is.na(url)) {
+    return(url)
+  }
+  
+  # Check if URL has the correct base
+  base_url <- "https://forums.ohdsi.org/t/"
+  if (!stringr::str_starts(url, base_url)) {
+    return(NA)
+  }
+  
+  extract_number1 <- function(url) {
+    # Use a regular expression to capture the first set of numbers after '/t/' and another '/'
+    match_data <- stringr::str_match(url, "/t/[^/]*/(\\d+)")
+    if (!is.na(match_data[1, 2])) {
+      return(match_data[1, 2])
+    }
+    return(NA)
+  }
+  
+  # Extract the first set of numbers after the base URL
+  number1 <- extract_number1(url)
+  
+  # If number1 is found, construct the new URL, else return NA
+  if (!is.na(number1)) {
+    new_url <- paste0(base_url, number1)
+    return(new_url)
+  } else {
+    return(url)
+  }
+}
+
+cohortRecordAugmented <- cohortRecordAugmented |>
+  dplyr::select(ohdsiForumPost) |>
+  dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = correctUrl)) |>
+  dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = transformUrl))
+
 readr::write_excel_csv(
   x = cohortRecordAugmented,
   file = "inst/Cohorts.csv",
