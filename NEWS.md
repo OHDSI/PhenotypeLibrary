@@ -1,3 +1,6 @@
+
+Added new function getPlConceptDefinitionSet() that exposes all concept set in all circe compatible cohort definitions in the library.
+
 PhenotypeLibrary 3.21.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

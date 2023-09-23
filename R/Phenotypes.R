@@ -129,7 +129,7 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
 #' getPhenotypeLog(cohortIds = c(1, 2))
 #'
 #' @export
-getPlConceptSetDefinition <-
+getPlConceptDefinitionSet <-
   function(cohortIds = listPhenotypes()$cohortId) {
     conceptSets <-
       system.file("ConceptSetsInCohortDefinition.RDS", package = "PhenotypeLibrary") |>
