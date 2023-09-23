@@ -132,6 +132,7 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
 getPlConceptSetDefinition <-
   function(cohortIds = listPhenotypes()$cohortId) {
     conceptSets <-
-      readRDS(file.path("inst", "ConceptSetsInCohortDefinition.RDS"))
+      system.file("ConceptSetsInCohortDefinition.RDS", package = "PhenotypeLibrary") |>
+      readRDS()
     return(conceptSets)
   }
