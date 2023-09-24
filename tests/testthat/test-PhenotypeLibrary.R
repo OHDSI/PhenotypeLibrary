@@ -24,3 +24,9 @@ testthat::test_that(desc = "Function getPhenotypeLog", code = {
   testthat::expect_true(is.data.frame(data))
   testthat::expect_gte(object = nrow(data), expected = 1)
 })
+
+testthat::test_that(desc = "Function getPlConceptSetDefinition", code = {
+  data <- PhenotypeLibrary::getPlConceptDefinitionSet()
+  testthat::expect_true(is.data.frame(data))
+  testthat::expect_gte(object = nrow(data), expected = 1)
+})

@@ -1,3 +1,16 @@
+PhenotypeLibrary 3.22.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: No new cohorts were added in this release.
+
+Deleted Cohorts: duplicates. Added in error. Deleted 879, 907, 910, 916, 958, 959, 960, 961
+
+Added new function getPlConceptDefinitionSet() . This new function exposes the
+    concept sets from all circe compatible cohort definitions that are in the library.
+    
+Additional computer generated metadata added to cohort definition log.
+
 PhenotypeLibrary 3.21.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
