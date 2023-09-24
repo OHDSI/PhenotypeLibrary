@@ -17,7 +17,7 @@ A tibble with the cohort ID, name, sql, and JSON for the provided cohort IDs. Ca
 Get a cohort definition set
 }
 \examples{
-cohorts <- listPhenotypes()
+cohorts <- getPhenotypeLog()
 subsetIds <- cohorts$cohortId[1:3]
 getPlCohortDefinitionSet(subsetIds)
 

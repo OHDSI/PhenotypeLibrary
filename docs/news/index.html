@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.22.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.22.1</span>
       </span>
     </div>
 
@@ -93,6 +93,13 @@
       <small>Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="3.22.1" id="phenotypelibrary-3221">PhenotypeLibrary 3.22.1<a class="anchor" aria-label="anchor" href="#phenotypelibrary-3221"></a></h2>
+<ul><li><p>getPhenotypeLog() now returns the original user submitted cohort name, instead of the name forced by atlas-phenotype.</p></li>
+<li><p>This is in line with the original requirement. It allows for long names, names with special characters.</p></li>
+<li><p>Deprecated listPhenotypes(). This was an older function that did the same as getPhenotypeLog() but returned only two fields.</p></li>
+<li><p>Added requirement on R (4.10) because tidyverse seems to cause problems with older versions of R.</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="3.22.0" id="phenotypelibrary-3220">PhenotypeLibrary 3.22.0<a class="anchor" aria-label="anchor" href="#phenotypelibrary-3220"></a></h2>
 <p>Accepted Cohorts: No cohorts were accepted in this release.</p>

@@ -4,7 +4,7 @@
 \alias{getPhenotypeLog}
 \title{Get phenotype log}
 \usage{
-getPhenotypeLog(cohortIds = listPhenotypes()$cohortId)
+getPhenotypeLog(cohortIds = NULL)
 }
 \arguments{
 \item{cohortIds}{IDs of cohorts to extraction from the library.}

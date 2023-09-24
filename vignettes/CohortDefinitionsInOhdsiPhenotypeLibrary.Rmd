@@ -38,25 +38,6 @@ camelCaseToTitleCase <- function(string) {
 }
 
 report <- PhenotypeLibrary::getPhenotypeLog()
-columnsOfInterest <- c(
-  "cohortId",
-  "cohortNameLong",
-  "status",
-  "addedVersion",
-  "createdDate",
-  "modifiedDate",
-  "logicDescription",
-  "hashTag",
-  "contributors",
-  "contributorOrcIds",
-  "contributorOrganizations",
-  "peerReviewers",
-  "peerReviewerOrcIds",
-  "ohdsiForumPost"
-)
-report <- report |>
-  dplyr::select(dplyr::all_of(columnsOfInterest)) |>
-  dplyr::rename(cohortName = cohortNameLong)
 
 colnames(report) <- camelCaseToTitleCase(colnames(report))
 
@@ -109,6 +90,7 @@ reactable::reactable(
   data = report,
   columns = columnDefinitions,
   sortable = TRUE,
+  filterable = TRUE,
   resizable = TRUE,
   searchable = TRUE,
   pagination = TRUE,
@@ -121,7 +103,7 @@ reactable::reactable(
   showSortable = TRUE,
   fullWidth = TRUE,
   showPageSizeOptions = TRUE,
-  pageSizeOptions = c(10, 20, 50, 100, 1000),
+  pageSizeOptions = c(10, 20, 50, 100, 1000, 1000000),
   defaultPageSize = 100
 )
 ```

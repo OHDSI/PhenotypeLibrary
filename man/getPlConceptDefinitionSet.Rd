@@ -4,7 +4,7 @@
 \alias{getPlConceptDefinitionSet}
 \title{Get conceptSets in cohorts}
 \usage{
-getPlConceptDefinitionSet(cohortIds = listPhenotypes()$cohortId)
+getPlConceptDefinitionSet(cohortIds = getPhenotypeLog()$cohortId)
 }
 \arguments{
 \item{cohortIds}{IDs of cohorts to extraction from the library.}
