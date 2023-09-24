@@ -2,15 +2,16 @@
 % Please edit documentation in R/Phenotypes.R
 \name{listPhenotypes}
 \alias{listPhenotypes}
-\title{List all phenotypes in the library}
+\title{Deprecated. List all phenotypes in the library.}
 \usage{
 listPhenotypes()
 }
 \value{
 A tibble with the cohort ID and name.
+Deprecated. Please use getPhenotypeLog
 }
 \description{
-List all phenotypes in the library
+Deprecated. List all phenotypes in the library.
 }
 \examples{
 listPhenotypes()

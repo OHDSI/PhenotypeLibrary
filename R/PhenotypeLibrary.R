@@ -17,6 +17,5 @@
 #' @keywords internal
 "_PACKAGE"
 
-#' @import dplyr
 #' @importFrom rlang .data
 NULL

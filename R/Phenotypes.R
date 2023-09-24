@@ -14,35 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' List all phenotypes in the library
+#' Deprecated. List all phenotypes in the library.
 #'
 #' @return
 #' A tibble with the cohort ID and name.
+#' Deprecated. Please use getPhenotypeLog
 #'
 #' @examples
 #' listPhenotypes()
 #'
 #' @export
 listPhenotypes <- function() {
-  cohorts <-
-    readr::read_csv(system.file("Cohorts.csv", package = "PhenotypeLibrary"),
-                    col_types = readr::cols()) |>
-    dplyr::mutate(
-      newCohortName = dplyr::case_when(
-        !is.na(cohortNameLong) & cohortNameLong != "" ~ cohortNameLong,!is.na(cohortNameFormatted) &
-          cohortNameFormatted != "" ~ cohortNameFormatted,
-        TRUE ~ cohortName
-      )
-    ) |>
-    dplyr::rename(cohortNameAtlas = cohortName,
-                  cohortName = newCohortName) |>
-    dplyr::relocate(cohortId,
-                    cohortName) |>
-    dplyr::arrange(cohortId)
-  
-  cohorts <- transformColumns(cohorts)
-
-  return(cohorts)
+  .Deprecated(
+    new = "getPhenotypeLog",
+    msg = "listPhenotypes is deprecated. use getPhenotypeLog"
+  )
+  getPhenotypeLog()
 }
 
 #' Get a cohort definition set
@@ -54,7 +41,7 @@ listPhenotypes <- function() {
 #' `CohortGenerator` package.
 #'
 #' @examples
-#' cohorts <- listPhenotypes()
+#' cohorts <- getPhenotypeLog()
 #' subsetIds <- cohorts$cohortId[1:3]
 #' getPlCohortDefinitionSet(subsetIds)
 #'
@@ -64,8 +51,8 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   checkmate::assertIntegerish(cohortIds, min.len = 1, add = errorMessages)
   checkmate::reportAssertions(collection = errorMessages)
 
-  cohorts <- listPhenotypes() |>
-    filter(.data$cohortId %in% cohortIds) |>
+  cohorts <- getPhenotypeLog() |>
+    dplyr::filter(.data$cohortId %in% cohortIds) |>
     dplyr::select(
       "cohortId",
       "cohortName"
@@ -85,7 +72,7 @@ getPlCohortDefinitionSet <- function(cohortIds) {
     sql <-
       readFile(file.path(sqlFolder, paste0(cohorts$cohortId[i], ".sql")))
     output <- cohorts[i, ] |>
-      mutate(
+      dplyr::mutate(
         json = !!json,
         sql = !!sql
       )
@@ -93,7 +80,7 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   }
 
   result <- lapply(seq_len(nrow(cohorts)), getJsonAndSql) |>
-    bind_rows()
+    dplyr::bind_rows()
 
   return(result)
 }
@@ -115,19 +102,48 @@ getPlCohortDefinitionSet <- function(cohortIds) {
 #' getPhenotypeLog(cohortIds = c(1, 2))
 #'
 #' @export
-getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
-  log <-
-    readr::read_csv(
-      system.file("Cohorts.csv", package = "PhenotypeLibrary"),
+getPhenotypeLog <- function(cohortIds = NULL) {
+  checkmate::assertIntegerish(cohortIds,
+    min.len = 0,
+    null.ok = TRUE
+  )
+
+  cohorts <-
+    readr::read_csv(system.file("Cohorts.csv", package = "PhenotypeLibrary"),
       col_types = readr::cols()
     ) |>
-    dplyr::filter(.data$cohortId %in% c(cohortIds)) |>
+    dplyr::mutate(
+      newCohortName = dplyr::case_when(
+        !is.na(.data$cohortNameLong) &
+          cohortNameLong != "" ~ .data$cohortNameLong, !is.na(.data$cohortNameFormatted) &
+          cohortNameFormatted != "" ~ .data$cohortNameFormatted,
+        TRUE ~ .data$cohortName
+      )
+    ) |>
+    dplyr::rename(
+      cohortNameAtlas = .data$cohortName,
+      cohortName = .data$newCohortName
+    ) |>
+    dplyr::relocate(
+      .data$cohortId,
+      .data$cohortName
+    ) |>
+    dplyr::arrange(.data$cohortId)
+
+  cohorts <- transformColumns(cohorts)
+
+  cohorts <- cohorts |>
     dplyr::mutate(
       addedDate = as.Date(.data$createdDate),
       updatedDate = as.Date(.data$modifiedDate)
     ) |>
     dplyr::arrange(.data$cohortId)
-  return(log)
+
+  if (!is.null(cohortIds)) {
+    cohorts <- cohorts |>
+      dplyr::filter(.data$cohortId %in% c(cohortIds))
+  }
+  return(cohorts)
 }
 
 
@@ -147,13 +163,18 @@ getPhenotypeLog <- function(cohortIds = listPhenotypes()$cohortId) {
 #'
 #' @export
 getPlConceptDefinitionSet <-
-  function(cohortIds = listPhenotypes()$cohortId) {
+  function(cohortIds = getPhenotypeLog()$cohortId) {
     conceptSets <-
       system.file("ConceptSetsInCohortDefinition.RDS", package = "PhenotypeLibrary") |>
       readRDS()
-    
+
+    if (!is.null(cohortIds)) {
+      conceptSets <- conceptSets |>
+        dplyr::filter(.data$cohortId %in% c(cohortIds))
+    }
+
     conceptSets <- transformColumns(df = conceptSets)
-    
+
     return(conceptSets)
   }
 
@@ -163,19 +184,19 @@ transformColumns <- function(df) {
   # Iterate through each column
   for (col_name in names(df)) {
     col_data <- df[[col_name]]
-    
+
     # If column contains alphabets
     if (any(grepl("[a-zA-Z]", col_data, ignore.case = TRUE))) {
       # Replace NA with empty string
       df[[col_name]][is.na(df[[col_name]])] <- ""
     }
-    
+
     # If column contains only 0, 1, and NA
     else if (all(col_data %in% c(0, 1, NA))) {
       # Replace NA with 0
       df[[col_name]][is.na(df[[col_name]])] <- 0
     }
   }
-  return(df |> 
-           dplyr::tibble())
+  return(df |>
+    dplyr::tibble())
 }

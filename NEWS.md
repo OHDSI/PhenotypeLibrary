@@ -4,6 +4,10 @@ PhenotypeLibrary 3.22.1
 - getPhenotypeLog() now returns the original user submitted cohort name, instead of the name forced by atlas-phenotype. 
 - This is in line with the original requirement. It allows for long names, names with special characters.
 
+- Deprecated listPhenotypes(). This was an older function that did the same as getPhenotypeLog() but returned only two fields.
+
+- Added requirement on R (4.10) because tidyverse seems to cause problems with older versions of R.
+
 PhenotypeLibrary 3.22.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
