@@ -24,7 +24,24 @@
 #'
 #' @export
 listPhenotypes <- function() {
-  cohorts <- readr::read_csv(system.file("Cohorts.csv", package = "PhenotypeLibrary"), col_types = readr::cols())
+  cohorts <-
+    readr::read_csv(system.file("Cohorts.csv", package = "PhenotypeLibrary"),
+                    col_types = readr::cols()) |>
+    dplyr::mutate(
+      newCohortName = dplyr::case_when(
+        !is.na(cohortNameLong) & cohortNameLong != "" ~ cohortNameLong,!is.na(cohortNameFormatted) &
+          cohortNameFormatted != "" ~ cohortNameFormatted,
+        TRUE ~ cohortName
+      )
+    ) |>
+    dplyr::rename(cohortNameAtlas = cohortName,
+                  cohortName = newCohortName) |>
+    dplyr::relocate(cohortId,
+                    cohortName) |>
+    dplyr::arrange(cohortId)
+  
+  cohorts <- transformColumns(cohorts)
+
   return(cohorts)
 }
 
@@ -134,5 +151,31 @@ getPlConceptDefinitionSet <-
     conceptSets <-
       system.file("ConceptSetsInCohortDefinition.RDS", package = "PhenotypeLibrary") |>
       readRDS()
+    
+    conceptSets <- transformColumns(df = conceptSets)
+    
     return(conceptSets)
   }
+
+
+# Function to transform columns based on conditions
+transformColumns <- function(df) {
+  # Iterate through each column
+  for (col_name in names(df)) {
+    col_data <- df[[col_name]]
+    
+    # If column contains alphabets
+    if (any(grepl("[a-zA-Z]", col_data, ignore.case = TRUE))) {
+      # Replace NA with empty string
+      df[[col_name]][is.na(df[[col_name]])] <- ""
+    }
+    
+    # If column contains only 0, 1, and NA
+    else if (all(col_data %in% c(0, 1, NA))) {
+      # Replace NA with 0
+      df[[col_name]][is.na(df[[col_name]])] <- 0
+    }
+  }
+  return(df |> 
+           dplyr::tibble())
+}

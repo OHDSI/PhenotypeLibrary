@@ -1,3 +1,9 @@
+PhenotypeLibrary 3.22.1
+======================
+
+- getPhenotypeLog() now returns the original user submitted cohort name, instead of the name forced by atlas-phenotype. 
+- This is in line with the original requirement. It allows for long names, names with special characters.
+
 PhenotypeLibrary 3.22.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
