@@ -24,6 +24,25 @@ knitr::opts_chunk$set(
 library(reactable)
 ```
 
+<button id="downloadButton">Download Cohorts.csv</button>
+
+<script>
+document.getElementById("downloadButton").addEventListener("click", function(){
+  fetch('https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv')
+    .then(response => response.blob())
+    .then(blob => {
+      var url = window.URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'Cohorts.csv';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+});
+</script>
+
 
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
 camelCaseToTitleCase <- function(string) {
