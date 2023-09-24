@@ -1,5 +1,5 @@
-PhenotypeLibrary 3.22.2
-======================
+
+
 This fixes some issues with meta data for Cohorts
 
 Accepted Cohorts: No cohorts were accepted in this release.
