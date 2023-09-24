@@ -1,3 +1,9 @@
+PhenotypeLibrary 3.23.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: No new cohorts were added in this release.
+
 
 Deleted: 995, 988, 985, 984, 983, 975, 970, 969, 937, 899. Duplicate cohorts from LEGEND Diabetes Import.
 
