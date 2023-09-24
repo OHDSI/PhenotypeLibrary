@@ -1,5 +1,5 @@
 # Import phenotypes from ATLAS -------------------------------------------------
-oldCohortDefinitions <- PhenotypeLibrary::listPhenotypes()
+oldCohortDefinitions <- PhenotypeLibrary::getPhenotypeLog()
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
 

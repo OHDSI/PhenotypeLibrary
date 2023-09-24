@@ -1,0 +1,94 @@
+---
+title: "Concept Set Definitions in OHDSI Phenotype Library"
+author: "Gowtham A. Rao"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    number_sections: yes
+    toc: no     
+vignette: >
+  %\VignetteIndexEntry{Concept Set Definitions in OHDSI Phenotype Library}
+  %\VignetteEncoding{UTF-8}    
+  %\VignetteEngine{knitr::rmarkdown}
+always_allow_html: true
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE
+)
+
+library(reactable)
+```
+
+```{r tidy=FALSE,eval=TRUE, echo = FALSE}
+report <- PhenotypeLibrary::getPlConceptDefinitionSet()
+```
+
+```{r tidy=FALSE,eval=TRUE, echo = FALSE}
+camelCaseToTitleCase <- function(string) {
+  errorMessages <- checkmate::makeAssertCollection()
+  checkmate::assertCharacter(string, add = errorMessages)
+  checkmate::reportAssertions(collection = errorMessages)
+
+  string <- gsub("([A-Z])", " \\1", string)
+  string <- gsub("([a-z])([0-9])", "\\1 \\2", string)
+  substr(string, 1, 1) <- toupper(substr(string, 1, 1))
+  return(string)
+}
+
+report <- report |>
+  dplyr::select(
+    -conceptSetSql,
+    -conceptSetExpression
+  )
+
+colnames(report) <- camelCaseToTitleCase(colnames(report))
+
+columnDefinitions <- list()
+
+colnamesInReport <- colnames(report)
+
+for (i in (1:length(colnamesInReport))) {
+  columnDefinitions[[colnamesInReport[[i]]]] <-
+    reactable::colDef(
+      name = colnamesInReport[[i]],
+      minWidth = nchar(colnamesInReport[[i]]) * 10,
+      sortable = TRUE,
+      resizable = TRUE,
+      show = TRUE,
+      html = TRUE,
+      na = "",
+      align = "left"
+    )
+}
+```
+
+```{r tidy=FALSE,eval=TRUE, echo = FALSE}
+reactable::reactable(
+  data = report,
+  columns = columnDefinitions,
+  sortable = TRUE,
+  filterable = TRUE,
+  resizable = TRUE,
+  searchable = TRUE,
+  pagination = TRUE,
+  showPagination = TRUE,
+  showPageInfo = TRUE,
+  striped = TRUE,
+  compact = FALSE,
+  wrap = FALSE,
+  showSortIcon = TRUE,
+  showSortable = TRUE,
+  fullWidth = TRUE,
+  showPageSizeOptions = TRUE,
+  pageSizeOptions = c(10, 20, 50, 100, 1000, 1000000),
+  defaultPageSize = 100
+)
+```
+
+
+
