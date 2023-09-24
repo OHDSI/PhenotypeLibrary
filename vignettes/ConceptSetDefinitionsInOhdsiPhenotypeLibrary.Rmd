@@ -24,7 +24,9 @@ knitr::opts_chunk$set(
 library(reactable)
 ```
 
-
+```{r tidy=FALSE,eval=TRUE, echo = FALSE}
+report <- PhenotypeLibrary::getPlConceptDefinitionSet()
+```
 
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
 camelCaseToTitleCase <- function(string) {
@@ -38,7 +40,9 @@ camelCaseToTitleCase <- function(string) {
   return(string)
 }
 
-report <- PhenotypeLibrary::getPlConceptDefinitionSet()
+report <- report |> 
+  dplyr::select(-conceptSetSql,
+                -conceptSetExpression)
 
 colnames(report) <- camelCaseToTitleCase(colnames(report))
 
