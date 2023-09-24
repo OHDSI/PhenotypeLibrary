@@ -50,95 +50,105 @@ rmarkdown::render("vignettes/HowToUsePhenotypeLibraryRPackage.Rmd",
   )
 )
 
-rmarkdown::render("vignettes/CohortDefinitionsInOhdsiPhenotypeLibrary.Rmd",
-  output_file = "../inst/doc/CohortDefinitionsInOhdsiPhenotypeLibrary.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
+# rmarkdown::render("vignettes/CohortDefinitionsInOhdsiPhenotypeLibrary.Rmd",
+#   output_file = "../inst/doc/CohortDefinitionsInOhdsiPhenotypeLibrary.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
 
-rmarkdown::render("vignettes/CohortDefinitionSubmissionRequirements.Rmd",
-  output_file = "../inst/doc/CohortDefinitionSubmissionRequirements.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd",
-  output_file = "../inst/doc/GuidanceOnClinicalDescriptionForConditionPhenotypes.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/ReservedWordsWithSpecialMeaningToPhenotypers.Rmd",
-  output_file = "../inst/doc/ReservedWordsWithSpecialMeaningToPhenotypers.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/GuidanceOnLiteratureReview.Rmd",
-  output_file = "../inst/doc/GuidanceOnLiteratureReview.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/GuidanceOnCohortDefinitionSetRObject.Rmd",
-  output_file = "../inst/doc/GuidanceOnCohortDefinitionSetRObject.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/ValidityChecksForCohortDefinitions.Rmd",
-  output_file = "../inst/doc/ValidityChecksForCohortDefinitions.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/SubmittedCohortDefinitions.Rmd",
-  output_file = "../inst/doc/SubmittedCohortDefinitions.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/GuidanceOnWritingAnEvaluationReport.Rmd",
-  output_file = "../inst/doc/GuidanceOnWritingAnEvaluationReport.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
-
-rmarkdown::render("vignettes/GuidanceOnPerformingPeerReview.Rmd",
-  output_file = "../inst/doc/GuidanceOnPerformingPeerReview.pdf",
-  rmarkdown::pdf_document(
-    latex_engine = "pdflatex",
-    toc = TRUE,
-    number_sections = TRUE
-  )
-)
+# rmarkdown::render(
+#   "vignettes/ConceptSetDefinitionsInOhdsiPhenotypeLibrary.Rmd",
+#   output_file = "../inst/doc/ConceptSetDefinitionsInOhdsiPhenotypeLibrary.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/CohortDefinitionSubmissionRequirements.Rmd",
+#   output_file = "../inst/doc/CohortDefinitionSubmissionRequirements.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd",
+#   output_file = "../inst/doc/GuidanceOnClinicalDescriptionForConditionPhenotypes.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/ReservedWordsWithSpecialMeaningToPhenotypers.Rmd",
+#   output_file = "../inst/doc/ReservedWordsWithSpecialMeaningToPhenotypers.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/GuidanceOnLiteratureReview.Rmd",
+#   output_file = "../inst/doc/GuidanceOnLiteratureReview.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/GuidanceOnCohortDefinitionSetRObject.Rmd",
+#   output_file = "../inst/doc/GuidanceOnCohortDefinitionSetRObject.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/ValidityChecksForCohortDefinitions.Rmd",
+#   output_file = "../inst/doc/ValidityChecksForCohortDefinitions.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/SubmittedCohortDefinitions.Rmd",
+#   output_file = "../inst/doc/SubmittedCohortDefinitions.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/GuidanceOnWritingAnEvaluationReport.Rmd",
+#   output_file = "../inst/doc/GuidanceOnWritingAnEvaluationReport.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
+# 
+# rmarkdown::render("vignettes/GuidanceOnPerformingPeerReview.Rmd",
+#   output_file = "../inst/doc/GuidanceOnPerformingPeerReview.pdf",
+#   rmarkdown::pdf_document(
+#     latex_engine = "pdflatex",
+#     toc = TRUE,
+#     number_sections = TRUE
+#   )
+# )
 
 
 

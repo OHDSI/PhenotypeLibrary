@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.23.0</span>
       </span>
     </div>
 
@@ -54,6 +54,9 @@
     </li>
     <li>
       <a href="../articles/CohortDefinitionSubmissionRequirements.html">Cohort Definition Submission Requirements</a>
+    </li>
+    <li>
+      <a href="../articles/ConceptSetDefinitionsInOhdsiPhenotypeLibrary.html">Concept Set Definitions in OHDSI Phenotype Library</a>
     </li>
     <li>
       <a href="../articles/GuidanceOnClinicalDescriptionForConditionPhenotypes.html">Guidance on writing clinical description for Condition Phenotypes</a>
@@ -148,7 +151,7 @@ follows:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/getPhenotypeLog.html">getPhenotypeLog</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 869 x 75</span></span></span>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 859 x 78</span></span></span>
 <span><span class="co">#&gt;    cohortId cohortName        cohortNameAtlas cohortNameFormatted cohortNameLong</span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>        2 COVID-19 diagnos~ [W] COVID-19 d~ COVID-19 diagnosis~ COVID-19 diag~</span></span>
@@ -161,8 +164,8 @@ follows:</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>        9 Sore throat       [P] Sore throat Sore throat         Sore throat   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       10 Nausea or Vomiti~ [P] Nausea or ~ Nausea or Vomiting  Nausea or Vom~</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       11 Malaise and or f~ [P] Malaise an~ Malaise and or fat~ Malaise and o~</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># i 859 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># i 70 more variables: librarian &lt;chr&gt;, status &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># i 849 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># i 73 more variables: librarian &lt;chr&gt;, status &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;, isCirceJson &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   contributors &lt;chr&gt;, contributorOrcIds &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   contributorOrganizations &lt;chr&gt;, peerReviewers &lt;chr&gt;,</span></span></span>

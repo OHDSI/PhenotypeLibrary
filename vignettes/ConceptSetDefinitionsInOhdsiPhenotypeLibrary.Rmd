@@ -1,5 +1,5 @@
 ---
-title: "Concept set Definitions in OHDSI Phenotype Library"
+title: "Concept Set Definitions in OHDSI Phenotype Library"
 author: "Gowtham A. Rao"
 date: "`r Sys.Date()`"
 output:
@@ -7,7 +7,7 @@ output:
     number_sections: yes
     toc: no     
 vignette: >
-  %\VignetteIndexEntry{Concept set Definitions in OHDSI Phenotype Library}
+  %\VignetteIndexEntry{Concept Set Definitions in OHDSI Phenotype Library}
   %\VignetteEncoding{UTF-8}    
   %\VignetteEngine{knitr::rmarkdown}
 always_allow_html: true
@@ -40,9 +40,11 @@ camelCaseToTitleCase <- function(string) {
   return(string)
 }
 
-report <- report |> 
-  dplyr::select(-conceptSetSql,
-                -conceptSetExpression)
+report <- report |>
+  dplyr::select(
+    -conceptSetSql,
+    -conceptSetExpression
+  )
 
 colnames(report) <- camelCaseToTitleCase(colnames(report))
 
@@ -63,7 +65,6 @@ for (i in (1:length(colnamesInReport))) {
       align = "left"
     )
 }
-
 ```
 
 ```{r tidy=FALSE,eval=TRUE, echo = FALSE}
