@@ -392,13 +392,13 @@ transformUrl <- function(url) {
   if (is.na(url) || url == "" || is.na(url)) {
     return(url)
   }
-  
+
   # Check if URL has the correct base
   base_url <- "https://forums.ohdsi.org/t/"
   if (!stringr::str_starts(url, base_url)) {
     return(NA)
   }
-  
+
   extract_number1 <- function(url) {
     # Use a regular expression to capture the first set of numbers after '/t/' and another '/'
     match_data <- stringr::str_match(url, "/t/[^/]*/(\\d+)")
@@ -407,10 +407,10 @@ transformUrl <- function(url) {
     }
     return(NA)
   }
-  
+
   # Extract the first set of numbers after the base URL
   number1 <- extract_number1(url)
-  
+
   # If number1 is found, construct the new URL, else return NA
   if (!is.na(number1)) {
     new_url <- paste0(base_url, number1)
@@ -422,7 +422,7 @@ transformUrl <- function(url) {
 
 cohortRecordAugmented <- cohortRecordAugmented |>
   dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = correctUrl)) |>
-  dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = transformUrl)) |> 
+  dplyr::mutate(ohdsiForumPost = sapply(ohdsiForumPost, FUN = transformUrl)) |>
   dplyr::arrange(cohortId)
 
 readr::write_excel_csv(
@@ -443,21 +443,27 @@ newCohortDefinitionSet <-
     settingsFileName = file.path("inst", "Cohorts.csv"),
     jsonFolder = file.path("inst", "cohorts"),
     sqlFolder = file.path("inst", "sql", "sql_server")
-  ) |> 
-  dplyr::select(cohortId,
-                json) |> 
-  dplyr::tibble() |> 
+  ) |>
+  dplyr::select(
+    cohortId,
+    json
+  ) |>
+  dplyr::tibble() |>
   dplyr::arrange(cohortId)
 
 conceptSetsInAllCohortDefinition <- ConceptSetDiagnostics::extractConceptSetsInCohortDefinitionSet(
   cohortDefinitionSet = newCohortDefinitionSet
 )
 
-saveRDS(object = conceptSetsInAllCohortDefinition |> 
-          dplyr::arrange(uniqueConceptSetId,
-                         cohortId,
-                         conceptSetId),
-        file = file.path("inst", "ConceptSetsInCohortDefinition.RDS"))
+saveRDS(
+  object = conceptSetsInAllCohortDefinition |>
+    dplyr::arrange(
+      uniqueConceptSetId,
+      cohortId,
+      conceptSetId
+    ),
+  file = file.path("inst", "ConceptSetsInCohortDefinition.RDS")
+)
 
 oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
 
