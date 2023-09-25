@@ -188,46 +188,20 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 2)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 3)
 ) C
 
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-30,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
-GROUP BY p.person_id, p.event_id
-HAVING COUNT(cc.event_id) = 0
--- End Correlated Criteria
-
-UNION ALL
--- Begin Correlated Criteria
-select 1 as index_id, p.person_id, p.event_id
-from #qualified_events p
-LEFT JOIN (
-SELECT p.person_id, p.event_id 
-FROM #qualified_events P
-JOIN (
-  -- Begin Observation Criteria
-select C.person_id, C.observation_id as event_id, C.start_date, C.END_DATE,
-       C.visit_occurrence_id, C.start_date as sort_date
-from 
-(
-  select o.person_id,o.observation_id,o.observation_concept_id,o.visit_occurrence_id,o.value_as_number,o.observation_date as start_date, DATEADD(day,1,o.observation_date) as end_date 
-  FROM @cdm_database_schema.OBSERVATION o
-JOIN #Codesets cs on (o.observation_concept_id = cs.concept_id and cs.codeset_id = 2)
-) C
-
-
--- End Observation Criteria
-
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-30,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
+) A on A.person_id = P.person_id  AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
 GROUP BY p.person_id, p.event_id
 HAVING COUNT(cc.event_id) = 0
 -- End Correlated Criteria
 
   ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
   GROUP BY E.person_id, E.event_id
-  HAVING COUNT(index_id) = 2
+  HAVING COUNT(index_id) = 1
 ) G
 -- End Criteria Group
 ) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
@@ -264,7 +238,7 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 3)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 4)
 ) C
 
 
@@ -314,7 +288,7 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 4)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 5)
 ) C
 
 
@@ -336,56 +310,6 @@ HAVING COUNT(cc.event_id) = 0
 
 select 3 as inclusion_rule_id, person_id, event_id
 INTO #Inclusion_3
-FROM 
-(
-  select pe.person_id, pe.event_id
-  FROM #qualified_events pe
-  
-JOIN (
--- Begin Criteria Group
-select 0 as index_id, person_id, event_id
-FROM
-(
-  select E.person_id, E.event_id 
-  FROM #qualified_events E
-  INNER JOIN
-  (
-    -- Begin Correlated Criteria
-select 0 as index_id, p.person_id, p.event_id
-from #qualified_events p
-LEFT JOIN (
-SELECT p.person_id, p.event_id 
-FROM #qualified_events P
-JOIN (
-  -- Begin Condition Occurrence Criteria
-SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
-  C.visit_occurrence_id, C.start_date as sort_date
-FROM 
-(
-  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
-  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 5)
-) C
-
-
--- End Condition Occurrence Criteria
-
-) A on A.person_id = P.person_id  AND A.START_DATE >= DATEADD(day,0,P.START_DATE) AND A.START_DATE <= DATEADD(day,0,P.START_DATE) ) cc on p.person_id = cc.person_id and p.event_id = cc.event_id
-GROUP BY p.person_id, p.event_id
-HAVING COUNT(cc.event_id) = 0
--- End Correlated Criteria
-
-  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
-  GROUP BY E.person_id, E.event_id
-  HAVING COUNT(index_id) = 1
-) G
--- End Criteria Group
-) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
-) Results
-;
-
-select 4 as inclusion_rule_id, person_id, event_id
-INTO #Inclusion_4
 FROM 
 (
   select pe.person_id, pe.event_id
@@ -460,8 +384,8 @@ HAVING COUNT(cc.event_id) = 0
 ) Results
 ;
 
-select 5 as inclusion_rule_id, person_id, event_id
-INTO #Inclusion_5
+select 4 as inclusion_rule_id, person_id, event_id
+INTO #Inclusion_4
 FROM 
 (
   select pe.person_id, pe.event_id
@@ -510,8 +434,8 @@ HAVING COUNT(cc.event_id) = 0
 ) Results
 ;
 
-select 6 as inclusion_rule_id, person_id, event_id
-INTO #Inclusion_6
+select 5 as inclusion_rule_id, person_id, event_id
+INTO #Inclusion_5
 FROM 
 (
   select pe.person_id, pe.event_id
@@ -572,9 +496,7 @@ select inclusion_rule_id, person_id, event_id from #Inclusion_3
 UNION ALL
 select inclusion_rule_id, person_id, event_id from #Inclusion_4
 UNION ALL
-select inclusion_rule_id, person_id, event_id from #Inclusion_5
-UNION ALL
-select inclusion_rule_id, person_id, event_id from #Inclusion_6) I;
+select inclusion_rule_id, person_id, event_id from #Inclusion_5) I;
 TRUNCATE TABLE #Inclusion_0;
 DROP TABLE #Inclusion_0;
 
@@ -593,9 +515,6 @@ DROP TABLE #Inclusion_4;
 TRUNCATE TABLE #Inclusion_5;
 DROP TABLE #Inclusion_5;
 
-TRUNCATE TABLE #Inclusion_6;
-DROP TABLE #Inclusion_6;
-
 
 select event_id, person_id, start_date, end_date, op_start_date, op_end_date
 into #included_events
@@ -608,9 +527,9 @@ FROM (
     LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
     GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
   ) MG -- matching groups
-{7 != 0}?{
+{6 != 0}?{
   -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
-  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),7)-1)
+  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),6)-1)
 }
 ) Results
 
@@ -619,7 +538,7 @@ FROM (
 -- date offset strategy
 
 select event_id, person_id, 
-  case when DATEADD(day,0,end_date) > op_end_date then op_end_date else DATEADD(day,0,end_date) end as end_date
+  case when DATEADD(day,30,end_date) > op_end_date then op_end_date else DATEADD(day,30,end_date) end as end_date
 INTO #strategy_ends
 from #included_events;
 
@@ -699,14 +618,14 @@ delete from @results_database_schema.cohort_censor_stats where cohort_definition
 
 -- END: Censored Stats
 }
-{1 != 0 & 7 != 0}?{
+{1 != 0 & 6 != 0}?{
 
 -- Create a temp table of inclusion rule rows for joining in the inclusion rule impact analysis
 
 select cast(rule_sequence as int) as rule_sequence
 into #inclusion_rules
 from (
-  SELECT CAST(0 as int) as rule_sequence UNION ALL SELECT CAST(1 as int) as rule_sequence UNION ALL SELECT CAST(2 as int) as rule_sequence UNION ALL SELECT CAST(3 as int) as rule_sequence UNION ALL SELECT CAST(4 as int) as rule_sequence UNION ALL SELECT CAST(5 as int) as rule_sequence UNION ALL SELECT CAST(6 as int) as rule_sequence
+  SELECT CAST(0 as int) as rule_sequence UNION ALL SELECT CAST(1 as int) as rule_sequence UNION ALL SELECT CAST(2 as int) as rule_sequence UNION ALL SELECT CAST(3 as int) as rule_sequence UNION ALL SELECT CAST(4 as int) as rule_sequence UNION ALL SELECT CAST(5 as int) as rule_sequence
 ) IR;
 
 
