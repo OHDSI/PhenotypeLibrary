@@ -213,7 +213,7 @@ from ( --cteEnds
 	JOIN ( -- cteEndDates
     SELECT
       person_id
-      , DATEADD(day,-1 * 365, event_date)  as end_date
+      , DATEADD(day,-1 * 0, event_date)  as end_date
     FROM
     (
       SELECT
@@ -234,7 +234,7 @@ from ( --cteEnds
 
         SELECT
           person_id
-          , DATEADD(day,365,end_date) as end_date
+          , DATEADD(day,0,end_date) as end_date
           , 1 AS event_type
         FROM #cohort_rows
       ) RAWDATA

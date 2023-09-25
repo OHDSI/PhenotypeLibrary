@@ -1,3 +1,24 @@
+PhenotypeLibrary 3.24.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 14 were added.
+
+    1093: [P] Abdominal Aoritc Aneurysm repair - post op new Afib (any)
+    1094: [P] Lower Extremity Bypass - post op new Afib (any)
+    1095: [P] Carotid Endarterectomy - post op new Afib (any)
+    1096: [P] Lung Resection - post op new Afib (any)
+    1097: [P] Esophagectomy - post op new Afib (any)
+    1098: [P] Pancreatectomy - post op new Afib (any)
+    1099: [P] Colectomy - post op new Afib (any)
+    1100: [P] Cystectomy - post op new Afib (any)
+    1101: [P] Nephrectomy - post op new Afib (any)
+    1102: [P] Coronary Artery Bypass Graft Surgery - post op new Afib (any)
+    1103: [P] Aortic or Mitral Valve Repair or Replacement - post op new Afib (any)
+    1104: [P] RBC Transfusion (adult relevant, no auto 1yr clean window)
+    1105: [P] Clostridium difficile - first episode
+    1106: [P] Non-Emergent Major Non Cardiac Surgery no prior Opioid
+
 PhenotypeLibrary 3.23.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

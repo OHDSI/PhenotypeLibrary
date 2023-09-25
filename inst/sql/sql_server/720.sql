@@ -243,7 +243,7 @@ FROM (
   WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),2)-1)
 }
 ) Results
-
+WHERE Results.ordinal = 1
 ;
 
 
