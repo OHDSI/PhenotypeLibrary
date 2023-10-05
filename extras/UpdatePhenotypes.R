@@ -1,5 +1,5 @@
 # Import phenotypes from ATLAS -------------------------------------------------
-oldCohortDefinitions <- PhenotypeLibrary::getPhenotypeLog()
+oldCohortDefinitions <- PhenotypeLibrary::getPhenotypeLog(showHidden = TRUE)
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
 
@@ -465,7 +465,7 @@ saveRDS(
   file = file.path("inst", "ConceptSetsInCohortDefinition.RDS")
 )
 
-oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
+oldLogFile <- PhenotypeLibrary::getPhenotypeLog(showHidden = TRUE)
 
 needToUpdate <- TRUE
 if (identical(x = oldLogFile, y = cohortRecord)) {
