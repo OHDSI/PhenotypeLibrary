@@ -4,10 +4,14 @@
 \alias{getPhenotypeLog}
 \title{Get phenotype log}
 \usage{
-getPhenotypeLog(cohortIds = NULL)
+getPhenotypeLog(cohortIds = NULL, showHidden = FALSE)
 }
 \arguments{
 \item{cohortIds}{IDs of cohorts to extraction from the library.}
+
+\item{showHidden}{Some cohorts in the library are designed to be hidden. They are not
+retrieved by default. To retrieve such cohorts, please set showHidden as TRUE.
+Examples of hidden cohorts are withdrawn, deprecated, referrent cohorts.}
 }
 \value{
 Returns a table with one row per cohort definitions with log information such as its release cycle.

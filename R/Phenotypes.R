@@ -51,7 +51,7 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   checkmate::assertIntegerish(cohortIds, min.len = 1, add = errorMessages)
   checkmate::reportAssertions(collection = errorMessages)
 
-  cohorts <- getPhenotypeLog() |>
+  cohorts <- getPhenotypeLog() |> 
     dplyr::filter(.data$cohortId %in% cohortIds) |>
     dplyr::select(
       "cohortId",
@@ -94,6 +94,10 @@ getPlCohortDefinitionSet <- function(cohortIds) {
 #' by the OHDSI PhenotypeLibrary.
 #'
 #' @param cohortIds  IDs of cohorts to extraction from the library.
+#' 
+#' @param showHidden Some cohorts in the library are designed to be hidden. They are not 
+#'                   retrieved by default. To retrieve such cohorts, please set showHidden as TRUE.
+#'                   Examples of hidden cohorts are withdrawn, deprecated, referrent cohorts.
 #'
 #' @return
 #' A tibble.
@@ -102,7 +106,8 @@ getPlCohortDefinitionSet <- function(cohortIds) {
 #' getPhenotypeLog(cohortIds = c(1, 2))
 #'
 #' @export
-getPhenotypeLog <- function(cohortIds = NULL) {
+getPhenotypeLog <- function(cohortIds = NULL,
+                            showHidden = FALSE) {
   checkmate::assertIntegerish(cohortIds,
     min.len = 0,
     null.ok = TRUE
@@ -111,7 +116,20 @@ getPhenotypeLog <- function(cohortIds = NULL) {
   cohorts <-
     readr::read_csv(system.file("Cohorts.csv", package = "PhenotypeLibrary"),
       col_types = readr::cols()
-    ) |>
+    ) 
+  
+  if (!showHidden) {
+    cohorts <- cohorts |>
+      dplyr::filter(!isReferenceCohort == 1) |>
+      dplyr::filter(
+        stringr::str_detect(string = tolower(status),
+                            pattern = "pending") |
+          stringr::str_detect(string = tolower(status),
+                              pattern = "accepted")
+      )
+  }
+  
+  cohorts <- cohorts |>
     dplyr::mutate(
       newCohortName = dplyr::case_when(
         !is.na(.data$cohortNameLong) &
