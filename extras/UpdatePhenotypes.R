@@ -434,6 +434,16 @@ readr::write_excel_csv(
   quote = "all"
 )
 
+orcidFromPhenotypeLog <- PrivateScripts::getOrcidFromPhenotypeLog(log = cohortRecordAugmented)
+
+readr::write_excel_csv(
+  x = orcidFromPhenotypeLog,
+  file = "inst/OrcidLog.csv",
+  append = FALSE,
+  na = "",
+  quote = "all"
+)
+
 if (file.exists("cohortRecord.rds")) {
   file.remove("cohortRecord.rds")
 }
@@ -582,3 +592,6 @@ if (needToUpdate) {
   )
   writeLines(news, con = "NEWS.md")
 }
+
+
+releaseInformation <- PrivateScripts::fetchRepoReleaseInfo()
