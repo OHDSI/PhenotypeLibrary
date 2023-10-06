@@ -292,7 +292,8 @@ expectedFields <- c(
   "createdDate",
   "modifiedDate",
   "lastModifiedBy",
-  "replaces"
+  "replaces",
+  "notes"
 )
 
 presentInBoth <- intersect(
@@ -436,7 +437,6 @@ readr::write_excel_csv(
 if (file.exists("cohortRecord.rds")) {
   file.remove("cohortRecord.rds")
 }
-
 
 newCohortDefinitionSet <-
   CohortGenerator::getCohortDefinitionSet(

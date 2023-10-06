@@ -7,6 +7,12 @@
 					"CodesetId" : 83,
 					"ProcedureTypeExclude" : false
 				}
+			},
+			{
+				"ProcedureOccurrence" : {
+					"ProcedureTypeExclude" : false,
+					"ProcedureSourceConcept" : 83
+				}
 			}
 		],
 		"ObservationWindow" : {
@@ -3399,6 +3405,7 @@
 													"Days" : 0,
 													"Coeff" : 1
 												},
+												"UseIndexEnd" : false,
 												"UseEventEnd" : false
 											},
 											"RestrictVisit" : false,
@@ -3426,6 +3433,7 @@
 								"Days" : 0,
 								"Coeff" : -1
 							},
+							"UseIndexEnd" : false,
 							"UseEventEnd" : false
 						},
 						"EndWindow" : {
@@ -3436,48 +3444,7 @@
 							"End" : {
 								"Coeff" : 1
 							},
-							"UseEventEnd" : true
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
-			"name" : "Observation period of 365 days",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ObservationPeriod" : {}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 365,
-								"Coeff" : -1
-							},
-							"UseEventEnd" : false
-						},
-						"EndWindow" : {
-							"Start" : {
-								"Days" : 1,
-								"Coeff" : 1
-							},
-							"End" : {
-								"Coeff" : 1
-							},
+							"UseIndexEnd" : false,
 							"UseEventEnd" : true
 						},
 						"RestrictVisit" : false,
@@ -3514,6 +3481,7 @@
 								"Days" : 14,
 								"Coeff" : 1
 							},
+							"UseIndexEnd" : false,
 							"UseEventEnd" : false
 						},
 						"RestrictVisit" : false,
@@ -3549,6 +3517,7 @@
 								"Days" : 1,
 								"Coeff" : -1
 							},
+							"UseIndexEnd" : false,
 							"UseEventEnd" : false
 						},
 						"RestrictVisit" : false,
