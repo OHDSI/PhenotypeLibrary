@@ -166,8 +166,7 @@ FROM
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 1)
 ) C
 
-WHERE (C.start_date >= DATEFROMPARTS(2016, 1, 1) and C.start_date <= DATEFROMPARTS(2020, 12, 31))
-AND C.ordinal = 1
+WHERE C.ordinal = 1
 -- End Condition Occurrence Criteria
 
 ) PE
@@ -188,8 +187,7 @@ FROM
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 1)
 ) C
 
-WHERE (C.start_date >= DATEFROMPARTS(2016, 1, 1) and C.start_date <= DATEFROMPARTS(2020, 12, 31))
-AND C.ordinal = 1
+WHERE C.ordinal = 1
 -- End Condition Occurrence Criteria
 ) Q
 JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
@@ -211,8 +209,7 @@ FROM
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 1)
 ) C
 
-WHERE (C.start_date >= DATEFROMPARTS(2016, 1, 1) and C.start_date <= DATEFROMPARTS(2020, 12, 31))
-AND C.ordinal = 1
+WHERE C.ordinal = 1
 -- End Condition Occurrence Criteria
 ) Q
 JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 

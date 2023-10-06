@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.24.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.25.0</span>
       </span>
     </div>
 
@@ -121,7 +121,7 @@
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2023-09-25</h4>
+            <h4 data-toc-skip class="date">2023-10-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/HowToUsePhenotypeLibraryRPackage.Rmd" class="external-link"><code>vignettes/HowToUsePhenotypeLibraryRPackage.Rmd</code></a></small>
       <div class="hidden name"><code>HowToUsePhenotypeLibraryRPackage.Rmd</code></div>
@@ -151,21 +151,21 @@ follows:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/getPhenotypeLog.html">getPhenotypeLog</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 873 x 78</span></span></span>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 550 x 80</span></span></span>
 <span><span class="co">#&gt;    cohortId cohortName        cohortNameAtlas cohortNameFormatted cohortNameLong</span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>        2 COVID-19 diagnos~ [W] COVID-19 d~ COVID-19 diagnosis~ COVID-19 diag~</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>        3 Cough or Sputum   [P] Cough or S~ Cough or Sputum     Cough or Sput~</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>        4 Diarrhea          [P] Diarrhea    Diarrhea            Diarrhea      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>        5 Dyspnea           [P] Dyspnea     Dyspnea             Dyspnea       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>        6 Fever             [P] Fever       Fever               Fever         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>        7 Headache or Head~ [P] Headache o~ Headache or Headac~ Headache or H~</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>        8 Altered smell or~ [P] Altered sm~ Altered smell or t~ Altered smell~</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>        9 Sore throat       [P] Sore throat Sore throat         Sore throat   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       10 Nausea or Vomiti~ [P] Nausea or ~ Nausea or Vomiting  Nausea or Vom~</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       11 Malaise and or f~ [P] Malaise an~ Malaise and or fat~ Malaise and o~</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># i 863 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># i 73 more variables: librarian &lt;chr&gt;, status &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>        3 Cough or Sputum   [P] Cough or S~ Cough or Sputum     Cough or Sput~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>        4 Diarrhea          [P] Diarrhea    Diarrhea            Diarrhea      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>        5 Dyspnea           [P] Dyspnea     Dyspnea             Dyspnea       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>        6 Fever             [P] Fever       Fever               Fever         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>        7 Headache or Head~ [P] Headache o~ Headache or Headac~ Headache or H~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>        8 Altered smell or~ [P] Altered sm~ Altered smell or t~ Altered smell~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>        9 Sore throat       [P] Sore throat Sore throat         Sore throat   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       10 Nausea or Vomiti~ [P] Nausea or ~ Nausea or Vomiting  Nausea or Vom~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       11 Malaise and or f~ [P] Malaise an~ Malaise and or fat~ Malaise and o~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       12 Rhinitis or comm~ [P] Rhinitis o~ Rhinitis or common~ Rhinitis or c~</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># i 540 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># i 75 more variables: librarian &lt;chr&gt;, status &lt;chr&gt;, addedVersion &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   logicDescription &lt;chr&gt;, hashTag &lt;chr&gt;, isCirceJson &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   contributors &lt;chr&gt;, contributorOrcIds &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   contributorOrganizations &lt;chr&gt;, peerReviewers &lt;chr&gt;,</span></span></span>
@@ -179,11 +179,10 @@ cohortDefinitionSet object as</li>
 <code class="sourceCode R"><span><span class="va">cohortDefinitionSet</span> <span class="op">&lt;-</span> <span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/getPlCohortDefinitionSet.html">getPlCohortDefinitionSet</a></span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">cohortDefinitionSet</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 x 4</span></span></span>
-<span><span class="co">#&gt;   cohortId cohortName                                   json               sql  </span></span>
-<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        2 COVID-19 diagnosis or SARS-CoV-2 test (1pos) <span style="color: #949494;">"</span>{\n\t\"cdmVersio~ <span style="color: #949494;">"</span>CRE~</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>        3 Cough or Sputum                              <span style="color: #949494;">"</span>{\n\t\"cdmVersio~ <span style="color: #949494;">"</span>CRE~</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 x 4</span></span></span>
+<span><span class="co">#&gt;   cohortId cohortName      json                                            sql  </span></span>
+<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        3 Cough or Sputum <span style="color: #949494;">"</span>{\n\t\"cdmVersionRange\" : \"&gt;=5.0.0\",\n\t\"~ <span style="color: #949494;">"</span>CRE~</span></span></code></pre>
 <ul>
 <li>cohortDefinitionSet is now a data.frame with specifications for the
 cohort ids 1, 2 and 3. For cohorts that conform to OHDSI Circe

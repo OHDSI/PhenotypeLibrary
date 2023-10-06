@@ -55,8 +55,7 @@ FROM
   JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 0)
 ) C
 
-WHERE C.start_date >= DATEFROMPARTS(2020, 10, 1)
-AND C.ordinal = 1
+WHERE C.ordinal = 1
 -- End Condition Occurrence Criteria
 
   ) E

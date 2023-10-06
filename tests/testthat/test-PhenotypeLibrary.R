@@ -1,11 +1,11 @@
-testthat::test_that(desc = "Function listPhenotypes", code = {
-  data <- PhenotypeLibrary::listPhenotypes()
+testthat::test_that(desc = "Function listPhenotypes - returns deprecation warnings", code = {
+  testthat::expect_warning(data <- PhenotypeLibrary::listPhenotypes())
   testthat::expect_true(is.data.frame(data))
   testthat::expect_gte(object = nrow(data), expected = 1)
 })
 
 testthat::test_that(desc = "Function getPlCohortDefinitionSet", code = {
-  phenotypes <- PhenotypeLibrary::listPhenotypes()
+  phenotypes <- PhenotypeLibrary::getPhenotypeLog()
   cohortDefinitionSet <-
     PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = phenotypes[1, ]$cohortId)
   testthat::expect_true(is.data.frame(cohortDefinitionSet))
@@ -21,6 +21,12 @@ testthat::test_that(desc = "Function getPlCohortDefinitionSet", code = {
 
 testthat::test_that(desc = "Function getPhenotypeLog", code = {
   data <- PhenotypeLibrary::getPhenotypeLog()
+  testthat::expect_true(is.data.frame(data))
+  testthat::expect_gte(object = nrow(data), expected = 1)
+})
+
+testthat::test_that(desc = "Function getPhenotypeLog showHidden", code = {
+  data <- PhenotypeLibrary::getPhenotypeLog(showHidden = TRUE)
   testthat::expect_true(is.data.frame(data))
   testthat::expect_gte(object = nrow(data), expected = 1)
 })

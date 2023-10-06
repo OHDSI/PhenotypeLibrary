@@ -1,5 +1,5 @@
 # Import phenotypes from ATLAS -------------------------------------------------
-oldCohortDefinitions <- PhenotypeLibrary::getPhenotypeLog()
+oldCohortDefinitions <- PhenotypeLibrary::getPhenotypeLog(showHidden = TRUE)
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
 
@@ -292,7 +292,8 @@ expectedFields <- c(
   "createdDate",
   "modifiedDate",
   "lastModifiedBy",
-  "replaces"
+  "replaces",
+  "notes"
 )
 
 presentInBoth <- intersect(
@@ -433,10 +434,19 @@ readr::write_excel_csv(
   quote = "all"
 )
 
+orcidFromPhenotypeLog <- PrivateScripts::getOrcidFromPhenotypeLog(log = cohortRecordAugmented)
+
+readr::write_excel_csv(
+  x = orcidFromPhenotypeLog,
+  file = "inst/OrcidLog.csv",
+  append = FALSE,
+  na = "",
+  quote = "all"
+)
+
 if (file.exists("cohortRecord.rds")) {
   file.remove("cohortRecord.rds")
 }
-
 
 newCohortDefinitionSet <-
   CohortGenerator::getCohortDefinitionSet(
@@ -465,7 +475,7 @@ saveRDS(
   file = file.path("inst", "ConceptSetsInCohortDefinition.RDS")
 )
 
-oldLogFile <- PhenotypeLibrary::getPhenotypeLog()
+oldLogFile <- PhenotypeLibrary::getPhenotypeLog(showHidden = TRUE)
 
 needToUpdate <- TRUE
 if (identical(x = oldLogFile, y = cohortRecord)) {
@@ -582,3 +592,6 @@ if (needToUpdate) {
   )
   writeLines(news, con = "NEWS.md")
 }
+
+
+releaseInformation <- PrivateScripts::fetchRepoReleaseInfo()

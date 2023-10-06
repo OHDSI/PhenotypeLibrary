@@ -1770,15 +1770,25 @@
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 0,
 								"Coeff" : -1
 							},
 							"End" : {
 								"Days" : 0,
-								"Coeff" : 1
+								"Coeff" : -1
 							},
 							"UseIndexEnd" : false,
 							"UseEventEnd" : false
+						},
+						"EndWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"End" : {
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : true
 						},
 						"RestrictVisit" : false,
 						"IgnoreObservationPeriod" : false,
@@ -1796,7 +1806,7 @@
 	],
 	"EndStrategy" : {
 		"DateOffset" : {
-			"DateField" : "StartDate",
+			"DateField" : "EndDate",
 			"Offset" : 1
 		}
 	},
