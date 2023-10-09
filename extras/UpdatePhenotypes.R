@@ -592,4 +592,3 @@ if (needToUpdate) {
   )
   writeLines(news, con = "NEWS.md")
 }
-
