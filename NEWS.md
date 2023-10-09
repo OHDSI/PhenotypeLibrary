@@ -1,3 +1,74 @@
+PhenotypeLibrary 3.26.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 64 were added. These Cohorts are part of the prediction study and contributed by Jenna Reps
+
+    1152: Deep Vein Thrombosis DVT 10
+    1153: Seizure 10
+    1154: Heart failure 10
+    1155: Non-hemorrhagic Stroke 10
+    1156: Hemorrhagic stroke 10
+    1157: peripheral vascular disease 10
+    1158: Aspirin 10
+    1159: Angina 10
+    1160: Atrial Fibrillation 10
+    1161: Major depressive disorder with NO occurrence of certain psychiatric disorder 10
+    1162: Coronary artery disease (CAD) 10
+    1163: Acute Kidney Injury 10
+    1164: Asthma 10
+    1165: Alcoholism 10
+    1166: Smoking 10
+    1167: sleep apnea 10
+    1168: skin ulcer 10
+    1169: Chronic hepatitis 10
+    1170: hyperlipidemia 10
+    1171: hypothyroidism 10
+    1172: Heart valve disorder 10
+    1173: Low back pain 10
+    1174: neuropathy 10
+    1175: Psychotic disorder 10
+    1176: Sepsis 10
+    1177: Acute Respiratory failure 10
+    1178: Gastroesophageal reflux disease 10
+    1179: obesity 10
+    1180: Inflammatory Bowel Disease 10
+    1181: STEROIDS 10
+    1182: Opioids 10
+    1183: ANTIEPILEPTICS 10
+    1184: Osteoarthritis 10
+    1185: Osteoporosis 10
+    1186: Urinary tract infectious 10
+    1187: acetaminophen exposure 10
+    1188: Anemia 10
+    1189: Anxiety 10
+    1190: HORMONAL CONTRACEPTIVES 10
+    1191: Chronic kidney disease or end stage renal disease 10
+    1192: Chronic obstructive pulmonary disease (COPD) 10
+    1193: Type 1 diabetes and no prior specific nonT1DM diabetes 10
+    1194: Type 2 Diabetes Mellitus with no type 1 or secondary DM 10
+    1195: Dyspnea 10
+    1196: Edema 10
+    1197: Acute gastrointestinal bleeding 10
+    1198: Hypertension 10
+    1199: Pneumonia 10
+    1200: Rheumatoid Arthritis 10
+    1201: Antibiotics Aminoglycosides 10
+    1202: Antibiotics Carbapenems 10
+    1203: Antibiotics Cephalosporins 10
+    1204: Antibiotics Fluoroquinolones 10
+    1205: Antibiotics Glycopeptides and lipoglycopeptides 10
+    1206: Antibiotics Macrolides 10
+    1207: Antibiotics Monobactams 10
+    1208: Antibiotics Oxazolidinones 10
+    1209: Antibiotics Penicillins 10
+    1210: Antibiotics Polypeptides 10
+    1211: Antibiotics Rifamycins 10
+    1212: Antibiotics Sulfonamides 10
+    1213: Antibiotics Streptogramins 10
+    1214: Antibiotics Tetracyclines 10
+    1215: Any cancer (excl. prostate cancer and benign cancer) 10
+
 PhenotypeLibrary 3.25.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

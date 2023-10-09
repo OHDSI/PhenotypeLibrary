@@ -592,6 +592,3 @@ if (needToUpdate) {
   )
   writeLines(news, con = "NEWS.md")
 }
-
-
-releaseInformation <- PrivateScripts::fetchRepoReleaseInfo()
