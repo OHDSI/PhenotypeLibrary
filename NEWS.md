@@ -1,3 +1,9 @@
+PhenotypeLibrary 3.27.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: No new cohorts were added in this release.
+
 PhenotypeLibrary 3.26.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

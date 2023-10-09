@@ -85,71 +85,12 @@ FROM (
 
 ;
 
--- custom era strategy
+-- date offset strategy
 
-with ctePersons(person_id) as (
-	select distinct person_id from #included_events
-)
-
-select person_id, drug_exposure_start_date, drug_exposure_end_date
-INTO #drugTarget
-FROM (
-	select de.PERSON_ID, DRUG_EXPOSURE_START_DATE, COALESCE(DRUG_EXPOSURE_END_DATE, DATEADD(day,DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,DRUG_EXPOSURE_START_DATE)) as DRUG_EXPOSURE_END_DATE 
-	FROM @cdm_database_schema.DRUG_EXPOSURE de
-	JOIN ctePersons p on de.person_id = p.person_id
-	JOIN #Codesets cs on cs.codeset_id = 0 AND de.drug_concept_id = cs.concept_id
-
-	UNION ALL
-
-	select de.PERSON_ID, DRUG_EXPOSURE_START_DATE, COALESCE(DRUG_EXPOSURE_END_DATE, DATEADD(day,DAYS_SUPPLY,DRUG_EXPOSURE_START_DATE), DATEADD(day,1,DRUG_EXPOSURE_START_DATE)) as DRUG_EXPOSURE_END_DATE 
-	FROM @cdm_database_schema.DRUG_EXPOSURE de
-	JOIN ctePersons p on de.person_id = p.person_id
-	JOIN #Codesets cs on cs.codeset_id = 0 AND de.drug_source_concept_id = cs.concept_id
-) E
-;
-
-select et.event_id, et.person_id, ERAS.era_end_date as end_date
+select event_id, person_id, 
+  case when DATEADD(day,14,end_date) > op_end_date then op_end_date else DATEADD(day,14,end_date) end as end_date
 INTO #strategy_ends
-from #included_events et
-JOIN 
-(
-  select ENDS.person_id, min(drug_exposure_start_date) as era_start_date, DATEADD(day,7, ENDS.era_end_date) as era_end_date
-  from
-  (
-    select de.person_id, de.drug_exposure_start_date, MIN(e.END_DATE) as era_end_date
-    FROM #drugTarget DE
-    JOIN 
-    (
-      --cteEndDates
-      select PERSON_ID, DATEADD(day,-1 * 1,EVENT_DATE) as END_DATE -- unpad the end date by 1
-      FROM
-      (
-				select PERSON_ID, EVENT_DATE, EVENT_TYPE, 
-				MAX(START_ORDINAL) OVER (PARTITION BY PERSON_ID ORDER BY event_date, event_type, START_ORDINAL ROWS UNBOUNDED PRECEDING) AS start_ordinal,
-				ROW_NUMBER() OVER (PARTITION BY PERSON_ID ORDER BY EVENT_DATE, EVENT_TYPE, START_ORDINAL) AS OVERALL_ORD -- this re-numbers the inner UNION so all rows are numbered ordered by the event date
-				from
-				(
-					-- select the start dates, assigning a row number to each
-					Select PERSON_ID, DRUG_EXPOSURE_START_DATE AS EVENT_DATE, 0 as EVENT_TYPE, ROW_NUMBER() OVER (PARTITION BY PERSON_ID ORDER BY DRUG_EXPOSURE_START_DATE) as START_ORDINAL
-					from #drugTarget D
-
-					UNION ALL
-
-					-- add the end dates with NULL as the row number, padding the end dates by 1 to allow a grace period for overlapping ranges.
-					select PERSON_ID, DATEADD(day,1,DRUG_EXPOSURE_END_DATE), 1 as EVENT_TYPE, NULL
-					FROM #drugTarget D
-				) RAWDATA
-      ) E
-      WHERE 2 * E.START_ORDINAL - E.OVERALL_ORD = 0
-    ) E on DE.PERSON_ID = E.PERSON_ID and E.END_DATE >= DE.DRUG_EXPOSURE_START_DATE
-    GROUP BY de.person_id, de.drug_exposure_start_date
-  ) ENDS
-  GROUP BY ENDS.person_id, ENDS.era_end_date
-) ERAS on ERAS.person_id = et.person_id 
-WHERE et.start_date between ERAS.era_start_date and ERAS.era_end_date;
-
-TRUNCATE TABLE #drugTarget;
-DROP TABLE #drugTarget;
+from #included_events;
 
 
 -- generate cohort periods into #final_cohort
@@ -162,9 +103,6 @@ from ( -- first_ends
 	  from #included_events I
 	  join ( -- cohort_ends
 -- cohort exit dates
--- By default, cohort exit at the event's op end date
-select event_id, person_id, op_end_date as end_date from #included_events
-UNION ALL
 -- End Date Strategy
 SELECT event_id, person_id, end_date from #strategy_ends
 
@@ -184,7 +122,7 @@ from ( --cteEnds
 	JOIN ( -- cteEndDates
     SELECT
       person_id
-      , DATEADD(day,-1 * 1, event_date)  as end_date
+      , DATEADD(day,-1 * 0, event_date)  as end_date
     FROM
     (
       SELECT
@@ -205,7 +143,7 @@ from ( --cteEnds
 
         SELECT
           person_id
-          , DATEADD(day,1,end_date) as end_date
+          , DATEADD(day,0,end_date) as end_date
           , 1 AS event_type
         FROM #cohort_rows
       ) RAWDATA
