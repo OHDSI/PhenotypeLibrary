@@ -130,6 +130,20 @@ getPhenotypeLog <- function(cohortIds = NULL,
             string = tolower(.data$status),
             pattern = "accepted"
           )
+      ) |>
+      dplyr::filter(
+        stringr::str_detect(
+          string = .data$cohortName,
+          pattern = stringr::fixed("[W]"),
+          negate = TRUE
+        )
+      ) |>
+      dplyr::filter(
+        stringr::str_detect(
+          string = .data$cohortName,
+          pattern = stringr::fixed("[D]"),
+          negate = TRUE
+        )
       )
   }
 
