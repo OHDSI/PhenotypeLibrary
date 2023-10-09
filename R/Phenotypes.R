@@ -51,7 +51,7 @@ getPlCohortDefinitionSet <- function(cohortIds) {
   checkmate::assertIntegerish(cohortIds, min.len = 1, add = errorMessages)
   checkmate::reportAssertions(collection = errorMessages)
 
-  cohorts <- getPhenotypeLog() |>
+  cohorts <- getPhenotypeLog(showHidden = TRUE) |>
     dplyr::filter(.data$cohortId %in% cohortIds) |>
     dplyr::select(
       "cohortId",

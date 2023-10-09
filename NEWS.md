@@ -1,3 +1,7 @@
+PhenotypeLibrary 3.28.1
+======================
+Bug fix with getPhenotypeLog()
+
 PhenotypeLibrary 3.28.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
