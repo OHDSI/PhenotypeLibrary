@@ -1,3 +1,28 @@
+PhenotypeLibrary 3.28.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 18 were added.
+
+    1117: [P] Pulmonary fibrosis
+    1118: [P] History of Bladder cancer
+    1119: [P] Chronic obstructive pulmonary disease (COPD)
+    1120: [P] Chronic Interstitial lung disease (ILD)
+    1128: [P] Lung Nodule
+    1129: [P] Lung Nodule - solitary
+    1130: [P] Lung Nodule - multiple
+    1131: [P] Lung Mass (not acute, necrotic, atlectatic, abscess, fibrosis)
+    1132: [P] Lung Lesion (not acute, necrotic, atlectatic, abscess, fibrosis)
+    1133: [P] Non Small Cell Lung Cancer as lung cancer without small cell
+    1134: [P] Lung Cancer (primary maliganancy)
+    1135: [P] Small Cell Lung Cancer
+    1136: [P] Non Small Cell Lung Cancer
+    1137: [P] Hoarseness
+    1138: [P] Bone Pain
+    1139: [P] Weight loss
+    1216: [P] Primary Lung Cancer, 2nd dx 365 d after, excl SCLC signs all d before 1y after
+    1217: [P] Primary Lung Cancer, excl SCLC signs all d before 1y after
+
 PhenotypeLibrary 3.27.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
