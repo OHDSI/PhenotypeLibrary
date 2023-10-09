@@ -122,14 +122,24 @@ getPhenotypeLog <- function(cohortIds = NULL,
     cohorts <- cohorts |>
       dplyr::filter(!.data$isReferenceCohort == 1) |>
       dplyr::filter(
+        stringr::str_detect(string = tolower(.data$status),
+                            pattern = "pending") |
+          stringr::str_detect(string = tolower(.data$status),
+                              pattern = "accepted")
+      ) |>
+      dplyr::filter(
         stringr::str_detect(
-          string = tolower(.data$status),
-          pattern = "pending"
-        ) |
-          stringr::str_detect(
-            string = tolower(.data$status),
-            pattern = "accepted"
-          )
+          string = .data$cohortName,
+          pattern = stringr::fixed("[W]"),
+          negate = TRUE
+        )
+      ) |>
+      dplyr::filter(
+        stringr::str_detect(
+          string = .data$cohortName,
+          pattern = stringr::fixed("[D]"),
+          negate = TRUE
+        )
       )
   }
 
