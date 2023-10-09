@@ -1,4 +1,4 @@
-PhenotypeLibrary 3.28.0
+PhenotypeLibrary 3.28.1
 ======================
 Bug fix with getPhenotypeLog()
 

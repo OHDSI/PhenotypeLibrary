@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.28.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.28.1</span>
       </span>
     </div>
 
@@ -179,10 +179,11 @@ cohortDefinitionSet object as</li>
 <code class="sourceCode R"><span><span class="va">cohortDefinitionSet</span> <span class="op">&lt;-</span> <span class="fu">PhenotypeLibrary</span><span class="fu">::</span><span class="fu"><a href="../reference/getPlCohortDefinitionSet.html">getPlCohortDefinitionSet</a></span><span class="op">(</span>cohortIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">cohortDefinitionSet</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 x 4</span></span></span>
-<span><span class="co">#&gt;   cohortId cohortName      json                                            sql  </span></span>
-<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        3 Cough or Sputum <span style="color: #949494;">"</span>{\n\t\"cdmVersionRange\" : \"&gt;=5.0.0\",\n\t\"~ <span style="color: #949494;">"</span>CRE~</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 x 4</span></span></span>
+<span><span class="co">#&gt;   cohortId cohortName                                   json               sql  </span></span>
+<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        2 COVID-19 diagnosis or SARS-CoV-2 test (1pos) <span style="color: #949494;">"</span>{\n\t\"cdmVersio~ <span style="color: #949494;">"</span>CRE~</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>        3 Cough or Sputum                              <span style="color: #949494;">"</span>{\n\t\"cdmVersio~ <span style="color: #949494;">"</span>CRE~</span></span></code></pre>
 <ul>
 <li>cohortDefinitionSet is now a data.frame with specifications for the
 cohort ids 1, 2 and 3. For cohorts that conform to OHDSI Circe
