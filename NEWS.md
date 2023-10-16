@@ -1,3 +1,15 @@
+PhenotypeLibrary 3.29.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 5 were added.
+
+    1218: [P] Acute bronchitis
+    1219: [P] Hyperlipidemia
+    1220: [P] Hypoparathyroidism
+    1221: [P] Osteoporosis
+    1222: [P] Viral hepatitis type A
+
 PhenotypeLibrary 3.28.1
 ======================
 Bug fix with getPhenotypeLog()
