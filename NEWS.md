@@ -1,3 +1,18 @@
+PhenotypeLibrary 3.30.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 8 were added.
+
+    1223: [P] Birdshot chorioretinitis
+    1224: [P] CMV Anterior Uveitis (sensitivity analysis)
+    1225: [P] VZV Anterior Uveitis (SUN)
+    1226: [P] VZV Anterior Uveitis (SUN) sensitive
+    1227: [P] HSV Anterior Uveitis (SUN)
+    1228: [P] HSV Anterior Uveitis (SUN) sensitive
+    1229: [P] Behcet Uveitis (SUN)
+    1231: [P] Sickle Cell Crisis
+
 PhenotypeLibrary 3.29.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
