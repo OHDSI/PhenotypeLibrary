@@ -4,19 +4,19 @@
 		"CriteriaList" : [
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 3,
+					"CodesetId" : 0,
 					"ConditionTypeExclude" : false
 				}
 			},
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 4,
+					"CodesetId" : 1,
 					"ConditionTypeExclude" : false
 				}
 			},
 			{
 				"Measurement" : {
-					"CodesetId" : 4,
+					"CodesetId" : 1,
 					"MeasurementTypeExclude" : false,
 					"ValueAsNumber" : {
 						"Value" : 0,
@@ -156,18 +156,6 @@
 							"CONCEPT_CLASS_ID" : null
 						},
 						{
-							"CONCEPT_ID" : 4126674,
-							"CONCEPT_NAME" : "++++",
-							"STANDARD_CONCEPT" : null,
-							"STANDARD_CONCEPT_CAPTION" : "Unknown",
-							"INVALID_REASON" : null,
-							"INVALID_REASON_CAPTION" : "Unknown",
-							"CONCEPT_CODE" : "260350009",
-							"DOMAIN_ID" : "Meas Value",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : null
-						},
-						{
 							"CONCEPT_ID" : 3470980,
 							"CONCEPT_NAME" : "Present ++++ out of ++++",
 							"STANDARD_CONCEPT" : null,
@@ -180,13 +168,13 @@
 							"CONCEPT_CLASS_ID" : null
 						},
 						{
-							"CONCEPT_ID" : 4125547,
-							"CONCEPT_NAME" : "+++",
+							"CONCEPT_ID" : 4123508,
+							"CONCEPT_NAME" : "+",
 							"STANDARD_CONCEPT" : null,
 							"STANDARD_CONCEPT_CAPTION" : "Unknown",
 							"INVALID_REASON" : null,
 							"INVALID_REASON_CAPTION" : "Unknown",
-							"CONCEPT_CODE" : "260349009",
+							"CONCEPT_CODE" : "260347006",
 							"DOMAIN_ID" : "Meas Value",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : null
@@ -204,13 +192,25 @@
 							"CONCEPT_CLASS_ID" : null
 						},
 						{
-							"CONCEPT_ID" : 4123508,
-							"CONCEPT_NAME" : "+",
+							"CONCEPT_ID" : 4125547,
+							"CONCEPT_NAME" : "+++",
 							"STANDARD_CONCEPT" : null,
 							"STANDARD_CONCEPT_CAPTION" : "Unknown",
 							"INVALID_REASON" : null,
 							"INVALID_REASON_CAPTION" : "Unknown",
-							"CONCEPT_CODE" : "260347006",
+							"CONCEPT_CODE" : "260349009",
+							"DOMAIN_ID" : "Meas Value",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : null
+						},
+						{
+							"CONCEPT_ID" : 4126674,
+							"CONCEPT_NAME" : "++++",
+							"STANDARD_CONCEPT" : null,
+							"STANDARD_CONCEPT_CAPTION" : "Unknown",
+							"INVALID_REASON" : null,
+							"INVALID_REASON_CAPTION" : "Unknown",
+							"CONCEPT_CODE" : "260350009",
 							"DOMAIN_ID" : "Meas Value",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : null
@@ -264,15 +264,15 @@
 							"CONCEPT_CLASS_ID" : null
 						},
 						{
-							"CONCEPT_ID" : 45884084,
+							"CONCEPT_ID" : 45496317,
 							"CONCEPT_NAME" : "Positive",
 							"STANDARD_CONCEPT" : null,
 							"STANDARD_CONCEPT_CAPTION" : "Unknown",
 							"INVALID_REASON" : null,
 							"INVALID_REASON_CAPTION" : "Unknown",
-							"CONCEPT_CODE" : "LA6576-8",
+							"CONCEPT_CODE" : "9c30.00",
 							"DOMAIN_ID" : "Meas Value",
-							"VOCABULARY_ID" : "LOINC",
+							"VOCABULARY_ID" : "Read",
 							"CONCEPT_CLASS_ID" : null
 						}
 					]
@@ -280,19 +280,19 @@
 			},
 			{
 				"Observation" : {
-					"CodesetId" : 4,
+					"CodesetId" : 1,
 					"ObservationTypeExclude" : false
 				}
 			},
 			{
 				"ConditionOccurrence" : {
 					"CorrelatedCriteria" : {
-						"Type" : "ANY",
+						"Type" : "ALL",
 						"CriteriaList" : [
 							{
 								"Criteria" : {
 									"ConditionOccurrence" : {
-										"CodesetId" : 5,
+										"CodesetId" : 2,
 										"ConditionTypeExclude" : false
 									}
 								},
@@ -318,7 +318,7 @@
 						"DemographicCriteriaList" : [],
 						"Groups" : []
 					},
-					"CodesetId" : 10,
+					"CodesetId" : 3,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -333,185 +333,7 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 1,
-			"name" : "OMOPUveitis CMV AC PCR positive [measurements, observations, specimen]",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 36309671,
-							"CONCEPT_NAME" : "PCR for Cytomegalovirus - Positive",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "LA13966-9",
-							"DOMAIN_ID" : "Meas Value",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Answer"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4143091,
-							"CONCEPT_NAME" : "Aqueous humor",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "425460003",
-							"DOMAIN_ID" : "Observation",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Substance"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4122252,
-							"CONCEPT_NAME" : "Aqueous humor sample",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "258444001",
-							"DOMAIN_ID" : "Specimen",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Specimen"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4140156,
-							"CONCEPT_NAME" : "Eye fluid",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "426513002",
-							"DOMAIN_ID" : "Observation",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Substance"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 3049944,
-							"CONCEPT_NAME" : "XXX microorganism DNA [Identifier] in Specimen by NAA with probe detection",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "38347-1",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 40764963,
-							"CONCEPT_NAME" : "XXX microorganism DNA [Identifier] in Isolate by NAA with probe detection",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "62202-7",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 37073281,
-							"CONCEPT_NAME" : "XXX microorganism DNA | Isolate | Microbiology",
-							"STANDARD_CONCEPT" : "C",
-							"STANDARD_CONCEPT_CAPTION" : "Classification",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "LP379858-6",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "LOINC Hierarchy"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 3035833,
-							"CONCEPT_NAME" : "XXX microorganism DNA [Presence] in Specimen by NAA with probe detection",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "35691-5",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4138900,
-							"CONCEPT_NAME" : "Vitreous humor",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "426101004",
-							"DOMAIN_ID" : "Observation",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Substance"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4146128,
-							"CONCEPT_NAME" : "Subretinal fluid",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "427223001",
-							"DOMAIN_ID" : "Observation",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Substance"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 3,
+			"id" : 0,
 			"name" : "OMOPUveitis Anterior uveitis [conditions]",
 			"expression" : {
 				"items" : [
@@ -2270,7 +2092,7 @@
 			}
 		},
 		{
-			"id" : 4,
+			"id" : 1,
 			"name" : "OMOPUveitis Anterior chamber cell [conditions, measurements]",
 			"expression" : {
 				"items" : [
@@ -2465,7 +2287,7 @@
 			}
 		},
 		{
-			"id" : 5,
+			"id" : 2,
 			"name" : "OMOPUveitis Other anterior segment inflammation [conditions]",
 			"expression" : {
 				"items" : [
@@ -2643,7 +2465,100 @@
 			}
 		},
 		{
-			"id" : 6,
+			"id" : 3,
+			"name" : "OMOPUveitis Anterior vitreous cell [conditions, measurements]",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4082268,
+							"CONCEPT_NAME" : "Vitreous cells",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "247086006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4317991,
+							"CONCEPT_NAME" : "Vitritis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "95802009",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4082269,
+							"CONCEPT_NAME" : "Vitreous inflammatory infiltrate",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "247087002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3019458,
+							"CONCEPT_NAME" : "Physical findings of Right vitreous body Narrative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "29103-9",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Clinical Observation"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3004523,
+							"CONCEPT_NAME" : "Physical findings of Left vitreous body Narrative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "29104-7",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Clinical Observation"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 4,
 			"name" : "OMOPUveitis Retinitis exclusion [conditions]",
 			"expression" : {
 				"items" : [
@@ -5201,7 +5116,7 @@
 			}
 		},
 		{
-			"id" : 7,
+			"id" : 5,
 			"name" : "OMOPUveitis Syphilis exclusion [conditions, measurements]",
 			"expression" : {
 				"items" : [
@@ -6773,7 +6688,7 @@
 			}
 		},
 		{
-			"id" : 8,
+			"id" : 6,
 			"name" : "OMOPUveitis Sarcoidosis exclusion [conditions, observations]",
 			"expression" : {
 				"items" : [
@@ -6883,73 +6798,22 @@
 			}
 		},
 		{
-			"id" : 10,
-			"name" : "OMOPUveitis Anterior vitreous cell [conditions, measurements]",
+			"id" : 7,
+			"name" : "OMOPUveitis CMV AC PCR positive [measurements, observations, specimen]",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4082268,
-							"CONCEPT_NAME" : "Vitreous cells",
+							"CONCEPT_ID" : 36309671,
+							"CONCEPT_NAME" : "PCR for Cytomegalovirus - Positive",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "247086006",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4317991,
-							"CONCEPT_NAME" : "Vitritis",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "95802009",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4082269,
-							"CONCEPT_NAME" : "Vitreous inflammatory infiltrate",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "247087002",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 3019458,
-							"CONCEPT_NAME" : "Physical findings of Right vitreous body Narrative",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "29103-9",
-							"DOMAIN_ID" : "Measurement",
+							"CONCEPT_CODE" : "LA13966-9",
+							"DOMAIN_ID" : "Meas Value",
 							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Clinical Observation"
+							"CONCEPT_CLASS_ID" : "Answer"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
@@ -6957,29 +6821,21 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 3004523,
-							"CONCEPT_NAME" : "Physical findings of Left vitreous body Narrative",
+							"CONCEPT_ID" : 4143091,
+							"CONCEPT_NAME" : "Aqueous humor",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "29104-7",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Clinical Observation"
+							"CONCEPT_CODE" : "425460003",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Substance"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
 						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 12,
-			"name" : "OMOPUveitis HSV AC PCR exclusion [measurements, specimen]",
-			"expression" : {
-				"items" : [
+					},
 					{
 						"concept" : {
 							"CONCEPT_ID" : 4122252,
@@ -6997,6 +6853,133 @@
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4140156,
+							"CONCEPT_NAME" : "Eye fluid",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "426513002",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Substance"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3049944,
+							"CONCEPT_NAME" : "XXX microorganism DNA [Identifier] in Specimen by NAA with probe detection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "38347-1",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40764963,
+							"CONCEPT_NAME" : "XXX microorganism DNA [Identifier] in Isolate by NAA with probe detection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "62202-7",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37073281,
+							"CONCEPT_NAME" : "XXX microorganism DNA | Isolate | Microbiology",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "LP379858-6",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "LOINC Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 3035833,
+							"CONCEPT_NAME" : "XXX microorganism DNA [Presence] in Specimen by NAA with probe detection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "35691-5",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4138900,
+							"CONCEPT_NAME" : "Vitreous humor",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "426101004",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Substance"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4146128,
+							"CONCEPT_NAME" : "Subretinal fluid",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "427223001",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Substance"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 8,
+			"name" : "OMOPUveitis HSV AC PCR positive [measurements, specimen]",
+			"expression" : {
+				"items" : [
 					{
 						"concept" : {
 							"CONCEPT_ID" : 37394108,
@@ -7030,15 +7013,7 @@
 						"isExcluded" : false,
 						"includeDescendants" : false,
 						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 13,
-			"name" : "OMOPUveitis VZV AC PCR exclusion [measurements, specimen]",
-			"expression" : {
-				"items" : [
+					},
 					{
 						"concept" : {
 							"CONCEPT_ID" : 4122252,
@@ -7051,6 +7026,31 @@
 							"DOMAIN_ID" : "Specimen",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Specimen"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 9,
+			"name" : "OMOPUveitis VZV AC PCR positive [measurements, specimen]",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4046130,
+							"CONCEPT_NAME" : "Varicella virus DNA assay",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "122306004",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
@@ -7075,16 +7075,16 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4046130,
-							"CONCEPT_NAME" : "Varicella virus DNA assay",
+							"CONCEPT_ID" : 4122252,
+							"CONCEPT_NAME" : "Aqueous humor sample",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "122306004",
-							"DOMAIN_ID" : "Measurement",
+							"CONCEPT_CODE" : "258444001",
+							"DOMAIN_ID" : "Specimen",
 							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"CONCEPT_CLASS_ID" : "Specimen"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
@@ -7094,53 +7094,94 @@
 			}
 		},
 		{
-			"id" : 15,
-			"name" : "OMOPUveitis CMV Diagnosis [conditions]",
+			"id" : 10,
+			"name" : "OMOPUveitis VZV iris atrophy [conditions]",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 35205780,
-							"CONCEPT_NAME" : "Other cytomegaloviral diseases",
-							"STANDARD_CONCEPT" : "N",
-							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "B25.8",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "ICD10CM",
-							"CONCEPT_CLASS_ID" : "4-char billing code"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : true,
-						"includeMapped" : true
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 35205781,
-							"CONCEPT_NAME" : "Cytomegaloviral disease, unspecified",
-							"STANDARD_CONCEPT" : "N",
-							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "B25.9",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "ICD10CM",
-							"CONCEPT_CLASS_ID" : "4-char billing code"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : true,
-						"includeMapped" : true
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 440032,
-							"CONCEPT_NAME" : "Cytomegalovirus infection",
+							"CONCEPT_ID" : 4148212,
+							"CONCEPT_NAME" : "Sector shaped iris atrophy",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "28944009",
+							"CONCEPT_CODE" : "35323005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : true
+					}
+				]
+			}
+		},
+		{
+			"id" : 11,
+			"name" : "OMOPUveitis Dermatomal VZV rash [conditions]",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4266196,
+							"CONCEPT_NAME" : "Herpes zoster dermatitis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "400020001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : true
+					}
+				]
+			}
+		},
+		{
+			"id" : 12,
+			"name" : "OMOPUveitis Bilateral uveitis [conditions]",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 36686922,
+							"CONCEPT_NAME" : "Bilateral uveitis of eyes",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "15630851000119103",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : true
+					}
+				]
+			}
+		},
+		{
+			"id" : 13,
+			"name" : "OMOPUveitis VZV Diagnosis [conditions]",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4206579,
+							"CONCEPT_NAME" : "Varicella-zoster virus infection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "309465005",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -7161,8 +7202,8 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "Evidence of cytomegalovirus infection in the eye",
-			"description" : "a. Positive PCR for cytomegalovirus on aqueous specimen (observations, measurements)",
+			"name" : "Evidence of varicella zoster virus infection in the eye",
+			"description" : "a. Positive PCR for varicella zoster virus on aqueous specimen (observations, measurements)\nb. Sectoral iris atrophy in a patient =60 years of age\nc. Concurrent or recent dermatomal Herpes zoster",
 			"expression" : {
 				"Type" : "ANY",
 				"CriteriaList" : [
@@ -7175,7 +7216,7 @@
 										{
 											"Criteria" : {
 												"Measurement" : {
-													"CodesetId" : 1,
+													"CodesetId" : 9,
 													"MeasurementTypeExclude" : false
 												}
 											},
@@ -7200,7 +7241,7 @@
 										{
 											"Criteria" : {
 												"Observation" : {
-													"CodesetId" : 1,
+													"CodesetId" : 9,
 													"ObservationTypeExclude" : false
 												}
 											},
@@ -7226,7 +7267,7 @@
 									"DemographicCriteriaList" : [],
 									"Groups" : []
 								},
-								"CodesetId" : 1,
+								"CodesetId" : 9,
 								"SpecimenTypeExclude" : false
 							}
 						},
@@ -7251,7 +7292,36 @@
 					{
 						"Criteria" : {
 							"ConditionOccurrence" : {
-								"CodesetId" : 15,
+								"CodesetId" : 10,
+								"ConditionTypeExclude" : false,
+								"Age" : {
+									"Value" : 60,
+									"Op" : "gte"
+								}
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Coeff" : -1
+							},
+							"End" : {
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : true,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 11,
 								"ConditionTypeExclude" : false
 							}
 						},
@@ -7286,7 +7356,7 @@
 					{
 						"Criteria" : {
 							"ConditionOccurrence" : {
-								"CodesetId" : 6,
+								"CodesetId" : 4,
 								"ConditionTypeExclude" : false
 							}
 						},
@@ -7323,7 +7393,7 @@
 					{
 						"Criteria" : {
 							"Measurement" : {
-								"CodesetId" : 7,
+								"CodesetId" : 5,
 								"MeasurementTypeExclude" : false,
 								"ValueAsConcept" : [
 									{
@@ -7339,15 +7409,15 @@
 										"CONCEPT_CLASS_ID" : null
 									},
 									{
-										"CONCEPT_ID" : 45884084,
+										"CONCEPT_ID" : 45496317,
 										"CONCEPT_NAME" : "Positive",
 										"STANDARD_CONCEPT" : null,
 										"STANDARD_CONCEPT_CAPTION" : "Unknown",
 										"INVALID_REASON" : null,
 										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA6576-8",
+										"CONCEPT_CODE" : "9c30.00",
 										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
+										"VOCABULARY_ID" : "Read",
 										"CONCEPT_CLASS_ID" : null
 									}
 								]
@@ -7386,7 +7456,7 @@
 					{
 						"Criteria" : {
 							"ConditionOccurrence" : {
-								"CodesetId" : 8,
+								"CodesetId" : 6,
 								"ConditionTypeExclude" : false
 							}
 						},
@@ -7413,7 +7483,7 @@
 					{
 						"Criteria" : {
 							"Observation" : {
-								"CodesetId" : 8,
+								"CodesetId" : 6,
 								"ObservationTypeExclude" : false,
 								"ValueAsConcept" : [
 									{
@@ -7441,18 +7511,6 @@
 										"CONCEPT_CLASS_ID" : null
 									},
 									{
-										"CONCEPT_ID" : 45884084,
-										"CONCEPT_NAME" : "Positive",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA6576-8",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									},
-									{
 										"CONCEPT_ID" : 9191,
 										"CONCEPT_NAME" : "Positive",
 										"STANDARD_CONCEPT" : null,
@@ -7462,6 +7520,18 @@
 										"CONCEPT_CODE" : "10828004",
 										"DOMAIN_ID" : "Meas Value",
 										"VOCABULARY_ID" : "SNOMED",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 45496317,
+										"CONCEPT_NAME" : "Positive",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "9c30.00",
+										"DOMAIN_ID" : "Meas Value",
+										"VOCABULARY_ID" : "Read",
 										"CONCEPT_CLASS_ID" : null
 									}
 								]
@@ -7500,7 +7570,7 @@
 					{
 						"Criteria" : {
 							"Measurement" : {
-								"CodesetId" : 12,
+								"CodesetId" : 8,
 								"MeasurementTypeExclude" : false,
 								"ValueAsConcept" : [
 									{
@@ -7516,15 +7586,15 @@
 										"CONCEPT_CLASS_ID" : null
 									},
 									{
-										"CONCEPT_ID" : 45884084,
+										"CONCEPT_ID" : 45496317,
 										"CONCEPT_NAME" : "Positive",
 										"STANDARD_CONCEPT" : null,
 										"STANDARD_CONCEPT_CAPTION" : "Unknown",
 										"INVALID_REASON" : null,
 										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA6576-8",
+										"CONCEPT_CODE" : "9c30.00",
 										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
+										"VOCABULARY_ID" : "Read",
 										"CONCEPT_CLASS_ID" : null
 									}
 								]
@@ -7553,7 +7623,7 @@
 					{
 						"Criteria" : {
 							"Specimen" : {
-								"CodesetId" : 12,
+								"CodesetId" : 8,
 								"SpecimenTypeExclude" : false
 							}
 						},
@@ -7583,28 +7653,16 @@
 			}
 		},
 		{
-			"name" : "no VZV AC PCR [measurements]",
+			"name" : "no CMV AC PCR [measurements]",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
 					{
 						"Criteria" : {
 							"Measurement" : {
-								"CodesetId" : 13,
+								"CodesetId" : 7,
 								"MeasurementTypeExclude" : false,
 								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 45884084,
-										"CONCEPT_NAME" : "Positive",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA6576-8",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									},
 									{
 										"CONCEPT_ID" : 9191,
 										"CONCEPT_NAME" : "Positive",
@@ -7615,6 +7673,18 @@
 										"CONCEPT_CODE" : "10828004",
 										"DOMAIN_ID" : "Meas Value",
 										"VOCABULARY_ID" : "SNOMED",
+										"CONCEPT_CLASS_ID" : null
+									},
+									{
+										"CONCEPT_ID" : 45496317,
+										"CONCEPT_NAME" : "Positive",
+										"STANDARD_CONCEPT" : null,
+										"STANDARD_CONCEPT_CAPTION" : "Unknown",
+										"INVALID_REASON" : null,
+										"INVALID_REASON_CAPTION" : "Unknown",
+										"CONCEPT_CODE" : "9c30.00",
+										"DOMAIN_ID" : "Meas Value",
+										"VOCABULARY_ID" : "Read",
 										"CONCEPT_CLASS_ID" : null
 									}
 								]
@@ -7643,7 +7713,7 @@
 					{
 						"Criteria" : {
 							"Specimen" : {
-								"CodesetId" : 13,
+								"CodesetId" : 7,
 								"SpecimenTypeExclude" : false
 							}
 						},
@@ -7663,7 +7733,69 @@
 						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
 							"Type" : 1,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "no bilateral uveitis except with VZV PCR+ [conditions, measurements]",
+			"expression" : {
+				"Type" : "ANY",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 12,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 30,
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 30,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : true,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 1,
 							"Count" : 0,
+							"IsDistinct" : false
+						}
+					},
+					{
+						"Criteria" : {
+							"Measurement" : {
+								"CodesetId" : 9,
+								"MeasurementTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Coeff" : -1
+							},
+							"End" : {
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
 							"IsDistinct" : false
 						}
 					}
