@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.30.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.30.1</span>
       </span>
     </div>
 
@@ -122,7 +122,7 @@ Condition Phenotypes</h1>
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2023-10-19</h4>
+            <h4 data-toc-skip class="date">2023-10-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd" class="external-link"><code>vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd</code></a></small>
       <div class="hidden name"><code>GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd</code></div>
@@ -133,100 +133,212 @@ Rao</h4>
     
 <p><a href="https://github.com/OHDSI/PhenotypeLibrary" class="external-link">PhenotypeLibrary</a> is
 part of <a href="https://ohdsi.github.io/Hades/" class="external-link">HADES</a>.</p>
-<p><strong>Note: This document is a DRAFT guidance.</strong></p>
-<p>We ask you to write a brief clinical description. This description is
-aimed at professionals with a medical terminology, informatics, or
-clinical background, so as to facilitate shared understanding of the
-target clinical idea being modeled in the phenotype. It is common to use
-medical technical terms related to general pathophysiology in the
-clinical description, but we try to avoid delving into molecular
-biology. The reader is not expected to have a background in research
-methods and can be a clinician. We are not rewriting a medical textbook
-or chapter. This document may also be an input to the phenotyper, i.e.,
-the person who develops and evaluates the cohort definition. If the
-phenotyper is building cohorts using Atlas, the clinical description is
-expected to guide and provide justifications for the concept set
-expression, and the rules for entry event criteria, inclusion rules, and
-exit criteria. Please use the following structure.</p>
+<p><strong>Note: This document is a DRAFT guidance.</strong> We request
+a succinct clinical description, tailored for individuals with a
+background in medical terminology, informatics, or clinical practice, to
+enable a shared comprehension of the clinical concept being modeled in
+the phenotype. While the following structure is recommended, all fields
+are OPTIONAL.</p>
+<p>The clinical description often encompasses medical technical terms
+pertinent to general pathophysiology, steering clear of extensive
+molecular biology discussions. The target audience, potentially
+comprising clinicians, is not presumed to have a research methods
+background. The goal is not to replicate a medical textbook chapter but
+to elucidate the clinical idea succinctly.</p>
+<p>This document serves as a valuable input for the phenotyper—the
+individual responsible for developing and evaluating the cohort
+definition. If the phenotyper is utilizing Atlas for cohort creation,
+the clinical description is anticipated to guide and furnish
+justifications for the concept set expression, alongside the rules for
+entry event criteria, inclusion rules, and exit criteria. Please adhere
+to the following structure where possible and appropriate:</p>
 <div class="section level2">
-<h2 id="condition-name-of-condition-mentioned-above-">Condition: [Name of condition mentioned above.]<a class="anchor" aria-label="anchor" href="#condition-name-of-condition-mentioned-above-"></a>
+<h2 id="condition-name-for-the-clinical-idea">Condition: [Name for the Clinical idea]<a class="anchor" aria-label="anchor" href="#condition-name-for-the-clinical-idea"></a>
 </h2>
-<p>This will serve as the title for the clinical idea.</p>
 <div class="section level3">
-<h3 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+<h3 id="clinical-overview">Clinical Overview<a class="anchor" aria-label="anchor" href="#clinical-overview"></a>
 </h3>
-<p>Write a concise description of the condition. Keep it to about 3
-sentences.</p>
+<div class="section level4">
+<h4 id="disease-overview">Disease Overview<a class="anchor" aria-label="anchor" href="#disease-overview"></a>
+</h4>
+<p>Provide an introduction, including if possible a definition from
+reputable scientific sources like medical textbooks, pubmed articles,
+medical dictionaries, or clinical guidelines in the form - ‘it is
+defined as.’ Assess whether there’s a consensus understanding among
+medical professionals, explaining your reasoning. Also provide an
+opinion if this condition is of special interest in pharmacovigilance
+and explain why. Add any relevant history or etymology of the condition
+to provide context.</p>
 </div>
-<div class="section level3">
-<h3 id="synonyms">Synonyms<a class="anchor" aria-label="anchor" href="#synonyms"></a>
-</h3>
-<p>List other names for the condition. This is to help build the concept
-set expression.</p>
-</div>
-<div class="section level3">
-<h3 id="presentation">Presentation<a class="anchor" aria-label="anchor" href="#presentation"></a>
-</h3>
-<p>Detail the signs and symptoms of the condition.</p>
-</div>
-<div class="section level3">
-<h3 id="diagnostic-evaluation">Diagnostic Evaluation<a class="anchor" aria-label="anchor" href="#diagnostic-evaluation"></a>
-</h3>
-<p>Describe the assessment criteria for Condition. Include suitable
-tests and potential results where relevant.</p>
-</div>
-<div class="section level3">
-<h3 id="differential-diagnoses">Differential Diagnoses<a class="anchor" aria-label="anchor" href="#differential-diagnoses"></a>
-</h3>
-<p>Provide a list of conditions that could potentially be mistaken for
-the condition.</p>
-</div>
-<div class="section level3">
-<h3 id="treatment-plan">Treatment Plan<a class="anchor" aria-label="anchor" href="#treatment-plan"></a>
-</h3>
-<p>Outline the standard treatment plan for the condition, using bullet
-points. If multiple treatment options exist, treat each as a separate
-bullet point. Indicate whether the treatment plan is the current or a
-previous standard that has since evolved.</p>
-</div>
-<div class="section level3">
-<h3 id="prognosis">Prognosis<a class="anchor" aria-label="anchor" href="#prognosis"></a>
-</h3>
-<p>Write a brief paragraph on the prognosis for a patient diagnosed with
-Condition, distinguishing between short-term (within the first 3 months
-after diagnosis) and long-term (1 year or more after diagnosis)
-prognoses.</p>
-</div>
-<div class="section level3">
-<h3 id="exclusions">Exclusions<a class="anchor" aria-label="anchor" href="#exclusions"></a>
-</h3>
-<p>List any conditions or treatments that must be ruled out at the time
-of diagnosis.</p>
+<div class="section level4">
+<h4 id="drug-induced-conditions">Drug Induced Conditions<a class="anchor" aria-label="anchor" href="#drug-induced-conditions"></a>
+</h4>
+<p>If the idea ‘Drug induced Condition’ is commonly used in
+pharmacovigilance, if possible please provide a definition for ‘Drug
+induced Condition’ in the form of ‘it is defined as’. Please compare the
+condition to ‘Drug induced Condition’. Please highlight key ideas that
+differentiate between the two, with special focus on what makes it ‘Drug
+- induced’ vs not drug induced.</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="ambiguity">Ambiguity<a class="anchor" aria-label="anchor" href="#ambiguity"></a>
-</h2>
-<p>Identify any conditions with similar names to the condition but that
-represent different clinical ideas. Do not include subtypes of the
-condition.</p>
 <div class="section level3">
-<h3 id="subtypes">Subtypes<a class="anchor" aria-label="anchor" href="#subtypes"></a>
+<h3 id="defining-features">Defining Features<a class="anchor" aria-label="anchor" href="#defining-features"></a>
 </h3>
-<p>Identify any subtypes of the condition.</p>
+<p>List enumerate the typical signs, symptoms or defining patient
+features. For each item, explain their importance for medical
+professionals evaluating patients presenting with the given condition.
+Identify and highlight any of the enumerated features that are
+considered either characteristic or pathognomonic for this condition.
+Please indicate if any of these features are contraindicatives of Drug
+induced Condition. Add a separate special note on Drug induced
+Condition.</p>
+</div>
+<div class="section level3">
+<h3 id="synonyms-and-subtypes">Synonyms and Subtypes<a class="anchor" aria-label="anchor" href="#synonyms-and-subtypes"></a>
+</h3>
+<div class="section level4">
+<h4 id="synonyms">Synonyms<a class="anchor" aria-label="anchor" href="#synonyms"></a>
+</h4>
+<p>Please list medical terms that serve as specific synonyms for the
+same condition. For each term, provide context explaining the situations
+in which these synonyms are typically employed. Additionally, include
+any layman terms that describe the condition, but only if these terms
+are lexically or semantically distinct from the medical terms
+listed.</p>
+</div>
+<div class="section level4">
+<h4 id="disease-subtypes">Disease Subtypes<a class="anchor" aria-label="anchor" href="#disease-subtypes"></a>
+</h4>
+<p>Describe any subtypes, dedicating no more than two sentences to the
+essential characteristics of each. Add a separate special note on Drug
+induced Condition.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="management">Management<a class="anchor" aria-label="anchor" href="#management"></a>
+</h3>
+<div class="section level4">
+<h4 id="diagnosis">Diagnosis<a class="anchor" aria-label="anchor" href="#diagnosis"></a>
+</h4>
+<p>Outline the evaluation, by making a list of relevant tests. Provide
+examples of potential results. Explain their utility for medical
+assessment of patients with the given condition. Please report if any of
+the subtypes of the condition have a uniquely different diagnostic
+evaluation. Add a separate special note on Drug induced Condition.</p>
+</div>
+<div class="section level4">
+<h4 id="treatment">Treatment<a class="anchor" aria-label="anchor" href="#treatment"></a>
+</h4>
+<div class="section level5">
+<h5 id="current-standards">Current Standards<a class="anchor" aria-label="anchor" href="#current-standards"></a>
+</h5>
+<p>List current treatment option(s) that are considered standard of
+care. These are what have been or are being offered in the last 5
+years.</p>
+</div>
+<div class="section level5">
+<h5 id="previous-standards">Previous Standards<a class="anchor" aria-label="anchor" href="#previous-standards"></a>
+</h5>
+<p>List previous treatment option(s) that are no longer offered. These
+were offered more than 5 years ago, but are not offered anymore. Please
+provide a time-frame for when it was a standard.</p>
+</div>
+<div class="section level5">
+<h5 id="treatment-evolution">Treatment Evolution<a class="anchor" aria-label="anchor" href="#treatment-evolution"></a>
+</h5>
+<p>Explain how the standard of care may have evolved over time.</p>
+</div>
+<div class="section level5">
+<h5 id="unique-treatment-plans">Unique Treatment Plans<a class="anchor" aria-label="anchor" href="#unique-treatment-plans"></a>
+</h5>
+<p>Please report if any of the subtypes of the condition have a uniquely
+different treatment plan. Add a separate special note on Drug induced
+Condition.</p>
+</div>
+</div>
+<div class="section level4">
+<h4 id="prognosis">Prognosis<a class="anchor" aria-label="anchor" href="#prognosis"></a>
+</h4>
+<div class="section level5">
+<h5 id="short-term-prognosis">Short Term Prognosis<a class="anchor" aria-label="anchor" href="#short-term-prognosis"></a>
+</h5>
+<p>Provide the patient’s short-term clinical outcome (within 3 months
+post-diagnosis).</p>
+</div>
+<div class="section level5">
+<h5 id="long-term-prognosis">Long Term Prognosis<a class="anchor" aria-label="anchor" href="#long-term-prognosis"></a>
+</h5>
+<p>Provide the patients long-term (1 year or more) clinical outcome.
+Please report if any of the subtypes of the condition have a uniquely
+different prognosis. Add a separate special note on Drug induced
+Condition.</p>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="differential-diagnoses-co-occurrent-ambiguous-and-mutually-exclusive-conditions">Differential Diagnoses; Co-occurrent, Ambiguous and Mutually
+Exclusive Conditions<a class="anchor" aria-label="anchor" href="#differential-diagnoses-co-occurrent-ambiguous-and-mutually-exclusive-conditions"></a>
+</h3>
+<div class="section level4">
+<h4 id="differential-diagnosis">Differential Diagnosis<a class="anchor" aria-label="anchor" href="#differential-diagnosis"></a>
+</h4>
+<p>List conditions that might be confused with the condition under
+discussion and are commonly considered a differential diagnosis. For
+each item, highlight the differences in mechanisms and treatment
+strategies, include co-occurrence information, explain the importance
+for a medical professional. Add a separate special note on Drug induced
+Condition.</p>
+</div>
+<div class="section level4">
+<h4 id="diseases-commonly-co-occurrent">Diseases Commonly Co-occurrent<a class="anchor" aria-label="anchor" href="#diseases-commonly-co-occurrent"></a>
+</h4>
+<p>List conditions that might co-occur in the same patient with the
+condition under discussion. For each item, highlight the differences in
+mechanisms and treatment strategies, include co-occurrence information,
+explain the importance for a medical professional. Add a separate
+special note on Drug induced Condition.</p>
+</div>
+<div class="section level4">
+<h4 id="medical-conditions-and-diseases-that-are-ambiguous">Medical Conditions and Diseases that are Ambiguous<a class="anchor" aria-label="anchor" href="#medical-conditions-and-diseases-that-are-ambiguous"></a>
+</h4>
+<p>Highlight clinical conditions that are confusingly similar,
+elucidating why they might cause confusion. Exclude subtypes of the
+condition under discussion here. Add a separate special note on Drug
+induced Condition.</p>
+</div>
+<div class="section level4">
+<h4 id="exclusions">Exclusions<a class="anchor" aria-label="anchor" href="#exclusions"></a>
+</h4>
+<p>List any conditions, diagnostic procedures or treatments that rule
+out the diagnosis of the condition under discussion. For each item,
+explain why ruling these out are crucial. Add a separate special note on
+Drug induced Condition.</p>
+</div>
+<div class="section level4">
+<h4 id="mutually-exclusive-conditions">Mutually Exclusive Conditions<a class="anchor" aria-label="anchor" href="#mutually-exclusive-conditions"></a>
+</h4>
+<p>Identify specific conditions or treatments that when co-occurring in
+the patient, make the occurrence of the condition under discussion
+unlikely. Explain why these are not expected to co-occur with the
+condition and why when this mutually exclusive condition occurs the
+person is less likely to have the condition. Add a separate special note
+on Drug induced Condition.</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="patient-profile">Patient Profile<a class="anchor" aria-label="anchor" href="#patient-profile"></a>
 </h3>
-<p>Provide one or more short case narratives of a typical patient with
-the clinical concept.</p>
+<p>Provide one or more short case narratives of a patient with the
+condition for three levels of diagnostic certainty: suspected case,
+probable case, definite case. If possible use formats used in the field
+like the SOAP format. Add a separate special note on Drug induced
+Condition.</p>
 </div>
 <div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h3>
-<p>Include at least 10 references that were used in creating this
-report, ensuring they are indexed on PubMed and compatible with a
-reference manager.</p>
+<p>Collate, deduplicate, and sort all cited references alphabetically in
+APA style.</p>
 </div>
 </div>
   </div>
