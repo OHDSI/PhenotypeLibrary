@@ -26,48 +26,102 @@ knitr::opts_chunk$set(
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/).
 
 **Note: This document is a DRAFT guidance.**
+We request a succinct clinical description, tailored for individuals with a background in medical terminology, informatics, or clinical practice, to enable a shared comprehension of the clinical concept being modeled in the phenotype. While the following structure is recommended, all fields are OPTIONAL.
 
-We ask you to write a brief clinical description. This description is aimed at professionals with a medical terminology, informatics, or clinical background, so as to facilitate shared understanding of the target clinical idea being modeled in the phenotype. It is common to use medical technical terms related to general pathophysiology in the clinical description, but we try to avoid delving into molecular biology. The reader is not expected to have a background in research methods and can be a clinician. We are not rewriting a medical textbook or chapter. This document may also be an input to the phenotyper, i.e., the person who develops and evaluates the cohort definition. If the phenotyper is building cohorts using Atlas, the clinical description is expected to guide and provide justifications for the concept set expression, and the rules for entry event criteria, inclusion rules, and exit criteria. Please use the following structure.
+The clinical description often encompasses medical technical terms pertinent to general pathophysiology, steering clear of extensive molecular biology discussions. The target audience, potentially comprising clinicians, is not presumed to have a research methods background. The goal is not to replicate a medical textbook chapter but to elucidate the clinical idea succinctly.
 
-# Condition: [Name of condition mentioned above.]
-This will serve as the title for the clinical idea.
-
-## Overview
-Write a concise description of the condition. Keep it to about 3 sentences.
-
-## Synonyms
-List other names for the condition. 
-This is to help build the concept set expression.
-
-## Presentation
-Detail the signs and symptoms of the condition.
-
-## Diagnostic Evaluation
-Describe the assessment criteria for Condition. Include suitable tests and potential results where relevant.
-
-## Differential Diagnoses
-Provide a list of conditions that could potentially be mistaken for the condition.
-
-## Treatment Plan
-Outline the standard treatment plan for the condition, using bullet points. If multiple treatment options exist, treat each as a separate bullet point. Indicate whether the treatment plan is the current or a previous standard that has since evolved.
+This document serves as a valuable input for the phenotyper—the individual responsible for developing and evaluating the cohort definition. If the phenotyper is utilizing Atlas for cohort creation, the clinical description is anticipated to guide and furnish justifications for the concept set expression, alongside the rules for entry event criteria, inclusion rules, and exit criteria. Please adhere to the following structure where possible and appropriate:
 
 
-## Prognosis
-Write a brief paragraph on the prognosis for a patient diagnosed with Condition, distinguishing between short-term (within the first 3 months after diagnosis) and long-term (1 year or more after diagnosis) prognoses.
 
-## Exclusions
-List any conditions or treatments that must be ruled out at the time of diagnosis.
+# Condition: [Name for the Clinical idea]
 
-# Ambiguity
-Identify any conditions with similar names to the condition but that represent different clinical ideas. Do not include subtypes of the condition.
+## Clinical Overview
 
-## Subtypes
-Identify any subtypes of the condition.
+### Disease Overview
+
+Provide an introduction, including if possible a definition from reputable scientific sources like medical textbooks, pubmed articles, medical dictionaries, or clinical guidelines in the form - 'it is defined as.' Assess whether there's a consensus understanding among medical professionals, explaining your reasoning. Also provide an opinion if this condition is of special interest in pharmacovigilance and explain why. Add any relevant history or etymology of the condition to provide context.
+
+### Drug Induced Conditions
+
+If the idea ‘Drug induced Condition’ is commonly used in pharmacovigilance, if possible please provide a definition for ‘Drug induced Condition’ in the form of ‘it is defined as’. Please compare the condition to ‘Drug induced Condition’. Please highlight key ideas that differentiate between the two, with special focus on what makes it ‘Drug - induced’ vs not drug induced.
+
+## Defining Features
+
+List enumerate the typical signs, symptoms or defining patient features. For each item, explain their importance for medical professionals evaluating patients presenting with the given condition. Identify and highlight any of the enumerated features that are considered either characteristic or pathognomonic for this condition. Please indicate if any of these features are contraindicatives of Drug induced Condition. Add a separate special note on Drug induced Condition.
+
+## Synonyms and Subtypes
+
+### Synonyms
+
+Please list medical terms that serve as specific synonyms for the same condition. For each term, provide context explaining the situations in which these synonyms are typically employed. Additionally, include any layman terms that describe the condition, but only if these terms are lexically or semantically distinct from the medical terms listed.
+
+### Disease Subtypes
+
+Describe any subtypes, dedicating no more than two sentences to the essential characteristics of each. Add a separate special note on Drug induced Condition.
+
+## Management
+
+### Diagnosis
+
+Outline the evaluation, by making a list of relevant tests. Provide examples of potential results. Explain their utility for medical assessment of patients with the given condition. Please report if any of the subtypes of the condition have a uniquely different diagnostic evaluation. Add a separate special note on Drug induced Condition.
+
+### Treatment
+
+#### Current Standards
+
+List current treatment option(s) that are considered standard of care. These are what have been or are being offered in the last 5 years.
+
+#### Previous Standards
+
+List previous treatment option(s) that are no longer offered. These were offered more than 5 years ago, but are not offered anymore. Please provide a time-frame for when it was a standard.
+
+#### Treatment Evolution
+
+Explain how the standard of care may have evolved over time.
+
+#### Unique Treatment Plans
+
+Please report if any of the subtypes of the condition have a uniquely different treatment plan. Add a separate special note on Drug induced Condition.
+
+### Prognosis
+
+#### Short Term Prognosis
+
+Provide the patient's short-term clinical outcome (within 3 months post-diagnosis).
+
+#### Long Term Prognosis
+
+Provide the patients long-term (1 year or more) clinical outcome. Please report if any of the subtypes of the condition have a uniquely different prognosis. Add a separate special note on Drug induced Condition.
+
+## Differential Diagnoses; Co-occurrent, Ambiguous and Mutually Exclusive Conditions
+
+### Differential Diagnosis
+
+List conditions that might be confused with the condition under discussion and are commonly considered a differential diagnosis. For each item, highlight the differences in mechanisms and treatment strategies, include co-occurrence information, explain the importance for a medical professional. Add a separate special note on Drug induced Condition.
+
+### Diseases Commonly Co-occurrent
+
+List conditions that might co-occur in the same patient with the condition under discussion. For each item, highlight the differences in mechanisms and treatment strategies, include co-occurrence information, explain the importance for a medical professional. Add a separate special note on Drug induced Condition.
+
+### Medical Conditions and Diseases that are Ambiguous
+
+Highlight clinical conditions that are confusingly similar, elucidating why they might cause confusion. Exclude subtypes of the condition under discussion here. Add a separate special note on Drug induced Condition.
+
+### Exclusions
+
+List any conditions, diagnostic procedures or treatments that rule out the diagnosis of the condition under discussion. For each item, explain why ruling these out are crucial. Add a separate special note on Drug induced Condition.
+
+### Mutually Exclusive Conditions
+
+Identify specific conditions or treatments that when co-occurring in the patient, make the occurrence of the condition under discussion unlikely. Explain why these are not expected to co-occur with the condition and why when this mutually exclusive condition occurs the person is less likely to have the condition. Add a separate special note on Drug induced Condition.
 
 ## Patient Profile
-Provide one or more short case narratives of a typical patient with the clinical concept.
+
+Provide one or more short case narratives of a patient with the condition for three levels of diagnostic certainty: suspected case, probable case, definite case. If possible use formats used in the field like the SOAP format. Add a separate special note on Drug induced Condition.
 
 ## References
-Include at least 10 references that were used in creating this report, ensuring they are indexed on PubMed and compatible with a reference manager.
+
+Collate, deduplicate, and sort all cited references alphabetically in APA style.
 
 

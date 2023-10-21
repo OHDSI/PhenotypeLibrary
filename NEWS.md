@@ -1,3 +1,10 @@
+PhenotypeLibrary 3.30.1
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+Clinical Description template has been updated.
+Literature review instruction has been updated.
+
 PhenotypeLibrary 3.30.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

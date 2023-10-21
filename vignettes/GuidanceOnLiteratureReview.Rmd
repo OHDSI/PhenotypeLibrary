@@ -25,5 +25,102 @@ knitr::opts_chunk$set(
 
 [PhenotypeLibrary](https://github.com/OHDSI/PhenotypeLibrary) is part of [HADES](https://ohdsi.github.io/Hades/)
 
-*This document is a DRAFT guidance.*
+# OHDSI Phenotype Development and Evaluation: A Guide to Systematic Literature Search for Published Phenotype Algorithms
+
+This guide outlines a systematic approach to conducting literature searches for published phenotype algorithms for any phenotype of interest.
+
+## Step 1: Define Your Phenotype of Interest
+
+- Clearly define the phenotype you are interested in. Use the OHDSI Phenotype Library Clinical Description template.
+- Identify key characteristics and features associated with the phenotype.
+
+## Step 2: Keyword Development
+
+- Generate a list of keywords related to your phenotype of interest.
+- Include synonyms, related terms, and both broad and narrow terms.
+- Utilize Medical Subject Headings (MeSH) terms where possible for these terms.
+
+## Step 3: Develop a Search Strategy
+
+- Utilize Boolean operators (AND, OR, NOT) to combine keywords.
+- Group keywords and phrases in parentheses to ensure the search is carried out in the desired order.
+- Make use of wildcards and truncation to capture variations in spelling and terminology.
+
+
+## Step 4: Select Databases
+
+- Use multiple databases to ensure comprehensive coverage: We mostly use 
+  - PubMed/MEDLINE
+  - EMBASE
+  - Cochrane Library
+  - Web of Science
+
+## Step 5: Conduct the Search
+
+- Input your search strategy into the databases.
+- Keep a record of the number of results returned and any modifications made to the search strategy.
+
+## Step 6: Review the Results
+
+- Screen titles and abstracts to identify relevant articles.
+- Retrieve full texts of potentially relevant articles for further assessment.
+- Check the references of included articles to identify additional relevant papers.
+
+## Step 7: Extract Relevant Information
+
+- Extract information on the phenotype definition and algorithm used.
+- Note the validation methods, databases used, and performance metrics reported.
+
+## Step 8: Summarize and Analyze
+
+- Summarize the findings from the literature.
+- Consider using a spreadsheet to document your findings.
+- Compare different algorithms and their performance.
+- Identify gaps in the literature and areas for future research.
+- Consider using a spreadsheet to document your findings with one row per reviewed publication.
+
+## Step 9: Document Your Process
+
+- Keep a detailed record of the search strategy, databases used, and articles included/excluded.
+- This will help in replicating the search in the future or adjusting the strategy as necessary.
+
+## Step 10: Seek Expert Guidance
+
+- Consult with experts in phenotyping and OHDSI for guidance and feedback on your search strategy and findings.
+
+
+
+
+--------
+# Example of Parasomnia
+
+Parasomnias are a category of sleep disorders that involve abnormal movements, behaviors, emotions, perceptions, and dreams that occur while falling asleep, sleeping, between sleep stages, or during arousal from sleep.
+
+## Keyword Development
+
+- **Main Keywords**: Parasomnias, Sleep Disorders
+- **Related Terms and Synonyms**: Sleep Arousal Disorders, REM Sleep Parasomnias, Sleep Bruxism, Nocturnal Myoclonus Syndrome, etc.
+- **MeSH Terms**: "Parasomnias"[Mesh], "Sleep Arousal Disorders"[Mesh], "REM Sleep Parasomnias"[Mesh], etc.
+
+## Develop a Search Strategy
+
+Construct a Boolean query to capture articles related to parasomnia phenotype algorithms. 
+
+Example PubMed Search Query:
+(Thank you Gayle Murray for your help is this search criteria creation.)
+
+```plaintext
+(((((("Parasomnias"[Mesh:NoExp]) OR "Nocturnal Myoclonus Syndrome"[Mesh]) OR "Nocturnal Paroxysmal Dystonia"[Mesh]) OR "REM Sleep Parasomnias"[Mesh]) OR "Sleep Arousal Disorders"[Mesh]) OR "Sleep Bruxism"[Mesh]) OR "Sleep-Wake Transition Disorders"[Mesh]]
+
+AND 
+
+(((((((((((((((retrospective cohort) OR (epidemiology [MeSH Terms])) OR (Epidemiologic Methods[MeSH Terms])) OR (phenotype[Text Word])) OR (Validation Study[Publication Type])) OR (positive predictive value[Text Word])) OR (Validation Studies as Topic[MeSH Terms])) OR (Sensitivity and Specificity[MeSH Terms])) OR algorithm))) ) OR (Diseases Category/epidemiology[MeSH Terms])) OR (Predictive Value of Tests[MeSH Terms])) OR (Reproducibility of Results[MeSH Terms]) OR (Predictive Value[Text Word]))
+
+AND
+
+ (((((((((((((((((((((Outcome Assessment) OR (Data Warehouse)) OR (Database Management Systems[MeSH Terms])) OR (Medical Records Systems, Computerized[MeSH Terms])) OR (Current procedural terminology)) OR ("drug surveillance")) OR (Databases, Factual[MeSH Terms])) OR (Databases as topic[MeSH Terms])) OR (Medical Record Linkage[MeSH Terms])) OR ("registered persons database")) OR ("Medical Records Systems")) OR ( "Population Surveillance")) OR ("Data Collection")) OR ("Automatic Data Processing")) OR (Incidence[MeSH Terms])) OR ("Medical Records"[MeSH Terms])) OR ("Patient Discharge"[MeSH Terms])) OR ("Hospital Records"[MeSH Terms])) OR (((((((((Medicaid) OR (Medicare)) OR (Truven)) OR (Optum)) OR (Medstat)) OR (Nationwide Inpatient Sample)) OR (National Inpatient Sample)) OR (PharMetrics)) OR ("National Health Insurance Research"))) OR ("claims administrative"[Title/Abstract:~1])) OR ("administrative data"[Title/Abstract:~1]))
+NOT
+(((((((("Clinical Trial"[pt] OR "Editorial"[pt] OR "Letter"[pt] OR "Randomized Controlled Trial"[pt] OR "Clinical Trial, Phase I"[pt] OR "Clinical Trial, Phase II"[pt] OR "Clinical Trial, Phase III"[pt] OR "Clinical Trial, Phase IV"[pt] OR "Comment"[pt] OR "Controlled Clinical Trial"[pt] OR "Case Reports"[pt] OR "Clinical Trials as Topic"[Mesh] OR "double-blind"[All] OR "placebo-controlled"[All] OR "pilot study"[All] OR "pilot projects"[Mesh] OR "Prospective Studies"[Mesh])) OR ("Genetics"[Mesh]) OR ("Genotype"[Mesh]) ) OR (biomarker[Title/Abstract]))))) OR ("review"[Publication Type])) OR (Meta-Analysis[Publication Type])
+```
+
 
