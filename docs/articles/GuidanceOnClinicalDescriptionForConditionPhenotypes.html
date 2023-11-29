@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PhenotypeLibrary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.30.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.31.0</span>
       </span>
     </div>
 
@@ -122,7 +122,7 @@ Condition Phenotypes</h1>
                         <h4 data-toc-skip class="author">Gowtham A.
 Rao</h4>
             
-            <h4 data-toc-skip class="date">2023-10-21</h4>
+            <h4 data-toc-skip class="date">2023-11-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/OHDSI/PhenotypeLibrary/blob/HEAD/vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd" class="external-link"><code>vignettes/GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd</code></a></small>
       <div class="hidden name"><code>GuidanceOnClinicalDescriptionForConditionPhenotypes.Rmd</code></div>
@@ -340,6 +340,127 @@ Condition.</p>
 <p>Collate, deduplicate, and sort all cited references alphabetically in
 APA style.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="using-gpt-to-generate-clinical-description">Using GPT to generate clinical description<a class="anchor" aria-label="anchor" href="#using-gpt-to-generate-clinical-description"></a>
+</h2>
+<p>The above text may be generated using a GPT prompt.</p>
+<blockquote>
+<p>Replace XXXXXXXX with ‘Acute new onset ST Elevated Myocardial
+Infarction’ while processing this prompt. Generate a detailed report on
+XXXXXXXX, serving as a guide for pharmacovigilance professionals
+evaluating the causal relationship between drug exposure and this
+condition. The document should incorporate standard technical language
+from the fields of medicine, pharmacology, and molecular biology.</p>
+<h4 id="document-creation-guidelines">Document Creation Guidelines:</h4>
+<ul>
+<li><p><strong>Sequential Processing</strong>: Respond to prompts
+sequentially.</p></li>
+<li><p><strong>Contextual Allocation</strong>: Save pertinent
+information for future, more relevant sub-prompts.</p></li>
+<li><p><strong>Redundancy Minimization</strong>: Avoid repetition of
+content and phrasing.</p></li>
+<li><p><strong>Prompt Completion</strong>: Cease processing upon
+completing each sub-prompt.</p></li>
+<li><p><strong>Disclaimers</strong>: Omit disclaimers about technology
+limitations.</p></li>
+<li><p><strong>Abbreviations</strong>. Please don’t create de novo
+abbreviations. Please only use abbreviations if those are used in
+scientific publications.</p></li>
+</ul>
+<p>After each sub-prompt, await my command, typically ‘next,’ before
+proceeding to the subsequent sub-prompt.</p>
+<h5 id="sub-prompts">Sub-prompts</h5>
+<p>1: # 1.0.0. CLINICAL OVERVIEW: ## 1.1.0. Disease Overview: Provide an
+introduction, including if possible a definition from reputable
+scientific sources like medical textbooks, pubmed articles, medical
+dictionaries, or clinical guidelines in the form - ‘it is defined as.’
+Assess whether there’s a consensus understanding among medical
+professionals, explaining your reasoning. Also provide an opinion if
+this XXXXXXXX is of special interest in pharmacovigilance and explain
+why. Add any relevant history or etymology of XXXXXXXX to provide
+context. In my follow-up, I will ask for synonyms, presentation,
+diagnostic evaluation, differential diagnosis, treatment plan,
+prognosis, exclusions, subtypes. So please don’t cover those topics
+here.</p>
+<p>2: ### 1.1.1. Drug induced XXXXXXXX: If the idea ‘Drug induced
+XXXXXXXX’ is commonly used in pharmacovigilance, if possible please
+provide a definition for ‘Drug induced XXXXXXXX’ in the form of ‘it is
+defined as’. Please compare XXXXXXXX to ‘Drug induced XXXXXXXX’. Please
+highlight key ideas that differentiate between the two, with special
+focus on what makes it ‘Drug - induced’ vs not drug induced.</p>
+<p>3: ## 1.2.0. Defining features: List enumerate the typical signs,
+symptoms or defining patient features. For each item, explain their
+importance for medical professionals evaluating patients presenting with
+the given XXXXXXXX. Identify and highlight any of the enumerated
+features that are considered either characteristic or pathognomonic for
+this XXXXXXXX. Please indicate if any of these features are
+contraindicatives of Drug induced XXXXXXXX. Add a separate special note
+on Drug induced XXXXXXXX.</p>
+<p>4: ## 1.3.0. Synonyms and subtypes ### 1.3.1. Synonyms Please list
+medical terms that serve as specific synonyms for the same XXXXXXXX. For
+each term, provide context explaining the situations in which these
+synonyms are typically employed. Additionally, include any layman terms
+that describe XXXXXXXX, but only if these terms are lexically or
+semantically distinct from the medical terms listed.### 1.3.2. Disease
+subtypes Describe any subtypes, dedicating no more than two sentences to
+the essential characteristics of each. Add a separate special note on
+Drug induced XXXXXXXX.</p>
+<p>5: ## 1.4. Management ### 1.4.1. Diagnosis Outline the evaluation, by
+making a list of relevant tests. Provide examples of potential results.
+Explain their utility for medical assessment of patients with the given
+XXXXXXXX. Please report if any of the subtypes of XXXXXXXX have a
+uniquely different diagnostic evaluation. Add a separate special note on
+Drug induced XXXXXXXX.</p>
+<p>6: ### 1.4.2. Treatment #### 1.4.2.1. Current Standards: where you
+should list current treatment option(s) that are considered standard of
+care. These are what have been or are being offered in the last 5 years.
+#### 1.4.2.2. Previous Standards: where you should list previous
+treatment option(s) that are no longer offered. These were offered more
+than 5 years ago, but are not offered anymore. Please provide a
+time-frame for when it was a standard. #### 1.4.2.3. Treatment
+evolution: Explain how the standard of care may have evolved over time.
+#### 1.4.2.4. Unique treatment plans]: Please report if any of the
+subtypes of XXXXXXXX have a uniquely different treatment plan. Add a
+separate special note on Drug induced XXXXXXXX.</p>
+<p>7: ### 1.4.3. Prognosis: #### 1.4.3.1. Short Term prognosis: Provide
+the patient’s short-term clinical outcome (within 3 months
+post-diagnosis). #### 1.4.3.2. Long Term prognosis: Provide the patients
+long-term (1 year or more) clinical outcome. Please report if any of the
+subtypes of XXXXXXXX have a uniquely different prognosis. Add a separate
+special note on Drug induced XXXXXXXX.</p>
+<p>9: ## 1.5.0. Differential diagnoses; co-occurrent, ambiguous and
+mutually exclusive conditions: ### 1.5.1. Differential diagnosis: List
+conditions that might be confused with XXXXXXXX and are commonly
+considered a differential diagnosis. For each item, highlight the
+differences in mechanisms and treatment strategies, include
+co-occurrence information, explain the importance for a medical
+professional. Add a separate special note on Drug induced XXXXXXXX.</p>
+<p>10: ### 1.5.2. Diseases commonly co-occurrent: List conditions that
+might co-occur in the same patient with XXXXXXXX. For each item,
+highlight the differences in mechanisms and treatment strategies,
+include co-occurrence information, explain the importance for a medical
+professional. Add a separate special note on Drug induced XXXXXXXX.</p>
+<p>11: ### 1.5.3. Medical conditions and diseases that are ambiguous:
+Highlight clinical conditions that are confusingly similar, elucidating
+why they might cause confusion. Exclude subtypes of XXXXXXXX here. Add a
+separate special note on Drug induced XXXXXXXX.</p>
+<p>12: 1.5.4. Exclusions: List any conditions, diagnostic procedures or
+treatments that rule out the diagnosis of XXXXXXXX. For each item,
+explain why ruling these out are crucial. Add a separate special note on
+Drug induced XXXXXXXX.</p>
+<p>13: ### 1.5.5. Mutually Exclusive Conditions: Identify specific
+conditions or treatments that when co-occurring in the patient, make the
+occurrence of XXXXXXXX unlikely. Explain why these are not expected to
+co-occur with XXXXXXXX and why when this mutually exclusive condition
+occurs the person is less likely to have XXXXXXXX. Add a separate
+special note on Drug induced XXXXXXXX.</p>
+<p>14: ## 1.6.0. Patient Profile: Provide one or more short case
+narratives of a patient with XXXXXXXX for three levels of diagnostic
+certainty: suspected case, probable case, definite case. If possible use
+formats used in the field like the SOAP format. Add a separate special
+note on Drug induced XXXXXXXX.”</p>
+</blockquote>
 </div>
   </div>
 
