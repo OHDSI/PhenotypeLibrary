@@ -1,3 +1,11 @@
+PhenotypeLibrary 3.31.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 1 were added.
+
+    1232: [P] Non Small Cell Lung Cancer (Stage 3) without second diagnosis
+
 PhenotypeLibrary 3.30.1
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
