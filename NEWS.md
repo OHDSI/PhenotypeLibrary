@@ -1,3 +1,9 @@
+The following cohorts were accidentally lost and have to be restored
+
+19, 26, 28, 329, 751, 786, 787, 1096, 1117, 1118, 1119, 1120, 1128, 1129, 1130, 1131, 1132, 1133, 1134, 1135, 1136, 1137, 1138, 1139, 1218, 1232
+
+
+
 PhenotypeLibrary 3.31.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
