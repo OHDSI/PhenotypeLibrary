@@ -5,49 +5,13 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (35977040)
-
-) I
-) C UNION ALL 
-SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (35917471,35917835,35918368)
-
-) I
-) C UNION ALL 
-SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493972)
-
-) I
-) C UNION ALL 
-SELECT 6 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (42537577)
-
-) I
-) C UNION ALL 
-SELECT 8 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493968)
-
-) I
-) C UNION ALL 
-SELECT 9 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 12 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493971)
 
 ) I
 ) C UNION ALL 
-SELECT 10 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493969)
-
-) I
-) C UNION ALL 
-SELECT 11 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 13 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493970)
 
@@ -55,27 +19,63 @@ SELECT 11 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ) C UNION ALL 
 SELECT 14 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4079713,4098879)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493968)
+
+) I
+) C UNION ALL 
+SELECT 15 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493969)
+
+) I
+) C UNION ALL 
+SELECT 16 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (35917471,35917835,35918368)
+
+) I
+) C UNION ALL 
+SELECT 17 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21493972)
+
+) I
+) C UNION ALL 
+SELECT 18 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (35977040)
+
+) I
+) C UNION ALL 
+SELECT 19 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (42537577)
+
+) I
+) C UNION ALL 
+SELECT 20 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37521056,45888910,2002969,2109157,4098879)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4079713,4098879)
+  and ca.ancestor_concept_id in (37521056,45888910,2109157,4098879)
   and c.invalid_reason is null
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4136782,4198190,4125436,4126235,4308819,4257890,2109209,4144719,2109216,4227266,2109122,4141227,4146476,4298165,4121239,4141228,4067932,4080163,2109450,4309197,4168529)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4136782,4198190,4125436,4126235,4308819,4257890,2109209,4144719,2109216,4227266,2109122,4141227,4146476,4298165,4121239,4141228,4067932,4080163,2109450,4309197,4168529,4181781,37520956,4166761,4103380,4314569,4123406,45885771,37521041,4199870,37521038,2110180,2747308,2747310,2747314,2747312,4202223,4062763,4300501,4165586,2109163,2109162,40490505,40756915,40756981,2101766,2002964,4121233,2109725,4152086,4142326)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4136782,4198190,4125436,4126235,4308819,4257890,2109209,4144719,2109216,4227266,2109122,4141227,4146476,4298165,4121239,4141228,4067932,4080163,2109450,4309197,4168529)
+  and ca.ancestor_concept_id in (4136782,4198190,4125436,4126235,4308819,4257890,2109209,4144719,2109216,4227266,2109122,4141227,4146476,4298165,4121239,4141228,4067932,4080163,2109450,4309197,4168529,4181781,37520956,4166761,4103380,4314569,4123406,45885771,37521041,4199870,37521038,2747308,2747310,2747314,2747312,4202223,4062763,4300501,4165586,2109163,2109162,40490505,40756915,40756981,2101766,2002964,4121233,2109725,4152086,4142326)
   and c.invalid_reason is null
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
-SELECT 15 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 21 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (443390)
 UNION  select c.concept_id
@@ -87,11 +87,11 @@ UNION  select c.concept_id
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311439,432571,4300118,4102373,36536380,44500772,36544131,36567154,36715914,36554700,36554163,36563124,36555226,36533543,36522591,36549728,36564168,36523786,36525590,36564902,36527029,36555749,36548262,36543551,36533943,36540290,36536131,36518688,36544117,36518886,36544109,36517981,36554998,36549720,36542290,36530017,36517934,42512293,42511838,36534830,36517916,36526512,36527540,36560584,36542180,36562722,36538790,36562593,36526276,36533965,4283611,4289245,4289090,4289246,4289247,4289091,4289092,4289248,4283612,4289093,4289249,4289094,4283613,4289095,36522104,36525455,4311322,36543690,36538573,36541104,4171274,44500676,36565939,36565623,36533664)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311439,432571,4300118,4102373,36536380,44500772,36544131,36567154,36715914,36554700,36554163,36563124,36555226,36533543,36522591,36549728,36564168,36523786,36525590,36564902,36527029,36555749,36548262,36543551,36533943,36540290,36536131,36518688,36544117,36518886,36544109,36517981,36554998,36549720,36542290,36530017,36517934,42512293,42511838,36534830,36517916,36526512,36527540,36560584,36542180,36562722,36538790,36562593,36526276,36533965,4283611,4289245,4289090,4289246,4289247,4289091,4289092,4289248,4283612,4289093,4289249,4289094,4283613,4289095,36522104,36525455,4311322,36543690,36538573,36541104,4171274,44500676,36565939,36565623,36533664,4180792,438699,4196256,442174)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311439,432571,4300118,4102373,36536380,44500772,36544131,36567154,36715914,36554700,36554163,36563124,36555226,36533543,36522591,36549728,36564168,36523786,36525590,36564902,36527029,36555749,36548262,36543551,36533943,36540290,36536131,36518688,36544117,36518886,36544109,36517981,36554998,36549720,36542290,36530017,36517934,42512293,42511838,36534830,36517916,36526512,36527540,36560584,36542180,36562722,36538790,36562593,36526276,36533965,4283611,4289245,4289090,4289246,4289247,4289091,4289092,4289248,4283612,4289093,4289249,4289094,4283613,4289095,36522104,36525455,4311322,36543690,36538573,36541104,4171274,44500676,36565939,36565623,36533664)
+  and ca.ancestor_concept_id in (4311439,432571,4300118,4102373,36536380,44500772,36544131,36567154,36715914,36554700,36554163,36563124,36555226,36533543,36522591,36549728,36564168,36523786,36525590,36564902,36527029,36555749,36548262,36543551,36533943,36540290,36536131,36518688,36544117,36518886,36544109,36517981,36554998,36549720,36542290,36530017,36517934,42512293,42511838,36534830,36517916,36526512,36527540,36560584,36542180,36562722,36538790,36562593,36526276,36533965,4283611,4289245,4289090,4289246,4289247,4289091,4289092,4289248,4283612,4289093,4289249,4289094,4283613,4289095,36522104,36525455,4311322,36543690,36538573,36541104,4171274,44500676,36565939,36565623,36533664,4180792,438699,4196256,442174)
   and c.invalid_reason is null
 
 ) E ON I.concept_id = E.concept_id
@@ -122,7 +122,7 @@ from
 (
   select po.person_id,po.procedure_occurrence_id,po.procedure_concept_id,po.visit_occurrence_id,po.quantity,po.procedure_date as start_date, DATEADD(day,1,po.procedure_date) as end_date 
   FROM @cdm_database_schema.PROCEDURE_OCCURRENCE po
-JOIN #Codesets cs on (po.procedure_concept_id = cs.concept_id and cs.codeset_id = 14)
+JOIN #Codesets cs on (po.procedure_concept_id = cs.concept_id and cs.codeset_id = 20)
 ) C
 
 
@@ -163,20 +163,81 @@ select 0 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
 FROM #qualified_events P
 JOIN (
+  select PE.person_id, PE.event_id, PE.start_date, PE.end_date, PE.visit_occurrence_id, PE.sort_date FROM (
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+
+) PE
+JOIN (
+-- Begin Criteria Group
+select 0 as index_id, person_id, event_id
+FROM
+(
+  select E.person_id, E.event_id 
+  FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) E
+  INNER JOIN
+  (
+    -- Begin Correlated Criteria
+select 0 as index_id, cc.person_id, cc.event_id
+from (SELECT p.person_id, p.event_id 
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+JOIN (
   -- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
        C.visit_occurrence_id, C.start_date as sort_date
 from 
 (
-  select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
+  select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 2)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 12)
 ) C
 
-
+WHERE C.value_as_concept_id in (36210129)
 -- End Measurement Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -185,7 +246,23 @@ UNION ALL
 -- Begin Correlated Criteria
 select 1 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
 JOIN (
   -- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
@@ -194,13 +271,13 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 4)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 13)
 ) C
 
-WHERE C.value_as_concept_id in (21499079)
+WHERE C.value_as_concept_id in (36210129)
 -- End Measurement Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -209,7 +286,23 @@ UNION ALL
 -- Begin Correlated Criteria
 select 2 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
 JOIN (
   -- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
@@ -218,13 +311,13 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 3)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 15)
 ) C
 
-WHERE C.value_as_concept_id in (35919051)
+WHERE C.value_as_concept_id in (36210129)
 -- End Measurement Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -233,22 +326,38 @@ UNION ALL
 -- Begin Correlated Criteria
 select 3 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
-JOIN (
-  -- Begin Condition Occurrence Criteria
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
 SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
   C.visit_occurrence_id, C.start_date as sort_date
 FROM 
 (
-  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 6)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
 ) C
 
-
+WHERE C.ordinal = 1
 -- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
+JOIN (
+  -- Begin Measurement Criteria
+select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
+       C.visit_occurrence_id, C.start_date as sort_date
+from 
+(
+  select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
+  FROM @cdm_database_schema.MEASUREMENT m
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 14)
+) C
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+WHERE C.value_as_concept_id in (36210129)
+-- End Measurement Criteria
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -257,7 +366,23 @@ UNION ALL
 -- Begin Correlated Criteria
 select 4 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
 JOIN (
   -- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
@@ -266,13 +391,13 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 8)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 16)
 ) C
 
-WHERE C.value_as_concept_id in (36210129)
+WHERE C.value_as_concept_id in (35919051,35925319,35925626)
 -- End Measurement Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -281,7 +406,23 @@ UNION ALL
 -- Begin Correlated Criteria
 select 5 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
 JOIN (
   -- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
@@ -290,13 +431,13 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 10)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 17)
 ) C
 
-WHERE C.value_as_concept_id in (36210129)
+WHERE C.value_as_concept_id in (21499079)
 -- End Measurement Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -305,22 +446,38 @@ UNION ALL
 -- Begin Correlated Criteria
 select 6 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
+FROM 
+(
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
 JOIN (
   -- Begin Measurement Criteria
 select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
        C.visit_occurrence_id, C.start_date as sort_date
 from 
 (
-  select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
+  select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 11)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 18)
 ) C
 
-WHERE C.value_as_concept_id in (36210129)
+
 -- End Measurement Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -329,55 +486,23 @@ UNION ALL
 -- Begin Correlated Criteria
 select 7 as index_id, cc.person_id, cc.event_id
 from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
-JOIN (
-  -- Begin Measurement Criteria
-select C.person_id, C.measurement_id as event_id, C.start_date, C.end_date,
-       C.visit_occurrence_id, C.start_date as sort_date
-from 
-(
-  select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.value_as_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
-  FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 9)
-) C
-
-WHERE C.value_as_concept_id in (36210129)
--- End Measurement Criteria
-
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
-GROUP BY cc.person_id, cc.event_id
-HAVING COUNT(cc.event_id) >= 1
--- End Correlated Criteria
-
-  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
-  GROUP BY E.person_id, E.event_id
-  HAVING COUNT(index_id) >= 1
-) G
--- End Criteria Group
-) AC on AC.person_id = pe.person_id AND AC.event_id = pe.event_id
-) Results
-;
-
-select 1 as inclusion_rule_id, person_id, event_id
-INTO #Inclusion_1
+FROM (SELECT Q.person_id, Q.event_id, Q.start_date, Q.end_date, Q.visit_occurrence_id, OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date
+FROM (-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
+  C.visit_occurrence_id, C.start_date as sort_date
 FROM 
 (
-  select pe.person_id, pe.event_id
-  FROM #qualified_events pe
-  
-JOIN (
--- Begin Criteria Group
-select 0 as index_id, person_id, event_id
-FROM
-(
-  select E.person_id, E.event_id 
-  FROM #qualified_events E
-  INNER JOIN
-  (
-    -- Begin Correlated Criteria
-select 0 as index_id, cc.person_id, cc.event_id
-from (SELECT p.person_id, p.event_id 
-FROM #qualified_events P
+  SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 21)
+) C
+
+WHERE C.ordinal = 1
+-- End Condition Occurrence Criteria
+) Q
+JOIN @cdm_database_schema.OBSERVATION_PERIOD OP on Q.person_id = OP.person_id 
+  and OP.observation_period_start_date <= Q.start_date and OP.observation_period_end_date >= Q.start_date
+) P
 JOIN (
   -- Begin Condition Occurrence Criteria
 SELECT C.person_id, C.condition_occurrence_id as event_id, C.start_date, C.end_date,
@@ -386,13 +511,25 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 15)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 19)
 ) C
 
 
 -- End Condition Occurrence Criteria
 
-) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,14,P.START_DATE) ) cc 
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-7,P.START_DATE) AND A.START_DATE <= DATEADD(day,90,P.START_DATE) ) cc 
+GROUP BY cc.person_id, cc.event_id
+HAVING COUNT(cc.event_id) >= 1
+-- End Correlated Criteria
+
+  ) CQ on E.person_id = CQ.person_id and E.event_id = CQ.event_id
+  GROUP BY E.person_id, E.event_id
+  HAVING COUNT(index_id) > 0
+) G
+-- End Criteria Group
+) AC on AC.person_id = pe.person_id and AC.event_id = pe.event_id
+
+) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-365,P.START_DATE) AND A.START_DATE <= DATEADD(day,30,P.START_DATE) ) cc 
 GROUP BY cc.person_id, cc.event_id
 HAVING COUNT(cc.event_id) >= 1
 -- End Correlated Criteria
@@ -408,14 +545,9 @@ HAVING COUNT(cc.event_id) >= 1
 
 SELECT inclusion_rule_id, person_id, event_id
 INTO #inclusion_events
-FROM (select inclusion_rule_id, person_id, event_id from #Inclusion_0
-UNION ALL
-select inclusion_rule_id, person_id, event_id from #Inclusion_1) I;
+FROM (select inclusion_rule_id, person_id, event_id from #Inclusion_0) I;
 TRUNCATE TABLE #Inclusion_0;
 DROP TABLE #Inclusion_0;
-
-TRUNCATE TABLE #Inclusion_1;
-DROP TABLE #Inclusion_1;
 
 
 select event_id, person_id, start_date, end_date, op_start_date, op_end_date
@@ -429,9 +561,9 @@ FROM (
     LEFT JOIN #inclusion_events I on I.person_id = Q.person_id and I.event_id = Q.event_id
     GROUP BY Q.event_id, Q.person_id, Q.start_date, Q.end_date, Q.op_start_date, Q.op_end_date
   ) MG -- matching groups
-{2 != 0}?{
+{1 != 0}?{
   -- the matching group with all bits set ( POWER(2,# of inclusion rules) - 1 = inclusion_rule_mask
-  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),2)-1)
+  WHERE (MG.inclusion_rule_mask = POWER(cast(2 as bigint),1)-1)
 }
 ) Results
 WHERE Results.ordinal = 1
@@ -513,14 +645,14 @@ delete from @results_database_schema.cohort_censor_stats where cohort_definition
 
 -- END: Censored Stats
 }
-{1 != 0 & 2 != 0}?{
+{1 != 0 & 1 != 0}?{
 
 -- Create a temp table of inclusion rule rows for joining in the inclusion rule impact analysis
 
 select cast(rule_sequence as int) as rule_sequence
 into #inclusion_rules
 from (
-  SELECT CAST(0 as int) as rule_sequence UNION ALL SELECT CAST(1 as int) as rule_sequence
+  SELECT CAST(0 as int) as rule_sequence
 ) IR;
 
 

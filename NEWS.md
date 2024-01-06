@@ -1,3 +1,101 @@
+PhenotypeLibrary 3.32.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 56 were added.
+
+    1217: [P] Platinum based chemotherapy regimens
+    1244: [P] Non Platinum chemotherapy regimen
+    1261: [P] Acute Typical Pneumonia
+    1262: [P] Asthma or Chronic obstructive pulmonary disease (COPD)
+    1263: [P] Chronic obstructive pulmonary disease (COPD) without asthma
+    1264: [P] Pneumonitis and lung infections
+    1265: [P] Pulmonary hypertension associated with lung diseases and or hypoxia (WHO Group 3)
+    1266: [P] Non-small cell lung cancer (NSCLC) for first time using ICD0
+    1267: [P] Lung cancer using ICD0
+    1268: [P] Lung Resection, adults, inpt stay, no ED, post op new Afib
+    1269: [P] Pulmonary fibrosis
+    1270: [P] History of Bladder cancer
+    1271: [P] Chronic obstructive pulmonary disease (COPD)
+    1272: [P] Chronic Interstitial lung disease (ILD)
+    1273: [P] Lung Nodule
+    1274: [P] Lung Nodule - solitary
+    1275: [P] Lung Nodule - multiple
+    1276: [P] Lung Mass (not acute, necrotic, atlectatic, abscess, fibrosis)
+    1277: [P] Lung Lesion (not acute, necrotic, atlectatic, abscess, fibrosis)
+    1278: [P] Non Small Cell Lung Cancer (Stage 3)
+    1279: [P] Non Small Cell Lung Cancer
+    1280: [P] Small Cell Lung Cancer
+    1281: [P] Primary Lung Cancer
+    1282: [P] Hoarseness
+    1283: [P] Bone Pain
+    1284: [P] Weight loss
+    1285: [P] Acute bronchitis
+    1286: [P] Non Small Cell Lung Cancer (Stage 3) without second diagnosis
+    1287: [P] Intestinal obstruction - colorectal specific
+    1288: [P] Intraabdominal abscess - narrow for colorectal cancer
+    1289: [P] Major Non Cardiac Surgery, adults
+    1290: [P] Abdominal Aortic Aneurysm repair, adults
+    1291: [P] Lower Extremity Bypass, adults
+    1292: [P] Carotid Endarterectomy, adults
+    1293: [P] Lung Resection, adults
+    1294: [P] Esophagectomy, adults
+    1295: [P] Pancreatectomy, adults
+    1296: [P] Colectomy, adults
+    1297: [P] Cystectomy, adults
+    1298: [P] Nephrectomy, adults
+    1299: [P] Coronary Artery Bypass Graft, adults
+    1300: [P] Cardiac Valve Surgery, adults
+    1301: [P] Acute Urinary tract infections UTI events
+    1303: [P] Acute Heart failure from legend
+    1304: [P] Major Non Cardiac Surgery, adults, post op new Afib
+    1305: [P] AAA repair, adults, post op new Afib
+    1306: [P] Lower Extremity Bypass, adults, post op new Afib
+    1307: [P] Carotid Endarterectomy, adults, post op new Afib
+    1308: [P] Lung Resection, adults, post op new Afib
+    1309: [P] Esophagectomy, adults, post op new Afib
+    1310: [P] Pancreatectomy, adults, post op new Afib
+    1311: [P] Colectomy, adults, post op new Afib
+    1312: [P] Cystectomy, adults, post op new Afib
+    1313: [P] Nephrectomy, adults, post op new Afib
+    1314: [P] Coronary Artery Bypass Graft, adults, post op new Afib
+    1315: [P] Cardiac Valve Surgery, adults, post op new Afib
+
+Note: The following cohorts were accidentally deleted and we restored with new id.
+
+| oldId | newId | Name                                                                                      |
+|-------|-------|-------------------------------------------------------------------------------------------|
+| 19    | 1261  | [P] Acute Typical Pneumonia                                                               |
+| 26    | 1262  | [P] Asthma or Chronic obstructive pulmonary disease (COPD)                                |
+| 28    | 1263  | [P] Chronic obstructive pulmonary disease (COPD) without asthma                            |
+| 329   | 1264  | [P] Pneumonitis and lung infections                                                        |
+| 751   | 1265  | [P] Pulmonary hypertension associated with lung diseases and or hypoxia (WHO Group 3)      |
+| 786   | 1266  | [P] Non-small cell lung cancer (NSCLC) for first time using ICD0                           |
+| 787   | 1267  | [P] Lung cancer using ICD0                                                                 |
+| 1096  | 1268  | [P] Lung Resection, adults, inpt stay, no ED, post op new Afib                             |
+| 1117  | 1269  | [P] Pulmonary fibrosis                                                                    |
+| 1118  | 1270  | [P] History of Bladder cancer                                                             |
+| 1119  | 1271  | [P] Chronic obstructive pulmonary disease (COPD)                                          |
+| 1120  | 1272  | [P] Chronic Interstitial lung disease (ILD)                                                |
+| 1128  | 1273  | [P] Lung Nodule                                                                           |
+| 1129  | 1274  | [P] Lung Nodule - solitary                                                                |
+| 1130  | 1275  | [P] Lung Nodule - multiple                                                                |
+| 1131  | 1276  | [P] Lung Mass (not acute, necrotic, atelectatic, abscess, fibrosis)                        |
+| 1132  | 1277  | [P] Lung Lesion (not acute, necrotic, atelectatic, abscess, fibrosis)                      |
+| 1133  | 1278  | [P] Non Small Cell Lung Cancer (Stage 3)                                                  |
+| 1134  | 1279  | [P] Non Small Cell Lung Cancer                                                            |
+| 1135  | 1280  | [P] Small Cell Lung Cancer                                                                |
+| 1136  | 1281  | [P] Primary Lung Cancer                                                                   |
+| 1137  | 1282  | [P] Hoarseness                                                                            |
+| 1138  | 1283  | [P] Bone Pain                                                                             |
+| 1139  | 1284  | [P] Weight loss                                                                           |
+| 1218  | 1285  | [P] Acute bronchitis                                                                      |
+| 1232  | 1286  | [P] Non Small Cell Lung Cancer (Stage 3) without second diagnosis                         |
+
+
+
+
+
 PhenotypeLibrary 3.31.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

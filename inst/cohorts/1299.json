@@ -1,0 +1,3211 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ProcedureOccurrence" : {
+					"CodesetId" : 87,
+					"ProcedureTypeExclude" : false
+				}
+			},
+			{
+				"ProcedureOccurrence" : {
+					"ProcedureTypeExclude" : false,
+					"ProcedureSourceConcept" : 87
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 87,
+			"name" : "CABG (Bucher et al)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001513,
+							"CONCEPT_NAME" : "(Aorto)coronary bypass of four or more coronary arteries",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.14",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001510,
+							"CONCEPT_NAME" : "(Aorto)coronary bypass of one coronary artery",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.11",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001512,
+							"CONCEPT_NAME" : "(Aorto)coronary bypass of three coronary arteries",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.13",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001511,
+							"CONCEPT_NAME" : "(Aorto)coronary bypass of two coronary arteries",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.12",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001516,
+							"CONCEPT_NAME" : "Abdominal-coronary artery bypass",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.17",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001509,
+							"CONCEPT_NAME" : "Aortocoronary bypass for heart revascularization, not otherwise specified",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.10",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725357,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725389,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725351,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021309W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725383,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021349W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725369,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725402,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725363,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725396,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894403,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021308W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894409,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Aorta with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021348W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725355,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725387,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725349,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021309C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725381,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021349C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725367,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725400,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725361,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725394,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894401,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021308C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894407,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021348C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725373,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02130ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725406,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Four or More Arteries from Thoracic Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02134ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724724,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100AF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724756,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104AF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724718,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021009F",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724750,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021049F",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724736,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100KF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725215,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104KF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724730,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100JF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724763,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104JF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894245,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021008F",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894251,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021048F",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724742,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100ZF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725221,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Abdominal Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104ZF",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724725,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724757,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724719,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021009W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724751,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021049W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724737,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725216,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724731,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724764,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894246,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021008W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894252,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Aorta with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021048W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724720,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100A3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724752,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104A3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724714,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210093",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724746,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210493",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724732,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100K3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724765,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104K3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724726,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100J3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724759,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104J3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894241,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210083",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894247,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210483",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724738,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100Z3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725217,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Coronary Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104Z3",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724722,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100A9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724754,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104A9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724716,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210099",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724748,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210499",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724734,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100K9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725213,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104K9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724728,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100J9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724761,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104J9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894243,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210089",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894249,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210489",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724740,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725219,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Left Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724721,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100A8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724753,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104A8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724715,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210098",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724747,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210498",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724733,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100K8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724766,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104K8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724727,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100J8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724760,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104J8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894242,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210088",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894248,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0210488",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724739,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725218,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Right Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724723,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724755,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724717,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021009C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724749,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021049C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724735,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725214,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724729,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724762,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894244,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021008C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894250,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021048C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2724741,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02100ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725220,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, One Artery from Thoracic Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02104ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725295,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725327,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725289,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021209W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725321,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021249W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725307,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725340,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725301,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725334,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894234,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021208W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894240,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Aorta with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021248W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725293,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725325,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725287,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021209C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725319,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021249C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725305,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725338,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725299,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725332,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894232,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021208C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894238,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021248C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725311,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02120ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725344,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Three Arteries from Thoracic Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02124ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725233,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725265,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114AW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725227,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021109W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725259,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021149W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725245,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725278,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114KW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725239,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725272,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114JW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894258,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021108W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894228,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Aorta with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021148W",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725230,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110A9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725262,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114A9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725224,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211099",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725256,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211499",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725242,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110K9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725275,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114K9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725236,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110J9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725269,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114J9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894255,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211089",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894225,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211489",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725248,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725281,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Left Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725229,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110A8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725261,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114A8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725223,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211098",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725255,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211498",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725241,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110K8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725274,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114K8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725235,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110J8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725268,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114J8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894254,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211088",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894224,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0211488",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725247,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725280,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Right Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725231,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Autologous Arterial Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725263,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Autologous Arterial Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114AC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725225,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Autologous Venous Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021109C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725257,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Autologous Venous Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021149C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725243,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725276,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114KC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725237,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725270,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114JC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894256,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Zooplastic Tissue, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021108C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894226,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery with Zooplastic Tissue, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021148C",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725249,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02110ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725282,
+							"CONCEPT_NAME" : "Bypass Coronary Artery, Two Arteries from Thoracic Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02114ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725086,
+							"CONCEPT_NAME" : "Bypass Left Ventricle to Left Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021L0Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725107,
+							"CONCEPT_NAME" : "Bypass Left Ventricle to Left Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021L4Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725085,
+							"CONCEPT_NAME" : "Bypass Left Ventricle to Right Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021L0Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725106,
+							"CONCEPT_NAME" : "Bypass Left Ventricle to Right Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021L4Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725087,
+							"CONCEPT_NAME" : "Bypass Left Ventricle to Thoracic Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021L0ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725108,
+							"CONCEPT_NAME" : "Bypass Left Ventricle to Thoracic Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021L4ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725050,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Aorta, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K0ZW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725071,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Aorta, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K4ZW",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725044,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Left Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K0Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725065,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Left Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K4Z9",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725043,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Right Internal Mammary, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K0Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725064,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Right Internal Mammary, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K4Z8",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725045,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Thoracic Artery, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K0ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725066,
+							"CONCEPT_NAME" : "Bypass Right Ventricle to Thoracic Artery, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "021K4ZC",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001508,
+							"CONCEPT_NAME" : "Bypass anastomosis for heart revascularization",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.1",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "3-dig nonbill code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001515,
+							"CONCEPT_NAME" : "Double internal mammary-coronary artery bypass",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.16",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001518,
+							"CONCEPT_NAME" : "Heart revascularization by arterial implant",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.2",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "3-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001517,
+							"CONCEPT_NAME" : "Other bypass anastomosis for heart revascularization",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.19",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001514,
+							"CONCEPT_NAME" : "Single internal mammary-coronary artery bypass",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "36.15",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Age above 18 years",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [],
+				"DemographicCriteriaList" : [
+					{
+						"Age" : {
+							"Value" : 18,
+							"Op" : "gte"
+						}
+					}
+				],
+				"Groups" : []
+			}
+		}
+	],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

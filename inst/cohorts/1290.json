@@ -1,0 +1,457 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ProcedureOccurrence" : {
+					"CodesetId" : 86,
+					"ProcedureTypeExclude" : false
+				}
+			},
+			{
+				"ProcedureOccurrence" : {
+					"ProcedureTypeExclude" : false,
+					"ProcedureSourceConcept" : 86
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 86,
+			"name" : "AAA repair (Bucher et al)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002250,
+							"CONCEPT_NAME" : "Endovascular implantation of other graft in abdominal aorta",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "39.71",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730049,
+							"CONCEPT_NAME" : "Excision of Abdominal Aorta, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04B00ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730053,
+							"CONCEPT_NAME" : "Excision of Abdominal Aorta, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04B04ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894733,
+							"CONCEPT_NAME" : "Excision of Thoracic Aorta, Ascending/Arch, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02BX0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42894737,
+							"CONCEPT_NAME" : "Excision of Thoracic Aorta, Ascending/Arch, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02BX4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725615,
+							"CONCEPT_NAME" : "Excision of Thoracic Aorta, Descending, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02BW0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2725619,
+							"CONCEPT_NAME" : "Excision of Thoracic Aorta, Descending, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "02BW4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2729915,
+							"CONCEPT_NAME" : "Replacement of Abdominal Aorta with Autologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04R007Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730103,
+							"CONCEPT_NAME" : "Replacement of Abdominal Aorta with Autologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04R047Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2729917,
+							"CONCEPT_NAME" : "Replacement of Abdominal Aorta with Nonautologous Tissue Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04R00KZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730105,
+							"CONCEPT_NAME" : "Replacement of Abdominal Aorta with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04R04KZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2729916,
+							"CONCEPT_NAME" : "Replacement of Abdominal Aorta with Synthetic Substitute, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04R00JZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730104,
+							"CONCEPT_NAME" : "Replacement of Abdominal Aorta with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04R04JZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002063,
+							"CONCEPT_NAME" : "Resection of vessel with anastomosis, aorta",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "38.34",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002084,
+							"CONCEPT_NAME" : "Resection of vessel with replacement, aorta, abdominal",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "38.44",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2736486,
+							"CONCEPT_NAME" : "Restriction of Abdominal Aorta with Intraluminal Device, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04V00DZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2736490,
+							"CONCEPT_NAME" : "Restriction of Abdominal Aorta with Intraluminal Device, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04V03DZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2736494,
+							"CONCEPT_NAME" : "Restriction of Abdominal Aorta with Intraluminal Device, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04V04DZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42897039,
+							"CONCEPT_NAME" : "Restriction of Abdominal Aorta, Bifurcation, with Intraluminal Device, Open Approach (Deprecated)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04V00D6",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42897078,
+							"CONCEPT_NAME" : "Restriction of Abdominal Aorta, Bifurcation, with Intraluminal Device, Percutaneous Approach (Deprecated)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04V03D6",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42897085,
+							"CONCEPT_NAME" : "Restriction of Abdominal Aorta, Bifurcation, with Intraluminal Device, Percutaneous Endoscopic Approach (Deprecated)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04V04D6",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730884,
+							"CONCEPT_NAME" : "Supplement Abdominal Aorta with Synthetic Substitute, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04U03JZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2730887,
+							"CONCEPT_NAME" : "Supplement Abdominal Aorta with Synthetic Substitute, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "04U04JZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Age above 18 years",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [],
+				"DemographicCriteriaList" : [
+					{
+						"Age" : {
+							"Value" : 18,
+							"Op" : "gte"
+						}
+					}
+				],
+				"Groups" : []
+			}
+		}
+	],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

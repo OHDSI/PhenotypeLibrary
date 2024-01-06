@@ -1,0 +1,1001 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ProcedureOccurrence" : {
+					"CodesetId" : 80,
+					"ProcedureTypeExclude" : false
+				}
+			},
+			{
+				"ProcedureOccurrence" : {
+					"ProcedureTypeExclude" : false,
+					"ProcedureSourceConcept" : 80
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 80,
+			"name" : "Colectomy (Bucher et al)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43016394,
+							"CONCEPT_NAME" : "Excision of Descending Colon, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBMFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747030,
+							"CONCEPT_NAME" : "Excision of Large Intestine, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBE0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747032,
+							"CONCEPT_NAME" : "Excision of Large Intestine, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBE3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747034,
+							"CONCEPT_NAME" : "Excision of Large Intestine, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBE4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747036,
+							"CONCEPT_NAME" : "Excision of Large Intestine, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBE7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747038,
+							"CONCEPT_NAME" : "Excision of Large Intestine, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBE8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43016392,
+							"CONCEPT_NAME" : "Excision of Left Large Intestine, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBGFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43016398,
+							"CONCEPT_NAME" : "Excision of Sigmoid Colon, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBNFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43016393,
+							"CONCEPT_NAME" : "Excision of Transverse Colon, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBLFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000811,
+							"CONCEPT_NAME" : "Laparoscopic cecectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.32",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000834,
+							"CONCEPT_NAME" : "Laparoscopic left hemicolectomy",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.35",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000810,
+							"CONCEPT_NAME" : "Laparoscopic multiple segmental resection of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.31",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000833,
+							"CONCEPT_NAME" : "Laparoscopic resection of transverse colon",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.34",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000832,
+							"CONCEPT_NAME" : "Laparoscopic right hemicolectomy",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.33",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000835,
+							"CONCEPT_NAME" : "Laparoscopic sigmoidectomy",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.36",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002768,
+							"CONCEPT_NAME" : "Laparoscopic total intra-abdominal colectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.81",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002751,
+							"CONCEPT_NAME" : "Open and other cecectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.72",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002764,
+							"CONCEPT_NAME" : "Open and other left hemicolectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.75",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002750,
+							"CONCEPT_NAME" : "Open and other multiple segmental resection of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.71",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002763,
+							"CONCEPT_NAME" : "Open and other resection of transverse colon",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.74",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002762,
+							"CONCEPT_NAME" : "Open and other right hemicolectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.73",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002765,
+							"CONCEPT_NAME" : "Open and other sigmoidectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.76",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002769,
+							"CONCEPT_NAME" : "Open total intra-abdominal colectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.82",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002766,
+							"CONCEPT_NAME" : "Other and unspecified partial excision of large intestine",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.79",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002770,
+							"CONCEPT_NAME" : "Other and unspecified total intra-abdominal colectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45.83",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2000836,
+							"CONCEPT_NAME" : "Other laparoscopic partial excision of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "17.39",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753386,
+							"CONCEPT_NAME" : "Resection of Ascending Colon, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTK0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753378,
+							"CONCEPT_NAME" : "Resection of Cecum, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTH0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753379,
+							"CONCEPT_NAME" : "Resection of Cecum, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTH4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753380,
+							"CONCEPT_NAME" : "Resection of Cecum, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTH7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753381,
+							"CONCEPT_NAME" : "Resection of Cecum, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTH8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43017217,
+							"CONCEPT_NAME" : "Resection of Descending Colon, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTMFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753176,
+							"CONCEPT_NAME" : "Resection of Large Intestine, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTE0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753177,
+							"CONCEPT_NAME" : "Resection of Large Intestine, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTE4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753368,
+							"CONCEPT_NAME" : "Resection of Large Intestine, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTE7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753369,
+							"CONCEPT_NAME" : "Resection of Large Intestine, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTE8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753374,
+							"CONCEPT_NAME" : "Resection of Left Large Intestine, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTG0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753375,
+							"CONCEPT_NAME" : "Resection of Left Large Intestine, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTG4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753376,
+							"CONCEPT_NAME" : "Resection of Left Large Intestine, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTG7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753377,
+							"CONCEPT_NAME" : "Resection of Left Large Intestine, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTG8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43017215,
+							"CONCEPT_NAME" : "Resection of Left Large Intestine, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTGFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753370,
+							"CONCEPT_NAME" : "Resection of Right Large Intestine, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTF0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753371,
+							"CONCEPT_NAME" : "Resection of Right Large Intestine, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTF4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753372,
+							"CONCEPT_NAME" : "Resection of Right Large Intestine, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTF7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753373,
+							"CONCEPT_NAME" : "Resection of Right Large Intestine, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTF8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753398,
+							"CONCEPT_NAME" : "Resection of Sigmoid Colon, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTN0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753399,
+							"CONCEPT_NAME" : "Resection of Sigmoid Colon, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTN4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753400,
+							"CONCEPT_NAME" : "Resection of Sigmoid Colon, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTN7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753401,
+							"CONCEPT_NAME" : "Resection of Sigmoid Colon, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTN8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43017218,
+							"CONCEPT_NAME" : "Resection of Sigmoid Colon, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTNFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753390,
+							"CONCEPT_NAME" : "Resection of Transverse Colon, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTL0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753391,
+							"CONCEPT_NAME" : "Resection of Transverse Colon, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTL4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753392,
+							"CONCEPT_NAME" : "Resection of Transverse Colon, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTL7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2753393,
+							"CONCEPT_NAME" : "Resection of Transverse Colon, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTL8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43017216,
+							"CONCEPT_NAME" : "Resection of Transverse Colon, Via Natural or Artificial Opening With Percutaneous Endoscopic Assistance",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DTLFZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Age above 18 years",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [],
+				"DemographicCriteriaList" : [
+					{
+						"Age" : {
+							"Value" : 18,
+							"Op" : "gte"
+						}
+					}
+				],
+				"Groups" : []
+			}
+		}
+	],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

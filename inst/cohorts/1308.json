@@ -1,0 +1,980 @@
+{
+	"cdmVersionRange" : ">=5.0.0",
+	"PrimaryCriteria" : {
+		"CriteriaList" : [
+			{
+				"ProcedureOccurrence" : {
+					"CodesetId" : 86,
+					"ProcedureTypeExclude" : false
+				}
+			},
+			{
+				"ProcedureOccurrence" : {
+					"ProcedureTypeExclude" : false,
+					"ProcedureSourceConcept" : 86
+				}
+			}
+		],
+		"ObservationWindow" : {
+			"PriorDays" : 0,
+			"PostDays" : 0
+		},
+		"PrimaryCriteriaLimit" : {
+			"Type" : "First"
+		}
+	},
+	"ConceptSets" : [
+		{
+			"id" : 81,
+			"name" : "Atrial Fibrillation (any)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 313217,
+							"CONCEPT_NAME" : "Atrial fibrillation",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "49436004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 86,
+			"name" : "Lung Resection (Bucher et al)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742069,
+							"CONCEPT_NAME" : "Destruction of Bilateral Lungs, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5M0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742070,
+							"CONCEPT_NAME" : "Destruction of Bilateral Lungs, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5M3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742072,
+							"CONCEPT_NAME" : "Destruction of Bilateral Lungs, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5M7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742064,
+							"CONCEPT_NAME" : "Destruction of Left Lung, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5L0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742065,
+							"CONCEPT_NAME" : "Destruction of Left Lung, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5L3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742067,
+							"CONCEPT_NAME" : "Destruction of Left Lung, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5L7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742059,
+							"CONCEPT_NAME" : "Destruction of Right Lung, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5K0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742060,
+							"CONCEPT_NAME" : "Destruction of Right Lung, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5K3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2742062,
+							"CONCEPT_NAME" : "Destruction of Right Lung, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0B5K7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744438,
+							"CONCEPT_NAME" : "Excision of Bilateral Lungs, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBM0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744633,
+							"CONCEPT_NAME" : "Excision of Bilateral Lungs, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBM3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744637,
+							"CONCEPT_NAME" : "Excision of Bilateral Lungs, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBM7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744428,
+							"CONCEPT_NAME" : "Excision of Left Lung, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBL0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744430,
+							"CONCEPT_NAME" : "Excision of Left Lung, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBL3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744432,
+							"CONCEPT_NAME" : "Excision of Left Lung, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBL4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744434,
+							"CONCEPT_NAME" : "Excision of Left Lung, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBL7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744418,
+							"CONCEPT_NAME" : "Excision of Right Lung, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBK0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744420,
+							"CONCEPT_NAME" : "Excision of Right Lung, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBK3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744422,
+							"CONCEPT_NAME" : "Excision of Right Lung, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBK4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744424,
+							"CONCEPT_NAME" : "Excision of Right Lung, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BBK7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001338,
+							"CONCEPT_NAME" : "Lobectomy of lung",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.4",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "3-dig nonbill code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001328,
+							"CONCEPT_NAME" : "Lung volume reduction surgery",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.22",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001329,
+							"CONCEPT_NAME" : "Open ablation of lung lesion or tissue",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.23",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001343,
+							"CONCEPT_NAME" : "Other and unspecified pneumonectomy",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.59",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001337,
+							"CONCEPT_NAME" : "Other and unspecified segmental resection of lung",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.39",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001340,
+							"CONCEPT_NAME" : "Other lobectomy of lung",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.49",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001334,
+							"CONCEPT_NAME" : "Other local excision or destruction of lesion or tissue of lung",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.29",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001327,
+							"CONCEPT_NAME" : "Plication of emphysematous bleb",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.21",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744192,
+							"CONCEPT_NAME" : "Repair Bilateral Lungs, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQM0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744193,
+							"CONCEPT_NAME" : "Repair Bilateral Lungs, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQM3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744194,
+							"CONCEPT_NAME" : "Repair Bilateral Lungs, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQM4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744195,
+							"CONCEPT_NAME" : "Repair Bilateral Lungs, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQM7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744196,
+							"CONCEPT_NAME" : "Repair Bilateral Lungs, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQM8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744187,
+							"CONCEPT_NAME" : "Repair Left Lung, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQL0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744188,
+							"CONCEPT_NAME" : "Repair Left Lung, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQL3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744189,
+							"CONCEPT_NAME" : "Repair Left Lung, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQL4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744190,
+							"CONCEPT_NAME" : "Repair Left Lung, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQL7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744191,
+							"CONCEPT_NAME" : "Repair Left Lung, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQL8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744182,
+							"CONCEPT_NAME" : "Repair Right Lung, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQK0ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744183,
+							"CONCEPT_NAME" : "Repair Right Lung, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQK3ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744184,
+							"CONCEPT_NAME" : "Repair Right Lung, Percutaneous Endoscopic Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQK4ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744185,
+							"CONCEPT_NAME" : "Repair Right Lung, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQK7ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2744186,
+							"CONCEPT_NAME" : "Repair Right Lung, Via Natural or Artificial Opening Endoscopic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0BQK8ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001331,
+							"CONCEPT_NAME" : "Thoracoscopic ablation of lung lesion or tissue",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.25",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001326,
+							"CONCEPT_NAME" : "Thoracoscopic excision of lesion or tissue of lung",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.20",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001339,
+							"CONCEPT_NAME" : "Thoracoscopic lobectomy of lung",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.41",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001342,
+							"CONCEPT_NAME" : "Thoracoscopic pneumonectomy",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.50",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2001336,
+							"CONCEPT_NAME" : "Thoracoscopic segmental resection of lung",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "32.30",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		}
+	],
+	"QualifiedLimit" : {
+		"Type" : "First"
+	},
+	"ExpressionLimit" : {
+		"Type" : "First"
+	},
+	"InclusionRules" : [
+		{
+			"name" : "Age above 18 years",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [],
+				"DemographicCriteriaList" : [
+					{
+						"Age" : {
+							"Value" : 18,
+							"Op" : "gte"
+						}
+					}
+				],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "Atrial fibrillation (any) within 14d of surgery",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 81,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Days" : 0,
+								"Coeff" : 1
+							},
+							"End" : {
+								"Days" : 14,
+								"Coeff" : 1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 2,
+							"Count" : 1,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "No prior atrial fibrillation ",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [
+					{
+						"Criteria" : {
+							"ConditionOccurrence" : {
+								"CodesetId" : 81,
+								"ConditionTypeExclude" : false
+							}
+						},
+						"StartWindow" : {
+							"Start" : {
+								"Coeff" : -1
+							},
+							"End" : {
+								"Days" : 1,
+								"Coeff" : -1
+							},
+							"UseIndexEnd" : false,
+							"UseEventEnd" : false
+						},
+						"RestrictVisit" : false,
+						"IgnoreObservationPeriod" : false,
+						"Occurrence" : {
+							"Type" : 0,
+							"Count" : 0,
+							"IsDistinct" : false
+						}
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		}
+	],
+	"CensoringCriteria" : [],
+	"CollapseSettings" : {
+		"CollapseType" : "ERA",
+		"EraPad" : 0
+	},
+	"CensorWindow" : {}
+}

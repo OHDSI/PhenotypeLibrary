@@ -208,6 +208,13 @@ cohortRecord |>
     quote = "all"
   )
 
+saveRDS(
+  object = cohortRecord,
+  file = "inst/CohortRecord.rds"
+)
+
+cohortRecord <- readRDS("inst/CohortRecord.rds")
+
 try(
   ROhdsiWebApi::insertCohortDefinitionSetInPackage(
     fileName = "inst/Cohorts.csv",
@@ -220,7 +227,7 @@ try(
 )
 
 # generate cohort sql using latest version of circeR
-remotes::install_github("OHDSI/circeR")
+# remotes::install_github("OHDSI/circeR")
 circeOptions <- CirceR::createGenerateOptions(generateStats = TRUE)
 
 cohortJsonFiles <-
@@ -346,6 +353,7 @@ cohortRecord <- readRDS("cohortRecord.rds")
 
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
+  print(i)
   cohortRecordUnit <- cohortRecord[i, ]
 
   if (!file.exists(file.path(
@@ -592,3 +600,6 @@ if (needToUpdate) {
   )
   writeLines(news, con = "NEWS.md")
 }
+
+
+unlink("inst/CohortRecord.rds")

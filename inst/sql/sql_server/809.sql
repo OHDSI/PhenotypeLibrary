@@ -5,7 +5,7 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4308542,4308837,43530818,4145549,4237450)
 UNION  select c.concept_id
@@ -26,17 +26,6 @@ UNION  select c.concept_id
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
-) C UNION ALL 
-SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4237450)
-UNION  select c.concept_id
-  from @vocabulary_database_schema.CONCEPT c
-  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4237450)
-  and c.invalid_reason is null
-
-) I
 ) C;
 
 UPDATE STATISTICS #Codesets;
@@ -63,7 +52,7 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 1)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
 
 

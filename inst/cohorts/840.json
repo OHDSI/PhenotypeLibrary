@@ -4,13 +4,13 @@
 		"CriteriaList" : [
 			{
 				"DrugExposure" : {
-					"CodesetId" : 13,
+					"CodesetId" : 7,
 					"DrugTypeExclude" : false
 				}
 			},
 			{
 				"ProcedureOccurrence" : {
-					"CodesetId" : 15,
+					"CodesetId" : 12,
 					"ProcedureTypeExclude" : false
 				}
 			}
@@ -25,242 +25,8 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 2,
-			"name" : "Microsatellite Instable-high OMOP GENOMIC",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 35977040,
-							"CONCEPT_NAME" : "Microsatellite Instable-High (MSI-H)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "OMOP4997605",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "OMOP Extension",
-							"CONCEPT_CLASS_ID" : "Genomic Variant"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 3,
-			"name" : "Microsatellite measurement - NAACAR",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 35917471,
-							"CONCEPT_NAME" : "Microsatellite Instability (MSI)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "colon@2861",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "NAACCR",
-							"CONCEPT_CLASS_ID" : "NAACCR Variable"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 35917835,
-							"CONCEPT_NAME" : "Microsatellite Instability (MSI)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "rectum@2861",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "NAACCR",
-							"CONCEPT_CLASS_ID" : "NAACCR Variable"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 35918368,
-							"CONCEPT_NAME" : "Microsatellite Instability (MSI)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "3890",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "NAACCR",
-							"CONCEPT_CLASS_ID" : "NAACCR Variable"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 4,
-			"name" : "Microsatellite instability LOINC",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 21493972,
-							"CONCEPT_NAME" : "Microsatellite instability [Interpretation] in Cancer specimen Qualitative",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "81695-9",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 6,
-			"name" : "Microsatellite instability-high colorectal cancer",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 42537577,
-							"CONCEPT_NAME" : "Microsatellite instability-high colorectal cancer",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "737058005",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 8,
-			"name" : "Mlh1 immunostains",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 21493968,
-							"CONCEPT_NAME" : "DNA mismatch repair protein Mlh1 [Presence] in Cancer specimen by Immune stain",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "81691-8",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 9,
-			"name" : "PMS2 immunostains",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 21493971,
-							"CONCEPT_NAME" : "Mismatch repair endonuclease PMS2 [Presence] in Cancer specimen by Immune stain",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "81694-2",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 10,
-			"name" : "MSH2 immunostains",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 21493969,
-							"CONCEPT_NAME" : "DNA mismatch repair protein Msh2 [Presence] in Cancer specimen by Immune stain",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "81692-6",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 11,
-			"name" : "MSH6 immunostains",
-			"expression" : {
-				"items" : [
-					{
-						"concept" : {
-							"CONCEPT_ID" : 21493970,
-							"CONCEPT_NAME" : "DNA mismatch repair protein Msh6 [Presence] in Cancer specimen by Immune stain",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "81693-4",
-							"DOMAIN_ID" : "Measurement",
-							"VOCABULARY_ID" : "LOINC",
-							"CONCEPT_CLASS_ID" : "Lab Test"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 13,
-			"name" : "Drug used in colorectal cancer",
+			"id" : 7,
+			"name" : "[HowOften] Drug used in colorectal cancer",
 			"expression" : {
 				"items" : [
 					{
@@ -539,19 +305,886 @@
 			}
 		},
 		{
-			"id" : 14,
-			"name" : "Potential curative surgery colorectal cancer",
+			"id" : 12,
+			"name" : "[HowOften] Radiation therapy in colorectal cancer",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4079713,
-							"CONCEPT_NAME" : "Excision of colon",
+							"CONCEPT_ID" : 2791337,
+							"CONCEPT_NAME" : "Beam Radiation of Pancreas using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "23968004",
+							"CONCEPT_CODE" : "DF033Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791646,
+							"CONCEPT_NAME" : "Beam Radiation of Parathyroid Glands using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DG043Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791052,
+							"CONCEPT_NAME" : "Beam Radiation of Peripheral Nerve using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D0073Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791632,
+							"CONCEPT_NAME" : "Beam Radiation of Pineal Body using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DG013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791625,
+							"CONCEPT_NAME" : "Beam Radiation of Pituitary Gland using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DG003Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2789831,
+							"CONCEPT_NAME" : "Beam Radiation of Prostate using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DV003Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792950,
+							"CONCEPT_NAME" : "Beam Radiation of Radius/Ulna using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DP073Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792934,
+							"CONCEPT_NAME" : "Beam Radiation of Rib(s) using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DP053Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792455,
+							"CONCEPT_NAME" : "Beam Radiation of Right Breast using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DM013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792635,
+							"CONCEPT_NAME" : "Beam Radiation of Salivary Glands using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9063Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792643,
+							"CONCEPT_NAME" : "Beam Radiation of Sinuses using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9073Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792703,
+							"CONCEPT_NAME" : "Beam Radiation of Skull using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DP003Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792659,
+							"CONCEPT_NAME" : "Beam Radiation of Soft Palate using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9093Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791044,
+							"CONCEPT_NAME" : "Beam Radiation of Spinal Cord using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D0063Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791553,
+							"CONCEPT_NAME" : "Beam Radiation of Spleen using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7023Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792926,
+							"CONCEPT_NAME" : "Beam Radiation of Sternum using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DP043Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790327,
+							"CONCEPT_NAME" : "Beam Radiation of Stomach using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2789839,
+							"CONCEPT_NAME" : "Beam Radiation of Testis using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DV013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791577,
+							"CONCEPT_NAME" : "Beam Radiation of Thorax Lymphatics using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7053Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791545,
+							"CONCEPT_NAME" : "Beam Radiation of Thymus using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791653,
+							"CONCEPT_NAME" : "Beam Radiation of Thyroid using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DG053Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792974,
+							"CONCEPT_NAME" : "Beam Radiation of Tibia/Fibula using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DP0B3Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792627,
+							"CONCEPT_NAME" : "Beam Radiation of Tongue using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9053Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793722,
+							"CONCEPT_NAME" : "Beam Radiation of Trachea using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DB003Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793232,
+							"CONCEPT_NAME" : "Beam Radiation of Ureter using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DT013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793248,
+							"CONCEPT_NAME" : "Beam Radiation of Urethra using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DT033Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793757,
+							"CONCEPT_NAME" : "Beam Radiation of Uterus using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DU023Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791613,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Bile Ducts",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DFY2CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2789821,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Cervix",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DUY1CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791087,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Duodenum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY2CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791608,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Gallbladder",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DFY1CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791097,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Ileum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY4CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791092,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Jejunum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY3CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793519,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Kidney",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DTY0CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793708,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Larynx",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9YBCZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791603,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Liver",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DFY0CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793689,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Mouth",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9Y4CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793714,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Nasopharynx",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9YDCZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2789817,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Ovary",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DUY0CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791618,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Pancreas",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DFY3CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793710,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Pharynx",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9YCCZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790075,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Prostate",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DVY0CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791082,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Stomach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY1CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793523,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Ureter",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DTY1CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793531,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Urethra",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DTY3CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2789825,
+							"CONCEPT_NAME" : "Intraoperative Radiation Therapy (IORT) of Uterus",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DUY2CZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2147482101,
+							"CONCEPT_NAME" : "Intraoperative radiation of the breast",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "bwgj1",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CSS",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4098879,
+							"CONCEPT_NAME" : "Partial excision of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "27010001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792091,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Iridium 192 (Ir-192)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D717B8Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792336,
+							"CONCEPT_NAME" : "Stereotactic Gamma Beam Radiosurgery of Pelvis Lymphatics",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D727JZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791073,
+							"CONCEPT_NAME" : "Stereotactic Particulate Radiosurgery of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD27HZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4059384,
+							"CONCEPT_NAME" : "Preoperative course of radiotherapy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "168523002",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Procedure"
@@ -562,19 +1195,665 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4136782,
-							"CONCEPT_NAME" : "Excision of colonic pouch",
+							"CONCEPT_ID" : 2790570,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Heavy Particles (Protons,Ions)",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "304587000",
+							"CONCEPT_CODE" : "DD074ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790852,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Palladium 103 (Pd-103)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD17BBZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792088,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Californium 252 (Cf-252)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7179CZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790843,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Cesium 137 (Cs-137)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD1797Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792092,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Iodine 125 (I-125)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D717B9Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2211840,
+							"CONCEPT_NAME" : "Intensity modulated radiotherapy plan, including dose-volume histograms for target and critical structure partial tolerance specifications",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77301",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790569,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Electrons",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD073ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2211867,
+							"CONCEPT_NAME" : "Radiation treatment delivery, >/=1 MeV; complex",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77412",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792085,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Iridium 192 (Ir-192)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D71798Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791108,
+							"CONCEPT_NAME" : "Plaque Radiation of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY7FZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2211837,
+							"CONCEPT_NAME" : "3-dimensional radiotherapy plan, including dose-volume histograms",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77295",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790845,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Iodine 125 (I-125)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD1799Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790571,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Neutrons",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD075ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792093,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Palladium 103 (Pd-103)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D717BBZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790849,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Cesium 137 (Cs-137)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD17B7Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4179064,
+							"CONCEPT_NAME" : "Radiotherapy to pelvis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "428829005",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Procedure"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2211872,
+							"CONCEPT_NAME" : "Intensity modulated treatment delivery, single or multiple fields/arcs, via narrow spatially and temporally modulated beams, binary, dynamic MLC, per treatment session",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77418",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791109,
+							"CONCEPT_NAME" : "Laser Interstitial Thermal Therapy of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY7KZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791072,
+							"CONCEPT_NAME" : "Stereotactic Other Photon Radiosurgery of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD27DZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4061549,
+							"CONCEPT_NAME" : "Combined radiotherapy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "169331000",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2749095,
+							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Percutaneous Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DHP31Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2211868,
+							"CONCEPT_NAME" : "Radiation treatment delivery, 3 or more separate treatment areas, custom blocking, tangential ports, wedges, rotational beam, compensators, electron beam; 6-10 MeV",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77413",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4205728,
+							"CONCEPT_NAME" : "Radiation therapy procedure or service",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "53438000",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790846,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Palladium 103 (Pd-103)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD179BZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40488450,
+							"CONCEPT_NAME" : "Intraluminal brachytherapy of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "448167001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790567,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Photons >10 MeV",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD072ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792094,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Californium 252 (Cf-252)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D717BCZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2749093,
+							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Open Approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DHP01Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791106,
+							"CONCEPT_NAME" : "Hyperthermia of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY78ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790851,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Iodine 125 (I-125)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD17B9Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790844,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Iridium 192 (Ir-192)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD1798Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790566,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Photons 1 - 10 MeV",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD071ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791591,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Photons 1 - 10 MeV",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7071ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791595,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Heavy Particles (Protons,Ions)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7074ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4124880,
+							"CONCEPT_NAME" : "Pulsed electromagnetic energy to pelvis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "304419009",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4058775,
+							"CONCEPT_NAME" : "Postoperative course of radiotherapy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "168525009",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790850,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Iridium 192 (Ir-192)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD17B8Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792335,
+							"CONCEPT_NAME" : "Stereotactic Particulate Radiosurgery of Pelvis Lymphatics",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D727HZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791597,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Neutron Capture",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7076ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
@@ -591,357 +1870,536 @@
 							"CONCEPT_CLASS_ID" : "Procedure"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : true,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4198190,
-							"CONCEPT_NAME" : "Appendectomy",
+							"CONCEPT_ID" : 2749101,
+							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Via Natural or Artificial Opening Endoscopic",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "80146002",
+							"CONCEPT_CODE" : "0DHP81Z",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4125436,
-							"CONCEPT_NAME" : "Anterior resection of rectal prolapse",
+							"CONCEPT_ID" : 2790854,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Other Isotope",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "289060008",
+							"CONCEPT_CODE" : "DD17BYZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4126235,
-							"CONCEPT_NAME" : "Excision of anterior mucosal prolapse of rectum",
+							"CONCEPT_ID" : 2211876,
+							"CONCEPT_NAME" : "Radiation treatment management, 5 treatments",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "290017007",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4308819,
-							"CONCEPT_NAME" : "Excision rectal mucosal prolapse",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "387860002",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4257890,
-							"CONCEPT_NAME" : "Laparoscopic fixation of prolapse of rectum with resection of sigmoid",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "440033009",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2109209,
-							"CONCEPT_NAME" : "Laparoscopy, surgical; proctopexy (for prolapse), with sigmoid resection",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "45402",
+							"CONCEPT_CODE" : "77427",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "CPT4",
 							"CONCEPT_CLASS_ID" : "CPT4"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4144719,
-							"CONCEPT_NAME" : "Partial excision of rectum and sigmoid colon for prolapse",
+							"CONCEPT_ID" : 2749097,
+							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Percutaneous Endoscopic Approach",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "265411006",
+							"CONCEPT_CODE" : "0DHP41Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792084,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Cesium 137 (Cs-137)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D71797Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4277939,
+							"CONCEPT_NAME" : "Gamma ray therapy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "65952009",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Procedure"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2109216,
-							"CONCEPT_NAME" : "Proctopexy (eg, for prolapse); with sigmoid resection, abdominal approach",
+							"CONCEPT_ID" : 2792356,
+							"CONCEPT_NAME" : "Plaque Radiation of Pelvis Lymphatics",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "45550",
+							"CONCEPT_CODE" : "D7Y7FZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791596,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Neutrons",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7075ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791074,
+							"CONCEPT_NAME" : "Stereotactic Gamma Beam Radiosurgery of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD27JZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792087,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Palladium 103 (Pd-103)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7179BZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790853,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Californium 252 (Cf-252)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD17BCZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791592,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Photons >10 MeV",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7072ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2790572,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Neutron Capture",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DD076ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40480519,
+							"CONCEPT_NAME" : "Intensity modulated radiation therapy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "441799006",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4181511,
+							"CONCEPT_NAME" : "Administration of antineoplastic agent",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "363688001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791105,
+							"CONCEPT_NAME" : "Contact Radiation of Rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DDY77ZZ",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45890645,
+							"CONCEPT_NAME" : "Radiation treatment delivery,3 or more separate treatment areas, custom blocking, tangential ports, wedges, rotational beam, compensators, electron beam; 11-19 mev",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "G6013",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "HCPCS",
+							"CONCEPT_CLASS_ID" : "HCPCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2749099,
+							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Via Natural or Artificial Opening",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DHP71Z",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 46257688,
+							"CONCEPT_NAME" : "Intensity modulated radiation treatment delivery (IMRT), includes guidance and tracking, when performed; complex",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77386",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "CPT4",
 							"CONCEPT_CLASS_ID" : "CPT4"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4227266,
-							"CONCEPT_NAME" : "Closure of enterostomy of large intestine with resection and anastomosis",
+							"CONCEPT_ID" : 2790565,
+							"CONCEPT_NAME" : "Beam Radiation of Rectum using Photons <1 MeV",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "87602008",
+							"CONCEPT_CODE" : "DD070ZZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2109122,
-							"CONCEPT_NAME" : "Closure of enterostomy, large or small intestine; with resection and anastomosis other than colorectal",
+							"CONCEPT_ID" : 2792089,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Other Isotope",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "44625",
+							"CONCEPT_CODE" : "D7179YZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "CPT4",
-							"CONCEPT_CLASS_ID" : "CPT4"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4141227,
-							"CONCEPT_NAME" : "Excision jejunocolic fistula",
+							"CONCEPT_ID" : 2790848,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Other Isotope",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "307507006",
+							"CONCEPT_CODE" : "DD179YZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4146476,
-							"CONCEPT_NAME" : "Excision jejunorectal fistula",
+							"CONCEPT_ID" : 2790847,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Californium 252 (Cf-252)",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "307508001",
+							"CONCEPT_CODE" : "DD179CZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4298165,
-							"CONCEPT_NAME" : "Excision of diverticula of colon",
+							"CONCEPT_ID" : 2792355,
+							"CONCEPT_NAME" : "Hyperthermia of Pelvis Lymphatics",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "386197003",
+							"CONCEPT_CODE" : "D7Y78ZZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4121239,
-							"CONCEPT_NAME" : "Excision of excess colostomy mucosa",
+							"CONCEPT_ID" : 2792095,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Other Isotope",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "287815004",
+							"CONCEPT_CODE" : "D717BYZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4141228,
-							"CONCEPT_NAME" : "Excision of ileorectal fistula",
+							"CONCEPT_ID" : 2791590,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Photons <1 MeV",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "307509009",
+							"CONCEPT_CODE" : "D7070ZZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4067932,
-							"CONCEPT_NAME" : "Excision of lesion of perirectal tissue",
+							"CONCEPT_ID" : 45890647,
+							"CONCEPT_NAME" : "Intensity modulated treatment delivery, single or multiple fields/arcs,via narrow spatially and temporally modulated beams, binary, dynamic mlc, per treatment session",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "172275004",
+							"CONCEPT_CODE" : "G6015",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "HCPCS",
+							"CONCEPT_CLASS_ID" : "HCPCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4080163,
-							"CONCEPT_NAME" : "Fistulectomy of rectum",
+							"CONCEPT_ID" : 2791594,
+							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Electrons",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "238298006",
+							"CONCEPT_CODE" : "D7073ZZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2109450,
-							"CONCEPT_NAME" : "Omentectomy, epiploectomy, resection of omentum (separate procedure)",
+							"CONCEPT_ID" : 2792334,
+							"CONCEPT_NAME" : "Stereotactic Other Photon Radiosurgery of Pelvis Lymphatics",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "49255",
+							"CONCEPT_CODE" : "D727DZZ",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "CPT4",
-							"CONCEPT_CLASS_ID" : "CPT4"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4309197,
-							"CONCEPT_NAME" : "Saucerization of rectum",
+							"CONCEPT_ID" : 2792086,
+							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Iodine 125 (I-125)",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "84456001",
+							"CONCEPT_CODE" : "D71799Z",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4168529,
-							"CONCEPT_NAME" : "Soave endorectal pull-through operation for Hirschsprung's disease",
+							"CONCEPT_ID" : 2792090,
+							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Cesium 137 (Cs-137)",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "275014009",
+							"CONCEPT_CODE" : "D717B7Z",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 15,
-			"name" : "Radiation therapy",
-			"expression" : {
-				"items" : [
+					},
 					{
 						"concept" : {
 							"CONCEPT_ID" : 4029715,
@@ -954,6 +2412,23 @@
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2211869,
+							"CONCEPT_NAME" : "Radiation treatment delivery, 3 or more separate treatment areas, custom blocking, tangential ports, wedges, rotational beam, compensators, electron beam; 11-19 MeV",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "77414",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
@@ -1006,24 +2481,7 @@
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Procedure"
 						},
-						"isExcluded" : true,
-						"includeDescendants" : true,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4059384,
-							"CONCEPT_NAME" : "Preoperative course of radiotherapy",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "168523002",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : true,
+						"isExcluded" : false,
 						"includeDescendants" : true,
 						"includeMapped" : false
 					},
@@ -1216,1053 +2674,822 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790569,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Electrons",
+							"CONCEPT_ID" : 4181511,
+							"CONCEPT_NAME" : "Administration of antineoplastic agent",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD073ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790570,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Heavy Particles (Protons,Ions)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD074ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790572,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Neutron Capture",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD076ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790571,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Neutrons",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD075ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790566,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Photons 1 - 10 MeV",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD071ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790565,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Photons <1 MeV",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD070ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790567,
-							"CONCEPT_NAME" : "Beam Radiation of Rectum using Photons >10 MeV",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD072ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2791105,
-							"CONCEPT_NAME" : "Contact Radiation of Rectum",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DDY77ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790847,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Californium 252 (Cf-252)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD179CZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790843,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Cesium 137 (Cs-137)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD1797Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790845,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Iodine 125 (I-125)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD1799Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790844,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Iridium 192 (Ir-192)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD1798Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790848,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Other Isotope",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD179YZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2790846,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Rectum using Palladium 103 (Pd-103)",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD179BZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2791106,
-							"CONCEPT_NAME" : "Hyperthermia of Rectum",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DDY78ZZ",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2749093,
-							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Open Approach",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "0DHP01Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2749095,
-							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Percutaneous Approach",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "0DHP31Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2749097,
-							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Percutaneous Endoscopic Approach",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "0DHP41Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2749099,
-							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Via Natural or Artificial Opening",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "0DHP71Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2749101,
-							"CONCEPT_NAME" : "Insertion of Radioactive Element into Rectum, Via Natural or Artificial Opening Endoscopic",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "0DHP81Z",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "ICD10PCS",
-							"CONCEPT_CLASS_ID" : "ICD10PCS"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 40488450,
-							"CONCEPT_NAME" : "Intraluminal brachytherapy of rectum",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "448167001",
+							"CONCEPT_CODE" : "363688001",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Procedure"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791109,
-							"CONCEPT_NAME" : "Laser Interstitial Thermal Therapy of Rectum",
+							"CONCEPT_ID" : 2792395,
+							"CONCEPT_NAME" : "Beam Radiation of Abdomen Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DDY7KZZ",
+							"CONCEPT_CODE" : "DH083Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790853,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Californium 252 (Cf-252)",
+							"CONCEPT_ID" : 2791639,
+							"CONCEPT_NAME" : "Beam Radiation of Adrenal Glands using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD17BCZ",
+							"CONCEPT_CODE" : "DG023Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790849,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Cesium 137 (Cs-137)",
+							"CONCEPT_ID" : 2792167,
+							"CONCEPT_NAME" : "Beam Radiation of Arm Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD17B7Z",
+							"CONCEPT_CODE" : "DH043Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790851,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Iodine 125 (I-125)",
+							"CONCEPT_ID" : 2791569,
+							"CONCEPT_NAME" : "Beam Radiation of Axillary Lymphatics using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD17B9Z",
+							"CONCEPT_CODE" : "D7043Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790850,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Iridium 192 (Ir-192)",
+							"CONCEPT_ID" : 2792183,
+							"CONCEPT_NAME" : "Beam Radiation of Back Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD17B8Z",
+							"CONCEPT_CODE" : "DH073Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790854,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Other Isotope",
+							"CONCEPT_ID" : 2791133,
+							"CONCEPT_NAME" : "Beam Radiation of Bile Ducts using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD17BYZ",
+							"CONCEPT_CODE" : "DF023Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2790852,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Rectum using Palladium 103 (Pd-103)",
+							"CONCEPT_ID" : 2791537,
+							"CONCEPT_NAME" : "Beam Radiation of Bone Marrow using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD17BBZ",
+							"CONCEPT_CODE" : "D7003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791108,
-							"CONCEPT_NAME" : "Plaque Radiation of Rectum",
+							"CONCEPT_ID" : 2791036,
+							"CONCEPT_NAME" : "Beam Radiation of Brain Stem using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DDY7FZZ",
+							"CONCEPT_CODE" : "D0013Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791074,
-							"CONCEPT_NAME" : "Stereotactic Gamma Beam Radiosurgery of Rectum",
+							"CONCEPT_ID" : 2791028,
+							"CONCEPT_NAME" : "Beam Radiation of Brain using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD27JZZ",
+							"CONCEPT_CODE" : "D0003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791072,
-							"CONCEPT_NAME" : "Stereotactic Other Photon Radiosurgery of Rectum",
+							"CONCEPT_ID" : 2792403,
+							"CONCEPT_NAME" : "Beam Radiation of Buttock Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD27DZZ",
+							"CONCEPT_CODE" : "DH093Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791073,
-							"CONCEPT_NAME" : "Stereotactic Particulate Radiosurgery of Rectum",
+							"CONCEPT_ID" : 2793749,
+							"CONCEPT_NAME" : "Beam Radiation of Cervix using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "DD27HZZ",
+							"CONCEPT_CODE" : "DU013Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791594,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Electrons",
+							"CONCEPT_ID" : 2792175,
+							"CONCEPT_NAME" : "Beam Radiation of Chest Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7073ZZ",
+							"CONCEPT_CODE" : "DH063Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791595,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Heavy Particles (Protons,Ions)",
+							"CONCEPT_ID" : 2789767,
+							"CONCEPT_NAME" : "Beam Radiation of Chest Wall using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7074ZZ",
+							"CONCEPT_CODE" : "DB073Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791597,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Neutron Capture",
+							"CONCEPT_ID" : 2790093,
+							"CONCEPT_NAME" : "Beam Radiation of Chest using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7076ZZ",
+							"CONCEPT_CODE" : "DW023Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791596,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Neutrons",
+							"CONCEPT_ID" : 2789775,
+							"CONCEPT_NAME" : "Beam Radiation of Diaphragm using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7075ZZ",
+							"CONCEPT_CODE" : "DB083Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791591,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Photons 1 - 10 MeV",
+							"CONCEPT_ID" : 2790335,
+							"CONCEPT_NAME" : "Beam Radiation of Duodenum using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7071ZZ",
+							"CONCEPT_CODE" : "DD023Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791590,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Photons <1 MeV",
+							"CONCEPT_ID" : 2792595,
+							"CONCEPT_NAME" : "Beam Radiation of Ear using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7070ZZ",
+							"CONCEPT_CODE" : "D9003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2791592,
-							"CONCEPT_NAME" : "Beam Radiation of Pelvis Lymphatics using Photons >10 MeV",
+							"CONCEPT_ID" : 2790319,
+							"CONCEPT_NAME" : "Beam Radiation of Esophagus using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7072ZZ",
+							"CONCEPT_CODE" : "DD003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792088,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Californium 252 (Cf-252)",
+							"CONCEPT_ID" : 2792363,
+							"CONCEPT_NAME" : "Beam Radiation of Eye using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7179CZ",
+							"CONCEPT_CODE" : "D8003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792084,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Cesium 137 (Cs-137)",
+							"CONCEPT_ID" : 2792151,
+							"CONCEPT_NAME" : "Beam Radiation of Face Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D71797Z",
+							"CONCEPT_CODE" : "DH023Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792086,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Iodine 125 (I-125)",
+							"CONCEPT_ID" : 2792966,
+							"CONCEPT_NAME" : "Beam Radiation of Femur using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D71799Z",
+							"CONCEPT_CODE" : "DP093Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792085,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Iridium 192 (Ir-192)",
+							"CONCEPT_ID" : 2791125,
+							"CONCEPT_NAME" : "Beam Radiation of Gallbladder using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D71798Z",
+							"CONCEPT_CODE" : "DF013Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792089,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Other Isotope",
+							"CONCEPT_ID" : 2792651,
+							"CONCEPT_NAME" : "Beam Radiation of Hard Palate using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7179YZ",
+							"CONCEPT_CODE" : "D9083Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792087,
-							"CONCEPT_NAME" : "High Dose Rate (HDR) Brachytherapy of Pelvis Lymphatics using Palladium 103 (Pd-103)",
+							"CONCEPT_ID" : 2790085,
+							"CONCEPT_NAME" : "Beam Radiation of Head and Neck using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7179BZ",
+							"CONCEPT_CODE" : "DW013Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792355,
-							"CONCEPT_NAME" : "Hyperthermia of Pelvis Lymphatics",
+							"CONCEPT_ID" : 2790109,
+							"CONCEPT_NAME" : "Beam Radiation of Hemibody using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7Y78ZZ",
+							"CONCEPT_CODE" : "DW043Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792094,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Californium 252 (Cf-252)",
+							"CONCEPT_ID" : 2792942,
+							"CONCEPT_NAME" : "Beam Radiation of Humerus using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D717BCZ",
+							"CONCEPT_CODE" : "DP063Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792090,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Cesium 137 (Cs-137)",
+							"CONCEPT_ID" : 2792611,
+							"CONCEPT_NAME" : "Beam Radiation of Hypopharynx using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D717B7Z",
+							"CONCEPT_CODE" : "D9033Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792092,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Iodine 125 (I-125)",
+							"CONCEPT_ID" : 2790552,
+							"CONCEPT_NAME" : "Beam Radiation of Ileum using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D717B9Z",
+							"CONCEPT_CODE" : "DD043Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792091,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Iridium 192 (Ir-192)",
+							"CONCEPT_ID" : 2790544,
+							"CONCEPT_NAME" : "Beam Radiation of Jejunum using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D717B8Z",
+							"CONCEPT_CODE" : "DD033Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792095,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Other Isotope",
+							"CONCEPT_ID" : 2793224,
+							"CONCEPT_NAME" : "Beam Radiation of Kidney using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D717BYZ",
+							"CONCEPT_CODE" : "DT003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792093,
-							"CONCEPT_NAME" : "Low Dose Rate (LDR) Brachytherapy of Pelvis Lymphatics using Palladium 103 (Pd-103)",
+							"CONCEPT_ID" : 2792869,
+							"CONCEPT_NAME" : "Beam Radiation of Larynx using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D717BBZ",
+							"CONCEPT_CODE" : "D90B3Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792356,
-							"CONCEPT_NAME" : "Plaque Radiation of Pelvis Lymphatics",
+							"CONCEPT_ID" : 2792447,
+							"CONCEPT_NAME" : "Beam Radiation of Left Breast using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D7Y7FZZ",
+							"CONCEPT_CODE" : "DM003Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4124880,
-							"CONCEPT_NAME" : "Pulsed electromagnetic energy to pelvis",
+							"CONCEPT_ID" : 2792411,
+							"CONCEPT_NAME" : "Beam Radiation of Leg Skin using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "304419009",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4179064,
-							"CONCEPT_NAME" : "Radiotherapy to pelvis",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "428829005",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 2792336,
-							"CONCEPT_NAME" : "Stereotactic Gamma Beam Radiosurgery of Pelvis Lymphatics",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D727JZZ",
+							"CONCEPT_CODE" : "DH0B3Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792334,
-							"CONCEPT_NAME" : "Stereotactic Other Photon Radiosurgery of Pelvis Lymphatics",
+							"CONCEPT_ID" : 2792719,
+							"CONCEPT_NAME" : "Beam Radiation of Mandible using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D727DZZ",
+							"CONCEPT_CODE" : "DP033Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 2792335,
-							"CONCEPT_NAME" : "Stereotactic Particulate Radiosurgery of Pelvis Lymphatics",
+							"CONCEPT_ID" : 2792711,
+							"CONCEPT_NAME" : "Beam Radiation of Maxilla using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "D727HZZ",
+							"CONCEPT_CODE" : "DP023Z0",
 							"DOMAIN_ID" : "Procedure",
 							"VOCABULARY_ID" : "ICD10PCS",
 							"CONCEPT_CLASS_ID" : "ICD10PCS"
 						},
-						"isExcluded" : false,
+						"isExcluded" : true,
 						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4061549,
-							"CONCEPT_NAME" : "Combined radiotherapy",
+							"CONCEPT_ID" : 2792619,
+							"CONCEPT_NAME" : "Beam Radiation of Mouth using Electrons, Intraoperative",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "169331000",
+							"CONCEPT_CODE" : "D9043Z0",
 							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792877,
+							"CONCEPT_NAME" : "Beam Radiation of Nasopharynx using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D90D3Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2791561,
+							"CONCEPT_NAME" : "Beam Radiation of Neck Lymphatics using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D7033Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792159,
+							"CONCEPT_NAME" : "Beam Radiation of Neck Skin using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DH033Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792603,
+							"CONCEPT_NAME" : "Beam Radiation of Nose using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D9013Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792885,
+							"CONCEPT_NAME" : "Beam Radiation of Oropharynx using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "D90F3Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2792982,
+							"CONCEPT_NAME" : "Beam Radiation of Other Bone using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DP0C3Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2793741,
+							"CONCEPT_NAME" : "Beam Radiation of Ovary using Electrons, Intraoperative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "DU003Z0",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 13,
+			"name" : "PMS2 immunostains",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 21493971,
+							"CONCEPT_NAME" : "Mismatch repair endonuclease PMS2 [Presence] in Cancer specimen by Immune stain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "81694-2",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
 						"includeMapped" : false
-					},
+					}
+				]
+			}
+		},
+		{
+			"id" : 14,
+			"name" : "MSH6 immunostains",
+			"expression" : {
+				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4058775,
-							"CONCEPT_NAME" : "Postoperative course of radiotherapy",
+							"CONCEPT_ID" : 21493970,
+							"CONCEPT_NAME" : "DNA mismatch repair protein Msh6 [Presence] in Cancer specimen by Immune stain",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "168525009",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"CONCEPT_CODE" : "81693-4",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
 						"includeMapped" : false
-					},
+					}
+				]
+			}
+		},
+		{
+			"id" : 15,
+			"name" : "MSH2 immunostains",
+			"expression" : {
+				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4277939,
-							"CONCEPT_NAME" : "Gamma ray therapy",
+							"CONCEPT_ID" : 21493969,
+							"CONCEPT_NAME" : "DNA mismatch repair protein Msh2 [Presence] in Cancer specimen by Immune stain",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "65952009",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4098879,
-							"CONCEPT_NAME" : "Partial excision of large intestine",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "27010001",
-							"DOMAIN_ID" : "Procedure",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Procedure"
+							"CONCEPT_CODE" : "81692-6",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,
@@ -2273,7 +3500,166 @@
 		},
 		{
 			"id" : 16,
-			"name" : "Rectal cancer",
+			"name" : "Mlh1 immunostains",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 21493968,
+							"CONCEPT_NAME" : "DNA mismatch repair protein Mlh1 [Presence] in Cancer specimen by Immune stain",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "81691-8",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 17,
+			"name" : "Microsatellite measurement - NAACAR",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 35917471,
+							"CONCEPT_NAME" : "Microsatellite Instability (MSI)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "colon@2861",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "NAACCR",
+							"CONCEPT_CLASS_ID" : "NAACCR Variable"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 35917835,
+							"CONCEPT_NAME" : "Microsatellite Instability (MSI)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "rectum@2861",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "NAACCR",
+							"CONCEPT_CLASS_ID" : "NAACCR Variable"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 35918368,
+							"CONCEPT_NAME" : "Microsatellite Instability (MSI)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "3890",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "NAACCR",
+							"CONCEPT_CLASS_ID" : "NAACCR Variable"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 18,
+			"name" : "Microsatellite Instable-high OMOP GENOMIC",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 35977040,
+							"CONCEPT_NAME" : "Microsatellite Instable-High (MSI-H)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "OMOP4997605",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "OMOP Extension",
+							"CONCEPT_CLASS_ID" : "Genomic Variant"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 19,
+			"name" : "Microsatellite instability LOINC",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 21493972,
+							"CONCEPT_NAME" : "Microsatellite instability [Interpretation] in Cancer specimen Qualitative",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "81695-9",
+							"DOMAIN_ID" : "Measurement",
+							"VOCABULARY_ID" : "LOINC",
+							"CONCEPT_CLASS_ID" : "Lab Test"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 20,
+			"name" : "Microsatellite instability-high colorectal cancer",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 42537577,
+							"CONCEPT_NAME" : "Microsatellite instability-high colorectal cancer",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "737058005",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 21,
+			"name" : "[HowOften] Primary adenocarcinoma of rectum",
 			"expression" : {
 				"items" : [
 					{
@@ -3567,6 +4953,1034 @@
 						"isExcluded" : true,
 						"includeDescendants" : true,
 						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4180792,
+							"CONCEPT_NAME" : "Malignant tumor of rectosigmoid junction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "363414004",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 438699,
+							"CONCEPT_NAME" : "Primary malignant neoplasm of rectosigmoid junction",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "93980002",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4196256,
+							"CONCEPT_NAME" : "Local recurrence of malignant tumor of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "314966008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 442174,
+							"CONCEPT_NAME" : "Secondary malignant neoplasm of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "94513006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 22,
+			"name" : "[HowOften] Potential curative rectal resections for rectal cancer",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37521056,
+							"CONCEPT_NAME" : "Proctocolectomy",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10059848",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "MedDRA",
+							"CONCEPT_CLASS_ID" : "PT"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45888910,
+							"CONCEPT_NAME" : "Excision of rectal tumor, transanal approach",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "1020206",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4 Hierarchy"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002969,
+							"CONCEPT_NAME" : "Laparoscopic pull-through resection of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "48.42",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109157,
+							"CONCEPT_NAME" : "Proctectomy, combined abdominoperineal pull-through procedure (eg, colo-anal anastomosis), with creation of colonic reservoir (eg, J-pouch), with diverting enterostomy when performed",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45119",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4098879,
+							"CONCEPT_NAME" : "Partial excision of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "27010001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4136782,
+							"CONCEPT_NAME" : "Excision of colonic pouch",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "304587000",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4198190,
+							"CONCEPT_NAME" : "Appendectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "80146002",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4125436,
+							"CONCEPT_NAME" : "Anterior resection of rectal prolapse",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "289060008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4126235,
+							"CONCEPT_NAME" : "Excision of anterior mucosal prolapse of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "290017007",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4308819,
+							"CONCEPT_NAME" : "Excision rectal mucosal prolapse",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "387860002",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4257890,
+							"CONCEPT_NAME" : "Laparoscopic fixation of prolapse of rectum with resection of sigmoid",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "440033009",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109209,
+							"CONCEPT_NAME" : "Laparoscopy, surgical; proctopexy (for prolapse), with sigmoid resection",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45402",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4144719,
+							"CONCEPT_NAME" : "Partial excision of rectum and sigmoid colon for prolapse",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "265411006",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109216,
+							"CONCEPT_NAME" : "Proctopexy (eg, for prolapse); with sigmoid resection, abdominal approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45550",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4227266,
+							"CONCEPT_NAME" : "Closure of enterostomy of large intestine with resection and anastomosis",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "87602008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109122,
+							"CONCEPT_NAME" : "Closure of enterostomy, large or small intestine; with resection and anastomosis other than colorectal",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "44625",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4141227,
+							"CONCEPT_NAME" : "Excision jejunocolic fistula",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "307507006",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4146476,
+							"CONCEPT_NAME" : "Excision jejunorectal fistula",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "307508001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4298165,
+							"CONCEPT_NAME" : "Excision of diverticula of colon",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "386197003",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4121239,
+							"CONCEPT_NAME" : "Excision of excess colostomy mucosa",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "287815004",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4141228,
+							"CONCEPT_NAME" : "Excision of ileorectal fistula",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "307509009",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4067932,
+							"CONCEPT_NAME" : "Excision of lesion of perirectal tissue",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "172275004",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4080163,
+							"CONCEPT_NAME" : "Fistulectomy of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "238298006",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109450,
+							"CONCEPT_NAME" : "Omentectomy, epiploectomy, resection of omentum (separate procedure)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "49255",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4309197,
+							"CONCEPT_NAME" : "Saucerization of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "84456001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4168529,
+							"CONCEPT_NAME" : "Soave endorectal pull-through operation for Hirschsprung's disease",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "275014009",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4181781,
+							"CONCEPT_NAME" : "Partial resection of colon",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "43075005",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37520956,
+							"CONCEPT_NAME" : "Rectal polypectomy",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10038075",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "MedDRA",
+							"CONCEPT_CLASS_ID" : "PT"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4166761,
+							"CONCEPT_NAME" : "Rectal polypectomy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "274031008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4103380,
+							"CONCEPT_NAME" : "Endoscopic polypectomy of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "28939002",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4314569,
+							"CONCEPT_NAME" : "Excision of lesion of colon",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "87279008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4123406,
+							"CONCEPT_NAME" : "Excision of polyp of large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "235340004",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45885771,
+							"CONCEPT_NAME" : "Large intestinal polypectomy",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10074625",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "MedDRA",
+							"CONCEPT_CLASS_ID" : "PT"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37521041,
+							"CONCEPT_NAME" : "Colectomy",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10061778",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "MedDRA",
+							"CONCEPT_CLASS_ID" : "PT"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4199870,
+							"CONCEPT_NAME" : "Snare resection of lesion - large intestine",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "301698008",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 37521038,
+							"CONCEPT_NAME" : "Caecectomy",
+							"STANDARD_CONCEPT" : "C",
+							"STANDARD_CONCEPT_CAPTION" : "Classification",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "10062859",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "MedDRA",
+							"CONCEPT_CLASS_ID" : "PT"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2110180,
+							"CONCEPT_NAME" : "Pelvic exenteration for gynecologic malignancy, with total abdominal hysterectomy or cervicectomy, with or without removal of tube(s), with or without removal of ovary(s), with removal of bladder and ureteral transplantations, and/or abdominoperineal rese",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "58240",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747308,
+							"CONCEPT_NAME" : "Excision of Rectum, Percutaneous Approach, Diagnostic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBP3ZX",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747310,
+							"CONCEPT_NAME" : "Excision of Rectum, Percutaneous Endoscopic Approach, Diagnostic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBP4ZX",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747314,
+							"CONCEPT_NAME" : "Excision of Rectum, Via Natural or Artificial Opening Endoscopic, Diagnostic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBP8ZX",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2747312,
+							"CONCEPT_NAME" : "Excision of Rectum, Via Natural or Artificial Opening, Diagnostic",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0DBP7ZX",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD10PCS",
+							"CONCEPT_CLASS_ID" : "ICD10PCS"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4202223,
+							"CONCEPT_NAME" : "Excision of benign tumor of rectum by transanal approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "51994001",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4062763,
+							"CONCEPT_NAME" : "Excision of perirectal tissue",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "171373006",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4300501,
+							"CONCEPT_NAME" : "Excision of rectal mucosa",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "387861003",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4165586,
+							"CONCEPT_NAME" : "Excision of rectal procidentia with anastomosis by perineal approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "41200003",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109163,
+							"CONCEPT_NAME" : "Excision of rectal procidentia, with anastomosis; abdominal and perineal approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45135",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109162,
+							"CONCEPT_NAME" : "Excision of rectal procidentia, with anastomosis; perineal approach",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45130",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40490505,
+							"CONCEPT_NAME" : "Excision of rectal stump",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "448596007",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40756915,
+							"CONCEPT_NAME" : "Excision of rectal tumor, transanal approach; including muscularis propria (ie, full thickness)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45172",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 40756981,
+							"CONCEPT_NAME" : "Excision of rectal tumor, transanal approach; not including muscularis propria (ie, partial thickness)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "45171",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2101766,
+							"CONCEPT_NAME" : "Excision of rectal tumor, transanal endoscopic microsurgical approach (ie, TEMS), including muscularis propria (ie, full thickness)",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "0184T",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2002964,
+							"CONCEPT_NAME" : "Local excision of rectal lesion or tissue",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "48.35",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "ICD9Proc",
+							"CONCEPT_CLASS_ID" : "4-dig billing code"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4121233,
+							"CONCEPT_NAME" : "Local excision of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "287784004",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 2109725,
+							"CONCEPT_NAME" : "Pelvic exenteration, complete, for vesical, prostatic or urethral malignancy, with removal of bladder and ureteral transplantations, with or without hysterectomy and/or abdominoperineal resection of rectum and colon and colostomy, or any combination there",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "51597",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4152086,
+							"CONCEPT_NAME" : "Transanal submucosal excision of rectal tumor",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "314610005",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4142326,
+							"CONCEPT_NAME" : "Wedge resection of rectum",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "307009004",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Procedure"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
 					}
 				]
 			}
@@ -3580,365 +5994,393 @@
 	},
 	"InclusionRules" : [
 		{
-			"name" : "MSI-H or dMMR",
-			"expression" : {
-				"Type" : "AT_LEAST",
-				"Count" : 1,
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 2,
-								"MeasurementTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 4,
-								"MeasurementTypeExclude" : false,
-								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 21499079,
-										"CONCEPT_NAME" : "MSI-H",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA26203-2",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									}
-								]
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 3,
-								"MeasurementTypeExclude" : false,
-								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 35919051,
-										"CONCEPT_NAME" : "MSI unstable high (MSI-H)|AND/OR|MMR-D (loss of nuclear expression of one or more MMR proteins, MMR protein deficient)",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "3890@2",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "NAACCR",
-										"CONCEPT_CLASS_ID" : null
-									}
-								]
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"ConditionOccurrence" : {
-								"CodesetId" : 6,
-								"ConditionTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 8,
-								"MeasurementTypeExclude" : false,
-								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 36210129,
-										"CONCEPT_NAME" : "Loss of nuclear expression",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA26198-4",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									}
-								]
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 10,
-								"MeasurementTypeExclude" : false,
-								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 36210129,
-										"CONCEPT_NAME" : "Loss of nuclear expression",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA26198-4",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									}
-								]
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 11,
-								"MeasurementTypeExclude" : false,
-								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 36210129,
-										"CONCEPT_NAME" : "Loss of nuclear expression",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA26198-4",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									}
-								]
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 9,
-								"MeasurementTypeExclude" : false,
-								"ValueAsConcept" : [
-									{
-										"CONCEPT_ID" : 36210129,
-										"CONCEPT_NAME" : "Loss of nuclear expression",
-										"STANDARD_CONCEPT" : null,
-										"STANDARD_CONCEPT_CAPTION" : "Unknown",
-										"INVALID_REASON" : null,
-										"INVALID_REASON_CAPTION" : "Unknown",
-										"CONCEPT_CODE" : "LA26198-4",
-										"DOMAIN_ID" : "Meas Value",
-										"VOCABULARY_ID" : "LOINC",
-										"CONCEPT_CLASS_ID" : null
-									}
-								]
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 7,
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
-			"name" : "no surgery",
-			"expression" : {
-				"Type" : "AT_MOST",
-				"Count" : 0,
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ProcedureOccurrence" : {
-								"CodesetId" : 14,
-								"ProcedureTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 90,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Coeff" : 1
-							},
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
-			"name" : "Rectal cancer",
+			"name" : "Rectal cancer, with no potential curative resection, dMMR",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [
 					{
 						"Criteria" : {
 							"ConditionOccurrence" : {
-								"CodesetId" : 16,
+								"CorrelatedCriteria" : {
+									"Type" : "ALL",
+									"CriteriaList" : [
+										{
+											"Criteria" : {
+												"ProcedureOccurrence" : {
+													"CodesetId" : 22,
+													"ProcedureTypeExclude" : false
+												}
+											},
+											"StartWindow" : {
+												"Start" : {
+													"Days" : 180,
+													"Coeff" : -1
+												},
+												"End" : {
+													"Coeff" : 1
+												},
+												"UseIndexEnd" : false,
+												"UseEventEnd" : false
+											},
+											"RestrictVisit" : false,
+											"IgnoreObservationPeriod" : false,
+											"Occurrence" : {
+												"Type" : 1,
+												"Count" : 0,
+												"IsDistinct" : false
+											}
+										}
+									],
+									"DemographicCriteriaList" : [],
+									"Groups" : [
+										{
+											"Type" : "ANY",
+											"CriteriaList" : [
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 13,
+															"MeasurementTypeExclude" : false,
+															"ValueAsConcept" : [
+																{
+																	"CONCEPT_ID" : 36210129,
+																	"CONCEPT_NAME" : "Loss of nuclear expression",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "LA26198-4",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "LOINC",
+																	"CONCEPT_CLASS_ID" : null
+																}
+															]
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 14,
+															"MeasurementTypeExclude" : false,
+															"ValueAsConcept" : [
+																{
+																	"CONCEPT_ID" : 36210129,
+																	"CONCEPT_NAME" : "Loss of nuclear expression",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "LA26198-4",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "LOINC",
+																	"CONCEPT_CLASS_ID" : null
+																}
+															]
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 15,
+															"MeasurementTypeExclude" : false,
+															"ValueAsConcept" : [
+																{
+																	"CONCEPT_ID" : 36210129,
+																	"CONCEPT_NAME" : "Loss of nuclear expression",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "LA26198-4",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "LOINC",
+																	"CONCEPT_CLASS_ID" : null
+																}
+															]
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 16,
+															"MeasurementTypeExclude" : false,
+															"ValueAsConcept" : [
+																{
+																	"CONCEPT_ID" : 36210129,
+																	"CONCEPT_NAME" : "Loss of nuclear expression",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "LA26198-4",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "LOINC",
+																	"CONCEPT_CLASS_ID" : null
+																}
+															]
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 17,
+															"MeasurementTypeExclude" : false,
+															"ValueAsConcept" : [
+																{
+																	"CONCEPT_ID" : 35919051,
+																	"CONCEPT_NAME" : "MSI unstable high (MSI-H)|AND/OR|MMR-D (loss of nuclear expression of one or more MMR proteins, MMR protein deficient)",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "3890@2",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "NAACCR",
+																	"CONCEPT_CLASS_ID" : null
+																},
+																{
+																	"CONCEPT_ID" : 35925319,
+																	"CONCEPT_NAME" : "MSI unstable high; positive, high",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "colon@2861@050",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "NAACCR",
+																	"CONCEPT_CLASS_ID" : null
+																},
+																{
+																	"CONCEPT_ID" : 35925626,
+																	"CONCEPT_NAME" : "MSI unstable high; positive, high",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "rectum@2861@050",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "NAACCR",
+																	"CONCEPT_CLASS_ID" : null
+																}
+															]
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 18,
+															"MeasurementTypeExclude" : false
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"Measurement" : {
+															"CodesetId" : 19,
+															"MeasurementTypeExclude" : false,
+															"ValueAsConcept" : [
+																{
+																	"CONCEPT_ID" : 21499079,
+																	"CONCEPT_NAME" : "MSI-H",
+																	"STANDARD_CONCEPT" : null,
+																	"STANDARD_CONCEPT_CAPTION" : "Unknown",
+																	"INVALID_REASON" : null,
+																	"INVALID_REASON_CAPTION" : "Unknown",
+																	"CONCEPT_CODE" : "LA26203-2",
+																	"DOMAIN_ID" : "Meas Value",
+																	"VOCABULARY_ID" : "LOINC",
+																	"CONCEPT_CLASS_ID" : null
+																}
+															]
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												},
+												{
+													"Criteria" : {
+														"ConditionOccurrence" : {
+															"CodesetId" : 20,
+															"ConditionTypeExclude" : false
+														}
+													},
+													"StartWindow" : {
+														"Start" : {
+															"Days" : 7,
+															"Coeff" : -1
+														},
+														"End" : {
+															"Days" : 90,
+															"Coeff" : 1
+														},
+														"UseIndexEnd" : false,
+														"UseEventEnd" : false
+													},
+													"RestrictVisit" : false,
+													"IgnoreObservationPeriod" : false,
+													"Occurrence" : {
+														"Type" : 2,
+														"Count" : 1,
+														"IsDistinct" : false
+													}
+												}
+											],
+											"DemographicCriteriaList" : [],
+											"Groups" : []
+										}
+									]
+								},
+								"CodesetId" : 21,
+								"First" : true,
 								"ConditionTypeExclude" : false
 							}
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 90,
+								"Days" : 365,
 								"Coeff" : -1
 							},
 							"End" : {
-								"Days" : 0,
+								"Days" : 30,
 								"Coeff" : 1
 							},
+							"UseIndexEnd" : false,
 							"UseEventEnd" : false
 						},
 						"RestrictVisit" : false,
