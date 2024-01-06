@@ -208,8 +208,10 @@ cohortRecord |>
     quote = "all"
   )
 
-saveRDS(object = cohortRecord,
-        file = "inst/CohortRecord.rds")
+saveRDS(
+  object = cohortRecord,
+  file = "inst/CohortRecord.rds"
+)
 
 cohortRecord <- readRDS("inst/CohortRecord.rds")
 
