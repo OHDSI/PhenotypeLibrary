@@ -371,7 +371,7 @@ for (i in (1:nrow(cohortRecord))) {
   ))
 
   parsed <-
-    PrivateScripts::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
+    CirceComparator::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
       RJSONIO::fromJSON(digits = 23))
   if (nrow(parsed) > 0) {
     cohortRecordAugmented[[i]] <- cohortRecordUnit |>
