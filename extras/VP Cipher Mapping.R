@@ -94,11 +94,22 @@ sourceCodesInEntryEvent <-
 
 vaCipherMapping <- phenotypeLog |>
   dplyr::mutate(
-    cipherOhdsiPhenotypeLibraryVersion = addedVersion,
-    cipherOhdsiCohortId = cohortId,
-    cipherCategory = domainsInEntryEvents,
+    # cipherOhdsiPhenotypeLibraryVersion = addedVersion,
+    # cipherOhdsiCohortId = cohortId,
+    cipherCategory = dplyr::if_else(condition = stringr::str_detect(string = tolower(domainsInEntryEvents), pattern = 'condition'), 
+                                    true = 'General Phenotype',
+                                    false = dplyr::if_else(condition = stringr::str_detect(string = tolower(domainsInEntryEvents), pattern = 'drug'),
+                                                           true = "Medication",
+                                                           false = dplyr::if_else(condition = stringr::str_detect(string = tolower(domainsInEntryEvents), 
+                                                                                                                  pattern = 'measurement'),
+                                                                                  true = "Lab",
+                                                                                  false = "Other"))),
     cipherFullName = cohortNameLong,
-    cipherKeyWords = hashTag,
+    cipherKeyWords = paste0("OHDSI Cohort ID: ", cohortId, dplyr::if_else(condition = is.na(addedVersion),
+                                                                         true = "",
+                                                                         false = paste0(" (Locked version: ",
+                                                                                        addedVersion,
+                                                                                        ")"))), #maybe hashTag in future
     cipherClassification = dplyr::if_else(
       condition = stringr::str_detect(string = domainsInEntryEvents,
                                       pattern = 'Condition'),
@@ -108,28 +119,61 @@ vaCipherMapping <- phenotypeLog |>
     cipherDiseaseDomain = "",
     # cannot systematically map because not controlled vocabulary
     cipherAuthor = contributors,
-    cipherContact = contributorOrcIds,
+    cipherContact = "noreply@ohdsi.org", #contributorOrcIds, -- non functional email will bounce
     cipherPublication = ohdsiForumPost,
     cipherLink = ohdsiForumPost,
     cipherAcknowledgement = ohdsiForumPost,
     cipherVaDeveloped = 'No',
     cipherDataSources = 'OMOP (Observational Medical Outcomes Partnership)',
     cipherOtherSource = '',
-    cipherAlgorithmPurpose = 'Research',
     cipherContext = 'Research',
     cipherOtherDescription = '',
     cipherPhenotypeUse = 'Primary Outcome/Exposure',
-    cipherPhenotypeDescription = logicDescription,
+    cipherPhenotypeDescription = paste0(cohortNameLong, ". Sourced from the OHDSI Phenotype Library. For more details please visit https://ohdsi.github.io/PhenotypeLibrary/articles/CohortDefinitionsInOhdsiPhenotypeLibrary.html"), #logicDescription,
     cipherPopulationDescription = ohdsiForumPost,
     cipherDateAlgorithmWasCreated = addedDate,
     cipherDataUsedStart = censorWindowStartDate,
     cipherDataUsedEnd = censorWindowEndDate,
     cipherMethodUsed = 'Rules-Based',
-    cipherAlgorithmDesc = logicDescription
+    cipherAlgorithmDesc = logicDescription,
+    cipherCodeSampleLink = paste0(
+      "https://github.com/OHDSI/PhenotypeLibrary/blob/main/inst/sql/sql_server/",
+      cohortId,
+      ".sql"
+    ),
+    cipherCodeSampleLanguage = "SQL",
   ) |>
   dplyr::left_join(sourceCodesInEntryEvent,
                    by = "cohortId") |>
-  dplyr::select(dplyr::all_of(dplyr::starts_with("cipher")))
+  dplyr::select(dplyr::all_of(dplyr::starts_with("cipher"))) |> 
+  dplyr::mutate(cipherICD10CM = "",
+                cipherICD9CM = "")
 
 
 readr::write_excel_csv(x = vaCipherMapping, file = "vaCipherMapping.csv")
+
+
+
+
+sourceCodesLongForm <-
+  sourceCodes |>
+  # dplyr::filter(type == "mappedSource") |>
+  # dplyr::filter(vocabularyId %in% c("ICD10CM", "ICD9CM", "ICD9Proc", "ICD10Proc")) |>
+  dplyr::inner_join(
+    conceptSetLog |>
+      dplyr::filter(conceptSetUsedInEntryEvent == 1) |>
+      dplyr::select(cohortId,
+                    uniqueConceptSetId) |>
+      dplyr::distinct()
+  ) |>
+  dplyr::select(cohortId,
+                conceptId,
+                vocabularyId,
+                conceptCode,
+                conceptName,
+                standardConcept) |>
+  dplyr::arrange(cohortId,
+                 vocabularyId,
+                 conceptCode)
+
+readr::write_excel_csv(x = sourceCodesLongForm, file = "vaCipherSourceCodesLongForm.csv")
