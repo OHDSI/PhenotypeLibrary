@@ -2046,7 +2046,7 @@
 		},
 		{
 			"id" : 8,
-			"name" : "Accidental poisoning",
+			"name" : "AccidentalÂ poisoning",
 			"expression" : {
 				"items" : [
 					{
@@ -2567,6 +2567,82 @@
 							"DOMAIN_ID" : "Drug",
 							"VOCABULARY_ID" : "RxNorm",
 							"CONCEPT_CLASS_ID" : "Clinical Dose Group"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 17,
+			"name" : "Allergy or substance adverse event (Criterion 3)",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 43021227,
+							"CONCEPT_NAME" : "Allergic condition",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "473011001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4019380,
+							"CONCEPT_NAME" : "Atopy",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "115665000",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4188970,
+							"CONCEPT_NAME" : "Chronic disease of immune function",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "413834006",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : true,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 441207,
+							"CONCEPT_NAME" : "Adverse reaction to drug",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "62014003",
+							"DOMAIN_ID" : "Observation",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : true,
@@ -3284,7 +3360,7 @@
 			}
 		},
 		{
-			"name" : "Accidental poisoning",
+			"name" : "AccidentalÂ poisoning",
 			"expression" : {
 				"Type" : "ALL",
 				"CriteriaList" : [

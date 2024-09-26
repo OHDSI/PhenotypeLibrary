@@ -369,9 +369,9 @@ for (i in (1:nrow(cohortRecord))) {
     "cohorts",
     paste0(cohortRecordUnit$cohortId, ".json")
   ))
-
+debug(CohortDefinitionReviewer::parseCohortDefinitionSpecifications)
   parsed <-
-    CirceComparator::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
+    CohortDefinitionReviewer::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
       RJSONIO::fromJSON(digits = 23))
   if (nrow(parsed) > 0) {
     cohortRecordAugmented[[i]] <- cohortRecordUnit |>
