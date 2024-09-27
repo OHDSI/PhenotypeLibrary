@@ -1,3 +1,12 @@
+PhenotypeLibrary 3.33.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 2 were added.
+
+    1316: Acquired Neutropenia or unspecified leukopenia (21Pe, 365Era)
+    1317: [P] Reyes syndrome
+
 PhenotypeLibrary 3.32.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.

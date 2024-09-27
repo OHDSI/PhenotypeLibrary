@@ -353,7 +353,6 @@ cohortRecord <- readRDS("cohortRecord.rds")
 
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
-  print(paste0(i, "/", nrow(cohortRecord)))
   cohortRecordUnit <- cohortRecord[i, ]
   
   if (!file.exists(file.path(
