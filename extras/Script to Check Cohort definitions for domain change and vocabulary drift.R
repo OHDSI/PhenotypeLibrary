@@ -2,17 +2,19 @@
 # saveRDS(object = cohortDefinitionSet, "cohortDefinitionSet.RDS")
 cohortDefinitionSet <- readRDS("cohortDefinitionSet.RDS")
 
-#1: retrieve concept sets from cohort definition set -----
+# 1: retrieve concept sets from cohort definition set -----
 cohortDefinitionsToCheckIfUpdateIsNeeded <- cohortDefinitionSet |>
-  dplyr::select(cohortId,
-                cohortName,
-                sql,
-                json) |>
+  dplyr::select(
+    cohortId,
+    cohortName,
+    sql,
+    json
+  ) |>
   dplyr::arrange(cohortId)
 
 # conceptSetsInAllCohortDefinition <-
 #   ConceptSetDiagnostics::extractConceptSetsInCohortDefinitionSet(cohortDefinitionSet = cohortDefinitionsToCheckIfUpdateIsNeeded)
-# 
+#
 # saveRDS(object = conceptSetsInAllCohortDefinition,
 #         file = "conceptSetsInAllCohortDefinition.RDS")
 
@@ -20,24 +22,26 @@ conceptSetsInAllCohortDefinition <-
   readRDS("conceptSetsInAllCohortDefinition.RDS")
 
 
-#2: identify all unique concept sets -----
+# 2: identify all unique concept sets -----
 uniqueConceptSets <- conceptSetsInAllCohortDefinition |>
-  dplyr::select(uniqueConceptSetId,
-                conceptSetSql) |>
+  dplyr::select(
+    uniqueConceptSetId,
+    conceptSetSql
+  ) |>
   dplyr::distinct()
 
 
-#3: resolve concept set by vocabulary version
+# 3: resolve concept set by vocabulary version
 resolvedConceptIdsOldVocabulary <- c()
 resolvedConceptIdsNewVocabulary <- c()
 
-#old vocabulary
+# old vocabulary
 oldCdmSource <-
   OhdsiHelpers::getCdmSource(cdmSources = cdmSources, sequence = 3, database = "optum_extended_dod")
 oldConnectionDetails <-
   OhdsiHelpers::createConnectionDetails(cdmSources = cdmSources, sequence = 3, database = "optum_extended_dod")
 
-#new vocabulary
+# new vocabulary
 newCdmSource <-
   OhdsiHelpers::getCdmSource(cdmSources = cdmSources, database = "optum_extended_dod")
 newConnectionDetails <-
@@ -57,12 +61,12 @@ newConnectionDetails <-
 #       as.character(Sys.time())
 #     )
 #   )
-#   
+#
 #   dir.create("resolvedConceptIdsVocabulary",
 #              showWarnings = FALSE,
 #              recursive = TRUE)
-#   
-#   
+#
+#
 #   if (!file.exists(file.path(
 #     "resolvedConceptIdsVocabulary",
 #     paste0("resolvedConceptIdsOldVocabulary",
@@ -79,7 +83,7 @@ newConnectionDetails <-
 #       ) |>
 #       dplyr::mutate(uniqueConceptSetId = uniqueConceptSets[i, ]$uniqueConceptSetId) |>
 #       dplyr::tibble()
-#     
+#
 #     saveRDS(object = resolvedConceptIdsOldVocabulary,
 #             file.path(
 #               "resolvedConceptIdsVocabulary",
@@ -87,7 +91,7 @@ newConnectionDetails <-
 #                      i,
 #                      ".RDS")
 #             ))
-#     
+#
 #     # resolve using new vocabulary
 #     resolvedConceptIdsNewVocabulary <-
 #       DatabaseConnector::renderTranslateQuerySql(
@@ -98,7 +102,7 @@ newConnectionDetails <-
 #       ) |>
 #       dplyr::mutate(uniqueConceptSetId = uniqueConceptSets[i, ]$uniqueConceptSetId) |>
 #       dplyr::tibble()
-#     
+#
 #     saveRDS(object = resolvedConceptIdsNewVocabulary,
 #             file.path(
 #               "resolvedConceptIdsVocabulary",
@@ -110,7 +114,7 @@ newConnectionDetails <-
 #     writeLines(paste0("Skipping ",
 #                       OhdsiHelpers::formatIntegerWithComma(i)))
 #   }
-#   
+#
 # }
 
 
@@ -138,8 +142,12 @@ for (i in (1:length(new))) {
   resolvedConceptIdsNewVocabulary[[i]] <- readRDS(new[[i]])
 }
 # save in each iteration
-resolvedConceptIdsOldVocabulary |> dplyr::bind_rows() |> saveRDS(file = "resolvedConceptIdsOldVocabulary.RDS")
-resolvedConceptIdsNewVocabulary |> dplyr::bind_rows() |> saveRDS(file = "resolvedConceptIdsNewVocabulary.RDS")
+resolvedConceptIdsOldVocabulary |>
+  dplyr::bind_rows() |>
+  saveRDS(file = "resolvedConceptIdsOldVocabulary.RDS")
+resolvedConceptIdsNewVocabulary |>
+  dplyr::bind_rows() |>
+  saveRDS(file = "resolvedConceptIdsNewVocabulary.RDS")
 
 # read resolved set
 resolvedConceptIdsOldVocabulary <-
@@ -217,10 +225,12 @@ conceptIdDetailsOld <- readRDS("conceptIdDetailsOld.RDS")
 #     conceptIds = conceptIdDetailsNew$conceptId
 #   )
 # saveRDS(object = conceptCount, file = "conceptCount.RDS")
-conceptCount <- readRDS("conceptCount.RDS") |> 
-  dplyr::group_by(conceptId) |> 
-  dplyr::summarise(countCount = max(conceptCount),
-                   subjectCount = max(subjectCount)) |> 
+conceptCount <- readRDS("conceptCount.RDS") |>
+  dplyr::group_by(conceptId) |>
+  dplyr::summarise(
+    countCount = max(conceptCount),
+    subjectCount = max(subjectCount)
+  ) |>
   dplyr::ungroup()
 
 
@@ -233,33 +243,43 @@ conceptIdCompare <- dplyr::bind_rows(
   dplyr::distinct() |>
   dplyr::left_join(
     conceptIdDetailsNew |>
-      dplyr::select(conceptId,
-                    domainId,
-                    standardConcept) |>
-      dplyr::rename(newDomainId = domainId,
-                    newStandardConcept = standardConcept) |>
+      dplyr::select(
+        conceptId,
+        domainId,
+        standardConcept
+      ) |>
+      dplyr::rename(
+        newDomainId = domainId,
+        newStandardConcept = standardConcept
+      ) |>
       dplyr::distinct() |>
       dplyr::mutate(presentInNew = 1) |>
-      tidyr::replace_na(list(newStandardConcept = 'N'))
+      tidyr::replace_na(list(newStandardConcept = "N"))
   ) |>
   dplyr::left_join(
     conceptIdDetailsOld |>
-      dplyr::select(conceptId,
-                    domainId,
-                    standardConcept) |>
+      dplyr::select(
+        conceptId,
+        domainId,
+        standardConcept
+      ) |>
       dplyr::distinct() |>
-      dplyr::rename(oldDomainId = domainId,
-                    oldStandardConcept = standardConcept) |>
+      dplyr::rename(
+        oldDomainId = domainId,
+        oldStandardConcept = standardConcept
+      ) |>
       dplyr::mutate(presentInOld = 1) |>
-      tidyr::replace_na(list(oldStandardConcept = 'N'))
+      tidyr::replace_na(list(oldStandardConcept = "N"))
   ) |>
   dplyr::mutate(presentIn = presentInOld + presentInNew) |>
   dplyr::mutate(domainChange = dplyr::if_else(newDomainId == oldDomainId, 0, 1)) |>
   dplyr::mutate(standardChange = dplyr::if_else(newStandardConcept == oldStandardConcept, 0, 1)) |>
   dplyr::left_join(conceptIdDetailsNew |>
-                     dplyr::select(conceptId,
-                                   conceptName,
-                                   vocabularyId)) |>
+    dplyr::select(
+      conceptId,
+      conceptName,
+      vocabularyId
+    )) |>
   dplyr::select(
     conceptId,
     conceptName,
@@ -283,7 +303,9 @@ conceptSetsInAllCohortDefinition <-
 
 # compare output of old and new vocabulary
 uniqueConceptSetIds <-
-  resolvedConceptIdsOldVocabulary$uniqueConceptSetId |> unique() |> sort()
+  resolvedConceptIdsOldVocabulary$uniqueConceptSetId |>
+  unique() |>
+  sort()
 
 onlyInOld <- c()
 onlyInNew <- c()
@@ -291,21 +313,20 @@ onlyInNew <- c()
 
 for (i in (1:length(uniqueConceptSetIds))) {
   uniqueConceptSetIdRowValue <- uniqueConceptSetIds[[i]]
-  
+
   compareResolved <- OhdsiHelpers::compareTibbles(
     resolvedConceptIdsOldVocabulary |> dplyr::filter(uniqueConceptSetId == uniqueConceptSetIdRowValue),
     resolvedConceptIdsNewVocabulary |> dplyr::filter(uniqueConceptSetId == uniqueConceptSetIdRowValue)
   )
   onlyInOld[[i]] <- compareResolved$presentInFirstNotSecond
   onlyInNew[[i]] <- compareResolved$presentInSecondNotFirst
-  
 }
 
 onlyInOld <- dplyr::bind_rows(onlyInOld)
 onlyInNew <- dplyr::bind_rows(onlyInNew)
 
 
-#check if conceptSet has conceptId's that can be removed
+# check if conceptSet has conceptId's that can be removed
 oldConceptSetDataFrame <- c()
 newConceptSetDataFrame <- c()
 conceptSetsInAllCohortDefinition <-
@@ -317,22 +338,25 @@ for (i in (1:nrow(conceptSetsInAllCohortDefinition))) {
   conceptSetExpression <-
     conceptSetsInAllCohortDefinition[i, ]$conceptSetExpression |>
     RJSONIO::fromJSON(digist = 23)
-  
+
   conceptIdHasBecomeNonStandarOrDomainChange <-
     conceptSetExpression |>
     ConceptSetDiagnostics::convertConceptSetExpressionToDataFrame() |>
     dplyr::select(conceptId) |>
     dplyr::distinct() |>
     dplyr::inner_join(conceptIdCompare,
-                      by = "conceptId") |>
-    dplyr::filter(any(domainChange == 1,
-                      standardChange == 1))
-  
+      by = "conceptId"
+    ) |>
+    dplyr::filter(any(
+      domainChange == 1,
+      standardChange == 1
+    ))
+
   if (nrow(conceptIdHasBecomeNonStandarOrDomainChange) > 0) {
     standardChanged <- FALSE
     domainChanged <- FALSE
     conceptCleanUp <- FALSE
-    
+
     writeLines(
       paste0(
         "cohort id ",
@@ -345,24 +369,24 @@ for (i in (1:nrow(conceptSetsInAllCohortDefinition))) {
         conceptSetsInAllCohortDefinition[i, ]$conceptSetName
       )
     )
-    
+
     domainChange <-
       conceptIdHasBecomeNonStandarOrDomainChange |>
       dplyr::filter(domainChange == 1)
-    
+
     if (nrow(domainChange) > 0) {
       View(domainChange)
       domainChanged <- TRUE
     }
-    
+
     standardChange <-
       conceptIdHasBecomeNonStandarOrDomainChange |>
       dplyr::filter(standardChange == 1)
-    
+
     if (nrow(standardChange) > 0) {
       conceptCleanUp <- TRUE
     }
-    
+
     standardChangeInResolvedSet <-
       resolvedConceptIdsNewVocabulary |>
       dplyr::filter(uniqueConceptSetId %in% conceptSetsInAllCohortDefinition[i, ]$uniqueConceptSetId) |>
@@ -370,17 +394,21 @@ for (i in (1:nrow(conceptSetsInAllCohortDefinition))) {
       dplyr::distinct() |>
       dplyr::left_join(
         mappedConceptsNewVocabulary |>
-          dplyr::select(givenConceptId,
-                        conceptId) |>
-          dplyr::rename(conceptId = givenConceptId,
-                        mappedConceptId = conceptId) |>
+          dplyr::select(
+            givenConceptId,
+            conceptId
+          ) |>
+          dplyr::rename(
+            conceptId = givenConceptId,
+            mappedConceptId = conceptId
+          ) |>
           dplyr::distinct(),
         by = "conceptId"
       ) |>
       dplyr::filter(mappedConceptId %in% standardChange$conceptId) |>
       dplyr::pull(mappedConceptId) |>
       unique()
-    
+
     if (length(standardChangeInResolvedSet) > 0) {
       View(standardChange)
       standardChanged <- TRUE
@@ -390,14 +418,17 @@ for (i in (1:nrow(conceptSetsInAllCohortDefinition))) {
         writeLines("---------MAPPING ISSUES")
       }
     }
-    
-    if (any(standardChanged,
-            domainChanged,
-            conceptCleanUp)) {
-      conceptSetsInAllCohortDefinition[i, ]$cohortId |> as.character() |> clipr::write_clip()
+
+    if (any(
+      standardChanged,
+      domainChanged,
+      conceptCleanUp
+    )) {
+      conceptSetsInAllCohortDefinition[i, ]$cohortId |>
+        as.character() |>
+        clipr::write_clip()
       browser()
       View(standardChange)
-      
     }
   }
 }
