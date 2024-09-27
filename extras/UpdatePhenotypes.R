@@ -1,4 +1,4 @@
-# Import phenotypes from ATLAS -------------------------------------------------
+  # Import phenotypes from ATLAS -------------------------------------------------
 oldCohortDefinitions <- PhenotypeLibrary::getPhenotypeLog(showHidden = TRUE)
 oldCohortDefinitionSet <-
   PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds = oldCohortDefinitions$cohortId)
@@ -353,9 +353,9 @@ cohortRecord <- readRDS("cohortRecord.rds")
 
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
-  print(i)
+  print(paste0(i, "/", nrow(cohortRecord)))
   cohortRecordUnit <- cohortRecord[i, ]
-
+  
   if (!file.exists(file.path(
     "inst",
     "cohorts",
@@ -363,16 +363,16 @@ for (i in (1:nrow(cohortRecord))) {
   ))) {
     stop("cant find file")
   }
-
+  
   cohortJson <- SqlRender::readSql(sourceFile = file.path(
     "inst",
     "cohorts",
     paste0(cohortRecordUnit$cohortId, ".json")
   ))
-debug(CohortDefinitionReviewer::parseCohortDefinitionSpecifications)
+  
   parsed <-
     CohortDefinitionReviewer::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
-      RJSONIO::fromJSON(digits = 23))
+                                                                    RJSONIO::fromJSON(digits = 23))
   if (nrow(parsed) > 0) {
     cohortRecordAugmented[[i]] <- cohortRecordUnit |>
       tidyr::crossing(parsed)
