@@ -7,793 +7,793 @@ CREATE TABLE #Codesets (
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (9201)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (9201))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (9201)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (9201))
 
 ) I
 ) C UNION ALL 
 SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4135199,3363351,2107924,2107949,2107837,4283095,4240486,4142641,4234989,4035152,2107740)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4135199,3363351,2107924,2107949,2107837,4283095,4240486,4142641,4234989,4035152,2107740))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4135199,3363351,2107924,2107949,2107837,4240486,4142641,4234989)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4135199,3363351,2107924,2107949,2107837,4240486,4142641,4234989))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,2853855,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,2853855,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,2853855)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,2853855))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4236706)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4236706))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4236706)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4236706))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 30 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4195136)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4195136))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4195136)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4195136))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4225223,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4225223,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4225223)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4225223))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 31 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4021530)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4021530))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4021530)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4021530))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 32 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4127886,4127887,4021529,2110177,4023403,42538159,42538160,4032622,2110209,2110211,43018211,4138738,4306298,4306070,4072416,4070209,45769914,45769913,45769911)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4127886,4127887,4021529,2110177,4023403,42538159,42538160,4032622,2110209,2110211,43018211,4138738,4306298,4306070,4072416,4070209,45769914,45769913,45769911))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2110177,4023403,42538159,42538160,43018211,4306298)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2110177,4023403,42538159,42538160,43018211,4306298))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 33 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4096783)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4096783))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4096783)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4096783))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 34 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4234536)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4234536))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4234536)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4234536))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 38 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4312749)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4312749))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4312749)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4312749))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4323208,4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4323208,4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4323208,4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4323208,4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 43 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (262,9203)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (262,9203))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (262,9203)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (262,9203))
 
 ) I
 ) C UNION ALL 
 SELECT 45 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4013040,4196081,38001162,40482705,4128868,4314436,4125173)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4013040,4196081,38001162,40482705,4128868,4314436,4125173))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4013040,4196081,38001162,40482705,4128868,4314436,4125173)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4013040,4196081,38001162,40482705,4128868,4314436,4125173))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4144721,4035031,4195115,4311405,4170609,4249893,4304358,4250892,4300528,4138127,4179713,4126235,4194372,4062763,4127886,44809616,4179797,4030387,2002949,4144723,4042673,4166761,4199870,4200964,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4144721,4035031,4195115,4311405,4170609,4249893,4304358,4250892,4300528,4138127,4179713,4126235,4194372,4062763,4127886,44809616,4179797,4030387,2002949,4144723,4042673,4166761,4199870,4200964,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4144721,4035031,4195115,4311405,4170609,4249893,4304358,4250892,4300528,4138127,4179713,4126235,4194372,4062763,4127886,44809616,4179797,4030387,2002949,4144723,4042673,4166761,4199870,4200964)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4144721,4035031,4195115,4311405,4170609,4249893,4304358,4250892,4300528,4138127,4179713,4126235,4194372,4062763,4127886,44809616,4179797,4030387,2002949,4144723,4042673,4166761,4199870,4200964))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 46 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4101626)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4101626))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4101626)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4101626))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4232401,4250892,4300528,4138127,40490839,4343795,4243985,4080349,4296539,4069383,4182228,4284392,4121136,4042673,45887543,2103134,2103133,4265725,4136234,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4232401,4250892,4300528,4138127,40490839,4343795,4243985,4080349,4296539,4069383,4182228,4284392,4121136,4042673,45887543,2103134,2103133,4265725,4136234,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4232401,4250892,4300528,4138127,40490839,4343795,4243985,4080349,4296539,4069383,4182228,4284392,4121136,4042673,45887543,2103134,2103133,4265725,4136234)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4232401,4250892,4300528,4138127,40490839,4343795,4243985,4080349,4296539,4069383,4182228,4284392,4121136,4042673,45887543,2103134,2103133,4265725,4136234))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 47 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2108643,2108645,2768119,2830031,4077122,2103867,2740455,2756407,2760818,2740654,2756413,2756411)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2108643,2108645,2768119,2830031,4077122,2103867,2740455,2756407,2760818,2740654,2756413,2756411))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2108643,2108645,2768119,2830031,4077122,2103867,2740455,2756407,2760818,2740654,2756413,2756411)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2108643,2108645,2768119,2830031,4077122,2103867,2740455,2756407,2760818,2740654,2756413,2756411))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,42872673,4003042,4030715,4042673,4124209,2768121,2768142,2768127,2768130,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,42872673,4003042,4030715,4042673,4124209,2768121,2768142,2768127,2768130,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,42872673,4003042,4030715,4042673,4124209,2768121,2768142,2768127,2768130)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,42872673,4003042,4030715,4042673,4124209,2768121,2768142,2768127,2768130))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 48 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4078547,43531648)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4078547,43531648))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (43531648)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (43531648))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4239294,2824731,2005871,4042673,4180403,4106397,2000080,2000081,2000079,2105129,2000082,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4239294,2824731,2005871,4042673,4180403,4106397,2000080,2000081,2000079,2105129,2000082,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4239294,2824731,2005871,4042673,4180403,4106397,2000080,2000081,2000079,2105129,2000082)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4239294,2824731,2005871,4042673,4180403,4106397,2000080,2000081,2000079,2105129,2000082))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 51 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2811735,2896830,2839189,4345349,4322818,4067461,4069129,4312613,40487106,46270641,4142436,2109316,4251035)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2811735,2896830,2839189,4345349,4322818,4067461,4069129,4312613,40487106,46270641,4142436,2109316,4251035))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2811735,2896830,2839189,4345349)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2811735,2896830,2839189,4345349))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4030150,4314001,4147687,4076862,4311405,4272324,4249893,4304358,4250892,4300528,4138127,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4030150,4314001,4147687,4076862,4311405,4272324,4249893,4304358,4250892,4300528,4138127,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4030150,4314001,4147687,4076862,46273729)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4030150,4314001,4147687,4076862,46273729))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 55 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4180074)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4180074))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4180074)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4180074))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 56 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4049675,4244434,4236715,42872711,2211642,4052252,2107574,4263586,4294254,4022030,40757028,2733576,4305183,2733582,2733567,4243023,4051031,40493483,40489434,40756876,2107882,2107931,2733577,2733579)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4049675,4244434,4236715,42872711,2211642,4052252,2107574,4263586,4294254,4022030,40757028,2733576,4305183,2733582,2733567,4243023,4051031,40493483,40489434,40756876,2107882,2107931,2733577,2733579))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4049675)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4049675))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4267446,4311405,42736434,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107573,4042673,4181152,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4267446,4311405,42736434,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107573,4042673,4181152,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4267446,4311405,42736434,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107573,4042673,4181152,46273729)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4267446,4311405,42736434,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107573,4042673,4181152,46273729))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 57 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (42872694)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (42872694))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (42872694)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (42872694))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4050715,4311405,4249893,4304358,42896616,42896602,42896609,42896661,42896610,2731751,2731749,42896667,2731750,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4050715,4311405,4249893,4304358,42896616,42896602,42896609,42896661,42896610,2731751,2731749,42896667,2731750,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4050715,4311405,4249893,4304358,42896616,42896602,42896609,42896661,42896610,2731751,2731749,42896667,2731750,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4050715,4311405,4249893,4304358,42896616,42896602,42896609,42896661,42896610,2731751,2731749,42896667,2731750,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 58 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (42872696)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (42872696))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (42872696)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (42872696))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4050131,4311405,2730933,4249893,4304358,4116625,4250892,4300528,4138127,4195806,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4050131,4311405,2730933,4249893,4304358,4116625,4250892,4300528,4138127,4195806,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4050131,4311405,2730933,4249893,4304358,4116625,4250892,4300528,4138127,4195806,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4050131,4311405,2730933,4249893,4304358,4116625,4250892,4300528,4138127,4195806,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 59 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4022030)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4022030))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4022030)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4022030))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4168349,4042673,4229447,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4168349,4042673,4229447,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4168349,4042673,4229447)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4168349,4042673,4229447))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 61 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4049675,3188936,3186130,4259553,46271672,4000088,44793144,4181152,4199966,45887730,2107101,2107112)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4049675,3188936,3186130,4259553,46271672,4000088,44793144,4181152,4199966,45887730,2107101,2107112))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (3188936,3186130,4259553,46271672,4000088,44793144,4181152,4199966,45887730,2107101,2107112)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (3188936,3186130,4259553,46271672,4000088,44793144,4181152,4199966,45887730,2107101,2107112))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,2107453,4272324,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107431,2107430,2211648,2107581,2107429,2107428,2211647,4042673,2107425,2107310,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,2107453,4272324,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107431,2107430,2211648,2107581,2107429,2107428,2211647,4042673,2107425,2107310,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,2107453,4272324,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107431,2107430,2211648,2107581,2107429,2107428,2211647,4042673,2107425,2107310)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,2107453,4272324,4249893,4304358,4250892,4300528,4138127,2211645,2211646,2107431,2107430,2211648,2107581,2107429,2107428,2211647,4042673,2107425,2107310))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 62 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4031312,4030825,4120657)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4031312,4030825,4120657))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4031312,4030825,4120657)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4031312,4030825,4120657))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 63 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2006434,2006432,4297155,4001562,709956,709957,4183741,42733287,2103375,42732580,2740664,2106890,2106891,2006433,2006421,4337034,2102700,2102701,2102712,3177626,36676345,36676344,40480531,4127484,4302594,4231761,2102734,4301336,2106769,4301338,2106770)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2006434,2006432,4297155,4001562,709956,709957,4183741,42733287,2103375,42732580,2740664,2106890,2106891,2006433,2006421,4337034,2102700,2102701,2102712,3177626,36676345,36676344,40480531,4127484,4302594,4231761,2102734,4301336,2106769,4301338,2106770))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2006434,2006432,4297155,709956,709957,4183741,42733287,2103375,42732580,2740664,2106890,2106891,2006433,2006421,4337034)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2006434,2006432,4297155,709956,709957,4183741,42733287,2103375,42732580,2740664,2106890,2106891,2006433,2006421,4337034))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 64 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4203442,4121242,2002549,2108974,40483096)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4203442,4121242,2002549,2108974,40483096))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4203442,4121242,2002549,2108974,40483096)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4203442,4121242,2002549,2108974,40483096))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4170280,4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4170280,4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4170280,4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4170280,4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 65 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4141456,2003225,4141110)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4141456,2003225,4141110))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4141456,2003225,4141110)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4141456,2003225,4141110))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 66 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4187533,725062,2108937)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4187533,725062,2108937))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4187533,725062,2108937)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4187533,725062,2108937))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 67 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2108486,4120425,2108645,2108640,2108475,42735001,2102721,42733288,42732332,2110038,2108490,42742521,2110372,2006421,4125465,2108482,4012004,4100937,2108485,2102736,4229920,4208330)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2108486,4120425,2108645,2108640,2108475,42735001,2102721,42733288,42732332,2110038,2108490,42742521,2110372,2006421,4125465,2108482,4012004,4100937,2108485,2102736,4229920,4208330))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2108486,2108645,2108640,2108475,42735001,2102721,42733288,42732332,2110038,2108490,42742521,2110372,2006421)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2108486,2108645,2108640,2108475,42735001,2102721,42733288,42732332,2110038,2108490,42742521,2110372,2006421))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 68 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4000882)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4000882))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4000882)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4000882))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 69 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4321450,4159841,4076334,2005415,2104897,2104896,2104912,2104919,2105149,4002375,2798725,2819144,2852443,2819622,2832272,2886663,2865770,2824740,2860039,2886683,2891748,2865764,4211987,2005457,2104900,2104899,2104943,2104914,2105166,2105165,2104920,2104934,2104898,4297365,2105163,2104913,2005882,4090926,2104839,2104840,4075926,4203771,2104918,2104917,2108020)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4321450,4159841,4076334,2005415,2104897,2104896,2104912,2104919,2105149,4002375,2798725,2819144,2852443,2819622,2832272,2886663,2865770,2824740,2860039,2886683,2891748,2865764,4211987,2005457,2104900,2104899,2104943,2104914,2105166,2105165,2104920,2104934,2104898,4297365,2105163,2104913,2005882,4090926,2104839,2104840,4075926,4203771,2104918,2104917,2108020))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4321450,4159841,4076334,2005415,2104897,2104896,2104912,2104919,2105149,4002375,2798725,2819144,2852443,2819622,2832272,2886663,2865770,2824740,2860039,2886683,2891748,2865764,4211987,2005457,2104900,2104899,2104943,2104914,2105166,2105165,2104920,2104934,2104898,4297365,2105163,2104913,2005882,4090926,2104839,2104840,4075926,4203771,2104918,2104917)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4321450,4159841,4076334,2005415,2104897,2104896,2104912,2104919,2105149,4002375,2798725,2819144,2852443,2819622,2832272,2886663,2865770,2824740,2860039,2886683,2891748,2865764,4211987,2005457,2104900,2104899,2104943,2104914,2105166,2105165,2104920,2104934,2104898,4297365,2105163,2104913,2005882,4090926,2104839,2104840,4075926,4203771,2104918,2104917))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4138127,4042673,4272324,4300528,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4138127,4042673,4272324,4300528,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 70 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4315036,4286744,43531416)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4315036,4286744,43531416))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4315036,4286744,43531416)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4315036,4286744,43531416))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 71 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4219032,2006227,2006228,4338257,4264289,2105446,2105448,2105450,2105449,2784251,2784250,4143795,2006242,2105451,4119910)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4219032,2006227,2006228,4338257,4264289,2105446,2105448,2105450,2105449,2784251,2784250,4143795,2006242,2105451,4119910))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2006227,2006228)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2006227,2006228))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 72 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4000882,2001339,2001342,42742510)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4000882,2001339,2001342,42742510))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4000882,2001339,2001342,42742510)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4000882,2001339,2001342,42742510))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 73 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2722219,4241198)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2722219,4241198))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2722219,4241198)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2722219,4241198))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 74 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2109616,4047234)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2109616,4047234))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2109616,4047234)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2109616,4047234))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,2752031,2752037,4042673,4272324,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,2752031,2752037,4042673,4272324,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,2752031,2752037,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4300528,4138127,2752031,2752037,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 75 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (38001216,38001215,38001217,38001213,38001212,38001214,2003223,38001219,38001218,38001220,2003224,2722214,2722215,2722216,4059308,4242997,2109368,4033555,4240962,4134888)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (38001216,38001215,38001217,38001213,38001212,38001214,2003223,38001219,38001218,38001220,2003224,2722214,2722215,2722216,4059308,4242997,2109368,4033555,4240962,4134888))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (38001216,38001215,38001217,38001213,38001212,38001214,2003223,38001219,38001218,38001220,2003224,2722214,2722215,2722216)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (38001216,38001215,38001217,38001213,38001212,38001214,2003223,38001219,38001218,38001220,2003224,2722214,2722215,2722216))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4311405,4249893,4304358,4250892,4138127,4179071,4042673,4272324,4300528,2108020,46273729,4230535)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4311405,4249893,4304358,4250892,4138127,4179071,4042673,4272324,4300528,2108020,46273729,4230535))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4138127,4179071,4042673)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4311405,4249893,4304358,4250892,4138127,4179071,4042673))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 76 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4216472,44809456,44809457,4264332,2102759,4032640,4216471,4064295,2102773,2102761)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4216472,44809456,44809457,4264332,2102759,4032640,4216471,4064295,2102773,2102761))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4216472,44809456,44809457,4264332,2102759,4032640,4216471,4064295,2102773,2102761)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4216472,44809456,44809457,4264332,2102759,4032640,4216471,4064295,2102773,2102761))
 
 ) I
 ) C UNION ALL 
 SELECT 78 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (2003708,2776176,2775402,2775928,2775927,2774933,2775894,2775672,2775671,2775665,2109680,2003724,4077764,4235644,4107717,2109657,4022960,4029570,4184788,4022807,4021108,4304536,2773682,2773695,2109617,2773685,2109574,4288997,4027426,4270496,4118715,4010266,2109723,2109724,2109715,2773934,2109722,2773938)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (2003708,2776176,2775402,2775928,2775927,2774933,2775894,2775672,2775671,2775665,2109680,2003724,4077764,4235644,4107717,2109657,4022960,4029570,4184788,4022807,4021108,4304536,2773682,2773695,2109617,2773685,2109574,4288997,4027426,4270496,4118715,4010266,2109723,2109724,2109715,2773934,2109722,2773938))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (2003708,2776176,2775402,2775928,2775927,2774933,2775894,2775672,2775671,2775665,2109680,2003724,4077764,4235644,4107717,2109657,4022960,4029570,4184788,4270496,2109723,2109724,2109715,2109722)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (2003708,2776176,2775402,2775928,2775927,2774933,2775894,2775672,2775671,2775665,2109680,2003724,4077764,4235644,4107717,2109657,4022960,4029570,4184788,4270496,2109723,2109724,2109715,2109722))
 
 ) I
 ) C UNION ALL 
 SELECT 80 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4154290)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4154290))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4154290)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4154290))
 
 ) I
 ) C UNION ALL 
 SELECT 81 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (313217)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (313217))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (313217)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (313217))
 
 ) I
 ) C;
@@ -1648,49 +1648,21 @@ select event_id, person_id, op_end_date as end_date from #included_events
 	WHERE F.ordinal = 1
 ) FE;
 
-select person_id, min(start_date) as start_date, end_date
+
+select person_id, min(start_date) as start_date, DATEADD(day,-1 * 0, max(end_date)) as end_date
 into #final_cohort
-from ( --cteEnds
-	SELECT
-		 c.person_id
-		, c.start_date
-		, MIN(ed.end_date) AS end_date
-	FROM #cohort_rows c
-	JOIN ( -- cteEndDates
-    SELECT
-      person_id
-      , DATEADD(day,-1 * 0, event_date)  as end_date
-    FROM
-    (
-      SELECT
-        person_id
-        , event_date
-        , event_type
-        , SUM(event_type) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS interval_status
-      FROM
-      (
-        SELECT
-          person_id
-          , start_date AS event_date
-          , -1 AS event_type
-        FROM #cohort_rows
-
-        UNION ALL
-
-
-        SELECT
-          person_id
-          , DATEADD(day,0,end_date) as end_date
-          , 1 AS event_type
-        FROM #cohort_rows
-      ) RAWDATA
-    ) e
-    WHERE interval_status = 0
-  ) ed ON c.person_id = ed.person_id AND ed.end_date >= c.start_date
-	GROUP BY c.person_id, c.start_date
-) e
-group by person_id, end_date
-;
+from (
+  select person_id, start_date, end_date, sum(is_start) over (partition by person_id order by start_date, is_start desc rows unbounded preceding) group_idx
+  from (
+    select person_id, start_date, end_date, 
+      case when max(end_date) over (partition by person_id order by start_date rows between unbounded preceding and 1 preceding) >= start_date then 0 else 1 end is_start
+    from (
+      select person_id, start_date, DATEADD(day,0,end_date) as end_date
+      from #cohort_rows
+    ) CR
+  ) ST
+) GR
+group by person_id, group_idx;
 
 DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
 INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)

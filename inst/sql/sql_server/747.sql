@@ -7,50 +7,50 @@ CREATE TABLE #Codesets (
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 8 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4230911,37311810,4019824,4203365,4335825,4334807,4334808,4331964,4138036,4335824,45773079,4305021,4147613,43021737,4268930,4211674)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4230911,37311810,4019824,4203365,4335825,4334807,4334808,4331964,4138036,4335824,45773079,4305021,4147613,43021737,4268930,4211674))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4230911,37311810,4019824,4203365,4335825,4334807,4334808,4331964,4138036,4335824,45773079,4305021,4147613,43021737,4268930,4211674)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4230911,37311810,4019824,4203365,4335825,4334807,4334808,4331964,4138036,4335824,45773079,4305021,4147613,43021737,4268930,4211674))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4160720,46273020,46273033,4330376,4171199,4225363,4267123,4307818,4265040,4084945,4203445,4250325,37311809,44809812,36717088,4197265,40488479,40491498,4329506,4098216,4327260,4329659,44514109,37209048,37206167,3654312,40492792,4216774,4161943,4234778,44805204,43022021,44805203,44805202,42535579,4202441,3654311)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4160720,46273020,46273033,4330376,4171199,4225363,4267123,4307818,4265040,4084945,4203445,4250325,37311809,44809812,36717088,4197265,40488479,40491498,4329506,4098216,4327260,4329659,44514109,37209048,37206167,3654312,40492792,4216774,4161943,4234778,44805204,43022021,44805203,44805202,42535579,4202441,3654311))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
 ) C UNION ALL 
 SELECT 9 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (42732622,21491681,2313897,42732626,2313898,40756947,42732628,42738797,42732627,2313899,40756899,2313900,45890619,927088,40217358,42738797,42732627,2313899,2313900,2313898,42732628,40757025,40756857,40756944)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (42732622,21491681,2313897,42732626,2313898,40756947,42732628,42738797,42732627,2313899,40756899,2313900,45890619,927088,40217358,42738797,42732627,2313899,2313900,2313898,42732628,40757025,40756857,40756944))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (42732622,21491681,2313897,42732626,2313898,40756947,42732628,42738797,42732627,2313899,40756899,2313900,45890619,927088,40217358,42738797,42732627,2313899,2313900,2313898,42732628,40757025,40756857,40756944)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (42732622,21491681,2313897,42732626,2313898,40756947,42732628,42738797,42732627,2313899,40756899,2313900,45890619,927088,40217358,42738797,42732627,2313899,2313900,2313898,42732628,40757025,40756857,40756944))
 
 ) I
 ) C UNION ALL 
 SELECT 15 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4013643)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4013643))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4013643)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4013643))
 
 ) I
 LEFT JOIN
 (
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4339214)
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4339214))
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4339214)
-  and c.invalid_reason is null
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4339214))
 
 ) E ON I.concept_id = E.concept_id
 WHERE E.concept_id is null
@@ -290,49 +290,21 @@ select event_id, person_id, op_end_date as end_date from #included_events
 	WHERE F.ordinal = 1
 ) FE;
 
-select person_id, min(start_date) as start_date, end_date
+
+select person_id, min(start_date) as start_date, DATEADD(day,-1 * 0, max(end_date)) as end_date
 into #final_cohort
-from ( --cteEnds
-	SELECT
-		 c.person_id
-		, c.start_date
-		, MIN(ed.end_date) AS end_date
-	FROM #cohort_rows c
-	JOIN ( -- cteEndDates
-    SELECT
-      person_id
-      , DATEADD(day,-1 * 0, event_date)  as end_date
-    FROM
-    (
-      SELECT
-        person_id
-        , event_date
-        , event_type
-        , SUM(event_type) OVER (PARTITION BY person_id ORDER BY event_date, event_type ROWS UNBOUNDED PRECEDING) AS interval_status
-      FROM
-      (
-        SELECT
-          person_id
-          , start_date AS event_date
-          , -1 AS event_type
-        FROM #cohort_rows
-
-        UNION ALL
-
-
-        SELECT
-          person_id
-          , DATEADD(day,0,end_date) as end_date
-          , 1 AS event_type
-        FROM #cohort_rows
-      ) RAWDATA
-    ) e
-    WHERE interval_status = 0
-  ) ed ON c.person_id = ed.person_id AND ed.end_date >= c.start_date
-	GROUP BY c.person_id, c.start_date
-) e
-group by person_id, end_date
-;
+from (
+  select person_id, start_date, end_date, sum(is_start) over (partition by person_id order by start_date, is_start desc rows unbounded preceding) group_idx
+  from (
+    select person_id, start_date, end_date, 
+      case when max(end_date) over (partition by person_id order by start_date rows between unbounded preceding and 1 preceding) >= start_date then 0 else 1 end is_start
+    from (
+      select person_id, start_date, DATEADD(day,0,end_date) as end_date
+      from #cohort_rows
+    ) CR
+  ) ST
+) GR
+group by person_id, group_idx;
 
 DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id = @target_cohort_id;
 INSERT INTO @target_database_schema.@target_cohort_table (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)

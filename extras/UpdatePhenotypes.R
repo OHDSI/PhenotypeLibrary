@@ -353,7 +353,6 @@ cohortRecord <- readRDS("cohortRecord.rds")
 
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
-  print(i)
   cohortRecordUnit <- cohortRecord[i, ]
 
   if (!file.exists(file.path(
@@ -371,7 +370,7 @@ for (i in (1:nrow(cohortRecord))) {
   ))
 
   parsed <-
-    PrivateScripts::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
+    CohortDefinitionReviewer::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
       RJSONIO::fromJSON(digits = 23))
   if (nrow(parsed) > 0) {
     cohortRecordAugmented[[i]] <- cohortRecordUnit |>
