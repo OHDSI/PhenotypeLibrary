@@ -441,7 +441,7 @@ readr::write_excel_csv(
   quote = "all"
 )
 
-orcidFromPhenotypeLog <- PrivateScripts::getOrcidFromPhenotypeLog(log = cohortRecordAugmented)
+orcidFromPhenotypeLog <- OhdsiHelpers::getOrcidFromPhenotypeLog(log = cohortRecordAugmented)
 
 readr::write_excel_csv(
   x = orcidFromPhenotypeLog,
