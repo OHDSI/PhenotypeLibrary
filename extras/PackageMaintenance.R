@@ -45,8 +45,9 @@ OhdsiRTools::updateCopyrightYearFolder()
 
 # Create Vignettes---------------------------------------------------------
 dir.create(file.path("inst", "doc"),
-           showWarnings = FALSE,
-           recursive = TRUE)
+  showWarnings = FALSE,
+  recursive = TRUE
+)
 rmarkdown::render(
   "vignettes/HowToUsePhenotypeLibraryRPackage.Rmd",
   output_file = "../inst/doc/HowToUsePhenotypeLibraryRPackage.pdf",

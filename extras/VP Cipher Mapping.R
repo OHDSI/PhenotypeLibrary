@@ -8,7 +8,7 @@ connection <-
   DatabaseConnector::connect(connectionDetails = connectionDetails)
 
 phenotypeLog <- PhenotypeLibrary::getPhenotypeLog() |>
-  dplyr::filter(stringr::str_detect(string = tolower(hashTag), pattern = "dme")) |> 
+  dplyr::filter(stringr::str_detect(string = tolower(hashTag), pattern = "dme")) |>
   # dplyr::filter(nchar(ohdsiForumPost) > 10) |>
   dplyr::filter(stringr::str_detect(string = tolower(.data$contributors), pattern = "gowtham")) |>
   dplyr::arrange(dplyr::desc(cohortId)) |>
@@ -28,11 +28,11 @@ uniqueConceptSetIds <- cohortDefinitionsInCohortDefinitionSet |>
 sourceCodes <- c()
 for (i in (1:nrow(uniqueConceptSetIds))) {
   uniqueConceptSetId <- uniqueConceptSetIds[i, ]
-  
+
   conceptSetExpression <-
     uniqueConceptSetId$conceptSetExpression |>
     RJSONIO::fromJSON(digits = 23)
-  
+
   resolvedConceptSets <-
     ConceptSetDiagnostics::resolveConceptSetExpression(
       conceptSetExpression = conceptSetExpression,
@@ -40,7 +40,7 @@ for (i in (1:nrow(uniqueConceptSetIds))) {
       vocabularyDatabaseSchema = cdmSource$cdmDatabaseSchema
     ) |>
     dplyr::mutate(uniqueConceptSetId = uniqueConceptSetId$uniqueConceptSetId)
-  
+
   mappedSource <-
     ConceptSetDiagnostics::getMappedSourceConcepts(
       conceptIds = resolvedConceptSets$conceptId |> unique(),
@@ -48,7 +48,7 @@ for (i in (1:nrow(uniqueConceptSetIds))) {
       vocabularyDatabaseSchema = cdmSource$vocabDatabaseSchema
     ) |>
     dplyr::mutate(uniqueConceptSetId = uniqueConceptSetId$uniqueConceptSetId)
-  
+
   sourceCodes[[i]] <- dplyr::bind_rows(
     resolvedConceptSets |>
       dplyr::mutate(type = "resolvedConceptSets"),
@@ -107,26 +107,26 @@ vaCipherMapping <- phenotypeLog |>
     # cipherOhdsiPhenotypeLibraryVersion = addedVersion,
     # cipherOhdsiCohortId = cohortId,
     cipherCategory = dplyr::if_else(condition = stringr::str_detect(string = tolower(domainsInEntryEvents), pattern = "condition"),
-                                    true = "General Phenotype",
-                                    false = dplyr::if_else(condition = stringr::str_detect(string = tolower(domainsInEntryEvents), pattern = "drug"),
-                                                           true = "Medication",
-                                                           false = dplyr::if_else(condition = stringr::str_detect(
-                                                             string = tolower(domainsInEntryEvents),
-                                                             pattern = "measurement"
-                                                           ),
-                                                           true = "Lab",
-                                                           false = "Other"
-                                                           )
-                                    )
+      true = "General Phenotype",
+      false = dplyr::if_else(condition = stringr::str_detect(string = tolower(domainsInEntryEvents), pattern = "drug"),
+        true = "Medication",
+        false = dplyr::if_else(condition = stringr::str_detect(
+          string = tolower(domainsInEntryEvents),
+          pattern = "measurement"
+        ),
+        true = "Lab",
+        false = "Other"
+        )
+      )
     ),
     cipherFullName = cohortNameLong,
     cipherKeyWords = paste0("OHDSI Cohort ID: ", cohortId, dplyr::if_else(condition = is.na(addedVersion),
-                                                                          true = "",
-                                                                          false = paste0(
-                                                                            " (Locked version: ",
-                                                                            addedVersion,
-                                                                            ")"
-                                                                          )
+      true = "",
+      false = paste0(
+        " (Locked version: ",
+        addedVersion,
+        ")"
+      )
     )), # maybe hashTag in future
     cipherClassification = dplyr::if_else(
       condition = stringr::str_detect(
@@ -164,7 +164,7 @@ vaCipherMapping <- phenotypeLog |>
     cipherCodeSampleLanguage = "SQL",
   ) |>
   dplyr::left_join(sourceCodesInEntryEvent,
-                   by = "cohortId"
+    by = "cohortId"
   ) |>
   dplyr::select(dplyr::all_of(dplyr::starts_with("cipher"))) |>
   dplyr::mutate(
