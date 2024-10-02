@@ -1,3 +1,11 @@
+PhenotypeLibrary 3.34.1
+======================
+Minor name changes.
+
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: No new cohorts were added in this release.
+
 PhenotypeLibrary 3.33.1
 ======================
 Minor maintenance release.

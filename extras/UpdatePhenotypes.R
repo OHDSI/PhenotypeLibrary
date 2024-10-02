@@ -318,7 +318,7 @@ missing <- setdiff(
 
 if (length(new) > 0) {
   stop(paste0(
-    "The following new fields observed please check and update ",
+    "The following new fields observed please check and update: ",
     paste0(new, collapse = ", ")
   ))
 }
