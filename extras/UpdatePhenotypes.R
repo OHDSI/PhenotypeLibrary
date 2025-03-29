@@ -441,7 +441,104 @@ readr::write_excel_csv(
   quote = "all"
 )
 
-orcidFromPhenotypeLog <- OhdsiHelpers::getOrcidFromPhenotypeLog(log = cohortRecordAugmented)
+# Function to get name from ORCID ID
+#' @export
+getOrcidDetails <- function(orcidId) {
+  # Create the URL for the API request
+  url <- paste0("https://pub.orcid.org/v3.0/", orcidId)
+
+  # Make the API request
+  res <-
+    httr::GET(url, httr::add_headers("Accept" = "application/json"))
+
+  # Parse the JSON response
+  parsedRes <- RJSONIO::fromJSON(httr::content(res, "text"))
+
+  details <- c()
+  # Extract the name
+  details$givenName <-
+    paste0(as.character(parsedRes$person$name$`given-names`), "")
+  details$familyName <-
+    paste0(as.character(parsedRes$person$name$`family-name`), "")
+  details$email <- paste0(parsedRes$person$emails$email |> as.character(), "")
+
+  return(details)
+}
+
+# Function to get log based on OrcId
+#' @export
+getOrcidFromPhenotypeLog <-
+  function(log = PhenotypeLibrary::getPhenotypeLog()) {
+    # Process the data
+    uniqueOrcIds <- log |>
+      dplyr::mutate(
+        contributorOrcIds = stringr::str_replace(
+          string = contributorOrcIds,
+          pattern = stringr::fixed("."),
+          replacement = ","
+        )
+      ) |>
+      tidyr::separate_rows(contributorOrcIds, sep = ",") |> # Split by comma
+      dplyr::mutate(contributorOrcIds = stringr::str_trim(contributorOrcIds, side = "both")) |> # Trim whitespace
+      dplyr::filter(contributorOrcIds != "") |> # Remove empty strings
+      dplyr::filter(contributorOrcIds != "''") |> # Remove empty strings
+      dplyr::filter(contributorOrcIds != "'") |> # Remove empty strings
+      dplyr::mutate(contributorOrcIds = stringr::str_replace_all(contributorOrcIds, "'", "")) |> # Remove quotations
+      dplyr::distinct(contributorOrcIds) |> # Get unique ORCIDs
+      dplyr::arrange(contributorOrcIds) |>
+      dplyr::pull(contributorOrcIds)
+
+    orcidLog <- c()
+    for (i in (1:length(uniqueOrcIds))) {
+      orcIdDetails <- NULL
+      orcIdDetails <- getOrcidDetails(uniqueOrcIds[[i]])
+      orcidLog[[i]] <- dplyr::tibble(
+        orcId = uniqueOrcIds[[i]],
+        givenName = orcIdDetails$givenName,
+        lastName = orcIdDetails$familyName,
+        email = orcIdDetails$email
+      )
+    }
+    orcidLog <- dplyr::bind_rows(orcidLog)
+
+    orcidLogWithContributions <- c()
+    for (i in (1:nrow(orcidLog))) {
+      numberOfCohorts <- log |>
+        dplyr::filter(
+          stringr::str_detect(
+            string = .data$contributorOrcIds,
+            pattern = orcidLog[i, ]$orcId |> stringr::fixed()
+          )
+        ) |>
+        dplyr::pull(cohortId) |>
+        unique() |>
+        length()
+
+      numberOfCohortsAccepted <- log |>
+        dplyr::filter(stringr::str_detect(
+          string = tolower(status),
+          pattern = "accepted"
+        )) |>
+        dplyr::filter(
+          stringr::str_detect(
+            string = .data$contributorOrcIds,
+            pattern = orcidLog[i, ]$orcId |> stringr::fixed()
+          )
+        ) |>
+        dplyr::pull(cohortId) |>
+        unique() |>
+        length()
+
+      orcidLogWithContributions[[i]] <- orcidLog[i, ] |>
+        dplyr::mutate(
+          contributions = numberOfCohorts,
+          accepted = numberOfCohortsAccepted
+        )
+    }
+    return(dplyr::bind_rows(orcidLogWithContributions))
+  }
+
+orcidFromPhenotypeLog <- getOrcidFromPhenotypeLog(log = cohortRecordAugmented)
 
 readr::write_excel_csv(
   x = orcidFromPhenotypeLog,
