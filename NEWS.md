@@ -1,3 +1,68 @@
+PhenotypeLibrary 3.35.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 58 were added.
+
+    1318: [P] NSCLC solitary primary rx naive
+    1329: [P] Death due to substance overdose (post mortem)
+    1330: [P] Acute Overdose (or “Acute Toxicity”) by substances with abuse potential
+    1331: [P] Opioid overdose - treatment drugs
+    1332: [P] Alcohol poisoning (acute severe intoxication)
+    1333: [P] Advanced liver disease
+    1334: [P] Liver cirrhosis from alcohol
+    1336: [P] Infective Endocarditis
+    1337: [P] Human immunodeficiency virus infection earliest occurrence
+    1338: [P] Binge Eating Disorder
+    1339: [P] Bulimia Nervosa
+    1340: [P] Anorexia Nervosa
+    1341: [P] Eating Disorders
+    1342: [P] Narcissistic personality disorder
+    1343: [P] Antisocial Personality Disorder
+    1344: [P] Borderline Personality Disorder
+    1345: [P] Personality Disorders
+    1346: [P] Attention-Deficit Hyperactivity Disorder
+    1347: [P] Posttraumatic Stress Disorder
+    1348: [P] Obsessive Compulsive Disorder
+    1349: [P] Anxiety Disorder
+    1350: [P] Primary Psychiatric Disorders
+    1351: [P] Gambling Disorder
+    1352: [P] Behavioral Addictions
+    1353: [P] Tobacco and Nicotine User
+    1354: [P] Tobacco and Nicotine Use Disorder - procedure
+    1355: [P] Measurements for Opioid Use Disorder
+    1356: [P] Opioid Use Disorder - treatment procedure or drug
+    1357: [P] Measurements for Cannabis Use Disorder
+    1358: [P] Alcohol Withdrawal - procedure
+    1359: [P] Alcohol withdrawal
+    1360: [P] Alcohol withdrawal - condition
+    1361: [P] Alcohol detoxification
+    1362: [P] Alcohol poisoning
+    1363: [P] Psychosis caused by ethanol - condition
+    1364: [P] Alcohol Intoxication - condition
+    1365: [P] Heroin use disorder - condition
+    1366: [P] Fentanyl use disorder
+    1367: [P] Stimulant Use Disorder
+    1368: [P] Cocaine Use Disorder
+    1369: [P] Methamphetamine use disorder
+    1370: [P] Sedative Hypnotic Anxiolytic Use Disorder
+    1371: [P] Benzodiazepines use disorder
+    1372: [P] Barbiturates use disorder
+    1373: [P] Inhalant Use Disorder
+    1374: [P] Tobacco and Nicotine Use Disorder - condition
+    1375: [P] Tobacco and Nicotine Toxicity
+    1376: [P] Infectious Diseases (HIV, Hepatitis B, Hepatitis C)
+    1377: [P] Substance Use Disorder in Remission
+    1378: [P] Controlled Medication Use
+    1379: [P] Physical Dependence from Legitimate Therapy
+    1380: [P] Prescription Drug Misuse
+    1381: [P] Cravings
+    1382: [P] Compulsions
+    1383: [P] Mental or Moral Distress
+    1384: [P] Any Distress (Physical or Mental)
+    1385: [P] Withdrawal of substances with abuse potential
+    1386: [P] Withdrawal Seizures
+
 PhenotypeLibrary 3.34.1
 ======================
 Minor name changes.
