@@ -1,3 +1,52 @@
+PhenotypeLibrary 3.36.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 42 were added.
+
+    1387: [P] Methadone
+    1388: [P] Methadone Treatment Program Enrollment
+    1389: [P] Naltrexone
+    1390: [P] Naltrexone Maintenance Therapy
+    1391: [P] Opioid Agonists
+    1392: [P] Opioid Antagonists
+    1393: [P] Medication-Assisted Treatment
+    1394: [P] Nicotine Replacement Therapy
+    1395: [P] OTC Nicotine Replacement
+    1396: [P] Varenicline
+    1397: [P] Pain Management
+    1398: [P] Terminal Palliative Care
+    1399: [P] Alcohol Misuse Counseling
+    1400: [P] Smoking Cessation Counseling
+    1401: [P] Psychotherapy
+    1402: [P] Group Therapy
+    1403: [P] Family Psychotherapy
+    1404: [P] Behavioral Therapies
+    1405: [P] 12-Step Facilitation Behavioral Therapy
+    1406: [P] Harm Reduction Interventions
+    1407: [P] Specialty Addiction Treatment
+    1408: [P] Alcohol Use Screening
+    1409: [P] Screening for substance abuse
+    1410: [P] Use of Substance Use Screening Tools
+    1411: [P] Laboratory Toxicology Tests
+    1412: [P] Naloxone Dispensing
+    1413: [P] Screening, Brief Intervention, and Referral to Treatment (SBIRT)
+    1415: [P] Impaired Control
+    1416: [P] Neglect of Roles or Social Impairment
+    1417: [P] Risky Use
+    1418: [P] Tolerance
+    1419: [P] Pattern of Use Causing Harm or Distress
+    1420: [P] Medical Conditions Mimicking Intoxication
+    1421: [P] Hypoglycemic disorder
+    1422: [P] Stroke events
+    1423: [P] Single Acute Intoxication
+    1424: [P] Opioid Acute intoxication
+    1425: [P] Alcohol Acute intoxication
+    1426: [P] Psychoactive Substances
+    1427: [P] Acamprosate, all exposures
+    1428: [P] Disulfiram, all exposures
+    1429: [P] Buprenorphine, all exposures
+
 PhenotypeLibrary 3.35.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
