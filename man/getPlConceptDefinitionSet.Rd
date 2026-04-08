@@ -18,6 +18,8 @@ A tibble.
 Get conceptSets in cohorts
 }
 \examples{
-getPhenotypeLog(cohortIds = c(1, 2))
+cohorts <- getPhenotypeLog()
+subsetIds <- cohorts$cohortId[1:3]
+getPlConceptDefinitionSet(cohortIds = subsetIds)
 
 }
