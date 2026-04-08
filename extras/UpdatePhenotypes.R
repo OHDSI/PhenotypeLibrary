@@ -351,10 +351,12 @@ cohortRecord <- cohortRecord |>
 saveRDS(cohortRecord, file = "cohortRecord.rds")
 cohortRecord <- readRDS("cohortRecord.rds")
 
+source(here::here(file.path("extras", "CohortDefinitionReviewer.R")))
+
 cohortRecordAugmented <- c()
 for (i in (1:nrow(cohortRecord))) {
   cohortRecordUnit <- cohortRecord[i, ]
-
+  
   if (!file.exists(file.path(
     "inst",
     "cohorts",
@@ -362,16 +364,16 @@ for (i in (1:nrow(cohortRecord))) {
   ))) {
     stop("cant find file")
   }
-
+  
   cohortJson <- SqlRender::readSql(sourceFile = file.path(
     "inst",
     "cohorts",
     paste0(cohortRecordUnit$cohortId, ".json")
   ))
-
+  
   parsed <-
-    CohortDefinitionReviewer::parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
-      RJSONIO::fromJSON(digits = 23))
+    parseCohortDefinitionSpecifications(cohortDefinition = cohortJson |>
+                                          RJSONIO::fromJSON(digits = 23))
   if (nrow(parsed) > 0) {
     cohortRecordAugmented[[i]] <- cohortRecordUnit |>
       tidyr::crossing(parsed)
@@ -564,9 +566,29 @@ newCohortDefinitionSet <-
   ) |>
   dplyr::tibble() |>
   dplyr::arrange(cohortId)
+# 
+# cohortDefinitionIds <- newCohortDefinitionSet |>
+#   dplyr::filter(!cohortId %in% c(25, 1071)) |>
+#   dplyr::filter(cohortId > 1071) |> 
+#   dplyr::pull(cohortId) |>
+#   unique() |>
+#   sort()
+# 
+# conceptSetsInAllCohortDefinition <- c()
+# for (i in (1:length(cohortDefinitionIds))) {
+# 
+#   print(paste0("working on ", cohortDefinitionIds[[i]]))
+# 
+#   conceptSetsInAllCohortDefinition[[i]] <- ConceptSetDiagnostics::extractConceptSetsInCohortDefinitionSet(
+#     cohortDefinitionSet = newCohortDefinitionSet |>
+#       dplyr::filter(cohortId == cohortDefinitionIds[[i]])
+#   )
+# }
+
 
 conceptSetsInAllCohortDefinition <- ConceptSetDiagnostics::extractConceptSetsInCohortDefinitionSet(
-  cohortDefinitionSet = newCohortDefinitionSet
+  cohortDefinitionSet = newCohortDefinitionSet |> 
+    dplyr::filter(!cohortId %in% c(25, 1071)) #no concept set
 )
 
 saveRDS(
