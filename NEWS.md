@@ -1,3 +1,14 @@
+PhenotypeLibrary 3.37.0
+======================
+Accepted Cohorts: No cohorts were accepted in this release.
+
+New Cohorts: 4 were added.
+
+    1431: [P] Ectopic Pregnancy
+    1432: [P] Still birth
+    1433: [P] Live Birth
+    1434: [P] Miscarriage or Abortion
+
 PhenotypeLibrary 3.36.0
 ======================
 Accepted Cohorts: No cohorts were accepted in this release.
